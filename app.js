@@ -32,6 +32,6 @@ App({
   
   },
   globalData:{
-    curArticle: null
+    
   }
 })

@@ -42,7 +42,6 @@ Page({
     wx.getStorage({
       key: 'job_list',
       success: function(res) {
-         console.log(res.data.data[0]);
          that.setData({
            list: res.data.data
          })

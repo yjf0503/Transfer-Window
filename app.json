@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/position/content"
+    "pages/position/content",
+    "pages/company/company"
   ],
   "window":{
     "backgroundTextStyle":"light",

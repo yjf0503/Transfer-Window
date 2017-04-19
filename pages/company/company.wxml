@@ -1,0 +1,28 @@
+<!--company.wxml-->
+<view class="container">
+  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
+    <image class="item-img" src="{{company_info.enterprise_logo}}" data-pid="{{company_info.p_id}}"></image>
+    <view class="item-name" data-id="{{company_info.id}}">{{company_info.enterprise_name}}</view>
+    <view class="detail">
+      <view class="item-name">公司介绍：{{company_info.enterprise_desc}}</view>
+      <view class="item-name">办公地址：{{company_info.enterprise_address}}</view>
+      <view class="tips">
+        <view class="item-info">联系邮箱：{{company_info.enterprise_email}}</view>
+        <view class="category">所属行业：{{company_info.enterprise_industry}}</view>
+        <view class="category">关键词：{{company_info.enterprise_key}}</view>
+      </view>
+    </view>
+    招聘岗位：
+    <view class="scroll-view-item" wx:for="{{company_info.position}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
+      <view class="detail">
+        <view class="item-name" data-id="{{item.id}}">岗位名称：{{item.p_name}}</view>
+        <view class="item-name">薪资：{{item.p_wages}}</view>
+        <view class="tips">
+          <view class="item-info">受教育水平：{{item.p_education}}</view>
+          <view class="item-info">工作经验：{{item.p_edujy}}</view>
+          <view class="category">添加时间：{{item.p_addtime}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

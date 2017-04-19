@@ -1,21 +1,18 @@
 <!--content.wxml-->
 <view class="container">
-  <scroll-view scroll-y="true" bindscrolltoupper="upper" 
-    bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
-      <image class="item-img" src="{{position_content.enterprise_logo}}"></image>
-      <view class="detail">
-          <text class="item-name" catchtap="bindItemTap" data-id="{{position_content.id}}">{{position_content.p_name}}</text>
-          <text class="item-name">{{position_content.p_wages}}</text>
-          <text class="item-name">{{position_content.p_address}}</text>
-          <view class="tips">
-            <text class="item-info">{{position_content.enterprise_name}}</text>
-            <text class="item-info">{{position_content.p_edujy}}</text>
-            <text class="category">{{position_content.category}}</text>
-            <text class="category">{{position_content.p_addtime}}</text>
-            <text class="category">{{position_content.p_text}}</text>
-          </view>
+  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
+    <image class="item-img" src="{{position_content.enterprise_logo}}" bindtap="bindItemTap" data-pid="{{position_content.p_id}}"></image>
+    <view class="detail">
+      <view class="item-name" data-id="{{position_content.id}}">岗位名称：{{position_content.p_name}}</view>
+      <view class="item-name">薪资待遇：{{position_content.p_wages}}</view>
+      <view class="item-name">工作地点：{{position_content.p_address}}</view>
+      <view class="tips">
+        <view class="item-info">企业名称：{{position_content.enterprise_name}}</view>
+        <view class="item-info">工作经验：{{position_content.p_edujy}}</view>
+        <view class="category">添加时间：{{position_content.p_addtime}}</view>
+        <view class="category">职位描述：{{position_content.p_text}}</view>
       </view>
-      <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
-      disabled="{{disabled}}" bindtap="submitresume"> 投递简历 </button>
+    </view>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="submitresume"> 投递简历 </button>
   </scroll-view>
 </view>
