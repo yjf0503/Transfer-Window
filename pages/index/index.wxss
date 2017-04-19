@@ -1,0 +1,36 @@
+/**index.wxss**/
+.scroll-wrapper {
+}
+.scroll-view-item {
+  padding: 1rem 10px;
+  display: flex;
+  border-bottom: 1px solid #e6e8eb;
+}
+.item-img {
+  height: 4rem;
+  flex: 1;
+  display: block;
+}
+.detail {
+  height: 4rem;
+  line-height: 1.25em;
+  flex: 2;
+  padding: 0 10px;
+  position: relative;
+}
+.item-name {
+  font-size: .75rem;
+  top: 0;
+}
+.tips {
+  font-size: .65rem;
+  position: absolute;
+  bottom: 0;
+  color: #828a92;
+}
+.item-info {
+  float: left;
+}
+.category {
+  float: right;
+}

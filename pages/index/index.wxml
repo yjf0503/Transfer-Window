@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<view class="container">
+  <scroll-view scroll-y="true" bindscrolltoupper="upper" 
+    bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
+    <view class="scroll-view-item" wx:for="{{list}}"wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
+      <image class="item-img" src="{{item.enterprise_logo}}"></image>
+      <view class="detail">
+        <text class="item-name" catchtap="bindItemTap" data-id="{{item.id}}">{{item.p_name}}</text>
+         <text class="item-name">{{item.p_wages}}</text>
+          <text class="item-name">{{item.p_address}}</text>
+        <view class="tips">
+          <text class="item-info">{{item.enterprise_name}}</text>
+          <text class="item-info">{{item.p_edujy}}</text>
+          <text class="category">{{item.category}}</text>
+           <text class="category">{{item.p_addtime}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

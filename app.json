@@ -1,0 +1,12 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/position/content"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#2c2c2c",
+    "navigationBarTitleText": "转会窗",
+    "navigationBarTextStyle":"white"
+  }
+}
