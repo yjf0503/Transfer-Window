@@ -1,13 +1,36 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/search/index",
+    "pages/logs/logs",
     "pages/position/content",
     "pages/company/company"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#2c2c2c",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "转会窗",
-    "navigationBarTextStyle":"white"
-  }
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {  
+   "color": "#a9b7b7",  
+   "selectedColor": "#11cd6e",  
+   "borderStyle":"white",  
+   "list": [{  
+     "selectedIconPath": "images/111.png",  
+     "iconPath": "images/11.png",  
+     "pagePath": "pages/index/index",  
+     "text": "首页"  
+   }, {  
+     "selectedIconPath": "images/221.png",  
+     "iconPath": "images/22.png",  
+     "pagePath": "pages/position/index",  
+     "text": "消息"  
+   }, {  
+     "selectedIconPath": "images/331.png",  
+     "iconPath": "images/33.png",  
+     "pagePath": "pages/company/index",  
+     "text": "我"  
+   }]  
+ }
 }

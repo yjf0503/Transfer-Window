@@ -1,3 +1,4 @@
+@import "../search/index.wxss";
 /**index.wxss**/
 .scroll-wrapper {
 }
