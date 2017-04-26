@@ -19,6 +19,21 @@ App({
       });
       }
     });
+
+    wx.request({
+      url: 'https://www.ecosports.cn/Home/Enterprise/wxapp_rookie_position_list',
+      data: {},
+      header: {
+          'Content-Type': 'application/json'
+      },
+      success: function(res) {
+        // use res.data
+        wx.setStorage({
+          key:"rookie_job_list",
+          data:res
+      });
+      }
+    });
   },
   getUserInfo:function(cb){
     var that = this
