@@ -1,0 +1,20 @@
+<!--pages/usercenter/resume.wxml-->
+<view class="container">
+  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
+    <view class="scroll-view-item" wx:for="{{jobsubmitlist}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
+      <image class="item-img" src="{{item.enterprise_logo}}"></image>
+      <view class="detail">
+        <view class="item-name" data-id="{{item.id}}">岗位名称：{{item.p_name}}</view>
+        <view class="item-name">投递时间：{{item.createtime}}</view>
+        <view class="tips">
+          <view class="item-info">企业名称：{{item.enterprise_name}}</view>
+          <view wx:if="{{item.status == 0}}"><view class="item-info">简历状态：未查看 </view></view>
+          <view wx:elif="{{item.status == 1}}"><view class="item-info">简历状态：有意向 </view></view>
+          <view wx:elif="{{item.status == 2}}"><view class="item-info">简历状态：邀请面试 </view></view>
+          <view wx:else><view class="item-info">简历状态： 不合适 </view>                    
+        </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

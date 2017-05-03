@@ -1,0 +1,127 @@
+
+<!--pages/usercenter/selfinfo.wxml-->
+<view class="container">
+  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
+    <image mode="aspectFit" class="item-img" src="{{avatarUrl}}" bindtap="setimage" data-pid="{{position_content.p_id}}"></image>
+    <view>基本信息:</view>
+    <view class="detail">
+      <view class="item-name" data-id="{{position_content.id}}">
+        姓名：
+        <input id="changeNickname" value="{{nickName}}" bindinput="changeNickname" placeholder="姓名" maxlength="5"></input>
+      </view>
+      <view class="item-name">性别：
+        <picker mode="selector" range="{{genderlist}}" value="{{genderindex}}" bindchange="setGender">
+          <text>{{gender}}</text>
+        </picker>
+      </view>
+      <view class="item-name">出生年月：
+        <picker mode="date" fields="month" start="1970-01" end="2020-09" value="{{birthday}}" bindchange="setBirthday">
+          <text>{{birthday}}</text>
+        </picker>
+      </view>
+      <view class="item-name">最高学历：
+        <picker mode="selector" range="{{edulevellist}}" value="{{edulevelindex}}" bindchange="setEdulevel">
+          <text>{{edulevel}}</text>
+        </picker>
+      </view>
+      <view class="item-name">工作年限：
+        <picker mode="selector" range="{{worklengthlist}}" value="{{worklengthindex}}" bindchange="setWorklength">
+          <text>{{worklength}}</text>
+        </picker>
+      </view>
+      <view class="item-name">所在城市：
+        <input id="changeCity" value="{{city}}" bindinput="changeCity" placeholder="请填写所在城市" maxlength="15"></input>
+      </view>
+      <view class="item-name">职业：
+        <input id="changeOccupation" value="{{occupation}}" bindinput="changeOccupation" placeholder="请填写职业" maxlength="10"></input>
+      </view>
+      <view class="item-name">联系电话：
+        <input id="changePhone" value="{{phone}}" bindinput="changePhone" placeholder="请填写联系电话" maxlength="11"></input>
+      </view>
+      <view class="item-name">联系邮箱：
+        <input id="changeEmail" value="{{email}}" bindinput="changeEmail" placeholder="请填写联系邮箱" maxlength="30"></input>
+      </view>
+      <view class="tips">
+        <view class="item-name">一句话介绍：
+          <input id="changeSelfintroduce" value="{{selfintroduce}}" bindinput="changeSelfintroduce" placeholder="请填写个人介绍，最多20字" maxlength="20"></input>
+        </view>
+      </view>
+    </view>
+    <view>
+      <view>工作/实习经历：（填写最近2段）</view>
+      <view class="detail">
+        <view class="item-name">工作时间：
+          <picker mode="date" fields="month" start="1970-01" end="2020-09" value="{{firstjobbegin}}" bindchange="setFirstjobbegin">
+            <text>{{firstjobbegin}}</text>
+          </picker>
+          <view>-</view>
+          <picker mode="date" fields="month" start="1970-01" end="2020-09" value="{{firstjobend}}" bindchange="setFirstjobend">
+            <text>{{firstjobend}}</text>
+          </picker>
+          <view class="item-name">公司名称：
+            <input id="setCompany1" value="{{company1}}" bindinput="setCompany1" placeholder="请填写公司名称" maxlength="15"></input>
+          </view>
+          <view class="item-name">工作内容：
+            <input id="setWorkinfo1" value="{{workinfo1}}" bindinput="setWorkinfo1" placeholder="请填写工作内容，最多50字" maxlength="50"></input>
+          </view>
+        </view>
+        <view class="item-name">工作时间：
+          <picker mode="date" fields="month" start="1970-01" end="2020-09" value="{{secondjobbegin}}" bindchange="setSecondjobbegin">
+            <text>{{secondjobbegin}}</text>
+          </picker>
+          <view>-</view>
+          <picker mode="date" fields="month" start="1970-01" end="2020-09" value="{{secondjobend}}" bindchange="setSecondjobend">
+            <text>{{secondjobend}}</text>
+          </picker>
+          <view class="item-name">公司名称：
+            <input id="setCompany2" value="{{company2}}" bindinput="setCompany2" placeholder="请填写公司名称" maxlength="15"></input>
+          </view>
+          <view class="item-name">工作内容：
+            <input id="setWorkinfo2" value="{{workinfo2}}" bindinput="setWorkinfo2" placeholder="请填写工作内容，最多50字" maxlength="50"></input>
+          </view>
+        </view>
+      </view>
+
+      <view>
+      <view>教育经历：（填写最近2段）</view>
+      <view class="detail">
+        <view class="item-name">毕业时间：
+          <picker mode="date" fields="month" start="1970-01" end="2020-09" value="{{firstgraduatetime}}" bindchange="setFirstgraduatetime">
+            <text>{{firstgraduatetime}}</text>
+          </picker>
+          <view class="item-name">院校名称：
+            <input id="setUniversity1" value="{{university1}}" bindinput="setUniversity1" placeholder="请填写院校名称" maxlength="15"></input>
+          </view>
+          <view class="item-name">学历：
+            <picker mode="selector" range="{{edulevellist}}" value="{{edulevel1index}}" bindchange="setEdulevel1">
+          <text>{{edulevel1}}</text>
+        </picker>
+          </view>
+          <view class="item-name">专业：
+            <input id="setSubject1" value="{{subject1}}" bindinput="setSubject1" placeholder="请填写所学专业" maxlength="10"></input>
+          </view>
+        </view>
+
+        <view class="item-name">毕业时间：
+          <picker mode="date" fields="month" start="1970-01" end="2020-09" value="{{secondgraduatetime}}" bindchange="setSecondgraduatetime">
+            <text>{{secondgraduatetime}}</text>
+          </picker>
+          <view class="item-name">院校名称：
+            <input id="setUniversity2" value="{{university2}}" bindinput="setUniversity2" placeholder="请填写院校名称" maxlength="15"></input>
+          </view>
+          <view class="item-name">学历：
+            <picker mode="selector" range="{{edulevellist}}" value="{{edulevel2index}}" bindchange="setEdulevel2">
+          <text>{{edulevel2}}</text>
+        </picker>
+          </view>
+          <view class="item-name">专业：
+            <input id="setSubject2" value="{{subject2}}" bindinput="setSubject2" placeholder="请填写所学专业" maxlength="10"></input>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+     </view>
+  </scroll-view>
+</view>
+<button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="submitselfinfo"> 完成编辑 </button>

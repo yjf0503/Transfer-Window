@@ -1,0 +1,12 @@
+<view class="wrap" style="display:{{isShow ? 'block':'none'}}">
+<view class="container">
+  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
+    <image mode="aspectFit" class="item-img" src="{{userInfoAvatar}}" bindtap="bindItemTap" data-pid="{{position_content.p_id}}"></image>
+    <view class="detail">
+      <view class="item-name" data-id="{{position_content.id}}">用户昵称：{{nickName}}</view>
+    </view>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"  bindtap="editselfinfo"> 我的简历 </button>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"  bindtap="mysubmit" hidden="{{mysubmithidden}}"> 我的投递 </button>
+  </scroll-view>
+</view>
+</view>

@@ -13,6 +13,6 @@
         <view class="category">职位描述：{{position_content.p_text}}</view>
       </view>
     </view>
-    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="submitresume"> 投递简历 </button>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"  bindtap="submitresume" hidden="{{submithidden}}" disabled="{{submitdisabled}}"> 投递简历 </button>
   </scroll-view>
 </view>

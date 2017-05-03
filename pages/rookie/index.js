@@ -57,29 +57,29 @@ Page({
     this.setData({
       modalFlag: !this.data.modalFlag
     })
-    wx.request({
-      url: 'https://www.ecosports.cn/Home/Enterprise/wxapp_search_list',
-      data: { key: app.globalData.keyword },
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res);
-        that.setData({
-          list: res.data
-        })
-      }
-    });
 
+    var position_list = wx.getStorageSync('rookie_job_list'); 
+    var position_search_list = Array();
+    for (var i=0;i<position_list.length;i++){
+        if(position_list[i].p_name.indexOf(app.globalData.keyword) >= 0){
+          position_search_list.push(position_list[i]);
+        }
+        if(position_list[i].enterprise_name.indexOf(app.globalData.keyword) >= 0){
+          position_search_list.push(position_list[i]);
+        }
+    }
+    that.setData({
+        list:  position_search_list
+    })
   },
   wxSearchCancel: function (event) {
     var that = this
     WxSearch.wxSearchCancel(that);
     wx.getStorage({
-      key: 'job_list',
+      key: 'rookie_job_list',
       success: function (res) {
         that.setData({
-          list: res.data.data
+          list: res.data
         })
       }
     })
@@ -87,6 +87,14 @@ Page({
 
   onLoad: function () {
     var that = this;
+     wx.getStorage({
+      key: 'rookie_job_list',
+      success: function (res) {
+        that.setData({
+          list: res.data
+        })
+      }
+    })
     //初始化的时候渲染wxSearchdata 第二个为你的search高度
     WxSearch.init(that, 43, ['weappdev', '小程序', 'wxParse', 'wxSearch', 'wxNotification']);
     WxSearch.initMindKeys(['weappdev.com', '微信小程序开发', '微信开发', '微信小程序']);
@@ -97,14 +105,5 @@ Page({
     //     userInfo:userInfo
     //   });
     // })
-
-    wx.getStorage({
-      key: 'rookie_job_list',
-      success: function (res) {
-        that.setData({
-          list: res.data.data
-        })
-      }
-    })
   }
 })

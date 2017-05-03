@@ -57,20 +57,20 @@ Page({
     this.setData({
       modalFlag: !this.data.modalFlag
     })
-    wx.request({
-      url: 'https://www.ecosports.cn/Home/Enterprise/wxapp_search_list',
-      data: { key: app.globalData.keyword },
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res);
-        that.setData({
-          list: res.data
-        })
-      }
-    });
 
+    var position_list = wx.getStorageSync('job_list');
+    var position_search_list = Array();
+    for (var i = 0; i < position_list.length; i++) {
+      if (position_list[i].p_name.indexOf(app.globalData.keyword) >= 0) {
+        position_search_list.push(position_list[i]);
+      }
+      if (position_list[i].enterprise_name.indexOf(app.globalData.keyword) >= 0) {
+        position_search_list.push(position_list[i]);
+      }
+    }
+    that.setData({
+      list: position_search_list
+    })
   },
   wxSearchCancel: function (event) {
     var that = this
@@ -79,32 +79,106 @@ Page({
       key: 'job_list',
       success: function (res) {
         that.setData({
-          list: res.data.data
+          list: res.data
         })
-      }
+      },
     })
   },
 
   onLoad: function () {
     var that = this;
-    //初始化的时候渲染wxSearchdata 第二个为你的search高度
-    WxSearch.init(that, 43, ['weappdev', '小程序', 'wxParse', 'wxSearch', 'wxNotification']);
-    WxSearch.initMindKeys(['weappdev.com', '微信小程序开发', '微信开发', '微信小程序']);
-    // //调用应用实例的方法获取全局数据
-    // app.getUserInfo(function(userInfo){
-    //   //更新数据
-    //   that.setData({
-    //     userInfo:userInfo
-    //   });
-    // })
-
-    wx.getStorage({
+    wx.showToast({
+            title: '加载中',
+            icon: 'loading',
+            duration: 900
+          });
+     setTimeout(function(){wx.getStorage({
       key: 'job_list',
       success: function (res) {
         that.setData({
-          list: res.data.data
+          list: res.data
+        })
+      },
+      fail: function () {
+        console.log(123);
+      },
+    })}, 1000);
+ wx.checkSession({
+      success: function () {
+        //session 未过期，并且在本生命周期一直有效
+        console.log('session 未过期');
+        //console.log(wx.getStorageSync('userinfo'));
+        if (!wx.getStorageSync('userinfo')) {
+          wx.getUserInfo({
+            success: function (res) {
+              wx.setStorageSync('userinfo', res);
+              var userInfo = res.userInfo;
+               switch (userInfo.gender) {
+                case 0:
+                    userInfo.gender='未知';
+                    break;
+                case 1:        
+                    userInfo.gender='男';
+                    break;
+                case 2:              
+                    userInfo.gender='女';
+                    break;
+            };
+            console.log(userInfo);
+            wx.setStorageSync('resume', res.userInfo);
+            }
+          })
+        }
+      },
+      fail: function () {
+        //登录态过期
+        //调用登录接口
+        wx.login({
+          success: function (res) {
+            if (res.code) {
+              //存在code
+              wx.request({
+                url: 'https://www.ecosports.cn/home/enterprise/wxapp_savesession',
+                data: { code: res.code },
+                method: 'POST',
+                header: {
+                  "content-type": "application/x-www-form-urlencoded"
+                },
+                success: function (res) {
+                  wx.setStorageSync('loginsession', res.data);
+                },
+                fail: function () {
+                  console.log('服务器请求失败!')
+                },
+              })
+            } else {
+              console.log('获取用户信息失败!' + res.errMsg)
+            }
+          }
+        });
+        wx.getUserInfo({
+          success: function (res) {
+            wx.setStorageSync('userinfo', res);
+            var userInfo = res.userInfo;
+               switch (userInfo.gender) {
+                case 0:
+                    userInfo.gender='未知';
+                    break;
+                case 1:        
+                    userInfo.gender='男';
+                    break;
+                case 2:              
+                    userInfo.gender='女';
+                    break;
+            }
+            console.log(userInfo);
+            wx.setStorageSync('resume', res.userInfo);
+          }
         })
       }
-    })
-  }
+    });
+    //初始化的时候渲染wxSearchdata 第二个为你的search高度
+    WxSearch.init(that, 43, ['weappdev', '小程序', 'wxParse', 'wxSearch', 'wxNotification']);
+    WxSearch.initMindKeys(['weappdev.com', '微信小程序开发', '微信开发', '微信小程序']);
+  },
 })

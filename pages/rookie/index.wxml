@@ -1,4 +1,5 @@
-<include src="../search/index.wxml"/>
+<include src="../search/index.wxml" />
+
 <!--index.wxml-->
 <view class="container">
   <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">

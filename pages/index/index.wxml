@@ -1,4 +1,6 @@
-<include src="../search/index.wxml"/>
+<include src="../search/index.wxml" />
+<!--<modal title="modal对话框" hidden="{{modalFlag}}" confirm-text="确定" cancel-text="取消"
+  bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">如果不允许授权，您就不能创建，或者发送简历</modal>-->
 <!--index.wxml-->
 <view class="container">
   <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
