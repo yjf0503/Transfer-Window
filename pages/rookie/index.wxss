@@ -6,21 +6,24 @@
   padding: 1rem 10px;
   display: flex;
   border-bottom: 1px solid #e6e8eb;
+  height:7rem;
 }
 .item-img {
-  height: 4rem;
+  height: 6rem;
+  width:  6rem;
+  padding:0 7px;
   flex: 1;
   display: block;
 }
 .detail {
-  height: 4rem;
+  height: 6rem;
   line-height: 1.25em;
   flex: 2;
-  padding: 0 10px;
+  padding: 0 3px;
   position: relative;
 }
 .item-name {
-  font-size: .75rem;
+  font-size: .68rem;
   top: 0;
 }
 .tips {

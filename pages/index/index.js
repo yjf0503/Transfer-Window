@@ -57,21 +57,23 @@ Page({
     this.setData({
       modalFlag: !this.data.modalFlag
     })
-
-    var position_list = wx.getStorageSync('job_list');
-    var position_search_list = Array();
-    for (var i = 0; i < position_list.length; i++) {
-      if (position_list[i].p_name.indexOf(app.globalData.keyword) >= 0) {
-        position_search_list.push(position_list[i]);
+    if (app.globalData.keyword) {
+      var position_list = wx.getStorageSync('job_list');
+      var position_search_list = Array();
+      for (var i = 0; i < position_list.length; i++) {
+        if (position_list[i].p_name.indexOf(app.globalData.keyword) >= 0) {
+          position_search_list.push(position_list[i]);
+        }
+        if (position_list[i].enterprise_name.indexOf(app.globalData.keyword) >= 0) {
+          position_search_list.push(position_list[i]);
+        }
       }
-      if (position_list[i].enterprise_name.indexOf(app.globalData.keyword) >= 0) {
-        position_search_list.push(position_list[i]);
-      }
+      that.setData({
+        list: position_search_list
+      })
     }
-    that.setData({
-      list: position_search_list
-    })
   },
+
   wxSearchCancel: function (event) {
     var that = this
     WxSearch.wxSearchCancel(that);
@@ -88,22 +90,24 @@ Page({
   onLoad: function () {
     var that = this;
     wx.showToast({
-            title: '加载中',
-            icon: 'loading',
-            duration: 900
-          });
-     setTimeout(function(){wx.getStorage({
-      key: 'job_list',
-      success: function (res) {
-        that.setData({
-          list: res.data
-        })
-      },
-      fail: function () {
-        console.log(123);
-      },
-    })}, 1000);
- wx.checkSession({
+      title: '加载中',
+      icon: 'loading',
+      duration: 900
+    });
+    setTimeout(function () {
+      wx.getStorage({
+        key: 'job_list',
+        success: function (res) {
+          that.setData({
+            list: res.data
+          })
+        },
+        fail: function () {
+          console.log(123);
+        },
+      })
+    }, 1000);
+    wx.checkSession({
       success: function () {
         //session 未过期，并且在本生命周期一直有效
         console.log('session 未过期');
@@ -113,19 +117,19 @@ Page({
             success: function (res) {
               wx.setStorageSync('userinfo', res);
               var userInfo = res.userInfo;
-               switch (userInfo.gender) {
+              switch (userInfo.gender) {
                 case 0:
-                    userInfo.gender='未知';
-                    break;
-                case 1:        
-                    userInfo.gender='男';
-                    break;
-                case 2:              
-                    userInfo.gender='女';
-                    break;
-            };
-            console.log(userInfo);
-            wx.setStorageSync('resume', res.userInfo);
+                  userInfo.gender = '未知';
+                  break;
+                case 1:
+                  userInfo.gender = '男';
+                  break;
+                case 2:
+                  userInfo.gender = '女';
+                  break;
+              };
+              console.log(userInfo);
+              wx.setStorageSync('resume', res.userInfo);
             }
           })
         }
@@ -160,16 +164,16 @@ Page({
           success: function (res) {
             wx.setStorageSync('userinfo', res);
             var userInfo = res.userInfo;
-               switch (userInfo.gender) {
-                case 0:
-                    userInfo.gender='未知';
-                    break;
-                case 1:        
-                    userInfo.gender='男';
-                    break;
-                case 2:              
-                    userInfo.gender='女';
-                    break;
+            switch (userInfo.gender) {
+              case 0:
+                userInfo.gender = '未知';
+                break;
+              case 1:
+                userInfo.gender = '男';
+                break;
+              case 2:
+                userInfo.gender = '女';
+                break;
             }
             console.log(userInfo);
             wx.setStorageSync('resume', res.userInfo);
@@ -178,7 +182,7 @@ Page({
       }
     });
     //初始化的时候渲染wxSearchdata 第二个为你的search高度
-    WxSearch.init(that, 43, ['weappdev', '小程序', 'wxParse', 'wxSearch', 'wxNotification']);
+    WxSearch.init(that, 43, ['体育', '编辑', '万达', '乐视', '运营']);
     WxSearch.initMindKeys(['weappdev.com', '微信小程序开发', '微信开发', '微信小程序']);
   },
 })

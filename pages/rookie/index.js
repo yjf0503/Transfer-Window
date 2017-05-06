@@ -57,20 +57,21 @@ Page({
     this.setData({
       modalFlag: !this.data.modalFlag
     })
-
-    var position_list = wx.getStorageSync('rookie_job_list'); 
-    var position_search_list = Array();
-    for (var i=0;i<position_list.length;i++){
-        if(position_list[i].p_name.indexOf(app.globalData.keyword) >= 0){
+    if (app.globalData.keyword) {
+      var position_list = wx.getStorageSync('rookie_job_list');
+      var position_search_list = Array();
+      for (var i = 0; i < position_list.length; i++) {
+        if (position_list[i].p_name.indexOf(app.globalData.keyword) >= 0) {
           position_search_list.push(position_list[i]);
         }
-        if(position_list[i].enterprise_name.indexOf(app.globalData.keyword) >= 0){
+        if (position_list[i].enterprise_name.indexOf(app.globalData.keyword) >= 0) {
           position_search_list.push(position_list[i]);
         }
+      }
+      that.setData({
+        list: position_search_list
+      })
     }
-    that.setData({
-        list:  position_search_list
-    })
   },
   wxSearchCancel: function (event) {
     var that = this
@@ -87,7 +88,7 @@ Page({
 
   onLoad: function () {
     var that = this;
-     wx.getStorage({
+    wx.getStorage({
       key: 'rookie_job_list',
       success: function (res) {
         that.setData({
@@ -96,7 +97,7 @@ Page({
       }
     })
     //初始化的时候渲染wxSearchdata 第二个为你的search高度
-    WxSearch.init(that, 43, ['weappdev', '小程序', 'wxParse', 'wxSearch', 'wxNotification']);
+    WxSearch.init(that, 43, ['体育', '兼职', '实习', '志愿', '赛事']);
     WxSearch.initMindKeys(['weappdev.com', '微信小程序开发', '微信开发', '微信小程序']);
     // //调用应用实例的方法获取全局数据
     // app.getUserInfo(function(userInfo){

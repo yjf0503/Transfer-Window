@@ -1,12 +1,28 @@
 <view class="wrap" style="display:{{isShow ? 'block':'none'}}">
-<view class="container">
-  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
-    <image mode="aspectFit" class="item-img" src="{{userInfoAvatar}}" bindtap="bindItemTap" data-pid="{{position_content.p_id}}"></image>
-    <view class="detail">
-      <view class="item-name" data-id="{{position_content.id}}">用户昵称：{{nickName}}</view>
+  <view class="page__bd">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+        <image src="{{userInfoAvatar}}" style="width: 50px; height: 50px; display: block" data-pid="{{position_content.p_id}}"/>
+      </view>
+      <view class="weui-cell__bd">
+        <view data-id="{{position_content.id}}">{{nickName}}</view>        
+      </view>
     </view>
-    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"  bindtap="editselfinfo"> 我的简历 </button>
-    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"  bindtap="mysubmit" hidden="{{mysubmithidden}}"> 我的投递 </button>
-  </scroll-view>
+    <view class="weui-cell weui-cell_access" bindtap="editselfinfo">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle" >我的简历</view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+    <view class="weui-cell weui-cell_access" bindtap="mysubmit" hidden="{{mysubmithidden}}">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle" >我的投递</view>
+        <view class="weui-badge" style="margin-left: 5px;">{{resume_id_list_length}}</view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">详细信息</view>
+    </view>
+    
+  </view>
 </view>
 </view>

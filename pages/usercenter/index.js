@@ -6,7 +6,8 @@ Page({
         province: '',
         city: '',
         isShow: false,
-        mysubmithidden:true
+        mysubmithidden:true,
+        resume_id_list_length:""
     },
     onLoad: function () {
         var that = this;
@@ -18,6 +19,7 @@ Page({
         }else{
             that.setData({
                 mysubmithidden:false,
+                resume_id_list_length:wx.getStorageSync('resume_id_list').length,
             });
             console.log(that.data.mysubmithidden);
         };
@@ -89,7 +91,7 @@ Page({
         }
     },
     mysubmit: function () {
-        wx.navigateTo({
+        wx.switchTab({
             url: '../usercenter/resume'
         });
     },

@@ -8,13 +8,15 @@
       <image class="item-img" src="{{item.enterprise_logo}}"></image>
       <view class="detail">
         <view class="item-name" data-id="{{item.id}}">岗位名称：{{item.p_name}}</view>
+        <view class="item-name">企业名称：{{item.enterprise_name}}</view>
         <view class="item-name">薪资待遇：{{item.p_wages}}</view>
         <view class="item-name">工作地点：{{item.p_address}}</view>
-        <view class="tips">
-          <view class="item-info">企业名称：{{item.enterprise_name}}</view>
+        <view class="item-name">工作经验：{{item.p_edujy}}</view>
+        <view class="item-name">添加时间：{{item.p_addtime}}</view>
+        <!--<view class="tips">
           <view class="item-info">工作经验：{{item.p_edujy}}</view>
-          <view class="category">添加时间：{{item.p_addtime}}</view>
-        </view>
+          <view class="item-info">添加时间：{{item.p_addtime}}</view>
+        </view>-->
       </view>
     </view>
   </scroll-view>

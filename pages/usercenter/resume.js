@@ -19,6 +19,8 @@ Page({
           if(resume_id_list[j].status != jobsubmitlist[i].status)
           {
             console.log('新');
+            resume_id_list[j].status  = jobsubmitlist[i].status;
+            wx.setStorageSync('resume_id_list', resume_id_list);
           }else{
              console.log('旧');
           }

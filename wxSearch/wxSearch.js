@@ -155,21 +155,19 @@ function getHisKeys(that) {
         }
     } catch (e) {
         // Do something when catch error
-    }
-    
+    }  
 }
 function wxSearchAddHisKey(that) {
     var temData = that.data.wxSearchData;
     temData.view.isShow = false;
+    wxSearchHiddenPancel(that);
+    var text = that.data.wxSearchData.value;
+    if(!text){return;}
     that.setData({
         wxSearchData:temData,
         searchBtnShow:false,
         cancelBtnShow:true,
     })
-    wxSearchHiddenPancel(that);
-    var text = that.data.wxSearchData.value;
-    if(typeof(text) == "undefined" || text.length == 0){return;}
-   
     app.globalData.keyword = text;
     var value = wx.getStorageSync('wxSearchHisKeys');
     if(value){
@@ -194,8 +192,6 @@ function wxSearchAddHisKey(that) {
             }
         })
     }
-    
-    
 }
 function wxSearchDeleteKey(e,that) {
     var text = e.target.dataset.key;
@@ -224,13 +220,14 @@ function wxSearchDeleteAll(that){
 }
 
 function wxSearchCancel(that){
+    app.globalData.keyword = '';
     var temData = that.data.wxSearchData;
     temData.value = null;
     that.setData({
-       wxSearchData:temData,
+        wxSearchData:temData,
         searchBtnShow:true,
         cancelBtnShow:false,
-    })
+    });
 }
 
 
