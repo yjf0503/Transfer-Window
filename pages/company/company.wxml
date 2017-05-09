@@ -1,26 +1,50 @@
 <!--company.wxml-->
-<view class="container">
+<view class="page">
   <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
-    <image class="item-img" src="{{company_info.enterprise_logo}}" data-pid="{{company_info.p_id}}"></image>
-    <view class="item-name" data-id="{{company_info.id}}">{{company_info.enterprise_name}}</view>
-    <view class="detail">
-      <view class="item-name">公司介绍：{{company_info.enterprise_desc}}</view>
-      <view class="item-name">办公地址：{{company_info.enterprise_address}}</view>
-      <view class="tips">
-        <view class="item-info">联系邮箱：{{company_info.enterprise_email}}</view>
-        <view class="category">所属行业：{{company_info.enterprise_industry}}</view>
-        <view class="category">关键词：{{company_info.enterprise_key}}</view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+        <image src="{{company_info.enterprise_logo}}" data-pid="{{company_info.p_id}}" style="width: 50px; height: 50px; display: block" />
+      </view>
+      <view class="weui-cell__bd">
+        <view>{{company_info.enterprise_name}}</view>
+        <view style="font-size: 13px;color: #888888;">{{company_info.enterprise_address}}</view>
       </view>
     </view>
-    招聘岗位：
-    <view class="scroll-view-item" wx:for="{{company_info.position}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
+
+    <view class="page__bd">
+      <view class="weui-article">
+      <view class="weui-article__h1">公司介绍</view>
+        {{company_info.enterprise_desc}}
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle">联系邮箱：{{company_info.enterprise_email}}</view>
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle">所属行业：{{company_info.enterprise_industry}}</view>
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle">关键词：{{company_info.enterprise_key}}</view>
+      </view>
+    </view>
+
+<view class="weui-article__h1">招聘岗位：</view>
+<view class="scroll-view-item" wx:for="{{company_info.position}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
       <view class="detail">
         <view class="item-name" data-id="{{item.id}}">岗位名称：{{item.p_name}}</view>
-        <view class="item-name">薪资：{{item.p_wages}}</view>
+        <view class="item-name">薪资待遇：{{item.p_wages}}</view>
         <view class="tips">
           <view class="item-info">受教育水平：{{item.p_education}}</view>
           <view class="item-info">工作经验：{{item.p_edujy}}</view>
-          <view class="category">添加时间：{{item.p_addtime}}</view>
+          <view class="item-info">添加时间：{{item.p_addtime}}</view>
         </view>
       </view>
     </view>

@@ -8,6 +8,7 @@ Page({
   },
   onLoad: function () { // 设置title
     var position = app.globalData.curPosition;
+    console.log(position);
     var that = this;
     that.setData({
       position_content: position
@@ -36,7 +37,7 @@ Page({
       });
     };
 
-    if (wx.getStorageSync('userinfo')) {
+    if (wx.getStorageSync('true_resume')) {
       var that = this;
       that.setData({
         submithidden: false,

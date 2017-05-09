@@ -5,14 +5,15 @@
   padding: 1rem 10px;
   display: flex;
   border-bottom: 1px solid #e6e8eb;
+  height:5rem;
 }
 .item-img {
-  height: 4rem;
+  height: 5rem;
   flex: 1;
   display: block;
 }
 .detail {
-  height: 4rem;
+  height: 5rem;
   line-height: 1.25em;
   flex: 2;
   padding: 0 10px;

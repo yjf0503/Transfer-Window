@@ -31,9 +31,9 @@ Page({
                 },
                 fail: function () {
                     //切换页面
-                    wx.switchTab({
-                        url: '../index/index'
-                    });
+                    // wx.switchTab({
+                    //     url: '../index/index'
+                    // });
                 }
             })
         };

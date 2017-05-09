@@ -21,7 +21,7 @@ function formatTime2(date) {
   var second = date.getSeconds()
 
 
-  return [year, month].map(formatNumber).join('/') + ' ' 
+  return [year, month].map(formatNumber).join('-') + ' ' 
 }
 
 

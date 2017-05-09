@@ -1,18 +1,49 @@
 <!--content.wxml-->
-<view class="container">
+<view class="page">
   <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
-    <image class="item-img" src="{{position_content.enterprise_logo}}" bindtap="bindItemTap" data-pid="{{position_content.p_id}}"></image>
-    <view class="detail">
-      <view class="item-name" data-id="{{position_content.id}}">岗位名称：{{position_content.p_name}}</view>
-      <view class="item-name">薪资待遇：{{position_content.p_wages}}</view>
-      <view class="item-name">工作地点：{{position_content.p_address}}</view>
-      <view class="tips">
-        <view class="item-info">企业名称：{{position_content.enterprise_name}}</view>
-        <view class="item-info">工作经验：{{position_content.p_edujy}}</view>
-        <view class="category">添加时间：{{position_content.p_addtime}}</view>
-        <view class="category">职位描述：{{position_content.p_text}}</view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+        <image bindtap="bindItemTap" data-pid="{{position_content.p_id}}" src="{{position_content.enterprise_logo}}" style="width: 50px; height: 50px; display: block" />
+      </view>
+      <view class="weui-cell__bd">
+        <view>{{position_content.enterprise_name}}</view>
+        <view style="font-size: 13px;color: #888888;">{{position_content.p_address}}</view>
       </view>
     </view>
-    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"  bindtap="submitresume" hidden="{{submithidden}}" disabled="{{submitdisabled}}"> 投递简历 </button>
+
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle">岗位名称：{{position_content.p_name}}</view>
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle">薪资待遇：{{position_content.p_wages}}</view>
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle">工作经验：{{position_content.p_edujy}}</view>
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd">
+        <view style="display: inline-block; vertical-align: middle">添加时间：{{position_content.p_addtime}}</view>
+      </view>
+    </view>
+
+    <view class="page__bd">   
+      <view class="weui-article">
+      <view class="weui-article__h1">职位描述</view>
+        {{position_content.p_text}}
+      </view>
+    </view>
+    
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" loading="{{loading}}" plain="{{plain}}" hidden="{{submithidden}}" disabled="{{submitdisabled}}" bindtap="submitresume">投递简历</button>
+    </view>
   </scroll-view>
 </view>

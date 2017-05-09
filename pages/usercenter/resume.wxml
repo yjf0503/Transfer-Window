@@ -6,6 +6,8 @@
       <view class="detail">
         <view class="item-name" data-id="{{item.id}}">岗位名称：{{item.p_name}}</view>
         <view class="item-name">投递时间：{{item.createtime}}</view>
+
+
         <view class="tips">
           <view class="item-info">企业名称：{{item.enterprise_name}}</view>
           <view wx:if="{{item.status == 0}}"><view class="item-info">简历状态：未查看 </view></view>
@@ -15,6 +17,7 @@
         </view>
         </view>
       </view>
+      
     </view>
   </scroll-view>
 </view>

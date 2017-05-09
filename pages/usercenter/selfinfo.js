@@ -10,6 +10,7 @@ Page({
     birthday: '',
     occupation: '',
     selfintroduce: '',
+    selfintroducelength: 0,
     phone: '',
     email: '',
     avatarUrl: '',
@@ -27,6 +28,8 @@ Page({
     company2: '',
     workinfo1: '',
     workinfo2: '',
+    workinfo1length: 0,
+    workinfo2length: 0,
 
     firstgraduatetime: '',
     secondgraduatetime: '',
@@ -38,6 +41,21 @@ Page({
     edulevel2: '',
     subject1: '',
     subject2: '',
+    
+    warning: [{
+            avatarUrlWarning:'',
+            nickNameWarning:'' ,
+            cityWarning: '' ,
+            occupationWarning: '' ,
+            phoneWarning: '' ,
+            emailWarning: '' ,
+            selfintroduceWarning: '' ,
+            company1Warning: '' ,
+            workinfo1Warning: '' ,
+            university1Warning: '' ,
+            subject1Warning: ''},
+         ], 
+     isShow:true,
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -115,6 +133,21 @@ Page({
         };
       },
       fail: function () {
+        that.setData({
+          isShow:false,
+          birthday: util.formatTime2(new Date),
+          gender: '男',
+          edulevel: '本科',
+          worklength: '应届',
+          firstjobbegin: util.formatTime2(new Date),
+          firstjobend: util.formatTime2(new Date),
+          secondjobbegin: util.formatTime2(new Date),
+          secondjobend: util.formatTime2(new Date),
+          firstgraduatetime: util.formatTime2(new Date),
+          secondgraduatetime: util.formatTime2(new Date),
+          edulevel1: '本科',
+          edulevel2: '本科',
+        })
         console.log(123);
       }
     });
@@ -280,6 +313,7 @@ Page({
     var that = this;
     that.setData({
       workinfo1: e.detail.value,
+      workinfo1length: (e.detail.value.length-1+1),
     });
     console.log(that.data.workinfo1);
   },
@@ -288,6 +322,7 @@ Page({
     var that = this;
     that.setData({
       workinfo2: e.detail.value,
+      workinfo2length: (e.detail.value.length - 1 + 1),
     });
     console.log(that.data.workinfo2);
   },
@@ -329,6 +364,7 @@ Page({
     var that = this;
     that.setData({
       selfintroduce: e.detail.value,
+      selfintroducelength: (e.detail.value.length - 1 + 1),
     });
     console.log(that.data.selfintroduce);
   },
@@ -345,6 +381,7 @@ Page({
         console.log(tempFilePaths);
         that.setData({
           avatarUrl: tempFilePaths,
+          isShow:true,
         });
       }
     })
@@ -352,17 +389,20 @@ Page({
   submitselfinfo: function () {
     var that = this;
     var resume = wx.getStorageSync('resume')
+    if(resume == ''){
+      resume = new Object();
+    }
+    resume.avatarUrl = that.data.avatarUrl;
     resume.nickName = that.data.nickName;
     resume.gender = that.data.gender;
-    resume.occupation = that.data.occupation;
-    resume.selfintroduce = that.data.selfintroduce;
     resume.birthday = that.data.birthday;
-    resume.city = that.data.city;
-    resume.phone = that.data.phone;
-    resume.email = that.data.email;
-    resume.avatarUrl = that.data.avatarUrl;
     resume.edulevel = that.data.edulevel;
     resume.worklength = that.data.worklength;
+    resume.city = that.data.city;
+    resume.occupation = that.data.occupation;
+    resume.phone = that.data.phone;
+    resume.email = that.data.email;
+    resume.selfintroduce = that.data.selfintroduce;  
 
     resume.firstjobbegin = that.data.firstjobbegin;
     resume.firstjobend = that.data.firstjobend;
@@ -383,9 +423,26 @@ Page({
     resume.subject2 = that.data.subject2;
 
     var exparr = ['secondjobbegin', 'secondjobend', 'company2', 'workinfo2', 'secondgraduatetime', 'university2', 'edulevel2', 'subject2'];
+    var warn = that.data.warning;
+    for (var key in warn[0]) {
+      warn[0][key] = '';
+    };
+    that.setData({
+      warning: warn
+    });
     for (var key in resume) {
-      if (typeof (resume[key]) == "undefined") {
+      if (typeof (resume[key]) == "undefined" || resume[key]=="") {
         if (exparr.indexOf(key) == -1) {
+          var warn = that.data.warning;
+          var warnstring = key + 'Warning';
+          for (var k in warn[0]){
+            if (k == warnstring){
+              warn[0][k] = 'weui-cell_warn';
+            }
+          }  
+          that.setData({
+            warning: warn
+          });
           wx.showToast({
             title: '您有信息未填，请补充完整',
             icon: 'loading',
@@ -396,6 +453,7 @@ Page({
       }
 
     };
+   
     wx.setStorageSync('resume', resume);
     wx.setStorageSync('true_resume', resume);
     wx.showToast({
