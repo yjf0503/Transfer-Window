@@ -9,9 +9,12 @@ Page({
         mysubmithidden:true,
         resume_id_list_length:""
     },
+   
     onLoad: function () {
         var that = this;
-        if(!wx.getStorageSync('resume_id_list')){
+        var resume_id_list = wx.getStorageSync('resume_id_list')
+        if (resume_id_list == null || resume_id_list == ''){
+          console.log('没有投递');
             that.setData({
                 mysubmithidden:true,
             });
@@ -21,6 +24,8 @@ Page({
                 mysubmithidden:false,
                 resume_id_list_length:wx.getStorageSync('resume_id_list').length,
             });
+            console.log('有投递');
+            console.log(resume_id_list);
             console.log(that.data.mysubmithidden);
         };
         if (!wx.getStorageSync('userinfo').userInfo) {
@@ -30,38 +35,36 @@ Page({
                     console.log(res);
                 },
                 fail: function () {
-                    //切换页面
-                    // wx.switchTab({
-                    //     url: '../index/index'
-                    // });
+                    
                 }
             })
+        };
+    },
+    onShow: function () {
+        var that = this;
+        var resume_id_list = wx.getStorageSync('resume_id_list')
+        if (resume_id_list == null || resume_id_list == '') {
+          console.log('没有投递');
+          that.setData({
+            mysubmithidden: true,
+          });
+          console.log(that.data.mysubmithidden);
+        } else {
+          that.setData({
+            mysubmithidden: false,
+            resume_id_list_length: wx.getStorageSync('resume_id_list').length,
+          });
+          console.log('有投递');
+          console.log(resume_id_list);
+          console.log(that.data.mysubmithidden);
         };
 
         var resume_ids = '';
         var resume_id_list = wx.getStorageSync('resume_id_list');
         for (var i = 0; i < resume_id_list.length; i++) {
-            resume_ids += resume_id_list[i].id+",";
+          resume_ids += resume_id_list[i].id + ",";
         }
-
-        wx.request({
-                url: 'https://www.ecosports.cn/home/enterprise/wxapp_get_jobsubmitlist',
-                data: { ids: resume_ids },
-                method: 'POST',
-                header: {
-                  "content-type": "application/x-www-form-urlencoded"
-                },
-                success: function (res) {
-                    console.log(res);
-                  wx.setStorageSync('jobsubmitlist', res.data);
-                },
-                fail: function () {
-                  console.log('服务器请求失败!')
-                },
-              })
-    },
-    onShow: function () {
-        var that = this;
+        
         var userInfo = wx.getStorageSync('resume');
         if (userInfo) {
             that.setData({

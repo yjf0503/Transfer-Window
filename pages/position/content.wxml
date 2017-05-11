@@ -44,6 +44,7 @@
     
     <view class="weui-btn-area">
       <button class="weui-btn" type="primary" loading="{{loading}}" plain="{{plain}}" hidden="{{submithidden}}" disabled="{{submitdisabled}}" bindtap="submitresume">投递简历</button>
+      <button class="weui-btn" type="primary" loading="{{loading}}" plain="{{plain}}" hidden="{{!submithidden}}" disabled="disabled" bindtap="submitresume">请先完善您的个人简历</button>
     </view>
   </scroll-view>
 </view>

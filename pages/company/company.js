@@ -12,29 +12,38 @@ Page({
     wx.setNavigationBarTitle({
       title: '公司详情'
     });
-    wx.request({
-      url: 'https://www.ecosports.cn/Home/Enterprise/wxapp_company',
-      method: 'GET',
-      data: {
-        id: app.globalData.pid
-      },
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res);
-        // use res.data
-        that.setData({
-          company_info: res['data']
-        });
-      },
-      fail: function (res) {
 
-      },
-      complete: function (res) {
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 4000
+    });
 
-      }
-    })
+    setTimeout(function () {
+      wx.request({
+        url: 'https://www.ecosports.cn/Home/Enterprise/wxapp_company',
+        method: 'GET',
+        data: {
+          id: app.globalData.pid
+        },
+        header: {
+          'Content-Type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res);
+          // use res.data
+          that.setData({
+            company_info: res['data']
+          });
+        },
+        fail: function (res) {
+
+        },
+        complete: function (res) {
+
+        }
+      })
+    }, 2000);
   },
 
   //事件处理函数

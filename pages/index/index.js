@@ -89,6 +89,38 @@ Page({
 
   onLoad: function () {
     var that = this;
+
+    wx.request({
+      url: 'https://www.ecosports.cn/Home/Enterprise/wxapp_position_list',
+      data: {},
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        var job_list = Array();
+        var rookie_job_list = Array();
+        for (var i = 0; i < res.data.length; i++) {
+          if (res.data[i].p_type == 0) {
+            job_list.push(res.data[i]);
+          } else {
+            rookie_job_list.push(res.data[i]);
+          }
+        };
+        // use res.data
+        wx.setStorage({
+          key: "job_list",
+          data: job_list,
+        });
+        that.setData({
+          list: job_list
+        })
+        wx.setStorage({
+          key: "rookie_job_list",
+          data: rookie_job_list
+        });
+      },
+    });
+
     wx.showToast({
       title: '加载中',
       icon: 'loading',
@@ -107,6 +139,8 @@ Page({
         },
       })
     }, 1000);
+
+
     wx.checkSession({
       success: function () {
         //session 未过期，并且在本生命周期一直有效
