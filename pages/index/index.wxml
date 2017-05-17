@@ -20,7 +20,7 @@
         </view>
       </view>
     </view>-->
-    <view wx:for="{{list}}" wx:key="{{item.id}}" catchtap="bindItemTap" data-id="{{item.id}}">
+    <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
       <template is="position-item" data="{{...item}}" />
     </view>
   </scroll-view>

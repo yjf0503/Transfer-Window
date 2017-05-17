@@ -5,6 +5,7 @@
 
 .container{
   background-color: #fff;
+  padding-top: 100rpx;
 }
 
 /*.scroll-wrapper {

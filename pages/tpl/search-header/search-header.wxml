@@ -1,7 +1,7 @@
 <template name="search-header">
   <view class="search-header">
     <view class="search-input">
-      <image class="search-icon" src=""></image>
+      <icon class="search-icon" type="search" size="12" color="#999"/>
       <text class="search-placeholder">搜索公司/职位</text>
     </view>
   </view>

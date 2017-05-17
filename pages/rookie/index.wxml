@@ -1,9 +1,11 @@
-<include src="../search/index.wxml" />
-
+<!--<include src="../search/index.wxml" />-->
+<import src="../tpl/position-item/position-item.wxml"/>
+<import src="../tpl/search-header/search-header.wxml"/>
 <!--index.wxml-->
+<template is="search-header"></template>
 <view class="container">
   <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
-    <view class="scroll-view-item" wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
+    <!--<view class="scroll-view-item" wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
       <image class="item-img" src="{{item.enterprise_logo}}"></image>
       <view class="detail">
         <view class="item-name" data-id="{{item.id}}">岗位名称：{{item.p_name}}</view>
@@ -15,6 +17,10 @@
           <view class="item-info">添加时间：{{item.p_addtime}}</view>
         </view>
       </view>
+    </view>-->
+    <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
+      <template is="position-item" data="{{...item}}" />
     </view>
+
   </scroll-view>
 </view>

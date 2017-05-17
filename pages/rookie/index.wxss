@@ -1,8 +1,17 @@
-@import "../search/index.wxss";
+/*@import "../search/index.wxss";*/
+
+@import "../tpl/position-item/position-item.wxss";
+@import "../tpl/search-header/search-header.wxss";
 
 /**index.wxss**/
 
-.scroll-wrapper {
+.container{
+  background-color: #fff;
+  padding-top: 100rpx;
+}
+
+
+/*.scroll-wrapper {
 }
 
 .scroll-view-item {
@@ -43,4 +52,4 @@
 
 .category {
   float: right;
-}
+}*/

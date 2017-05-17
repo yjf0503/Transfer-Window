@@ -1,18 +1,25 @@
 .search-header{
   background-color: #f6f6f8;
   padding: 20rpx 0;
+  text-align: center;
+  border: 1px solid #dcdcdc;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
 }
 .search-input{
+  display: inline-block;
   width: 568rpx;
-  height: 60rpx;
+  padding: 12rpx 0 14rpx;
   background-color: #fff;
-  border-radius: 20rpx;
+  border-radius: 30rpx;
+  text-align: left;
+  line-height: 1.0;
 }
 .search-icon{
-  width: 30rpx;
-  height: 30rpx;
-  background-color: #000;
-  margin:0 20rpx 0 48rpx; 
+  margin:0 20rpx 0 48rpx;
 }
 .search-placeholder{
   font-size: 24rpx;
