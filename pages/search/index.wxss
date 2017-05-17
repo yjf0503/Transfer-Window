@@ -1,1 +1,78 @@
-@import "/wxSearch/wxSearch.wxss";
+/*@import "/wxSearch/wxSearch.wxss";*/
+
+.search-input{
+  background-color: #417ee0;
+  color: #fff;
+  padding:20rpx 28rpx;
+}
+.city{
+  display: inline-block;
+  vertical-align: top;
+  font-size: 32rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.city-picker{
+  display: inline-block;
+}
+.down-icon{
+  width: 32rpx;
+  height: 36rpx;
+  background-color: #000;
+  margin: 0 10rpx;
+}
+.input-box{
+  display: inline-block;
+  vertical-align: top;
+  background-color: #fff;
+  height: 60rpx;
+  width: 480rpx;
+  border-radius: 30rpx;
+}
+.search-icon{
+  margin:0 20rpx 0 48rpx;
+  vertical-align: middle;
+}
+.input-html{
+  display: inline-block;
+  vertical-align: middle;
+  height: 60rpx;
+  width: 388rpx;
+}
+.btn-cancel{
+  display: inline-block;
+  vertical-align: top;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 32rpx;
+  margin-left: 24rpx;
+}
+
+.container{
+  padding: 0 28rpx;
+}
+.tip{
+  padding: 60rpx 0;
+  color:#666;
+  font-size: 28rpx;
+}
+.keywords-box{
+  text-align: center;
+  
+}
+.keywords-item{
+  width: 100%;
+  display: flex;
+  margin-bottom: 20rpx;
+}
+.item{
+  flex: 1;
+  background-color: #ebebeb;
+  color: #4a4a4a;
+  font-size: 24rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.item-r{
+  margin-right:20rpx;
+}

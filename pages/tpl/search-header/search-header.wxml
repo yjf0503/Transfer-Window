@@ -1,6 +1,6 @@
 <template name="search-header">
   <view class="search-header">
-    <view class="search-input">
+    <view class="search-input" catchtap="bindSeacherTap">
       <icon class="search-icon" type="search" size="12" color="#999"/>
       <text class="search-placeholder">搜索公司/职位</text>
     </view>

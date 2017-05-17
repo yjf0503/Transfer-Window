@@ -31,6 +31,13 @@ Page({
     });
   },
 
+  //跳转到搜索页
+  bindSeacherTap: function (event) {
+    wx.navigateTo({
+      url: '../search/index',
+    })
+  },
+
   wxSearchInput: function (event) {
     var that = this
     WxSearch.wxSearchInput(event, that);

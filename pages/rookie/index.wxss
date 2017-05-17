@@ -6,7 +6,6 @@
 /**index.wxss**/
 
 .container{
-  background-color: #fff;
   padding-top: 100rpx;
 }
 

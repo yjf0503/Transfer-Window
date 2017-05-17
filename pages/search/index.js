@@ -11,7 +11,17 @@ Page({
     // }
     searchBtnShow:true,
     cancelBtnShow:false,
+    cityArray: ['全国','北京', '上海', '深圳', '广州'],
+    cityIndex: 0
   },
+
+  //选择城市
+  bindPickerChangeCity: function (e) {
+    this.setData({
+      cityIndex: e.detail.value
+    })
+  },
+
   onLoad: function () {
     var that = this
     //初始化的时候渲染wxSearchdata

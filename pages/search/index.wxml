@@ -1,6 +1,6 @@
 
 <!--index.wxml-->
-<import src="/wxSearch/wxSearch.wxml" />
+<!--<import src="/wxSearch/wxSearch.wxml" />
 <view class="wxSearch-all">
   <view class="wxSearch-section">
     <view class="wxSearch-pancel">
@@ -12,4 +12,40 @@
   <template is="wxSearch" data="{{wxSearchData}}" />
   <view class="container">
   </view>
+</view>-->
+
+<view class="search-input">
+  <view class="city">
+    <picker class="city-picker" bindchange="bindPickerChangeCity" value="{{cityIndex}}" range="{{cityArray}}">
+      <view class="picker">
+        {{cityArray[cityIndex]}}
+      </view>
+    </picker>
+    <icon type="String" class="down-icon" />
+  </view>
+  <view class="input-box">
+   <icon class="search-icon" type="search" size="12" color="#999"/>
+    <input class="input-html" type="text" placeholder="搜索公司/职位"/>
+  </view>
+  <text class="btn-cancel">取消</text>
 </view>
+<view class="container">
+  <view class="search-keywords">
+    <view class="tip">猜你想搜</view>
+    <view class="keywords-box">
+      <view class="keywords-item">
+        <text class="item">腾讯体育</text>
+      </view>
+      <view class="keywords-item">
+        <text class="item item-r">记者</text>
+        <text class="item">运营专员</text>
+      </view>
+      <view class="keywords-item">
+        <text class="item item-r">志愿者</text>
+        <text class="item item-r">市场专业</text>
+        <text class="item">数据分析师</text>
+      </view>
+    </view>
+  </view>
+</view>
+

@@ -1,6 +1,6 @@
 .search-header{
   background-color: #f6f6f8;
-  padding: 20rpx 0;
+  padding: 16rpx 0;
   text-align: center;
   border: 1px solid #dcdcdc;
   position: fixed;
@@ -12,11 +12,11 @@
 .search-input{
   display: inline-block;
   width: 568rpx;
-  padding: 12rpx 0 14rpx;
+  padding: 14rpx 0;
   background-color: #fff;
   border-radius: 30rpx;
   text-align: left;
-  line-height: 1.0;
+  line-height: 1.2;
 }
 .search-icon{
   margin:0 20rpx 0 48rpx;
