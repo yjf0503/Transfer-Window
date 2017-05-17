@@ -15,7 +15,7 @@ Page({
     cityIndex: 0
   },
 
-  //选择城市
+  //选择城市 qihb
   bindPickerChangeCity: function (e) {
     this.setData({
       cityIndex: e.detail.value

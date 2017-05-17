@@ -31,7 +31,7 @@ Page({
     });
   },
 
-  //跳转到搜索页
+  //跳转到搜索页 qihb
   bindSeacherTap: function (event) {
     wx.navigateTo({
       url: '../search/index',
