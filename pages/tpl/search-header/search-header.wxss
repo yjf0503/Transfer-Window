@@ -1,0 +1,21 @@
+.search-header{
+  background-color: #f6f6f8;
+  padding: 20rpx 0;
+}
+.search-input{
+  width: 568rpx;
+  height: 60rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.search-icon{
+  width: 30rpx;
+  height: 30rpx;
+  background-color: #000;
+  margin:0 20rpx 0 48rpx; 
+}
+.search-placeholder{
+  font-size: 24rpx;
+  color: #999;
+  vertical-align: middle;
+}
