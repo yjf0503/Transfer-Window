@@ -1,0 +1,8 @@
+<template name="search-header">
+  <view class="search-header">
+    <view class="search-input">
+      <image class="search-icon" src=""></image>
+      <text class="search-placeholder">搜索公司/职位</text>
+    </view>
+  </view>
+</template>

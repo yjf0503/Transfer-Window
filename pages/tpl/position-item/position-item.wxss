@@ -1,0 +1,46 @@
+.item{
+  display: flex;
+  width: 100%;
+}
+.item-img {
+  padding: 32rpx 28rpx;
+}
+.img{
+  width: 120rpx;
+  height: 120rpx;
+  background-color: #222;
+}
+.item-main{
+  flex: 1;
+  padding: 32rpx 28rpx 32rpx 0;
+  border-bottom: 1rpx solid #dcdcdc;
+  line-height: 1.4;
+}
+
+.job{
+  margin-bottom: 4rpx;
+}
+.job-position{
+  font-size: 34rpx;
+  color: #222;
+}
+.job-Salary{
+  font-size: 28rpx;
+  color: #ff9483;
+  float: right;  
+}
+.company{
+  color: #666;
+  font-size: 28rpx;
+  margin-bottom: 4rpx;
+}
+.secondary{
+  font-size: 28rpx;
+  color: #999;
+}
+.secondary-list{
+  margin-right: 8rpx;
+}
+.date{
+  float: right;
+}

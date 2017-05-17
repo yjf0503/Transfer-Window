@@ -1,0 +1,22 @@
+<template name="position-item">
+  <view class="item">
+    <view class="item-img">
+      <image class="img" src="{{enterprise_logo}}"></image>
+    </view>
+    <view class="item-main">
+      <view class="job">
+        <text class="job-position" data-id="{{id}}">{{p_name}}</text>
+        <text class="job-Salary">{{p_wages}}</text>
+      </view>
+      <view class="company">
+        <text>{{enterprise_name}}</text>
+      </view>
+      <view class="secondary">
+        <text class="secondary-list">{{p_address}}</text>
+        <text class="secondary-list">{{p_edujy}}</text>
+        <text>{{p_education}}</text>
+        <text class="date">{{p_addtime}}</text>
+      </view>
+    </view>
+  </view>
+</template>
