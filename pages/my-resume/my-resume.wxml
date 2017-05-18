@@ -1,0 +1,24 @@
+<!--pages/my-resume/my-resume.wxml-->
+<view class="header">
+  <image class="bg-img" src=""></image>
+  <view class="header-info">
+    <view class="header-position">
+      <text>女</text>
+      <text>篮球记者</text>
+    </view>
+    <view class="header-ser">
+      <text>积极终于真理</text>
+    </view>
+  </view>
+  <text class="change-img">更换头像</text>
+</view>
+
+<view class="panel">
+  <view class="panel-hd">
+    <text>基本信息</text>
+    <text>编辑</text>
+  </view>
+  <view class="panel-bd"></view>
+</view>
+
+

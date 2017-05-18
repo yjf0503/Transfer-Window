@@ -1,0 +1,55 @@
+<!--pages/edit-my/edit-my.wxml-->
+<view class="item-cells no-top">
+  <view class="item-cell item-cell-access item-cell-image" catchtap="uploadImgTap">
+    <view class="item-cell-bd">
+      <text>头像</text>
+    </view>
+    <view class="item-cell-ft">
+      <image src=""></image>
+    </view>
+  </view>
+</view>
+<view class="item-cells">
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>昵称</text>
+    </view>
+    <view class="item-cell-ft">
+      <input type="text" value="食补" />
+    </view>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>性别</text>
+    </view>
+    <view class="item-cell-ft blue">男</view>
+  </view>
+  <view class="item-cell">
+    <view class="item-cell-bd">
+      <text>职业</text>
+    </view>
+    <view class="item-cell-ft">
+      <text class="blue">9</text>/20
+    </view>
+  </view>
+  <view class="item-cell-textarea">
+    <textarea class="item-textarea" value="" placeholder="篮球记者" maxlength="20" />
+  </view>
+</view>
+<view class="item-cells">
+  <view class="item-cell">
+    <view class="item-cell-bd">
+      <text>职业</text>
+    </view>
+    <view class="item-cell-ft">
+      <text class="blue">9</text>/20
+    </view>
+  </view>
+  <view class="item-cell-textarea">
+    <textarea class="item-textarea" value="" placeholder="篮球记者" maxlength="20" />
+  </view>
+</view>
+
+<view class="btn-box">
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover"> 保存 </button>
+</view>

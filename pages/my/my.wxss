@@ -1,0 +1,70 @@
+/* pages/my/my.wxss */
+page{
+    background-color: #f5f6f9;
+}
+.my-header{
+  width: 100%;
+  height: 416rpx;
+  background-color: #417ee0;
+  text-align: center;
+  position: relative;
+}
+.user-avatar{
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 90rpx;
+  background-color: #000;
+  margin-top: 48rpx;
+  margin-bottom: 28rpx;
+}
+.user-name{
+  display: block;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.edit-info{
+  position: absolute;
+  top: 24rpx;
+  right: 48rpx;
+  z-index: 2;
+  width: 140rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: rgba(227, 228, 228, .6);
+  font-size:24rpx;
+  color: #fff;
+  border-radius: 4rpx;
+}
+.item-cells{
+    background-color: #fff;
+    font-size: 32rpx;
+    color: #666;
+    margin-top: 20rpx;
+}
+.item-cell{
+  padding: 36rpx 48rpx 36rpx 52rpx;
+  display: flex;
+}
+.item-cell-bd{
+  flex: 1;
+}
+.item-cell-ft{
+  position: relative;
+}
+.item-cell-access .item-cell-ft::after{
+    content: " ";
+    display: inline-block;
+    height: 16rpx;
+    width: 16rpx;
+    border-width: 4rpx 4rpx 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    position: absolute;
+    top: 50%;
+    right: 4rpx;
+    margin-top: -10rpx;
+}
+

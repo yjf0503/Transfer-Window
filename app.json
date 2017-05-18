@@ -1,14 +1,20 @@
 {
   "pages":[
+    "pages/my/my",
+    "pages/my-resume/my-resume",
+    "pages/edit-my/edit-my",
+    
+    
     "pages/index/index",
     "pages/rookie/index",
     "pages/search/index",
-    "pages/logs/logs",
+    
     "pages/position/content",
     "pages/company/company",
     "pages/usercenter/index",
     "pages/usercenter/selfinfo",
     "pages/usercenter/resume"
+    
   ],
   "window":{
     "backgroundTextStyle":"light",

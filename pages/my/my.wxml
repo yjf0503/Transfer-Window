@@ -1,0 +1,29 @@
+<!--pages/my/my.wxml-->
+<view class="my-header">
+  <block wx:if="{{isShow}}">
+    <image class="user-avatar" src="{{userInfoAvatar}}"></image>
+    <text class="user-name">{{nickName}}</text>
+  </block>
+  <block wx:else>
+    <image class="user-avatar" src="/images/def_user.jpg"></image>
+    <text class="user-name">亲爱的用户，您好</text>
+  </block>
+  <text class="edit-info" catchtap="editInfoTap">编辑资料</text>
+</view>
+<view class="item-cells">
+  <view class="item-cell item-cell-access" catchtap="resumeTap">
+    <view class="item-cell-bd">
+      <text>简历</text>
+    </view>
+    <view class="item-cell-ft"></view>
+  </view>
+</view>
+
+<view class="item-cells">
+  <view class="item-cell item-cell-access" catchtap="myDeliveryTap">
+    <view class="item-cell-bd">
+      <text>我的投递</text>
+    </view>
+    <view class="item-cell-ft"></view>
+  </view>
+</view>
