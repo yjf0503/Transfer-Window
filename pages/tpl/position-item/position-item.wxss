@@ -19,6 +19,8 @@
 
 .job{
   margin-bottom: 4rpx;
+  padding-right: 80rpx;
+  position: relative;
 }
 .job-position{
   font-size: 34rpx;
@@ -27,7 +29,10 @@
 .job-Salary{
   font-size: 28rpx;
   color: #ff9483;
-  float: right;  
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;  
 }
 .company{
   color: #666;
