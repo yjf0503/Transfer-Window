@@ -1,0 +1,39 @@
+<!--pages/edit-resume-edu/edit-resume-edu.wxml-->
+
+<view class="work-box">
+  <view class="work-items">
+    <view class="work-item">
+      <view class="work-date">
+        <text>2018.03 -2010.10</text>
+        <view class="edit-btn blue" catchtap="editEduListTap">
+          <image class="icon-edit" src="/images/edit_pen.png"></image>
+          <text>编辑</text>
+        </view>
+      </view>
+      <view class="work-company">nab中国</view>
+      <view class="edu-colun">
+        <text class="education">本科</text>
+        <text>美术学</text>
+      </view>
+    </view>
+    <view class="work-item">
+      <view class="work-date">
+        <text>2018.03 -2010.10</text>
+        <view class="edit-btn blue" catchtap="editEduListTap">
+          <image class="icon-edit" src="/images/edit_pen.png"></image>
+          <text>编辑</text>
+        </view>
+      </view>
+      <view class="work-company">nab中国</view>
+      <view class="edu-colun">
+        <text class="education">本科</text>
+        <text>美术学</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="btn-box">
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover"> 保存 </button>
+</view>
+

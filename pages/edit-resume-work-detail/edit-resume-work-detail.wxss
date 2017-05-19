@@ -1,0 +1,6 @@
+/* pages/edit-resume-work-detail/edit-resume-work-detail.wxss */
+@import "/style/item-cells.wxss";
+@import "/style/blue-btn.wxss";
+.btn-box{
+  margin-top: 80rpx;
+}

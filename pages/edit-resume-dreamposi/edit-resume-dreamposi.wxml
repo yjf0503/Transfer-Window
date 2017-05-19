@@ -1,0 +1,38 @@
+<!--pages/edit-resume-dreamposi/edit-resume-dreamposi.wxml-->
+
+<view class="item-cells no-top">
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>期望职位</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input type="text" value="一线记者" />
+    </view>
+  </view>
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>工作类型</text>
+    </view>
+    <view class="item-cell-ft blue">全职</view>
+  </view>
+  
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>期望城市</text>
+    </view>
+    <view class="item-cell-ft blue">北京</view>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>期望薪资</text>
+    </view>
+    <view class="item-cell-ft blue">20-26k</view>
+  </view>
+  
+ 
+
+</view> 
+<view class="btn-box">
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover"> 保存 </button>
+</view>
+

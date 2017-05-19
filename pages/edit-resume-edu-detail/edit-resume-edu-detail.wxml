@@ -1,0 +1,39 @@
+<!--pages/edit-resume-edu-detail/edit-resume-edu-detail.wxml-->
+<view class="item-cells no-top">
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>学校名称</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input type="text" value="天津美术学院" />
+    </view>
+  </view>
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>专业名称</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input type="text" value="动画专业" />
+    </view>
+  </view>
+  
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>最高学历</text>
+    </view>
+    <view class="item-cell-ft blue">本科</view>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>毕业时间</text>
+    </view>
+    <view class="item-cell-ft blue">1988.1</view>
+  </view>
+  
+ 
+
+</view> 
+<view class="btn-box">
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover"> 删除教育经历 </button>
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover"> 保存 </button>
+</view>

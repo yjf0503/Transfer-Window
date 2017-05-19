@@ -10,6 +10,9 @@ page{
     font-size: 28rpx;
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
 }
+.blue{
+  color: #4990E2;
+}
 /*.page__hd {
     padding: 40px;
 }

@@ -1,0 +1,3 @@
+/* pages/edit-resume-base/edit-resume-base.wxss */
+@import "/style/item-cells.wxss";
+@import "/style/blue-btn.wxss";

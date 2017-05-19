@@ -1,0 +1,48 @@
+<!--pages/edit-resume-work-detail/edit-resume-work-detail.wxml-->
+<view class="item-cells no-top">
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>公司名称</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input type="text" value="nba中国" />
+    </view>
+  </view>
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>部门</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input type="text" value="卡在" />
+    </view>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>入职时间</text>
+    </view>
+    <view class="item-cell-ft blue">1988.1</view>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>离职时间</text>
+    </view>
+    <view class="item-cell-ft blue">1988.1</view>
+  </view>
+  
+  <view class="item-cell">
+    <view class="item-cell-bd">
+      <text>职业</text>
+    </view>
+  </view>
+  <view class="item-cell-textarea">
+    <textarea class="item-textarea big bg" value="" placeholder="工作内容" maxlength="20" />
+    <view class="textarea-count">
+      <text>9/20</text>
+    </view>
+  </view>
+
+</view> 
+<view class="btn-box">
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover"> 删除工作经历 </button>
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover"> 保存 </button>
+</view>

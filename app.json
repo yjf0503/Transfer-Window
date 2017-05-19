@@ -2,9 +2,24 @@
   "pages":[
     "pages/my/my",
     "pages/my-resume/my-resume",
+    "pages/edit-resume-base/edit-resume-base",
+    
     "pages/edit-my/edit-my",
     
+    "pages/edit-resume-dreamposi/edit-resume-dreamposi",
+    "pages/edit-resume-edu-detail/edit-resume-edu-detail",
+    "pages/edit-resume-edu/edit-resume-edu",
     
+    
+    "pages/edit-resume-work-detail/edit-resume-work-detail",
+    
+    
+    
+    
+    "pages/edit-resume-work/edit-resume-work",
+    
+  
+
     "pages/index/index",
     "pages/rookie/index",
     "pages/search/index",

@@ -1,0 +1,19 @@
+/*编辑部分的底部按钮*/
+.btn-box{
+  width: 100%;
+  padding: 0 28rpx;
+  margin-top: 100rpx;
+  box-sizing: border-box;
+}
+.btn-sure {
+  color: #fff;
+  background-color: #4990E2;
+}
+.btn-sure-hover{
+  background-color: #1E68BE;
+}
+.btn-remove{
+  color: #4990E2;
+  background-color: #fafafa;
+  margin-bottom: 40rpx;
+}

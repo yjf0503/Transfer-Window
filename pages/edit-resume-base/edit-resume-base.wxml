@@ -1,0 +1,67 @@
+<!--pages/edit-resume-base/edit-resume-base.wxml-->
+<view class="item-cells no-top">
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>最高学历</text>
+    </view>
+
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangeEduLevel" value="{{edulevelindex}}" range="{{edulevellist}}">
+      <view class="picker">
+        {{edulevellist[edulevelindex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>工作年限</text>
+    </view>
+    
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangeWorksYear" value="{{worksYearindex}}" range="{{worksYearlist}}">
+      <view class="picker">
+        {{worksYearlist[worksYearindex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>出生日期</text>
+    </view>
+    
+    <picker class="item-cell-ft blue" mode="date" value="{{birthday}}" fields="month" start="1960-01" end="2000-01" bindchange="bindDateChangeBirthday">
+    <view class="picker">
+      {{birthday}}
+    </view>
+  </picker>
+  </view>
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>所在城市</text>
+    </view>
+    
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangeCity" value="{{cityindex}}" range="{{citylist}}">
+      <view class="picker">
+        {{citylist[cityindex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>联系电话</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input type="text" value="17237373777" />
+    </view>
+  </view>
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>联系邮箱</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input type="text" value="34264327@qq.coms" />
+    </view>
+  </view>
+</view>
+
+<view class="btn-box">
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover"> 保存 </button>
+</view>

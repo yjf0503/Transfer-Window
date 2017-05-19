@@ -1,24 +1,134 @@
 <!--pages/my-resume/my-resume.wxml-->
 <view class="header">
-  <image class="bg-img" src=""></image>
+  <image wx:if="{{avatarBigUrl}}" class="bg-img" src="{{avatarBigUrl}}"></image>
+  <image wx:else  class="bg-img" src="/images/def_user.jpg"></image>
+  <view class="user-name">
+    <text>刘培</text>
+  </view>
   <view class="header-info">
     <view class="header-position">
-      <text>女</text>
+      <text class="sex">女</text>
       <text>篮球记者</text>
     </view>
     <view class="header-ser">
       <text>积极终于真理</text>
     </view>
   </view>
-  <text class="change-img">更换头像</text>
+  <text class="change-img" catchtap="changeBgImgTap">更换头像</text>
 </view>
 
 <view class="panel">
   <view class="panel-hd">
     <text>基本信息</text>
-    <text>编辑</text>
+    <view class="edit-btn blue" catchtap="editBaseInfoTap">
+      <image class="icon-edit" src="/images/edit_pen.png"></image>
+      <text class="blue">编辑</text>
+    </view>
   </view>
-  <view class="panel-bd"></view>
+  <view class="panel-bd">
+    <view class="base">
+      <text>最高学历</text>
+      <text class="data-text">硕士</text>
+    </view>
+    <view class="base">
+      <text>工作年限</text>
+      <text class="data-text">2年</text>
+    </view>
+    <view class="base">
+      <text>所在城市</text>
+      <text class="data-text">北京</text>
+    </view>
+    <view class="base">
+      <text>联系电话</text>
+      <text class="data-text">18210091222</text>
+    </view>
+    <view class="base">
+      <text>联系邮箱</text>
+      <text class="data-text">342342353252qq.com</text>
+    </view>
+  </view>
 </view>
 
+<view class="panel">
+  <view class="panel-hd">
+    <text>工作经历</text>
+    <view class="edit-btn blue" catchtap="editWorkTap">
+      <image class="icon-edit" src="/images/edit_pen.png"></image>
+      <text class="blue">编辑</text>
+    </view>
+  </view>
+  <view class="panel-bd">
+    <view class="box">
+      <view class="work">
+        <view class="work-date">
+          <icon type="String" class="dian" />
+          <text>2017.03 - 2014.03</text>
+        </view>
+        <view class="work-company">nba中国</view>
+        <view class="work-content">
+          服装什么啊水力发电就是法律考试的风景色卡家乐福大煞风景了服装什么啊水力发电就是法律考试的风景色卡家乐福大煞风景了
+        </view>
+      </view>
+      <view class="work">
+        <view class="work-date">
+          <icon type="String" class="dian" />
+          <text>2017.03 - 2014.03</text>
+        </view>
+        <view class="work-company">nba中国</view>
+        <view class="work-content">
+          服装什么啊水力发电就是法律考试的风景色卡家乐福大煞风景了服装什么啊水力发电就是法律考试的风景色卡家乐福大煞风景了
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
 
+<view class="panel">
+  <view class="panel-hd">
+    <text>教育经历</text>
+    <view class="edit-btn blue" catchtap="editEduTap">
+      <image class="icon-edit" src="/images/edit_pen.png"></image>
+      <text class="blue">编辑</text>
+    </view>
+  </view>
+  <view class="panel-bd">
+    <view class="box">
+      <view class="work">
+        <view class="work-date">
+          <icon type="String" class="dian" />
+          <text>2017.03 毕业</text>
+        </view>
+        <view class="work-company">天津美术学院</view>
+        <view class="work-content">
+          <text class="edu">随时</text>
+          <text>随时</text>
+        </view>
+      </view>
+      <view class="work">
+        <view class="work-date">
+          <icon type="String" class="dian" />
+          <text>2017.03 毕业</text>
+        </view>
+        <view class="work-company">天津美术学院</view>
+        <view class="work-content">
+          <text   class="edu">随时</text>
+          <text>随时</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="panel">
+  <view class="panel-hd">
+    <text>期望职位</text>
+    <view class="edit-btn blue" catchtap="editPosiTap">
+      <image class="icon-edit" src="/images/edit_pen.png"></image>
+      <text class="blue">编辑</text>
+    </view>
+  </view>
+  <view class="panel-bd">
+    <view class="position">一线记者</view>
+    <view class="position-list">全职／北京／20K-20K</view>
+  </view>
+</view>

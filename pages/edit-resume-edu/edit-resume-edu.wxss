@@ -1,0 +1,50 @@
+/* pages/edit-resume-edu/edit-resume-edu.wxss */
+@import "/style/blue-btn.wxss";
+page{
+   background-color: #f5f6f9;
+}
+.work-box{
+  width: 100%;
+  padding: 48rpx 28rpx 0;
+  box-sizing: border-box;
+}
+.work-items{
+  width: 100%;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #dcdcdc;
+  background-color: #fff;
+}
+.work-item{
+  border-top: 1rpx dashed #dcdcdc;
+  padding: 28rpx 0;
+  font-size: 28rpx;
+}
+.work-item:first-child{
+  border-top: none;
+}
+.edit-btn{
+  float: right;
+}
+.icon-edit{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+.work-date,.work-company{
+  color: #666;
+  margin-bottom: 24rpx;
+}
+.work-content{
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.edu-colun{
+  color: #999;
+}
+.education{
+  margin-right: 48rpx;
+}
+

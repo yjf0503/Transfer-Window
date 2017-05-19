@@ -5,9 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nickName: '',
-    userInfoAvatar: '',
-    isShow: false
+    nickName: '',//用户名称
+    userInfoAvatar: '',//微信头像
+    isShow: false//是否拿到用户信息，否则显示默认头像
   },
 
   /**
@@ -30,16 +30,17 @@ Page({
       url: '/pages/edit-my/edit-my',
     })
   },
+  //简历
+  resumeTap: function () {
+    wx.navigateTo({
+      url: '/pages/my-resume/my-resume'
+    });
+  },
   //我的投递
   myDelivery: function () {
     wx.switchTab({
       url: '../usercenter/resume'
     });
-  },
-  //简历
-  resume: function () {
-    wx.navigateTo({
-      url: '../usercenter/selfinfo'
-    });
   }
+  
 })
