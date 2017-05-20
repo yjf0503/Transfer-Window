@@ -1,0 +1,54 @@
+/*@import "../search/index.wxss";*/
+
+@import "../tpl/position-item/position-item.wxss";
+@import "../tpl/search-header/search-header.wxss";
+
+/**index.wxss**/
+
+.container{
+  padding-top: 100rpx;
+}
+
+
+/*.scroll-wrapper {
+}
+
+.scroll-view-item {
+  padding: 1rem 10px;
+  display: flex;
+  border-bottom: 1px solid #e6e8eb;
+  height: 6.8rem;
+}
+
+.item-img {
+  height: 6rem;
+  width: 6rem;
+  padding: 0 7px;
+  flex: 1;
+  display: block;
+}
+
+.detail {
+  height: 6rem;
+  flex: 2;
+  padding: 0 3px;
+  position: relative;
+}
+
+.item-name {
+  font-size: 0.68rem;
+  top: 0;
+}
+
+.tips {
+  font-size: 0.63rem;
+  bottom: 0;
+  color: #828a92;
+}
+
+.item-info {
+}
+
+.category {
+  float: right;
+}*/

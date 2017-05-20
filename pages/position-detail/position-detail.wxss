@@ -1,0 +1,112 @@
+/* pages/position-detail/position-detail.wxss */
+page{
+    background-color: #f5f6f9;
+}
+.header{
+  padding: 40rpx 28rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+.position{
+  border-bottom: 1px dashed #dcdcdc;
+}
+.posi{
+  margin-bottom: 48rpx;
+}
+.name{
+  color: #222;
+  font-size: 34rpx;
+  line-height: 1.4;
+  margin-right: 40rpx;
+}
+.salary{
+  color: #ff9483;
+  font-size: 28rpx;
+  line-height: 1.4;
+}
+.posi-list{
+  font-size: 32rpx;
+  color: #666;
+  line-height: 1.4;
+  opacity: 0.86;
+  padding-bottom: 58rpx;
+  
+}
+.field{
+  margin-right: 80rpx;
+}
+
+.company{
+  display: flex;
+  padding-top: 40rpx;
+}
+.com-logo{
+  width: 140rpx;
+  height: 140rpx;
+}
+.com{
+  color: #666;
+  position: relative;
+  padding-right: 120rpx;
+  flex: 1;
+  margin-right: 40rpx;
+}
+.com-name{
+  font-size: 32rpx;
+  margin-bottom: 28rpx;
+  padding-top: 24rpx;
+}
+.com-address{font-size: 28rpx;}
+
+.com::after{
+    content: " ";
+    display: inline-block;
+    height: 16rpx;
+    width: 16rpx;
+    border-width: 4rpx 4rpx 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    position: absolute;
+    top: 50%;
+    right: 4rpx;
+    margin-top: -10rpx;
+}
+
+.content{
+  background-color: #fff;
+  padding: 0 28rpx;
+}
+.title{
+  font-size: 34rpx;
+  color: #353535;
+  line-height: 1.4;
+  padding: 24rpx 0 20rpx;
+  border-bottom: 1px dashed #dcdcdc;
+}
+.main{
+  padding: 40rpx 0;
+  font-size: 28rpx;
+  color: #999;
+  line-height: 1.4;
+}
+.btn-box{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 144rpx;
+  /*background-color: rgba(255, 255, 255, 0.4);  */
+  background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.4));
+}
+
+.btn-send-resume{
+  width: 60%;
+  color: #fff;
+  background-color: #4990E2;
+  margin-top: 32rpx;
+}
+.btn-send-resume-hover{
+  background-color: #1E68BE;
+}

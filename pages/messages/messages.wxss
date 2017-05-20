@@ -1,0 +1,59 @@
+/* pages/messages/messages.wxss */
+@import "../tpl/position-item/position-item.wxss";
+@import "/style/blue-btn.wxss";
+page{
+  background-color: #f5f6f9;
+}
+.swiper-tab{  
+    width: 100%;  
+    background-color: #fff;
+    display: flex;
+    color: #999;
+    font-size: 28rpx;
+    border-bottom: 1px solid #dcdcdc;
+}
+.swiper-tab-list{  
+    flex: 1;
+    padding: 28rpx 0;
+    text-align: center;
+}  
+.on{ 
+    color: #4990E2;  
+    border-bottom: 6rpx solid #4990E2;
+}  
+.item{margin-top: 20rpx;}
+.item-main{border: none;}
+
+.content-box{
+  padding: 0 28rpx;
+  background-color: #fff;
+}
+.content{
+  border-top: 1rpx dashed #dcdcdc;
+  padding: 40rpx 0;
+  width: 100%;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.4;
+}
+.list{margin-bottom: 24rpx;}
+.list-left{
+  color: #999;
+  margin-right: 96rpx;
+}
+
+
+.mes-null{
+  margin-top: 200rpx;
+  text-align: center;
+}
+.icon-null{
+  width: 200rpx;
+  height: 180rpx;
+  background-color: #000;
+  margin-bottom: 20rpx;
+}
+.hint{
+  font-size: 24rpx;
+  color:#999;
+}

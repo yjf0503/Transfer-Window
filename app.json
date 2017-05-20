@@ -1,34 +1,36 @@
 {
   "pages":[
-    "pages/my/my",
+
+    "pages/messages/messages",
+    "pages/position-detail/position-detail",
+    
+    
     "pages/my-resume/my-resume",
     "pages/edit-resume-base/edit-resume-base",
-    
     "pages/edit-my/edit-my",
-    
     "pages/edit-resume-dreamposi/edit-resume-dreamposi",
     "pages/edit-resume-edu-detail/edit-resume-edu-detail",
     "pages/edit-resume-edu/edit-resume-edu",
-    
-    
     "pages/edit-resume-work-detail/edit-resume-work-detail",
-    
-    
-    
-    
     "pages/edit-resume-work/edit-resume-work",
     
   
 
-    "pages/index/index",
-    "pages/rookie/index",
-    "pages/search/index",
     
-    "pages/position/content",
     "pages/company/company",
+
+    "pages/search/index",
+    "pages/position/content",
     "pages/usercenter/index",
     "pages/usercenter/selfinfo",
-    "pages/usercenter/resume"
+    "pages/usercenter/resume",
+
+
+    "pages/index/index",
+    "pages/rookie/rookie",
+
+    "pages/my/my"
+    
     
   ],
   "window":{
@@ -49,17 +51,17 @@
    },{  
      "selectedIconPath": "screenshoot/index.png",  
      "iconPath": "screenshoot/index.png",  
-     "pagePath": "pages/rookie/index",  
+     "pagePath": "pages/rookie/rookie",  
      "text": "入行"  
    },{  
      "selectedIconPath": "screenshoot/index.png",  
      "iconPath": "screenshoot/index.png",  
-     "pagePath": "pages/usercenter/resume",  
+     "pagePath": "pages/messages/messages",  
      "text": "消息"  
    }, {  
      "selectedIconPath": "screenshoot/index.png",  
      "iconPath": "screenshoot/index.png",  
-     "pagePath": "pages/usercenter/index",  
+     "pagePath": "pages/my/my",  
      "text": "我"  
    }]  
  }

@@ -1,0 +1,37 @@
+<!--pages/position-detail/position-detail.wxml-->
+<view class="header">
+  <view class="position">
+    <view class="posi">
+      <text class="name">记者</text>
+      <text class="salary">18-30K</text>
+    </view>
+    <view class="posi-list">
+      <text class="field">北京</text>
+      <text class="field">5-10年</text>
+      <text class="field">本科</text>
+      <text>全职</text>
+    </view>
+  </view>
+  <view class="company">
+    <image class="com-logo" src=""></image>
+    <view class="com">
+      <view class="com-name">腾讯体育</view>
+      <view class="com-address">海淀区 新大接28好</view>
+    </view>
+  </view>
+</view>
+
+<view class="content">
+  <view class="title">职位描述</view>
+  <view class="main">
+    这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开
+    这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开
+    这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开
+     这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开
+  </view>
+</view>
+
+<view class="btn-box">
+  <button class="btn-send-resume" size="default" hover-class="btn-send-resume-hover" catchtap="isSendTap">发送简历</button>
+</view>
+

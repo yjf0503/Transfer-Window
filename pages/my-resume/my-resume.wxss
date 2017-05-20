@@ -27,7 +27,7 @@ page{
   text-align: center;
   font-size: 32rpx;
   color: #fff;
-  background: linear-gradient(to top, rgba(0,0,0,.1), rgba(0,0,0,0.4));
+  background: linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
 }
 .header-info{
   position: absolute;
@@ -39,7 +39,7 @@ page{
   height: 200rpx;
   padding: 0 28rpx;
   color: #fff;
-  background: linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,0.4));
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
 }
 .header-position{
   font-size: 32rpx;
