@@ -1,4 +1,5 @@
 /* pages/position-detail/position-detail.wxss */
+@import "../tpl/position-item/position-item.wxss";
 page{
     background-color: #f5f6f9;
 }
@@ -36,7 +37,7 @@ page{
   margin-right: 80rpx;
 }
 
-.company{
+.company-m{
   display: flex;
   padding-top: 40rpx;
 }
@@ -109,4 +110,60 @@ page{
 }
 .btn-send-resume-hover{
   background-color: #1E68BE;
+}
+
+
+.mode-bg{
+  position:fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.send-sucess{
+  position: absolute;
+  top: 160rpx;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  min-height: 100%;
+  background-color: #fff;
+}
+.tip-content{
+  position: absolute;
+  top: 80rpx;
+  left: 30%;
+  z-index: 3;  
+  font-size: 18px;
+  font-weight: bold;
+}
+.suc-tip{
+  position: relative;
+  height: 200rpx;
+  width: 100%;
+  
+  padding: 0 28rpx;
+  box-sizing: border-box;
+}
+.suc-tip-bottom{
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px dashed #dcdcdc;
+}
+.gou{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+  margin-left: -100rpx;
+  width: 200rpx;
+  height: 200rpx;
+  background-color: #000;
+}
+.posi-tip{
+  padding: 28rpx 28rpx 0;
+  font-size: 28rpx;
+  color: #666;
 }

@@ -15,12 +15,12 @@
       <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
         <template is="position-item" data="{{...item}}" />
       </view>
-    </scroll-view>  
+    </scroll-view>
     <view class="mes-null">
       <image class="icon-null" src=""></image>
       <view class="hint">暂无记录</view>
       <view class="btn-box">
-  
+
         <button class="btn-sure" size="default" hover-class="btn-sure-hover">完善简历 寻找更多机会 </button>
       </view>
     </view>

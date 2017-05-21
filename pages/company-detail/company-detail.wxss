@@ -1,0 +1,54 @@
+/* pages/company-detail/company-detail.wxss */
+@import "../tpl/position-item/position-item.wxss";
+page{
+    background-color: #f5f6f9;
+}
+.company-m{
+  display: flex;
+  padding: 40rpx 0;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+.com-logo{
+  width: 140rpx;
+  height: 140rpx;
+}
+.com{
+  color: #666;
+  position: relative;
+  padding-right: 120rpx;
+  flex: 1;
+  margin-right: 40rpx;
+}
+.com-name{
+  font-size: 32rpx;
+  margin-bottom: 28rpx;
+  padding-top: 24rpx;
+}
+.com-address{font-size: 28rpx;}
+.content{
+  background-color: #fff;
+  padding: 0 28rpx;
+  margin-bottom: 20rpx;
+}
+.title{
+  font-size: 34rpx;
+  color: #353535;
+  line-height: 1.4;
+  padding: 24rpx 0 20rpx;
+  border-bottom: 1px dashed #dcdcdc;
+}
+.main{
+  padding: 40rpx 0;
+  font-size: 28rpx;
+  color: #999;
+  line-height: 1.4;
+}
+.media-img{
+  width: 100%;
+  height: 400rpx;
+}
+.com-content{
+  width: 100%;
+  height: 300rpx;
+}

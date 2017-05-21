@@ -1,4 +1,5 @@
 <!--pages/position-detail/position-detail.wxml-->
+<import src="../tpl/position-item/position-item.wxml" />
 <view class="header">
   <view class="position">
     <view class="posi">
@@ -12,7 +13,7 @@
       <text>全职</text>
     </view>
   </view>
-  <view class="company">
+  <view class="company-m">
     <image class="com-logo" src=""></image>
     <view class="com">
       <view class="com-name">腾讯体育</view>
@@ -35,3 +36,28 @@
   <button class="btn-send-resume" size="default" hover-class="btn-send-resume-hover" catchtap="isSendTap">发送简历</button>
 </view>
 
+<view class="mode-bg"></view>
+  
+<view class="send-sucess">
+  <view class="suc-tip">
+    <view class="suc-tip-bottom">
+      <image class="gou" src=""></image>
+      <view class="tip-content blue">恭喜！投递成功！</view>
+    </view>
+  </view>
+  <view class="anthoer-posi">
+    <view class="posi-tip">这些职位也可考虑下</view>
+    <scroll-view scroll-y="true">
+      <template is="position-item" data="{{...item}}" />
+      <template is="position-item" data="{{...item}}" />
+      <template is="position-item" data="{{...item}}" />
+      <template is="position-item" data="{{...item}}" />
+      <template is="position-item" data="{{...item}}" />
+      <template is="position-item" data="{{...item}}" />
+    </scroll-view>
+  </view>
+  <view class="btn-box">
+    <button class="btn-send-resume" size="default" hover-class="btn-send-resume-hover">关闭</button>
+  </view>
+</view>
+  

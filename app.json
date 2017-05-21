@@ -1,8 +1,10 @@
 {
   "pages":[
-
-    "pages/messages/messages",
     "pages/position-detail/position-detail",
+    "pages/company-detail/company-detail",
+    "pages/position-detail/position-detail",
+    "pages/messages/messages",
+    
     
     
     "pages/my-resume/my-resume",
