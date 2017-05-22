@@ -1,31 +1,24 @@
 <!--pages/edit-resume-work/edit-resume-work.wxml-->
 <view class="work-box">
   <view class="work-items">
-    <view class="work-item">
+
+
+    <view class="work-item" wx:for="{{resumeWorkList}}" wx:for-item="resumeWorkList" wx:key="{{resumeWorkList.workId}}">
       <view class="work-date">
-        <text>2018.03 -2010.10</text>
-        <view class="edit-btn blue" catchtap="editWorkListTap">
+        <text>{{resumeWorkList.join}} - {{resumeWorkList.leave}}</text>
+        <view class="edit-btn blue" catchtap="editWorkListTap" data-workid="{{resumeWorkList.workId}}">
           <image class="icon-edit" src="/images/edit_pen.png"></image>
           <text>编辑</text>
         </view>
       </view>
-      <view class="work-company">nab中国</view>
-      <view class="work-content">服装圣诞节啊收到啦斯捷克洛夫史蒂夫服装圣诞节啊收到啦斯捷克洛夫史蒂夫</view>
+      <view class="work-company">{{resumeWorkList.companyname}}</view>
+      <view class="work-content">{{resumeWorkList.workContent}}</view>
     </view>
-    <view class="work-item">
-      <view class="work-date">
-        <text>2018.03 -2010.10</text>
-        <view class="edit-btn blue" catchtap="editWorkListTap">
-          <image class="icon-edit" src="/images/edit_pen.png"></image>
-          <text>编辑</text>
-        </view>
-      </view>
-      <view class="work-company">nab中国</view>
-      <view class="work-content">服装圣诞节啊收到啦斯捷克洛夫史蒂夫</view>
-    </view>
+
+
   </view>
 </view>
 
 <view class="btn-box">
-  <button class="btn-sure" size="default" hover-class="btn-sure-hover"> 保存 </button>
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="editWorkListTap"> 添加工作 </button>
 </view>

@@ -44,6 +44,7 @@ page{
 .com-logo{
   width: 140rpx;
   height: 140rpx;
+  margin-right: 28rpx;
 }
 .com{
   color: #666;
@@ -78,6 +79,7 @@ page{
 .content{
   background-color: #fff;
   padding: 0 28rpx;
+  margin-bottom: 144rpx;
 }
 .title{
   font-size: 34rpx;

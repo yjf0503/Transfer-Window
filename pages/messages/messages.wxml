@@ -17,7 +17,7 @@
       </view>
     </scroll-view>
     <view class="mes-null">
-      <image class="icon-null" src=""></image>
+      <image class="icon-null" src="/images/mes-null.png"></image>
       <view class="hint">暂无记录</view>
       <view class="btn-box">
 

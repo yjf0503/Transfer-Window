@@ -28,23 +28,23 @@
   <view class="panel-bd">
     <view class="base">
       <text>最高学历</text>
-      <text class="data-text">硕士</text>
+      <text class="data-text">{{resumeBaseInfo.edulevellist[resumeBaseInfo.edulevelindex]}}</text>
     </view>
     <view class="base">
       <text>工作年限</text>
-      <text class="data-text">2年</text>
+      <text class="data-text">{{resumeBaseInfo.worksYearlist[resumeBaseInfo.worksYearindex]}}</text>
     </view>
     <view class="base">
       <text>所在城市</text>
-      <text class="data-text">北京</text>
+      <text class="data-text">{{resumeBaseInfo.citylist[resumeBaseInfo.cityindex]}}</text>
     </view>
     <view class="base">
       <text>联系电话</text>
-      <text class="data-text">18210091222</text>
+      <text class="data-text">{{resumeBaseInfo.contact}}</text>
     </view>
     <view class="base">
       <text>联系邮箱</text>
-      <text class="data-text">342342353252qq.com</text>
+      <text class="data-text">{{resumeBaseInfo.email}}</text>
     </view>
   </view>
 </view>
@@ -59,26 +59,18 @@
   </view>
   <view class="panel-bd">
     <view class="box">
-      <view class="work">
+
+      <view class="work" wx:for="{{resumeWorkList}}" wx:for-item="resumeWorkList" wx:key="{{resumeWorkList.eduId}}">
         <view class="work-date">
           <icon type="String" class="dian" />
-          <text>2017.03 - 2014.03</text>
+          <text>{{resumeWorkList.join}} - {{resumeWorkList.leave}}</text>
         </view>
-        <view class="work-company">nba中国</view>
+        <view class="work-company">{{resumeWorkList.companyname}}</view>
         <view class="work-content">
-          服装什么啊水力发电就是法律考试的风景色卡家乐福大煞风景了服装什么啊水力发电就是法律考试的风景色卡家乐福大煞风景了
+          {{resumeWorkList.workContent}}
         </view>
       </view>
-      <view class="work">
-        <view class="work-date">
-          <icon type="String" class="dian" />
-          <text>2017.03 - 2014.03</text>
-        </view>
-        <view class="work-company">nba中国</view>
-        <view class="work-content">
-          服装什么啊水力发电就是法律考试的风景色卡家乐福大煞风景了服装什么啊水力发电就是法律考试的风景色卡家乐福大煞风景了
-        </view>
-      </view>
+
     </view>
   </view>
 </view>
@@ -93,28 +85,18 @@
   </view>
   <view class="panel-bd">
     <view class="box">
-      <view class="work">
+      <view class="work" wx:for="{{resumeEduList}}" wx:for-item="resumeEduList" wx:key="{{resumeEduList.eduId}}">
         <view class="work-date">
           <icon type="String" class="dian" />
-          <text>2017.03 毕业</text>
+          <text>{{resumeEduList.graduation}}毕业</text>
         </view>
-        <view class="work-company">天津美术学院</view>
+        <view class="work-company">{{resumeEduList.schoolname}}</view>
         <view class="work-content">
-          <text class="edu">随时</text>
-          <text>随时</text>
+          <text class="edu">{{edulevellist[resumeEduList.edulevelindex]}}</text>
+          <text>{{resumeEduList.profession}}</text>
         </view>
       </view>
-      <view class="work">
-        <view class="work-date">
-          <icon type="String" class="dian" />
-          <text>2017.03 毕业</text>
-        </view>
-        <view class="work-company">天津美术学院</view>
-        <view class="work-content">
-          <text   class="edu">随时</text>
-          <text>随时</text>
-        </view>
-      </view>
+      
     </view>
   </view>
 </view>

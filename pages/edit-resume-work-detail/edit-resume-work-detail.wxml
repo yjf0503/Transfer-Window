@@ -5,7 +5,7 @@
       <text>公司名称</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="nba中国" />
+      <input type="text" value="{{companyname}}" bindinput="companyNameTap" placeholder="输入公司名称" placeholder-class="blue" />
     </view>
   </view>
   <view class="item-cell item-cell-input">
@@ -13,20 +13,30 @@
       <text>部门</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="卡在" />
+      <input type="text" value="{{department}}" bindinput="departmentTap" placeholder="输入部门名称" placeholder-class="blue" />
     </view>
   </view>
   <view class="item-cell item-cell-access">
     <view class="item-cell-bd">
       <text>入职时间</text>
     </view>
-    <view class="item-cell-ft blue">1988.1</view>
+    
+    <picker class="item-cell-ft blue" mode="date" value="{{join}}" fields="month" start="2000-01" end="2025-01" bindchange="bindDateChangeJoin">
+    <view class="picker">
+      {{join}}
+    </view>
+  </picker>
   </view>
   <view class="item-cell item-cell-access">
     <view class="item-cell-bd">
       <text>离职时间</text>
     </view>
-    <view class="item-cell-ft blue">1988.1</view>
+    
+    <picker class="item-cell-ft blue" mode="date" value="{{leave}}" fields="month" start="2000-01" end="2025-01" bindchange="bindDateChangeLeave">
+    <view class="picker">
+      {{leave}}
+    </view>
+  </picker>
   </view>
   
   <view class="item-cell">
@@ -35,14 +45,14 @@
     </view>
   </view>
   <view class="item-cell-textarea">
-    <textarea class="item-textarea big bg" value="" placeholder="工作内容" maxlength="20" />
+    <textarea bindinput="WorkContentTap" class="item-textarea big bg" value="{{workContent}}" placeholder="工作内容" maxlength="200" />
     <view class="textarea-count">
-      <text>9/20</text>
+      <text>{{workContentLen}}/200</text>
     </view>
   </view>
 
 </view> 
 <view class="btn-box">
-  <button class="btn-remove" size="default" hover-class="btn-sure-hover"> 删除工作经历 </button>
-  <button class="btn-sure" size="default" hover-class="btn-sure-hover"> 保存 </button>
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover" hidden="{{isadd}}"> 删除工作经历 </button>
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitCompanyTap"> 保存 </button>
 </view>

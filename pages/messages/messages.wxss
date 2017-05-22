@@ -49,8 +49,7 @@ page{
 }
 .icon-null{
   width: 200rpx;
-  height: 180rpx;
-  background-color: #000;
+  height: 200rpx;
   margin-bottom: 20rpx;
 }
 .hint{

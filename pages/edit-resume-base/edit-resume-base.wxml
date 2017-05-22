@@ -49,7 +49,7 @@
       <text>联系电话</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="17237373777" />
+      <input type="text" value="{{contact}}" bindinput="contactTap" placeholder="输入你电话"/>
     </view>
   </view>
   <view class="item-cell item-cell-input">
@@ -57,11 +57,11 @@
       <text>联系邮箱</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="34264327@qq.coms" />
+      <input type="text" value="{{email}}" bindinput="emailTap" placeholder="输入你邮箱"/>
     </view>
   </view>
 </view>
 
 <view class="btn-box">
-  <button class="btn-sure" size="default" hover-class="btn-sure-hover"> 保存 </button>
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitResumeBaseTap"> 保存 </button>
 </view>

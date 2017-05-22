@@ -5,76 +5,129 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    workId: null,
+    join: '2015-01',//入职时间
+    leave: '2015-01',//离职时间
+    workContentLen: 0,
+    isadd: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var workId = options.workid;
+    if (workId) {
+      var resumeWorkList = wx.getStorageSync('resumeWorkList');
+      var resumeWrok = resumeWorkList[workId];
+      var workContentLen = resumeWrok.workContent.length
+      this.setData({
+        workId: workId,
+        companyname: resumeWrok.companyname,
+        department: resumeWrok.department,
+        join: resumeWrok.join,
+        leave: resumeWrok.leave,
+        workContent: resumeWrok.workContent,
+        workContentLen: workContentLen
+      });
+    } else {
+      this.setData({
+        isadd: true,
+      })
+    } 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  //公司名称
+  companyNameTap: function(e){
+    this.setData({
+      companyname: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  //部门
+  departmentTap: function(e){
+    this.setData({
+      department: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  //入职时间
+  bindDateChangeJoin: function (e) {
+    this.setData({
+      join: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  //离职时间
+  bindDateChangeLeave: function (e) {
+    this.setData({
+      leave: e.detail.value
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  //工作内容
+  WorkContentTap: function (e) {
+    var eValueLen = e.detail.value.length,
+      eValue = e.detail.value;
+    this.setData({
+      workContentLen: eValueLen,
+      workContent: eValue
+    })
   },
+  //提交工作信息
+  submitCompanyTap: function (e) {
+    var resumeWorkList = wx.getStorageSync('resumeWorkList');
+    var workIdLen = resumeWorkList.length;
+    var resumeWrok = {
+      workId: workIdLen,
+      companyname: this.data.companyname,
+      department: this.data.department,
+      join: this.data.join,
+      leave: this.data.leave,
+      workContent: this.data.workContent
+    };
+    //判断是修改还是添加
+    var workId = this.data.workId;
+    if (workId && workId < workIdLen) {
+      for (var i = 0; i < workIdLen; i++) {
+        (function () {
+          if (resumeWorkList[i].workId == workId) {
+            resumeWrok.workId = workId;
+            resumeWorkList[i] = resumeWrok;
+          }
+        })(i)
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
+      }
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
+    } else {
+      resumeWorkList.push(resumeWrok);
+    }
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
+    try {
+      wx.setStorageSync('resumeWorkList', resumeWorkList)
+      console.log(resumeWorkList);
+    } catch (e) {
+    }
+    wx.showToast({
+      title: '保存成功！',
+      icon: 'success',
+      duration: 800
+    })
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+    //更新上一级页面
+    var pages = getCurrentPages();
+    var curPage = pages[pages.length - 2];
+    var curPagePre = pages[pages.length - 3];
+    var newresumeWorkList = wx.getStorageSync('resumeWorkList');
+    curPage.setData({
+      resumeWorkList: newresumeWorkList
+    });
+    //更新上上一级页面
+    curPagePre.setData({
+      resumeWorkList: newresumeWorkList
+    });
+
+    //返回上一个页面
+    setTimeout(function () {
+      wx.navigateBack({
+
+      })
+    }, 1000);
+
   }
 })

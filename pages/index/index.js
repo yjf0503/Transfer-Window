@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
-var WxSearch = require('../../wxSearch/wxSearch.js')
-var app = getApp()
+var WxSearch = require('../../wxSearch/wxSearch.js');
+var app = getApp();
 Page({
   data: {
     list: [
@@ -26,8 +26,11 @@ Page({
     // 设置到全局变量中去，让下个页面可以访问
     app.globalData.curPosition = position;
     // 切换页面
+    // wx.navigateTo({
+    //   url: '../position/content'
+    // });
     wx.navigateTo({
-      url: '../position/content'
+      url: '../position-detail/position-detail'
     });
   },
 

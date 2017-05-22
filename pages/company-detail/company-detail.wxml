@@ -1,9 +1,9 @@
 <!--pages/company-detail/company-detail.wxml-->
 <view class="company-m">
-  <image class="com-logo" src=""></image>
+  <image class="com-logo" src="{{company_info.enterprise_logo}}"  data-pid="{{company_info.p_id}}"></image>
   <view class="com">
-    <view class="com-name">腾讯体育</view>
-    <view class="com-address">海淀区 新大接28好</view>
+    <view class="com-name">{{company_info.enterprise_name}}</view>
+    <view class="com-address">{{company_info.enterprise_address}}</view>
   </view>
 </view>
 
@@ -18,64 +18,32 @@
   <view class="title">公司描述</view>
   <view class="main">
     <scroll-view class="com-content" scroll-y="true">
-      这里是公司的劫杀，手机丢了撒娇放这里是公司的劫杀，手机丢了撒娇放这里是公司的劫杀，手机丢了撒娇放这里是公司的劫杀，手机丢了撒娇放这里是公司的劫杀，手机丢了撒娇放这里是公司的劫杀，手机丢了撒娇放这里是公司的劫杀，手机丢了撒娇放这里是公司的劫杀，手机丢了撒娇放这里是公司的劫杀，手机丢了撒娇放这里是公司的劫杀，手机丢了撒娇放这里是公司的劫杀，手机丢了撒娇放
+      {{company_info.enterprise_desc}}
     </scroll-view>
   </view>
 </view>
 
 <view class="content">
   <view class="title">在招职位</view>
+    <view wx:for="{{company_info.position}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
+      
+    </view>
   
-    <view class="item">
+    <view class="item" wx:for="{{company_info.position}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
       <view class="item-main">
         <view class="job">
-          <text class="job-position" data-id="{{id}}">职位名称</text>
-          <text class="job-Salary">20-30k</text>
+          <text class="job-position" data-id="{{id}}">{{item.p_name}}</text>
+          <text class="job-Salary">{{item.p_wages}}</text>
         </view>
-        <view class="company">
-          <text>公司名称</text>
-        </view>
+        
         <view class="secondary">
-          <text class="secondary-list">北京</text>
-          <text class="secondary-list">6-10年</text>
-          <text>本科</text>
-          <text class="date">04月19日</text>
+          <text class="secondary-list">{{item.p_address}}</text>
+          <text class="secondary-list">{{item.p_edujy}}</text>
+          <text>{{item.p_education}}</text>
+          <text class="date">{{item.p_addtime}}</text>
         </view>
       </view>
     </view>
-    <view class="item">
-      <view class="item-main">
-        <view class="job">
-          <text class="job-position" data-id="{{id}}">职位名称</text>
-          <text class="job-Salary">20-30k</text>
-        </view>
-        <view class="company">
-          <text>公司名称</text>
-        </view>
-        <view class="secondary">
-          <text class="secondary-list">北京</text>
-          <text class="secondary-list">6-10年</text>
-          <text>本科</text>
-          <text class="date">04月19日</text>
-        </view>
-      </view>
-    </view>
-    <view class="item">
-      <view class="item-main">
-        <view class="job">
-          <text class="job-position" data-id="{{id}}">职位名称</text>
-          <text class="job-Salary">20-30k</text>
-        </view>
-        <view class="company">
-          <text>公司名称</text>
-        </view>
-        <view class="secondary">
-          <text class="secondary-list">北京</text>
-          <text class="secondary-list">6-10年</text>
-          <text>本科</text>
-          <text class="date">04月19日</text>
-        </view>
-      </view>
-    </view>
+    
   
 </view>

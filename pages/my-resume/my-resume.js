@@ -5,14 +5,62 @@ Page({
    * 页面的初始数据
    */
   data: {
+    resumeBaseInfo: null,
+    resumeWorkList: null,
+    resumeEduList: null,
     avatarBigUrl:'',//大的用户背景图片
+    edulevellist: ['高中', '大专', '本科', '硕士', '博士'],//学历
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    //取出页面数据
+    try {
+      //简历的基本信息
+      var resumeBaseTap = wx.getStorageSync('resumeBaseInfo')
+      this.setData({
+        resumeBaseInfo: resumeBaseTap
+      })
+    } catch (e) {
+      // Do something when catch error
+    }
+    //工作经历
+    try {
+      //获取工作经历，如果没有就加一个空数组，有，就绑定数据
+      var resumeWorkList = wx.getStorageSync('resumeWorkList');
+      var resumeWorkListArray = [];
+      if (!resumeWorkList) {
+        wx.setStorageSync('resumeWorkList', resumeWorkListArray);
+        return false;
+      }
+      this.setData({
+        resumeWorkList: resumeWorkList
+      });
+
+    } catch (e) {
+      // Do something when catch error
+    }
+
+    //教育经历
+    try {
+      //获取教育列表，如果没有就加一个空数组，有，就绑定数据
+      var resumeEduList = wx.getStorageSync('resumeEduList');
+      var resumeEduListArray = [];
+      if (!resumeEduList) {
+        wx.setStorageSync('resumeEduList', resumeEduListArray);
+        return false;
+      }
+      this.setData({
+        resumeEduList: resumeEduList
+      });
+
+    } catch (e) {
+      // Do something when catch error
+    }
+
+    //期望职位
   },
 
   /**

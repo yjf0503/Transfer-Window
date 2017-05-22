@@ -3,21 +3,21 @@
 <view class="header">
   <view class="position">
     <view class="posi">
-      <text class="name">记者</text>
-      <text class="salary">18-30K</text>
+      <text class="name">{{position_content.p_name}}</text>
+      <text class="salary">{{position_content.p_wages}}</text>
     </view>
     <view class="posi-list">
-      <text class="field">北京</text>
-      <text class="field">5-10年</text>
-      <text class="field">本科</text>
-      <text>全职</text>
+      <text class="field">{{position_content.p_address}}</text>
+      <text class="field">{{position_content.p_edujy}}</text>
+      <text class="field">{{position_content.p_education}}</text>
+      <text>缺全职</text>
     </view>
   </view>
-  <view class="company-m">
-    <image class="com-logo" src=""></image>
+  <view class="company-m" data-pid="{{position_content.p_id}}" catchtap="bindPositionDetailTap">
+    <image class="com-logo" src="{{position_content.enterprise_logo}}"></image>
     <view class="com">
-      <view class="com-name">腾讯体育</view>
-      <view class="com-address">海淀区 新大接28好</view>
+      <view class="com-name">{{position_content.enterprise_name}}</view>
+      <view class="com-address">{{position_content.p_address}}</view>
     </view>
   </view>
 </view>
@@ -25,20 +25,16 @@
 <view class="content">
   <view class="title">职位描述</view>
   <view class="main">
-    这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开
-    这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开
-    这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开
-     这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开这里一点dasd 萨离开
+    {{position_content.p_text}}
   </view>
 </view>
 
 <view class="btn-box">
-  <button class="btn-send-resume" size="default" hover-class="btn-send-resume-hover" catchtap="isSendTap">发送简历</button>
+  <button class="btn-send-resume" size="default" hover-class="btn-send-resume-hover" catchtap="isSendTap" disabled="{{submitdisabled}}">{{submitText}}</button>
 </view>
 
-<view class="mode-bg"></view>
-  
-<view class="send-sucess">
+<view class="mode-bg" hidden="true"></view>
+<view class="send-sucess" hidden="true">
   <view class="suc-tip">
     <view class="suc-tip-bottom">
       <image class="gou" src=""></image>

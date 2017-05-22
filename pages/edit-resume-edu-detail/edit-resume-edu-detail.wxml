@@ -5,7 +5,7 @@
       <text>学校名称</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="天津美术学院" />
+      <input type="text" value="{{schoolname}}" bindinput="schoolNameTap" placeholder="输入学校名称" placeholder-class="blue" />
     </view>
   </view>
   <view class="item-cell item-cell-input">
@@ -13,7 +13,7 @@
       <text>专业名称</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="动画专业" />
+      <input type="text" value="{{profession}}" bindinput="professionTap" placeholder="输入专业名称" placeholder-class="blue"/>
     </view>
   </view>
   
@@ -21,19 +21,28 @@
     <view class="item-cell-bd">
       <text>最高学历</text>
     </view>
-    <view class="item-cell-ft blue">本科</view>
+    
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangeEduLevel" value="{{edulevelindex}}" range="{{edulevellist}}">
+      <view class="picker">
+        {{edulevellist[edulevelindex]}}
+      </view>
+    </picker>
   </view>
   <view class="item-cell item-cell-access">
     <view class="item-cell-bd">
       <text>毕业时间</text>
     </view>
-    <view class="item-cell-ft blue">1988.1</view>
+    <picker class="item-cell-ft blue" mode="date" value="{{graduation}}" fields="month" start="2000-01" end="2020-01" bindchange="bindDateChangeGraduation">
+    <view class="picker">
+      {{graduation}}
+    </view>
+  </picker>
   </view>
   
  
 
 </view> 
 <view class="btn-box">
-  <button class="btn-remove" size="default" hover-class="btn-sure-hover"> 删除教育经历 </button>
-  <button class="btn-sure" size="default" hover-class="btn-sure-hover"> 保存 </button>
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover" hidden="{{isadd}}"> 删除教育经历 </button>
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitSchoolTap"> 保存 </button>
 </view>

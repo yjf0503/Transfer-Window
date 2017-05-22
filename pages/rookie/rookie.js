@@ -8,6 +8,7 @@ Page({
     ],
     modalFlag: true,
   },
+  
   //事件处理函数
   bindItemTap: function (event) {
     var id = event.currentTarget.dataset.id; // 当前id
@@ -27,7 +28,7 @@ Page({
     app.globalData.curPosition = position;
     // 切换页面
     wx.navigateTo({
-      url: '../position/content'
+      url: '../position-detail/position-detail'
     });
   },
 
@@ -87,6 +88,10 @@ Page({
   },
 
   onLoad: function () {
+    wx.setNavigationBarTitle({
+      title: '入行'
+    });
+
     var that = this;
     wx.getStorage({
       key: 'rookie_job_list',

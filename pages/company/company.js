@@ -68,5 +68,6 @@ Page({
     wx.navigateTo({
       url: '../position/content'
     });
+    
   },
 })

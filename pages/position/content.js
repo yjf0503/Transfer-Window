@@ -14,7 +14,7 @@ Page({
       position_content: position
     });
     wx.setNavigationBarTitle({
-      title: '职位详情'
+      title: '职位详情d'
     });
 
     var resume_position_id_list = wx.getStorageSync('resume_position_id_list');

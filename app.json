@@ -1,8 +1,13 @@
 {
   "pages":[
+    
+    "pages/index/index",
+    "pages/edit-resume-edu/edit-resume-edu",
+    "pages/edit-resume-work/edit-resume-work",
+
     "pages/position-detail/position-detail",
     "pages/company-detail/company-detail",
-    "pages/position-detail/position-detail",
+    
     "pages/messages/messages",
     
     
@@ -12,7 +17,7 @@
     "pages/edit-my/edit-my",
     "pages/edit-resume-dreamposi/edit-resume-dreamposi",
     "pages/edit-resume-edu-detail/edit-resume-edu-detail",
-    "pages/edit-resume-edu/edit-resume-edu",
+    
     "pages/edit-resume-work-detail/edit-resume-work-detail",
     "pages/edit-resume-work/edit-resume-work",
     
@@ -28,41 +33,43 @@
     "pages/usercenter/resume",
 
 
-    "pages/index/index",
+    
     "pages/rookie/rookie",
 
     "pages/my/my"
     
     
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "转会窗",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "navigationBarBackgroundColor": "#f6f6f8",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "首页",
+    "backgroundColor": "#f6f6f8",
+    "backgroundTextStyle": "light"
   },
   "tabBar": {  
-   "color": "#a9b7b7",  
-   "selectedColor": "#11cd6e",  
+   "color": "#999999",  
+   "selectedColor": "#4990E2",  
+   "backgroundColor":"#F6F6F8",
    "borderStyle":"white",  
    "list": [{  
-     "selectedIconPath": "screenshoot/index.png",  
-     "iconPath": "screenshoot/index.png",  
+     "selectedIconPath": "images/index_active.png",  
+     "iconPath": "images/index.png",  
      "pagePath": "pages/index/index",  
      "text": "首页"  
    },{  
-     "selectedIconPath": "screenshoot/index.png",  
-     "iconPath": "screenshoot/index.png",  
+     "selectedIconPath": "images/rookie_active.png",  
+     "iconPath": "images/rookie.png",  
      "pagePath": "pages/rookie/rookie",  
      "text": "入行"  
    },{  
-     "selectedIconPath": "screenshoot/index.png",  
-     "iconPath": "screenshoot/index.png",  
+     "selectedIconPath": "images/message_active.png",  
+     "iconPath": "images/message.png",  
      "pagePath": "pages/messages/messages",  
      "text": "消息"  
    }, {  
-     "selectedIconPath": "screenshoot/index.png",  
-     "iconPath": "screenshoot/index.png",  
+     "selectedIconPath": "images/my_active.png",  
+     "iconPath": "images/my.png",  
      "pagePath": "pages/my/my",  
      "text": "我"  
    }]  

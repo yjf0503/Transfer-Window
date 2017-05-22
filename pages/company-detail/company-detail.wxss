@@ -12,6 +12,7 @@ page{
 .com-logo{
   width: 140rpx;
   height: 140rpx;
+  margin-right: 28rpx;
 }
 .com{
   color: #666;

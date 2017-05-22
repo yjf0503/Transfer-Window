@@ -5,6 +5,7 @@ App({
     
   },
   globalData: {
-    curPosition: null
+    curPosition: null,//用于职位详情绑定数据
+    pid: null //用与公司详情绑定数据
   }
 })

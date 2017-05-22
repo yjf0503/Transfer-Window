@@ -9,6 +9,11 @@ Page({
     userInfoAvatar: '',//微信头像
     isShow: false//是否拿到用户信息，否则显示默认头像
   },
+  onLoad: function(){
+    wx.setNavigationBarTitle({
+      title: '我'
+    });
+  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -37,9 +42,9 @@ Page({
     });
   },
   //我的投递
-  myDelivery: function () {
+  myDeliveryTap: function () {
     wx.switchTab({
-      url: '../usercenter/resume'
+      url: '/pages/messages/messages'
     });
   }
   
