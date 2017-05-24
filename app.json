@@ -3,7 +3,7 @@
     
     "pages/index/index",
     "pages/edit-resume-edu/edit-resume-edu",
-    "pages/edit-resume-work/edit-resume-work",
+    
 
     "pages/position-detail/position-detail",
     "pages/company-detail/company-detail",
@@ -50,7 +50,7 @@
   "tabBar": {  
    "color": "#999999",  
    "selectedColor": "#4990E2",  
-   "backgroundColor":"#F6F6F8",
+   "backgroundColor":"#f1f1f1",
    "borderStyle":"white",  
    "list": [{  
      "selectedIconPath": "images/index_active.png",  

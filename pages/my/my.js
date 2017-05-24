@@ -15,10 +15,7 @@ Page({
     });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  onLoad: function(){
     var that = this;
     var userInfo = wx.getStorageSync('resume');
     if (userInfo) {
@@ -29,6 +26,21 @@ Page({
       })
     }
   },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  // onShow: function () {
+  //   var that = this;
+  //   var userInfo = wx.getStorageSync('resume');
+  //   if (userInfo) {
+  //     that.setData({
+  //       isShow: true,
+  //       nickName: userInfo.nickName,
+  //       userInfoAvatar: userInfo.avatarUrl
+  //     })
+  //   }
+  // },
   //编辑资料
   editInfoTap: function(){
     wx.navigateTo({

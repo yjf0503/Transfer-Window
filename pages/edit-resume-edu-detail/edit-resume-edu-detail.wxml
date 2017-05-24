@@ -5,7 +5,7 @@
       <text>学校名称</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="{{schoolname}}" bindinput="schoolNameTap" placeholder="输入学校名称" placeholder-class="blue" />
+      <input type="text" value="{{schoolname}}" bindinput="schoolNameTap" placeholder="输入学校名称" />
     </view>
   </view>
   <view class="item-cell item-cell-input">
@@ -13,7 +13,7 @@
       <text>专业名称</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="{{profession}}" bindinput="professionTap" placeholder="输入专业名称" placeholder-class="blue"/>
+      <input type="text" value="{{profession}}" bindinput="professionTap" placeholder="输入专业名称"/>
     </view>
   </view>
   
@@ -43,6 +43,6 @@
 
 </view> 
 <view class="btn-box">
-  <button class="btn-remove" size="default" hover-class="btn-sure-hover" hidden="{{isadd}}"> 删除教育经历 </button>
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover" hidden="{{isadd}}" catchtap="removeSchoolTap"> 删除教育经历 </button>
   <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitSchoolTap"> 保存 </button>
 </view>

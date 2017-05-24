@@ -5,7 +5,7 @@
     <text class="user-name">{{nickName}}</text>
   </block>
   <block wx:else>
-    <image class="user-avatar" src="/images/def_user.jpg"></image>
+    <image class="user-avatar" src="/images/big_avatar.png"></image>
     <text class="user-name">亲爱的用户，您好</text>
   </block>
   <text class="edit-info" catchtap="editInfoTap">编辑资料</text>

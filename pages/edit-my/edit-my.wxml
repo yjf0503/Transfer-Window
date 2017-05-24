@@ -6,7 +6,7 @@
     </view>
     <view class="item-cell-ft">
       <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}"></image>
-      <image wx:else src="/images/def_user.jpg"></image>
+      <image wx:else src="/images/small_avatar.png"></image>
     </view>
   </view>
 </view>
@@ -16,7 +16,7 @@
       <text>姓名</text>
     </view>
     <view class="item-cell-ft blue">
-      <input bindinput="nameTap" type="text" maxlength="6" value="{{userName}}" placeholder="真实姓名" placeholder-class="blue"/>
+      <input bindinput="nameTap" type="text" maxlength="6" value="{{userName}}" placeholder="真实姓名"/>
     </view>
   </view>
   <view class="item-cell item-cell-access">

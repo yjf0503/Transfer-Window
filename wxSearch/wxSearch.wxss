@@ -13,6 +13,7 @@
 }
 .wxSearchInner{
   background-color: #fff;
+  padding: 0 28rpx;
 }
 .wxSearch-section{
   background-color: #fff;
@@ -36,9 +37,10 @@
 
 .wxSearchTitle{
   display: block;
-  padding: 10px 5px 5px 10px;
-  font-size: 12px;
-  text-align: center;
+  padding: 10px 0 5px 0;
+  font-size: 28rpx;
+  text-align: left;
+  color: #666;
 }
 
 
@@ -72,7 +74,8 @@
 }
 .wxSearchHistoryItemText{
   flex: 8;
-  font-size: 14px;
+  font-size: 15px;
+  color: #b8b8b8;
 }
 .wxSearchHistoryItemDel{
   flex: 1;
@@ -93,4 +96,33 @@
   line-height: 50px;
   text-align: center;
   font-size: 12px;
+}
+
+
+
+.keywords-box{
+  text-align: center;
+  
+}
+.keywords-item{
+  width: 100%;
+  display: flex;
+  margin-bottom: 20rpx;
+}
+.ser-item{
+  flex: 1;
+  background-color: #ebebeb;
+  color: #4a4a4a;
+  font-size: 24rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.ser-item-r{
+  margin-right:20rpx;
+}
+
+.close{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 60rpx;
 }

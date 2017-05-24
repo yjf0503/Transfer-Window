@@ -10,6 +10,7 @@ Page({
     resumeEduList: null,
     avatarBigUrl:'',//大的用户背景图片
     edulevellist: ['高中', '大专', '本科', '硕士', '博士'],//学历
+    sexList: ['男','女','未知']
   },
 
   /**
@@ -17,6 +18,16 @@ Page({
    */
   onLoad: function (options) {
     //取出页面数据
+    try {
+      //我的基本信息
+      var myBaseInfo = wx.getStorageSync('myBaseInfo')
+      this.setData({
+        myBaseInfo: myBaseInfo
+      })
+    } catch (e) {
+      // Do something when catch error
+    }
+
     try {
       //简历的基本信息
       var resumeBaseTap = wx.getStorageSync('resumeBaseInfo')
@@ -73,9 +84,17 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
-  },
+  // onShow: function () {
+  //   try {
+  //     //我的基本信息
+  //     var myBaseInfo = wx.getStorageSync('myBaseInfo')
+  //     this.setData({
+  //       myBaseInfo: myBaseInfo
+  //     })
+  //   } catch (e) {
+  //     // Do something when catch error
+  //   }
+  // },
 
   /**
    * 生命周期函数--监听页面隐藏

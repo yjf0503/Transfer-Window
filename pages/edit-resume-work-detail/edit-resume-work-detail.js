@@ -129,5 +129,29 @@ Page({
       })
     }, 1000);
 
+  },
+  //删除
+  removeCompanyTap: function(){
+    wx.showModal({
+      title: '删除确认',
+      content: '删除后不可撤回，确认删除？',
+      cancelText: '取消',
+      cancelColor: '#999',
+      confirmText: '确认',
+      confirmColor: '#4990E2',
+      success: function (res) {
+        if (res.confirm) {
+          wx.showToast({
+            title: '删除成功',
+            icon: 'success',
+            duration: 800
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   }
+  
+
 })

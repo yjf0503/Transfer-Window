@@ -109,6 +109,15 @@ Page({
       icon: 'success',
       duration: 800
     })
+    //更新上一级页面
+    var pages = getCurrentPages();
+    var curPage = pages[pages.length - 2];
+    curPage.setData({
+      nickName: this.data.userName,
+      userInfoAvatar: this.data.avatarUrl
+    });
+
+
     //返回上一个页面
     setTimeout(function () {
       wx.navigateBack({

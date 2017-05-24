@@ -5,7 +5,7 @@
       <text>公司名称</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="{{companyname}}" bindinput="companyNameTap" placeholder="输入公司名称" placeholder-class="blue" />
+      <input type="text" value="{{companyname}}" bindinput="companyNameTap" placeholder="输入公司名称" />
     </view>
   </view>
   <view class="item-cell item-cell-input">
@@ -13,7 +13,7 @@
       <text>部门</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="{{department}}" bindinput="departmentTap" placeholder="输入部门名称" placeholder-class="blue" />
+      <input type="text" value="{{department}}" bindinput="departmentTap" placeholder="输入部门名称" />
     </view>
   </view>
   <view class="item-cell item-cell-access">
@@ -53,6 +53,6 @@
 
 </view> 
 <view class="btn-box">
-  <button class="btn-remove" size="default" hover-class="btn-sure-hover" hidden="{{isadd}}"> 删除工作经历 </button>
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover" hidden="{{isadd}}" catchtap="removeCompanyTap"> 删除工作经历 </button>
   <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitCompanyTap"> 保存 </button>
 </view>

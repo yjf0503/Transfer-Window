@@ -1,6 +1,78 @@
-/*@import "/wxSearch/wxSearch.wxss";*/
+@import "/wxSearch/wxSearch.wxss";
 
-.search-input{
+.wxSearch-all{
+   background-color: #417ee0;
+  
+  padding: 16rpx 28rpx;
+  box-sizing: border-box;
+  border: 1px solid #dcdcdc;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
+.city{
+  display: inline-block;
+  vertical-align: top;
+  font-size: 32rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-right: 20rpx;
+  color: #fff;
+}
+.city-picker{
+  display: inline-block;
+}
+/*.down-icon{
+  width: 32rpx;
+  height: 36rpx;
+  background-color: #000;
+  margin: 0 10rpx;
+}*/
+
+.city::after{
+    content: " ";
+    display: inline-block;
+    height: 16rpx;
+    width: 16rpx;
+    border-width: 0 4rpx 4rpx 0;
+    border-color: #fff;
+    border-style: solid;
+    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+   margin-left: 10rpx;
+}
+
+.input-box{
+  display: inline-block;
+  vertical-align: top;
+  background-color: #fff;
+  height: 60rpx;
+  width: 480rpx;
+  border-radius: 30rpx;
+}
+.search-icon{
+  margin:0 20rpx 0 48rpx;
+  vertical-align: middle;
+}
+.input-html{
+  display: inline-block;
+  vertical-align: middle;
+  height: 60rpx;
+  width: 75%;
+}
+.btn-cancel{
+  display: inline-block;
+  vertical-align: top;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 32rpx;
+  margin-left: 20rpx;
+  color: #fff;
+}
+
+/*.search-input{
   background-color: #417ee0;
   color: #fff;
   padding:20rpx 28rpx;
@@ -75,4 +147,4 @@
 }
 .item-r{
   margin-right:20rpx;
-}
+}*/

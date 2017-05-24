@@ -149,5 +149,13 @@ Page({
         consoloe.log(res);
       }
     })
-  },  
+  }, 
+
+  //新建简历
+  bulidResumeTap: function(){
+    wx.navigateTo({
+      url: '/pages/my-resume/my-resume',
+      
+    })
+  } 
 })

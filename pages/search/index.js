@@ -11,16 +11,16 @@ Page({
     // }
     searchBtnShow:true,
     cancelBtnShow:false,
-    cityArray: ['全国','北京', '上海', '深圳', '广州'],
-    cityIndex: 0
+    // cityArray: ['全国','北京', '上海', '深圳', '广州'],
+    // cityIndex: 0
   },
 
   //选择城市 qihb
-  bindPickerChangeCity: function (e) {
-    this.setData({
-      cityIndex: e.detail.value
-    })
-  },
+  // bindPickerChangeCity: function (e) {
+  //   this.setData({
+  //     cityIndex: e.detail.value
+  //   })
+  // },
 
   onLoad: function () {
     var that = this

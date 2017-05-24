@@ -6,7 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    imgUrls: [
+      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    ]
   },
 
   /**
@@ -24,34 +28,57 @@ Page({
     wx.showToast({
       title: '加载中',
       icon: 'loading',
-      duration: 4000
+      duration: 1000
     });
+    wx.request({
+      url: 'https://www.ecosports.cn/Home/Enterprise/wxapp_company',
+      method: 'GET',
+      data: {
+        id: app.globalData.pid
+      },
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
 
-    setTimeout(function () {
-      wx.request({
-        url: 'https://www.ecosports.cn/Home/Enterprise/wxapp_company',
-        method: 'GET',
-        data: {
-          id: app.globalData.pid
-        },
-        header: {
-          'Content-Type': 'application/json'
-        },
-        success: function (res) {
+        // use res.data
+        that.setData({
+          company_info: res['data']
+        });
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
+      }
+    })
+
+    // setTimeout(function () {
+    //   wx.request({
+    //     url: 'https://www.ecosports.cn/Home/Enterprise/wxapp_company',
+    //     method: 'GET',
+    //     data: {
+    //       id: app.globalData.pid
+    //     },
+    //     header: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     success: function (res) {
           
-          // use res.data
-          that.setData({
-            company_info: res['data']
-          });
-        },
-        fail: function (res) {
+    //       // use res.data
+    //       that.setData({
+    //         company_info: res['data']
+    //       });
+    //     },
+    //     fail: function (res) {
 
-        },
-        complete: function (res) {
+    //     },
+    //     complete: function (res) {
 
-        }
-      })
-    }, 2000);
+    //     }
+    //   })
+    // }, 2000);
   },
   //跳到公司的其它职位
   positionDetailTap: function(event){

@@ -7,7 +7,9 @@ Page({
    */
   data: {
     submitText:'发送简历',
-    submitdisabled: false
+    submitdisabled: false,
+    mode:true,
+    animationData: {}
   },
 
   /**
@@ -48,11 +50,11 @@ Page({
       });
     };
     //判断是否有简历
-    if (!wx.getStorageSync('true_resume')) {
-      that.setData({
-        submitText: "请先完善您的个人简历",
-      })
-    } 
+    // if (!wx.getStorageSync('true_resume')) {
+    //   that.setData({
+    //     submitText: "请先完善您的个人简历",
+    //   })
+    // } 
   },
   //公司详情
   bindPositionDetailTap: function(event){
@@ -65,6 +67,7 @@ Page({
   },
   //发送简历
   isSendTap: function(){
+    var that = this;
     wx.showModal({
       title: '发送确认',
       content: '发送后不可撤回，确认发送？',
@@ -74,11 +77,32 @@ Page({
       confirmColor:'#4990E2',
       success: function (res) {
         if (res.confirm) {
-          console.log('用户点击确定')
+          var animation = wx.createAnimation({
+            duration: 1000,
+            timingFunction: 'ease',
+          })
+
+          // that.animation = animation
+
+          // animation.scale(2, 2).rotate(45).step()
+
+          that.setData({
+            mode: false,
+            animationData: animation.export()
+          })
+
+          
+
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
       }
+    })
+  },
+  //关闭成功提示
+  closeTap: function(){
+    this.setData({
+      mode: true
     })
   }
 })

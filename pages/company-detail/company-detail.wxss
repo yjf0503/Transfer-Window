@@ -5,7 +5,7 @@ page{
 }
 .company-m{
   display: flex;
-  padding: 40rpx 0;
+  padding: 40rpx 28rpx;
   background-color: #fff;
   margin-bottom: 20rpx;
 }

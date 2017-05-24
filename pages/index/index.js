@@ -7,6 +7,14 @@ Page({
     list: [
     ],
     modalFlag: true,
+    cityArray: ['全国', '北京', '上海', '深圳', '广州'],
+    cityIndex: 0
+  },
+  //选择城市 qihb
+  bindPickerChangeCity: function (e) {
+    this.setData({
+      cityIndex: e.detail.value
+    })
   },
   //事件处理函数
   bindItemTap: function (event) {
@@ -35,11 +43,11 @@ Page({
   },
 
   //跳转到搜索页 qihb
-  bindSeacherTap: function (event) {
-    wx.navigateTo({
-      url: '../search/index',
-    })
-  },
+  // bindSeacherTap: function (event) {
+  //   wx.navigateTo({
+  //     url: '../search/index',
+  //   })
+  // },
 
   wxSearchInput: function (event) {
     var that = this
