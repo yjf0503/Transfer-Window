@@ -62,7 +62,6 @@ Page({
       return;
     }
     console.log(position);
-    
     // 设置到全局变量中去，让下个页面可以访问
     app.globalData.curPosition = position;
     // 切换页面
