@@ -112,7 +112,7 @@
     </view>
   </view>
   <view class="panel-bd">
-    <view class="position">一线记者</view>
-    <view class="position-list">全职／北京／20K-20K</view>
+    <view class="position">{{resumeDreamPosi.dreamposi}}</view>
+    <view class="position-list">{{resumeDreamPosi.workTypelist[resumeDreamPosi.workTypeindex]}}／{{resumeDreamPosi.citylist[resumeDreamPosi.cityindex]}}／{{resumeDreamPosi.salarylist[resumeDreamPosi.salaryindex]}}</view>
   </view>
 </view>

@@ -55,6 +55,12 @@ Page({
     //     submitText: "请先完善您的个人简历",
     //   })
     // } 
+
+    if (!wx.getStorageSync('resumeBaseInfo') || !wx.getStorageSync('resumeWorkList') || !wx.getStorageSync('resumeEduList') || !wx.getStorageSync('resumeDreamPosi') ){
+        that.setData({
+            submitText: "请先完善您的个人简历",
+      })
+    }
   },
   //公司详情
   bindPositionDetailTap: function(event){
