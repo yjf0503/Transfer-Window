@@ -1,77 +1,63 @@
 {
-  "pages":[
-    
-    "pages/index/index",
-    "pages/edit-resume-edu/edit-resume-edu",
-    
-
-    "pages/position-detail/position-detail",
-    "pages/company-detail/company-detail",
-    
-    "pages/messages/messages",
-    
-    
-    
-    "pages/my-resume/my-resume",
-    "pages/edit-resume-base/edit-resume-base",
-    "pages/edit-my/edit-my",
-    "pages/edit-resume-dreamposi/edit-resume-dreamposi",
-    "pages/edit-resume-edu-detail/edit-resume-edu-detail",
-    
-    "pages/edit-resume-work-detail/edit-resume-work-detail",
-    "pages/edit-resume-work/edit-resume-work",
-    
-  
-
-    
-    "pages/company/company",
-
-    "pages/search/index",
-    "pages/position/content",
-    "pages/usercenter/index",
-    "pages/usercenter/selfinfo",
-    "pages/usercenter/resume",
-
-
-    
-    "pages/rookie/rookie",
-
-    "pages/my/my"
-    
-    
-  ],
-  "window": {
-    "navigationBarBackgroundColor": "#f6f6f8",
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "首页",
-    "backgroundColor": "#f6f6f8",
-    "backgroundTextStyle": "light"
-  },
-  "tabBar": {  
-   "color": "#999999",  
-   "selectedColor": "#4990E2",  
-   "backgroundColor":"#f1f1f1",
-   "borderStyle":"white",  
-   "list": [{  
-     "selectedIconPath": "images/index_active.png",  
-     "iconPath": "images/index.png",  
-     "pagePath": "pages/index/index",  
-     "text": "首页"  
-   },{  
-     "selectedIconPath": "images/rookie_active.png",  
-     "iconPath": "images/rookie.png",  
-     "pagePath": "pages/rookie/rookie",  
-     "text": "入行"  
-   },{  
-     "selectedIconPath": "images/message_active.png",  
-     "iconPath": "images/message.png",  
-     "pagePath": "pages/messages/messages",  
-     "text": "消息"  
-   }, {  
-     "selectedIconPath": "images/my_active.png",  
-     "iconPath": "images/my.png",  
-     "pagePath": "pages/my/my",  
-     "text": "我"  
-   }]  
- }
+    "pages": [
+        "pages/index/index",
+        "pages/edit-resume-edu/edit-resume-edu",
+        "pages/position-detail/position-detail",
+        "pages/company-detail/company-detail",
+        "pages/messages/messages",
+        "pages/my-resume/my-resume",
+        "pages/edit-resume-base/edit-resume-base",
+        "pages/edit-my/edit-my",
+        "pages/edit-resume-dreamposi/edit-resume-dreamposi",
+        "pages/edit-resume-edu-detail/edit-resume-edu-detail",
+        "pages/edit-resume-work-detail/edit-resume-work-detail",
+        "pages/edit-resume-work/edit-resume-work",
+        
+        "pages/search/index",
+        "pages/position/content",
+        "pages/usercenter/index",
+        "pages/usercenter/selfinfo",
+        "pages/usercenter/resume",
+        "pages/rookie/rookie",
+        "pages/my/my"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#f6f6f8",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "首页",
+        "backgroundColor": "#f6f6f8",
+        "backgroundTextStyle": "light"
+    },
+    "tabBar": {
+        "color": "#999999",
+        "selectedColor": "#4990E2",
+        "backgroundColor": "#f1f1f1",
+        "borderStyle": "white",
+        "list": [
+            {
+                "selectedIconPath": "images/index_active.png",
+                "iconPath": "images/index.png",
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "selectedIconPath": "images/rookie_active.png",
+                "iconPath": "images/rookie.png",
+                "pagePath": "pages/rookie/rookie",
+                "text": "入行"
+            },
+            {
+                "selectedIconPath": "images/message_active.png",
+                "iconPath": "images/message.png",
+                "pagePath": "pages/messages/messages",
+                "text": "消息"
+            },
+            {
+                "selectedIconPath": "images/my_active.png",
+                "iconPath": "images/my.png",
+                "pagePath": "pages/my/my",
+                "text": "我"
+            }
+        ]
+    }
 }

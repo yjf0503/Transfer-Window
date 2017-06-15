@@ -45,7 +45,11 @@
  
 
 </view> 
-<view class="btn-box">
+<view class="btn-box" wx:if="{{isHaveResume}}">
   <button class="btn-sure" size="default" hover-class="btn-sure-hover" bindtap="saveDreamPosi"> 保存 </button>
 </view>
 
+<view class="btn-box" wx:else>
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="subOver"> 完成 </button>
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover" catchtap="subPre"> 上一步 </button> 
+</view>

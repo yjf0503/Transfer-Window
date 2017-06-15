@@ -9,7 +9,6 @@
 .img{
   width: 120rpx;
   height: 120rpx;
-  background-color: #222;
 }
 .item-main{
   flex: 1;
@@ -29,6 +28,7 @@
 }
 .job-Salary{
   font-size: 28rpx;
+  font-weight: 600;
   color: #ff9483;
   position: absolute;
   top: 0;

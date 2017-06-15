@@ -1,6 +1,6 @@
 <!--pages/my-resume/my-resume.wxml-->
 <view class="header">
-  <image wx:if="{{myBaseInfo.avatarUrl}}" class="bg-img" src="{{myBaseInfo.avatarUrl}}"></image>
+  <image wx:if="{{avatarBigUrl}}" class="bg-img" src="{{myBaseInfo.avatarUrl}}"></image>
   <image wx:else  class="bg-img" src="/images/def_resume.png"></image>
   <image class="bg-1" src="/images/bg_1.png"></image>
   <image class="bg-2"  src="/images/bg_2.png"></image>

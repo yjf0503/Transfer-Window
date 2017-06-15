@@ -17,6 +17,7 @@ Page({
    */
   onLoad: function (options) {
     var workId = options.workid;
+    var typeN = options.type;
     if (workId) {
       var resumeWorkList = wx.getStorageSync('resumeWorkList');
       var resumeWrok = resumeWorkList[workId];
@@ -153,5 +154,4 @@ Page({
     })
   }
   
-
 })

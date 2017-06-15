@@ -62,6 +62,15 @@
   </view>
 </view>
 
-<view class="btn-box">
+<view wx:if="{{isHaveResume}}" class="btn-box">
   <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitResumeBaseTap"> 保存 </button>
 </view>
+
+
+<view class="btn-box" wx:else>
+  <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="subNext"> 下一步 </button>
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover" catchtap="backIndewx"> 返回首页 </button> 
+</view>
+
+  
+

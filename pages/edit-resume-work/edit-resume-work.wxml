@@ -21,4 +21,5 @@
 
 <view class="btn-box">
   <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="editWorkListTap"> 添加工作 </button>
+  <button hidden="{{isHaveResume}}" class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="subNext"> 下一步 </button>
 </view>

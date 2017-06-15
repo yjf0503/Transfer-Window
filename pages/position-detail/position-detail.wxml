@@ -10,7 +10,7 @@
       <text class="field">{{position_content.p_address}}</text>
       <text class="field">{{position_content.p_edujy}}</text>
       <text class="field">{{position_content.p_education}}</text>
-      <text>缺全职</text>
+      <text>{{position_content.p_type_name}}</text>
     </view>
   </view>
   <view class="company-m" data-pid="{{position_content.p_id}}" catchtap="bindPositionDetailTap">

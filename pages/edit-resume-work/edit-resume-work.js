@@ -5,13 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    resumeWorkList:null
+    resumeWorkList:null,
+    isHaveResume: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      if (options.type == 0){
+        this.setData({
+            isHaveResume:false
+        })
+      }
+
     try {
       //获取工作列表，如果没有就加一个空数组，有，就绑定数据
       var resumeWorkList = wx.getStorageSync('resumeWorkList');
@@ -46,5 +53,11 @@ Page({
       })
     }
 
+  },
+  //下一步
+  subNext: function(){
+      wx.navigateTo({
+          url: '/pages/edit-resume-edu/edit-resume-edu?type=0',
+      })
   }
 })

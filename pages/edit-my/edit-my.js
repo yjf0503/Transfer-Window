@@ -7,7 +7,7 @@ Page({
   data: {
     avatarUrl: '', //头像
     userName: '',//姓名
-    genderlist: ['男', '女', '未知'],//性别
+    genderlist: ['男', '女'],//性别
     genderindex: 0,//性别index
     position:'',//职业
     posiLen:0,//职业字数

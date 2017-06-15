@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+      isHaveResume: true,
     resumeEduList:null,
     edulevellist: ['高中', '大专', '本科', '硕士', '博士'],//学历
   },
@@ -13,6 +14,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      if(options.type == 0){
+          this.setData({
+              isHaveResume: false
+          })
+      }
     try {
       //获取教育列表，如果没有就加一个空数组，有，就绑定数据
       var resumeEduList = wx.getStorageSync('resumeEduList');
@@ -46,5 +52,12 @@ Page({
       })
     }
     
+  },
+
+  //下一步
+  subNext: function () {
+      wx.navigateTo({
+          url: '/pages/edit-resume-dreamposi/edit-resume-dreamposi?type=0',
+      })
   }
 })

@@ -10,10 +10,10 @@
   </view>
   <view class="item-cell item-cell-input">
     <view class="item-cell-bd">
-      <text>部门</text>
+      <text>部门与职位</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="{{department}}" bindinput="departmentTap" placeholder="输入部门名称" />
+      <input type="text" value="{{department}}" bindinput="departmentTap" placeholder="如：市场专员" />
     </view>
   </view>
   <view class="item-cell item-cell-access">

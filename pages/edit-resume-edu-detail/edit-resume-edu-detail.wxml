@@ -19,7 +19,7 @@
   
   <view class="item-cell item-cell-access">
     <view class="item-cell-bd">
-      <text>最高学历</text>
+      <text>学历</text>
     </view>
     
     <picker class="item-cell-ft blue" bindchange="bindPickerChangeEduLevel" value="{{edulevelindex}}" range="{{edulevellist}}">
@@ -46,3 +46,4 @@
   <button class="btn-remove" size="default" hover-class="btn-sure-hover" hidden="{{isadd}}" catchtap="removeSchoolTap"> 删除教育经历 </button>
   <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitSchoolTap"> 保存 </button>
 </view>
+

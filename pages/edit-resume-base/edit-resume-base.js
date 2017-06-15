@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isHaveResume: true,//第一次新建简历
     edulevellist: ['高中', '大专', '本科', '硕士', '博士'],//学历
     edulevelindex: 2,//默认本科
     worksYearlist: ['应届毕业生', '1年以下', '1-3年', '3-5年', '5-10年',' 10年以上'],//工作年限
@@ -20,6 +21,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      if (options.type == 0){
+        this.setData({
+            isHaveResume:false
+        })
+      }
+
     //取出页面数据
     try {
       var resumeBaseTap = wx.getStorageSync('resumeBaseInfo')
@@ -104,4 +111,27 @@ Page({
       })
     }, 1000);
   },
+  //返回首页
+  backIndewx: function(){
+    wx.switchTab({
+        url: '/pages/index/index',
+    })
+  },
+  //下一步
+  subNext: function(){
+      try {
+          wx.setStorageSync('resumeBaseInfo', this.data);
+      } catch (e) {
+
+      }
+      wx.showToast({
+          title: '保存成功！',
+          icon: 'success',
+          duration: 800
+      })
+
+      wx.navigateTo({
+          url: '/pages/edit-resume-work/edit-resume-work?type=0',
+      })
+  }
 })

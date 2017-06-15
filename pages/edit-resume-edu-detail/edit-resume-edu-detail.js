@@ -18,6 +18,7 @@ Page({
   onLoad: function (options) {
     //获取参数，如果没有就是添加
     var eduId = options.eduid;
+    var typeN = options.type;
     if (eduId){
       var resumeEduList = wx.getStorageSync('resumeEduList');
       var resumeEdu = resumeEduList[eduId];
@@ -28,7 +29,7 @@ Page({
         edulevelindex: resumeEdu.edulevelindex,
         graduation: resumeEdu.graduation,
       });
-    }else{
+    } else{
       this.setData({
         isadd:true,
       })
@@ -143,4 +144,5 @@ Page({
       }
     })
   }
+  
 })

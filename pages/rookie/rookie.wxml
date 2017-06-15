@@ -4,23 +4,12 @@
 <!--index.wxml-->
 <!--<template is="search-header"></template>-->
 <view class="container">
-  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" class="scroll-wrapper">
-    <!--<view class="scroll-view-item" wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
-      <image class="item-img" src="{{item.enterprise_logo}}"></image>
-      <view class="detail">
-        <view class="item-name" data-id="{{item.id}}">岗位名称：{{item.p_name}}</view>
-        <view class="item-name">薪资待遇：{{item.p_wages}}</view>
-        <view class="item-name">工作地点：{{item.p_address}}</view>
-        <view class="tips">
-          <view class="item-info">企业名称：{{item.enterprise_name}}</view>
-          <view class="item-info">工作经验：{{item.p_edujy}}</view>
-          <view class="item-info">添加时间：{{item.p_addtime}}</view>
-        </view>
-      </view>
-    </view>-->
-    <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
+  <scroll-view scroll-y style="height: {{viewHeigh}}px;" bindscrolltolower="lower">
+    
+    <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
       <template is="position-item" data="{{...item}}" />
     </view>
 
+    <view class="loading" hidden="{{loadingHidden}}">{{loadingText}}</view>
   </scroll-view>
 </view>

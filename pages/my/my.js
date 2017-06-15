@@ -1,4 +1,5 @@
 // pages/my/my.js
+var app = getApp();
 Page({
 
   /**
@@ -9,12 +10,7 @@ Page({
     userInfoAvatar: '',//微信头像
     isShow: false//是否拿到用户信息，否则显示默认头像
   },
-  onLoad: function(){
-    wx.setNavigationBarTitle({
-      title: '我'
-    });
-  },
-
+  
   onLoad: function(){
     var that = this;
     var userInfo = wx.getStorageSync('resume');
@@ -49,10 +45,49 @@ Page({
   },
   //简历
   resumeTap: function () {
-    wx.navigateTo({
-      url: '/pages/my-resume/my-resume'
-    });
+    var that = this;
+      //判断是否有简历
+      try {
+          var value = wx.getStorageSync('isHaveResume')
+          if (value) {
+              // Do something with return value
+              wx.navigateTo({
+                  url: '/pages/my-resume/my-resume'
+              });
+              
+          }else{
+              that.isHaveResumeFun();
+          }
+      } catch (e) {
+          // Do something when catch error
+      }
+
+    
   },
+
+  //判断是否有简历
+  isHaveResumeFun: function () {
+      var that = this;
+
+      app.apiGet(app.apiList.isHaveResume, {
+          openid: app.globalData.openid
+      }, function (data) {
+          if (data.code == 1) {
+              wx.setStorageSync('isHaveResume', true);
+              wx.navigateTo({
+                  url: '/pages/my-resume/my-resume'
+              });
+              
+          } else if (data.code == 0) {
+              wx.navigateTo({
+                  url: '/pages/edit-resume-base/edit-resume-base?type=0'
+              });
+          } else {
+              app.alert(data.alertMsg)
+          }
+      })
+  },
+
   //我的投递
   myDeliveryTap: function () {
     wx.switchTab({

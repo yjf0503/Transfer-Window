@@ -5,6 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        isHaveResume: true,
         workTypelist: ['全职', '兼职', '实习生'],//工作类型
         workTypeindex: 1,//默认
         citylist: ['北京', '上海', '广州', '杭州', '深圳'],//所在城市
@@ -17,6 +18,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        if (options.type == 0) {
+            this.setData({
+                isHaveResume: false
+            })
+        }
+
         //取出页面数据
         try {
             var resumeDreamPosi = wx.getStorageSync('resumeDreamPosi')
@@ -60,6 +67,7 @@ Page({
             salaryindex: event.detail.value
         })
     },
+    //保存
     saveDreamPosi: function () {
         try {
             wx.setStorageSync('resumeDreamPosi', this.data);
@@ -86,6 +94,29 @@ Page({
 
             })
         }, 1000);
+    },
+    //返回上一步
+    subPre: function () {
+        wx.navigateBack({
+
+        })
+    },
+    //下一步
+    subOver: function () {
+        try {
+            wx.setStorageSync('resumeDreamPosi', this.data);
+        } catch (e) {
+
+        }
+        wx.showToast({
+            title: '保存成功！',
+            icon: 'success',
+            duration: 800
+        })
+
+        wx.reLaunch({
+            url: '/pages/my-resume/my-resume',
+        })
     }
 
 
