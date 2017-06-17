@@ -1,5 +1,5 @@
 <!--pages/my-resume/my-resume.wxml-->
-<view class="header">
+<!--<view class="header">
   <image wx:if="{{avatarBigUrl}}" class="bg-img" src="{{myBaseInfo.avatarUrl}}"></image>
   <image wx:else  class="bg-img" src="/images/def_resume.png"></image>
   <image class="bg-1" src="/images/bg_1.png"></image>
@@ -17,7 +17,15 @@
     </view>
   </view>
   <text class="change-img" catchtap="changeBgImgTap">更换头像</text>
+</view>-->
+
+<view class="user-images">
+    <view class="images-box" catchtap="changeBgImgTap">
+        <image src="{{avatarUrl}}"></image>
+        <view class="change-text">点击更换</view>
+    </view>
 </view>
+
 
 <view class="panel">
   <view class="panel-hd">
@@ -29,16 +37,24 @@
   </view>
   <view class="panel-bd">
     <view class="base">
+      <text>姓名</text>
+      <text class="data-text">{{resumeBaseInfo.userName}}</text>
+    </view>
+    <view class="base">
+      <text>性别</text>
+      <text class="data-text">{{genderlist[resumeBaseInfo.genderindex]}}</text>
+    </view>
+    <view class="base">
       <text>最高学历</text>
-      <text class="data-text">{{resumeBaseInfo.edulevellist[resumeBaseInfo.edulevelindex]}}</text>
+      <text class="data-text">{{edulevellist[resumeBaseInfo.edulevelindex]}}</text>
     </view>
     <view class="base">
       <text>工作年限</text>
-      <text class="data-text">{{resumeBaseInfo.worksYearlist[resumeBaseInfo.worksYearindex]}}</text>
+      <text class="data-text">{{worksYearlist[resumeBaseInfo.worksYearindex]}}</text>
     </view>
     <view class="base">
       <text>所在城市</text>
-      <text class="data-text">{{resumeBaseInfo.citylist[resumeBaseInfo.cityindex]}}</text>
+      <text class="data-text">{{citylist[resumeBaseInfo.cityindex]}}</text>
     </view>
     <view class="base">
       <text>联系电话</text>
@@ -47,6 +63,10 @@
     <view class="base">
       <text>联系邮箱</text>
       <text class="data-text">{{resumeBaseInfo.email}}</text>
+    </view>
+    <view class="base">
+      <text>一句话介绍自己</text>
+      <text class="data-text">{{resumeBaseInfo.myself}}</text>
     </view>
   </view>
 </view>

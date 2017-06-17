@@ -25,81 +25,18 @@ Page({
             position_content: app.globalData.positionDetail
         });
         //判断是否有简历
-        try {
-            var value = wx.getStorageSync('isHaveResume')
-            if (value) {
-                // Do something with return value
-                that.setData({
-                    submitText: "发送简历",
-                    isHaveResume: true
-                });
-            }else{
-                that.isHaveResumeFun();
-            }
-        } catch (e) {
-            // Do something when catch error
+        if (app.globalData.isHaveResume == '') {
+            that.setData({
+                submitText: "请先完善您的个人简历",
+                isHaveResume: false
+            });
+        } else {
+            that.setData({
+                submitText: "发送简历",
+                isHaveResume: true
+            });
         }
-
-
-        // //用来接收简历id的array
-        // var resume_position_id_list = wx.getStorageSync('resume_position_id_list');
-        // if (!resume_position_id_list) {
-        //   resume_position_id_list = Array();
-        //   wx.setStorageSync('resume_position_id_list', resume_position_id_list);
-        // };
-
-
-        // var resume_id_list = wx.getStorageSync('resume_id_list');
-        // if (!resume_id_list) {
-        //   resume_id_list = Array();
-        //   wx.setStorageSync('resume_id_list', resume_id_list);
-        // };
-
-        // //判断是否投递过简历
-        // var pid = that.data.position_content.id;
-        // if (resume_position_id_list.indexOf(pid) != '-1') {
-        //   //投递过，禁止按钮
-        //   that.setData({
-        //     submitdisabled: true,
-        //     submitText: "您已经投递过了",
-        //   });
-        // };
-        //判断是否有简历
-        // if (!wx.getStorageSync('true_resume')) {
-        //   that.setData({
-        //     submitText: "请先完善您的个人简历",
-        //   })
-        // } 
-
-        // if (!wx.getStorageSync('resumeBaseInfo') || !wx.getStorageSync('resumeWorkList') || !wx.getStorageSync('resumeEduList') || !wx.getStorageSync('resumeDreamPosi') ){
-        //     that.setData({
-        //         submitText: "请先完善您的个人简历",
-        //   })
-        // }
-    },
-
-    //判断是否有简历
-    isHaveResumeFun: function () {
-        var that = this;
-
-        app.apiGet(app.apiList.isHaveResume, {
-            openid: app.globalData.openid
-        }, function (data) {
-            if (data.code == 1) {
-                that.setData({
-                    submitText: "发送简历",
-                    isHaveResume: true
-                });
-                wx.setStorageSync('isHaveResume', true);
-            } else if (data.code == 0){
-                that.setData({
-                    submitText: "请先完善您的个人简历",
-                    isHaveResume: false
-                });
-            }else {
-                app.alert(data.alertMsg)
-            }
-        })
+       
     },
 
     //公司详情
@@ -111,6 +48,7 @@ Page({
             url: '../company-detail/company-detail?pid=' + event.currentTarget.dataset.pid
         });
     },
+
     //发送简历
     isSendTap: function () {
         var that = this;
@@ -124,20 +62,8 @@ Page({
                 confirmColor: '#4990E2',
                 success: function (res) {
                     if (res.confirm) {
-                        var animation = wx.createAnimation({
-                            duration: 1000,
-                            timingFunction: 'ease',
-                        })
-
-                        // that.animation = animation
-
-                        // animation.scale(2, 2).rotate(45).step()
-
-                        that.setData({
-                            mode: false,
-                            animationData: animation.export()
-                        })
-
+                        
+                        that.sendResumeFun();
 
 
                     } else if (res.cancel) {
@@ -152,10 +78,50 @@ Page({
         }
         
     },
+
+
+    //投递接口
+    sendResumeFun: function(){
+        var that = this;
+        app.apiPost(app.apiList.deliveryResume,{
+            openid: app.globalData.openid,
+            positionid: that.data.position_content.p_id
+        },function(data){
+
+            var animation = wx.createAnimation({
+                duration: 1000,
+                timingFunction: 'ease',
+            })
+
+            that.setData({
+                mode: false,
+                animationData: animation.export()
+            })
+        })
+    },
+
     //关闭成功提示
     closeTap: function () {
         this.setData({
             mode: true
         })
+    },
+    
+    //分享
+    onShareAppMessage: function (res) {
+        if (res.from === 'button') {
+            // 来自页面内转发按钮
+            console.log(res.target)
+        }
+        return {
+            title: '自定义转发标题',
+            path: '/page/user?id=123',
+            success: function (res) {
+                // 转发成功
+            },
+            fail: function (res) {
+                // 转发失败
+            }
+        }
     }
 })

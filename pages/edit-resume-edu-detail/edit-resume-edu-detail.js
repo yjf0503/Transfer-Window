@@ -1,11 +1,12 @@
 // pages/edit-resume-edu-detail/edit-resume-edu-detail.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    eduId:null,
+      content_id:1,
     edulevellist: ['高中', '大专', '本科', '硕士', '博士'],//学历
     edulevelindex: 2,//默认本科
     graduation: '2015-01',//毕业时间
@@ -62,66 +63,107 @@ Page({
       graduation: e.detail.value
     })
   },
+
+  //保存教育详情
+  setResumeEduDetailFun: function () {
+      let content = {
+          schoolname: this.data.schoolname,
+          profession: this.data.profession,
+          edulevelindex: this.data.edulevelindex,
+          graduation: this.data.graduation,
+          
+      }
+      app.apiPost(app.apiList.saveResume, {
+          openid: app.globalData.openid,
+          type: 3,
+          content: JSON.stringify(content),
+          content_id: this.data.content_id,
+      }, function (data) {
+          if (data.code == 1) {
+              console.log(data.msg)
+          } else {
+              app.alert(data.alertMsg);
+          }
+      })
+  },
   //提交教育信息
   submitSchoolTap: function(e){
-    var resumeEduList = wx.getStorageSync('resumeEduList');
-    var eduIdLen = resumeEduList.length;
-    var resumeEdu = {
-      eduId: eduIdLen,
-      schoolname: this.data.schoolname,
-      profession: this.data.profession,
-      edulevelindex: this.data.edulevelindex,
-      graduation: this.data.graduation,
-    };
-    //判断是修改还是添加
-    var eduId = this.data.eduId;
-    if (eduId && eduId < eduIdLen){
-      for (var i = 0; i < eduIdLen; i++){
-        (function(){
-          if (resumeEduList[i].eduId == eduId) {
-            resumeEdu.eduId = eduId;
-            resumeEduList[i] = resumeEdu;
-          }
-        })(i)
+
+      this.setResumeEduDetailFun();
+    // var resumeEduList = wx.getStorageSync('resumeEduList');
+    // var eduIdLen = resumeEduList.length;
+    // var resumeEdu = {
+    //   eduId: eduIdLen,
+    //   schoolname: this.data.schoolname,
+    //   profession: this.data.profession,
+    //   edulevelindex: this.data.edulevelindex,
+    //   graduation: this.data.graduation,
+    // };
+    // //判断是修改还是添加
+    // var eduId = this.data.eduId;
+    // if (eduId && eduId < eduIdLen){
+    //   for (var i = 0; i < eduIdLen; i++){
+    //     (function(){
+    //       if (resumeEduList[i].eduId == eduId) {
+    //         resumeEdu.eduId = eduId;
+    //         resumeEduList[i] = resumeEdu;
+    //       }
+    //     })(i)
         
-      }
+    //   }
       
-    }else{
-      resumeEduList.push(resumeEdu);
-    }
+    // }else{
+    //   resumeEduList.push(resumeEdu);
+    // }
     
-    try {
-      wx.setStorageSync('resumeEduList', resumeEduList)
-      console.log(resumeEduList);
-    } catch (e) {
-    }
+    // try {
+    //   wx.setStorageSync('resumeEduList', resumeEduList)
+    //   console.log(resumeEduList);
+    // } catch (e) {
+    // }
     wx.showToast({
       title: '保存成功！',
       icon: 'success',
-      duration: 800
+      duration: 500
     })
 
-    //更新上一级页面
-    var pages = getCurrentPages();
-    var curPage = pages[pages.length - 2];
-    var curPagePre = pages[pages.length - 3];
-    var newResumeEduList = wx.getStorageSync('resumeEduList');
-    curPage.setData({
-      resumeEduList: newResumeEduList
-    });
-     //更新上上一级页面
-    curPagePre.setData({
-      resumeEduList: newResumeEduList
-    });
+    // //更新上一级页面
+    // var pages = getCurrentPages();
+    // var curPage = pages[pages.length - 2];
+    // var curPagePre = pages[pages.length - 3];
+    // var newResumeEduList = wx.getStorageSync('resumeEduList');
+    // curPage.setData({
+    //   resumeEduList: newResumeEduList
+    // });
+    //  //更新上上一级页面
+    // curPagePre.setData({
+    //   resumeEduList: newResumeEduList
+    // });
 
     //返回上一个页面
     setTimeout(function () {
       wx.navigateBack({
 
       })
-    }, 1000);
+    }, 800);
 
   },
+
+  //删除教育详情
+  deleteEduDetailFun() {
+      app.apiPost(app.apiList.deleteResumePart, {
+          openid: app.globalData.openid,
+          type: 3,
+          content_id: this.data.content_id,
+      }, function (data) {
+          if (data.code == 1) {
+              console.log(data.msg)
+          } else {
+              app.alert(data.alertMsg);
+          }
+      })
+  },
+
   //删除
   removeSchoolTap: function () {
     wx.showModal({
@@ -133,11 +175,18 @@ Page({
       confirmColor: '#4990E2',
       success: function (res) {
         if (res.confirm) {
+            that.deleteEduDetailFun();
           wx.showToast({
             title: '删除成功',
             icon: 'success',
             duration: 800
           })
+          //返回上一个页面
+          setTimeout(function () {
+              wx.navigateBack({
+
+              })
+          }, 800);
         } else if (res.cancel) {
           console.log('用户点击取消')
         }

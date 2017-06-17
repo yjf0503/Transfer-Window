@@ -19,21 +19,23 @@ Page({
         })
       }
 
-    try {
-      //获取工作列表，如果没有就加一个空数组，有，就绑定数据
-      var resumeWorkList = wx.getStorageSync('resumeWorkList');
-      var resumeWorkListArray = [];
-      if (!resumeWorkList) {
-        wx.setStorageSync('resumeWorkList', resumeWorkListArray);
-        return false;
-      }
-      this.setData({
-        resumeWorkList: resumeWorkList
-      });
+      
 
-    } catch (e) {
-      // Do something when catch error
-    }
+    // try {
+    //   //获取工作列表，如果没有就加一个空数组，有，就绑定数据
+    //   var resumeWorkList = wx.getStorageSync('resumeWorkList');
+    //   var resumeWorkListArray = [];
+    //   if (!resumeWorkList) {
+    //     wx.setStorageSync('resumeWorkList', resumeWorkListArray);
+    //     return false;
+    //   }
+    //   this.setData({
+    //     resumeWorkList: resumeWorkList
+    //   });
+
+    // } catch (e) {
+    //   // Do something when catch error
+    // }
   },
 
  

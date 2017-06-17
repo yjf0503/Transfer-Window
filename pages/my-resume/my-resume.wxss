@@ -3,6 +3,9 @@ page{
   background-color: #f5f6f9;
   padding-bottom: 20rpx;
 }
+
+
+
 .header{
   position: relative;
   width: 100%;
@@ -85,6 +88,32 @@ page{
   font-size: 24rpx;
   border-radius: 4rpx;
 }
+
+
+.user-images{
+    width: 100%;
+    height: 340rpx;
+    background-color: #fff;
+    text-align: center;
+}
+
+.images-box{
+
+    margin-top: 60rpx;
+    display: inline-block;
+    
+}
+.change-text{
+    margin-top: 20rpx;
+    color: #a4a4a4;
+    font-size: 28rpx;
+}
+.images-box image{
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 140rpx;
+}
+
 .panel{
   background-color: #fff;
   width: 100%;

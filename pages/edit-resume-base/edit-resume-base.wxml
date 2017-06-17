@@ -1,5 +1,27 @@
 <!--pages/edit-resume-base/edit-resume-base.wxml-->
 <view class="item-cells no-top">
+
+  <view class="item-cell item-cell-input">
+    <view class="item-cell-bd">
+      <text>姓名</text>
+    </view>
+    <view class="item-cell-ft blue">
+      <input bindinput="nameTap" type="text" maxlength="6" value="{{userName}}" placeholder="真实姓名" />
+    </view>
+  </view>
+
+  <view class="item-cell item-cell-access">
+    <view class="item-cell-bd">
+      <text>性别</text>
+    </view>
+
+    <picker class="item-cell-ft blue" bindchange="bindPickerChangeSex" value="{{genderindex}}" range="{{genderlist}}">
+      <view class="picker">
+        {{genderlist[genderindex]}}
+      </view>
+    </picker>
+  </view>
+  
   <view class="item-cell item-cell-access">
     <view class="item-cell-bd">
       <text>最高学历</text>
@@ -15,7 +37,7 @@
     <view class="item-cell-bd">
       <text>工作年限</text>
     </view>
-    
+
     <picker class="item-cell-ft blue" bindchange="bindPickerChangeWorksYear" value="{{worksYearindex}}" range="{{worksYearlist}}">
       <view class="picker">
         {{worksYearlist[worksYearindex]}}
@@ -26,18 +48,18 @@
     <view class="item-cell-bd">
       <text>出生日期</text>
     </view>
-    
+
     <picker class="item-cell-ft blue" mode="date" value="{{birthday}}" fields="month" start="1960-01" end="2000-01" bindchange="bindDateChangeBirthday">
-    <view class="picker">
-      {{birthday}}
-    </view>
-  </picker>
+      <view class="picker">
+        {{birthday}}
+      </view>
+    </picker>
   </view>
   <view class="item-cell item-cell-access">
     <view class="item-cell-bd">
       <text>所在城市</text>
     </view>
-    
+
     <picker class="item-cell-ft blue" bindchange="bindPickerChangeCity" value="{{cityindex}}" range="{{citylist}}">
       <view class="picker">
         {{citylist[cityindex]}}
@@ -49,7 +71,7 @@
       <text>联系电话</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="number" value="{{contact}}" bindinput="contactTap" placeholder="输入你电话"/>
+      <input type="number" value="{{contact}}" bindinput="contactTap" placeholder="输入你电话" />
     </view>
   </view>
   <view class="item-cell item-cell-input">
@@ -57,11 +79,23 @@
       <text>联系邮箱</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="{{email}}" bindinput="emailTap" placeholder="输入你邮箱"/>
+      <input type="text" value="{{email}}" bindinput="emailTap" placeholder="输入你邮箱" />
     </view>
   </view>
 </view>
-
+<view class="item-cells">
+  <view class="item-cell">
+    <view class="item-cell-bd">
+      <text>一句话介绍</text>
+    </view>
+    <view class="item-cell-ft">
+      <text class="blue">{{selfLen}}</text>/30
+    </view>
+  </view>
+  <view class="item-cell-textarea">
+    <textarea bindinput="countSelfFun" class="item-textarea" value="{{myself}}" placeholder="用一句话介绍自己" maxlength="30" />
+  </view>
+</view>
 <view wx:if="{{isHaveResume}}" class="btn-box">
   <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitResumeBaseTap"> 保存 </button>
 </view>
@@ -69,8 +103,5 @@
 
 <view class="btn-box" wx:else>
   <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="subNext"> 下一步 </button>
-  <button class="btn-remove" size="default" hover-class="btn-sure-hover" catchtap="backIndewx"> 返回首页 </button> 
+  <button class="btn-remove" size="default" hover-class="btn-sure-hover" catchtap="backIndewx"> 返回首页 </button>
 </view>
-
-  
-

@@ -1,4 +1,5 @@
 // pages/edit-resume-dreamposi/edit-resume-dreamposi.js
+var app = getApp();
 Page({
 
     /**
@@ -67,17 +68,41 @@ Page({
             salaryindex: event.detail.value
         })
     },
+    //保存期望职位
+    
+    setResumeDreamPosFun: function () {
+        let content = {
+            dreamposi: this.data.dreamposi,
+            workTypeindex: this.data.workTypeindex,
+            cityindex: this.data.cityindex,
+            salaryindex: this.data.salaryindex,
+            
+        }
+        app.apiPost(app.apiList.saveResume, {
+            openid: app.globalData.openid,
+            type: 4,
+            content: JSON.stringify(content),
+            content_id: 1
+        }, function (data) {
+            if (data.code == 1) {
+                console.log(data.msg)
+            } else {
+                app.alert(data.alertMsg);
+            }
+        })
+    },
     //保存
     saveDreamPosi: function () {
-        try {
-            wx.setStorageSync('resumeDreamPosi', this.data);
-        } catch (e) {
+        this.setResumeDreamPosFun();
+        // try {
+        //     wx.setStorageSync('resumeDreamPosi', this.data);
+        // } catch (e) {
 
-        }
+        // }
         wx.showToast({
             title: '保存成功！',
             icon: 'success',
-            duration: 800
+            duration: 500
         })
 
         //更新上一级页面
@@ -93,7 +118,7 @@ Page({
             wx.navigateBack({
 
             })
-        }, 1000);
+        }, 800);
     },
     //返回上一步
     subPre: function () {

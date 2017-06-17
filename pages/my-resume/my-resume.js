@@ -1,4 +1,5 @@
 // pages/my-resume/my-resume.js
+var app = getApp();
 Page({
 
   /**
@@ -8,93 +9,28 @@ Page({
     resumeBaseInfo: null,
     resumeWorkList: null,
     resumeEduList: null,
-    avatarBigUrl:'',//大的用户背景图片
+    resumeDreamPosi: null,
+    avatarUrl: '/images/small_avatar.png',
+    genderlist: ['男', '女'],//性别
     edulevellist: ['高中', '大专', '本科', '硕士', '博士'],//学历
-    sexList: ['男','女','未知']
+    worksYearlist: ['应届毕业生', '1年以下', '1-3年', '3-5年', '5-10年', ' 10年以上'],//工作年限
+    citylist: ['北京', '上海', '广州', '杭州', '深圳', '其它'],//所在城市
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //取出页面数据
-    try {
-      //我的基本信息
-      var myBaseInfo = wx.getStorageSync('myBaseInfo')
+      
+
+
       this.setData({
-        myBaseInfo: myBaseInfo
-      })
-    } catch (e) {
-      // Do something when catch error
-    }
+          avatarUrl: app.globalData.userInfo.avatarUrl != null ? app.globalData.userInfo.avatarUrl : '/images/small_avatar.png',
+        resumeBaseInfo: app.globalData.isHaveResume.base_info,
+    })
 
-    try {
-      //简历的基本信息
-      var resumeBaseTap = wx.getStorageSync('resumeBaseInfo')
-      this.setData({
-        resumeBaseInfo: resumeBaseTap
-      })
-    } catch (e) {
-      // Do something when catch error
-    }
-    //工作经历
-    try {
-      //获取工作经历，如果没有就加一个空数组，有，就绑定数据
-      var resumeWorkList = wx.getStorageSync('resumeWorkList');
-      var resumeWorkListArray = [];
-      if (!resumeWorkList) {
-        wx.setStorageSync('resumeWorkList', resumeWorkListArray);
-        return false;
-      }
-      this.setData({
-        resumeWorkList: resumeWorkList
-      });
-
-    } catch (e) {
-      // Do something when catch error
-    }
-
-    //教育经历
-    try {
-      //获取教育列表，如果没有就加一个空数组，有，就绑定数据
-      var resumeEduList = wx.getStorageSync('resumeEduList');
-      var resumeEduListArray = [];
-      if (!resumeEduList) {
-        wx.setStorageSync('resumeEduList', resumeEduListArray);
-        return false;
-      }
-      this.setData({
-        resumeEduList: resumeEduList
-      });
-
-    } catch (e) {
-      // Do something when catch error
-    }
-
-    //期望职位
+    
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  // onShow: function () {
-  //   try {
-  //     //我的基本信息
-  //     var myBaseInfo = wx.getStorageSync('myBaseInfo')
-  //     this.setData({
-  //       myBaseInfo: myBaseInfo
-  //     })
-  //   } catch (e) {
-  //     // Do something when catch error
-  //   }
-  // },
 
   
   //更换头像
@@ -107,9 +43,19 @@ Page({
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
+
+        app.globalData.userInfo.avatarUrl = tempFilePaths;
+        wx.setStorageSync('userInfo', app.globalData.userInfo);
         that.setData({
-          avatarBigUrl: tempFilePaths
+            avatarUrl: tempFilePaths
         })
+
+        //更新上一级页面
+        var pages = getCurrentPages();
+        var curPage = pages[pages.length - 2];
+        curPage.setData({
+            userInfo: app.globalData.userInfo
+        });
       }
     })
   },

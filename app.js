@@ -19,7 +19,7 @@ App({
         //接口host
         host: 'https://www.ecosports.cn',
         //版本
-        version: '0.0.1',
+        version: '0.2.0',
         //app名称
         channel: '招聘小程序'
     },
@@ -33,15 +33,22 @@ App({
         openid: wx.getStorageSync('openid') || null,
         //微信用户信息
         userInfo: wx.getStorageSync('userInfo') || null,
+        //判断用户是否已有简历
+        isHaveResume: wx.getStorageSync('isHaveResume') || null,
         //用于职位详情绑定数据
         positionDetail: null,
     },
     apiList: {
         //接口
-        getOpenid: '/home/enterprise/wxapp_savesession',
-        positions:'/Home/Enterprise/actionPositions',
-        isHaveResume: '/Home/Enterprise/actionIsHaveResume',
-        company: '/Home/Enterprise/wxapp_company',
+        getOpenid: '/home/enterprise/wxapp_savesession',//获取微信openid
+        positions:'/Home/Enterprise/actionPositions',//职位列表
+        isHaveResume: '/Home/Enterprise/actionIsHaveResume',//简历
+        company: '/Home/Enterprise/wxapp_company',//公司详情
+        saveResume: '/Home/Enterprise/actionSaveResume',// 保存简历
+        deleteResumePart: '/Home/Enterprise/actionDeleteResumePart',//删除简历
+        getResume: '/Home/Enterprise/actionGetResume',//获取简历
+        deliveryStatus: '/Home/Enterprise/actionDeliveryStatus',//消息
+        deliveryResume:'/Home/Enterprise/actionDeliveryResume'//投递简历
 
     },
     apiGet: function (url, data, callback) {
@@ -71,7 +78,7 @@ App({
             data: data,
             method: 'POST',
             dataType: 'json',
-            header: { 'content-type': 'application/json;charset=UTF-8' },
+            header: { "content-type": "application/x-www-form-urlencoded" },
             success: function (res) {
                 callback(res.data)
             },

@@ -14,10 +14,8 @@
         "pages/edit-resume-work/edit-resume-work",
         
         "pages/search/index",
-        "pages/position/content",
-        "pages/usercenter/index",
-        "pages/usercenter/selfinfo",
-        "pages/usercenter/resume",
+        
+        
         "pages/rookie/rookie",
         "pages/my/my"
     ],
