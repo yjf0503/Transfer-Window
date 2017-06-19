@@ -71,7 +71,7 @@
       <text>联系电话</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="number" value="{{contact}}" bindinput="contactTap" placeholder="输入你电话" />
+      <input type="number" value="{{contact}}" bindinput="contactTap" placeholder="输入您的电话" />
     </view>
   </view>
   <view class="item-cell item-cell-input">
@@ -79,11 +79,11 @@
       <text>联系邮箱</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="{{email}}" bindinput="emailTap" placeholder="输入你邮箱" />
+      <input type="text" value="{{email}}" bindinput="emailTap" placeholder="输入您的邮箱" />
     </view>
   </view>
 </view>
-<view class="item-cells">
+<!--<view class="item-cells">
   <view class="item-cell">
     <view class="item-cell-bd">
       <text>一句话介绍</text>
@@ -95,7 +95,7 @@
   <view class="item-cell-textarea">
     <textarea bindinput="countSelfFun" class="item-textarea" value="{{myself}}" placeholder="用一句话介绍自己" maxlength="30" />
   </view>
-</view>
+</view>-->
 <view class="btn-box" wx:if="{{isHaveResume}}">
   <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitResumeBaseTap"> 保存 </button>
 

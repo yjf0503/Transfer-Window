@@ -7,28 +7,28 @@ Page({
      */
     data: {
         isShow: false,//是否拿到用户信息，否则显示默认头像
-        myself: ''
+        //myself: ''
     },
 
     onLoad: function () {
         this.getUserInfo();
         //获取我的简介
-        if (app.globalData.isHaveResume !== null){
-            this.setData({
-                myself: app.globalData.isHaveResume.base_info.myself
-            })
-        }
+        // if (app.globalData.isHaveResume !== null){
+        //     this.setData({
+        //         myself: app.globalData.isHaveResume.base_info.myself
+        //     })
+        // }
         
 
 
     },
     onShow: function(){
         //获取我的简介
-        if (app.globalData.isHaveResume !== null) {
-            this.setData({
-                myself: app.globalData.isHaveResume.base_info.myself
-            })
-        }
+        // if (app.globalData.isHaveResume !== null) {
+        //     this.setData({
+        //         myself: app.globalData.isHaveResume.base_info.myself
+        //     })
+        // }
     },
     getUserInfo: function () {
         //获取用户头像，名称，并缓存到userInfo
@@ -60,20 +60,20 @@ Page({
 
     //简历
     resumeTap: function () {
-        wx.reLaunch({
-            url: '/pages/edit-resume-base/edit-resume-base?type=0',
-        });
+        // wx.reLaunch({
+        //     url: '/pages/edit-resume-base/edit-resume-base?type=0',
+        // });
 
         //判断是否有简历
-        // if (app.globalData.isHaveResume==''){
-        //     wx.reLaunch({
-        //         url: '/pages/edit-resume-base/edit-resume-base?type=0',
-        //     });
-        // }else{
-        //     wx.navigateTo({
-        //         url: '/pages/my-resume/my-resume'
-        //     });
-        // }
+        if (app.globalData.isHaveResume===null){
+            wx.reLaunch({
+                url: '/pages/edit-resume-base/edit-resume-base?type=0',
+            });
+        }else{
+            wx.navigateTo({
+                url: '/pages/my-resume/my-resume'
+            });
+        }
     },
 
 
@@ -82,6 +82,19 @@ Page({
         wx.switchTab({
             url: '/pages/messages/messages'
         });
+    },
+    //删除简历
+    deleteResumeTap: function(){
+        app.apiPost(app.apiList.deleteResume,{
+            openid: app.globalData.openid
+        },function(data){
+            if(data.code ==1){
+                app.alert(data.alertMsg);
+                app.globalData.isHaveResume = null;
+            }else{
+                app.alert(data.alertMsg);
+            }
+        })
     }
 
 })

@@ -4,7 +4,7 @@
   <view class="position">
     <view class="posi">
       <text class="name">{{position_content.p_name}}</text>
-      <text class="salary">{{position_content.p_wages}}</text>
+      <text class="salary">【{{position_content.p_wages}}】</text>
     </view>
     <view class="posi-list">
       <text class="field">{{position_content.p_address}}</text>

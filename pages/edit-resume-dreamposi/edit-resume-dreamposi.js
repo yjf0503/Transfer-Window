@@ -25,14 +25,17 @@ Page({
             })
         }
 
-        //取出页面数据
-        var resumeDreamPosi = app.globalData.isHaveResume.expected_pos[0]
-        this.setData({
-            workTypeindex: resumeDreamPosi.workTypeindex,
-            cityindex: resumeDreamPosi.cityindex,
-            salaryindex: resumeDreamPosi.salaryindex,
-            dreamposi: resumeDreamPosi.dreamposi,
-        })
+        if (app.globalData.isHaveResume !== null){
+            //取出页面数据
+            var resumeDreamPosi = app.globalData.isHaveResume.expected_pos[0]
+            this.setData({
+                workTypeindex: resumeDreamPosi.workTypeindex,
+                cityindex: resumeDreamPosi.cityindex,
+                salaryindex: resumeDreamPosi.salaryindex,
+                dreamposi: resumeDreamPosi.dreamposi,
+            })
+        }
+        
        
     },
 

@@ -25,7 +25,7 @@ Page({
             position_content: app.globalData.positionDetail
         });
         //判断是否有简历
-        if (app.globalData.isHaveResume == '') {
+        if (app.globalData.isHaveResume === null) {
             that.setData({
                 submitText: "请先完善您的个人简历",
                 isHaveResume: false
@@ -56,7 +56,7 @@ Page({
             wx.showModal({
                 title: '发送确认',
                 content: '发送后不可撤回，确认发送？',
-                cancelText: '在考虑下',
+                cancelText: '再考虑下',
                 cancelColor: '#999',
                 confirmText: '立即发送',
                 confirmColor: '#4990E2',
@@ -85,7 +85,7 @@ Page({
         var that = this;
         app.apiPost(app.apiList.deliveryResume,{
             openid: app.globalData.openid,
-            positionid: that.data.position_content.p_id
+            positionid: that.data.position_content.id
         },function(data){
 
             if(data.code ==1){
@@ -146,8 +146,9 @@ Page({
             // 来自页面内转发按钮
             console.log(res.target)
         }
+        var title = this.data.position_content.enterprise_name + ' 招聘 ' + this.data.position_content.p_name +'【'+this.data.position_content.p_wages + '】' ;
         return {
-            title: '自定义转发标题',
+            title: title,
             path: '/page/user?id=123',
             success: function (res) {
                 // 转发成功

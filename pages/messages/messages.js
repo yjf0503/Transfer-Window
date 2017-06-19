@@ -33,7 +33,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+      app.loading();
+      this.getMesgFun();
   },
 
   //获取消息
@@ -42,7 +43,8 @@ Page({
       app.apiPost(app.apiList.deliveryStatus,{
           openid: app.globalData.openid
       },function(data){
-        if(data.code == 1){
+          //暂时不区分新消息
+          if (data.code == 1 || data.code == 0){
             var readList = data.ret.resume_list_isread,
                 unreadList = data.ret.resume_list_unread;
             var list = readList.concat(unreadList)

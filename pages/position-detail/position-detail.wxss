@@ -21,7 +21,7 @@ page{
   margin-right: 40rpx;
 }
 .salary{
-  color: #ff9483;
+  color: #F75D38;
   font-size: 28rpx;
   font-weight: 600;
   line-height: 1.4;

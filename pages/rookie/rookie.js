@@ -16,7 +16,9 @@ Page({
       viewHeigh: 600,
       loadingText: '加载中...',//
       loadingHidden: true,//默认隐藏更多
-      list: []
+      list: [],
+
+      alertRookie: true,// 入行提示
   },
   onLoad: function () {
       var that = this;
@@ -29,7 +31,18 @@ Page({
       that.getPositionsFun(that.data.page, that.data.limit);
 
      
-      
+      try {
+          var value = wx.getStorageSync('alertRookie')
+          if (value) {
+              // Do something with return value
+          }else{
+              that.setData({
+                  alertRookie: false
+              })
+          }
+      } catch (e) {
+          // Do something when catch error
+      }
       
       //初始化的时候渲染wxSearchdata 第二个为你的search高度
       WxSearch.init(that, 43, ['体育', '编辑', '万达', '乐视', '运营']);
@@ -111,7 +124,15 @@ Page({
 
   },
 
-
+    closeAlertRookieTap:function(){
+        this.setData({
+            alertRookie: true
+        })
+        try {
+            wx.setStorageSync('alertRookie', 'true')
+        } catch (e) {
+        }
+    },
 
 
   wxSearchInput: function (event) {

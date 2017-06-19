@@ -2,7 +2,7 @@
 .btn-box{
   width: 100%;
   padding: 0 28rpx;
-  margin-top: 100rpx;
+  margin-top: 80rpx;
   box-sizing: border-box;
 }
 .btn-sure {

@@ -48,7 +48,8 @@ App({
         deleteResumePart: '/Home/Enterprise/actionDeleteResumePart',//删除简历
         getResume: '/Home/Enterprise/actionGetResume',//获取简历
         deliveryStatus: '/Home/Enterprise/actionDeliveryStatus',//消息
-        deliveryResume:'/Home/Enterprise/actionDeliveryResume'//投递简历
+        deliveryResume:'/Home/Enterprise/actionDeliveryResume',//投递简历
+        deleteResume: '/Home/Enterprise/actionDeleteResume'//删除简历
 
     },
     apiGet: function (url, data, callback) {

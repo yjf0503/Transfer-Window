@@ -1,10 +1,4 @@
 /**app.wxss**/
-/*@import 'style/weui.wxss';*/
-/*.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
 page{
     background-color: #fff;
     font-size: 28rpx;
@@ -13,31 +7,3 @@ page{
 .blue{
   color: #4990E2;
 }
-/*.page__hd {
-    padding: 40px;
-}
-.page__bd {
-    padding-bottom: 40px;
-}
-.page__bd_spacing {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.page__ft{
-    padding-bottom: 10px;
-    text-align: center;
-}
-
-.page__title {
-    text-align: left;
-    font-size: 20px;
-    font-weight: 400;
-}
-
-.page__desc {
-    margin-top: 5px;
-    color: #888888;
-    text-align: left;
-    font-size: 14px;
-}*/

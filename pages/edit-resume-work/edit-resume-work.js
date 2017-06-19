@@ -19,12 +19,14 @@ Page({
             isHaveResume:false
         })
       }
+      if (app.globalData.isHaveResume !== null){
+          this.setData({
 
-      this.setData({
-          
-          resumeWorkList: app.globalData.isHaveResume.work_history,
-         
-      })
+              resumeWorkList: app.globalData.isHaveResume.work_history,
+
+          })
+      }
+      
 
   },
 

@@ -3,7 +3,7 @@
   <block wx:if="{{isShow}}">
     <image class="user-avatar" src="{{userInfo.avatarUrl}}"></image>
     <text class="user-name">{{userInfo.nickName}}</text>
-    <text class="user-text">{{myself}}</text>
+    <!--<text class="user-text">{{myself}}</text>-->
   </block>
   <block wx:else>
     <image class="user-avatar" src="/images/big_avatar.png"></image>
@@ -24,6 +24,15 @@
   <view class="item-cell item-cell-access" catchtap="myDeliveryTap">
     <view class="item-cell-bd">
       <text>我的投递</text>
+    </view>
+    <view class="item-cell-ft"></view>
+  </view>
+</view>
+
+<view class="item-cells">
+  <view class="item-cell item-cell-access" catchtap="deleteResumeTap">
+    <view class="item-cell-bd">
+      <text>删除简历</text>
     </view>
     <view class="item-cell-ft"></view>
   </view>

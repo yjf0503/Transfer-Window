@@ -20,11 +20,14 @@ Page({
               isHaveResume: false
           })
       }
-      this.setData({
+      if (app.globalData.isHaveResume !== null) {
+          this.setData({
 
-          resumeEduList: app.globalData.isHaveResume.edu_history,
+              resumeEduList: app.globalData.isHaveResume.edu_history,
 
-      })
+          })
+      }
+      
     
   },
 

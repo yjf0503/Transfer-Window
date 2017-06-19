@@ -19,8 +19,8 @@ Page({
     cityindex: 0,//默认北京
     contact:'',//联系电话
     email:'',//联系邮箱
-    myself: '',//一句介绍
-    selfLen: 0//一句话介绍字数
+   // myself: '',//一句介绍
+   // selfLen: 0//一句话介绍字数
   },
 
   /**
@@ -32,20 +32,22 @@ Page({
             isHaveResume:false
         })
       }
+      if (app.globalData.isHaveResume !== null){
+          var resumeBaseTap = app.globalData.isHaveResume.base_info;
+          this.setData({
+              userName: resumeBaseTap.userName,
+              genderindex: resumeBaseTap.genderindex,
+              edulevelindex: resumeBaseTap.edulevelindex,
+              worksYearindex: resumeBaseTap.worksYearindex,
+              birthday: resumeBaseTap.birthday,
+              cityindex: resumeBaseTap.cityindex,
+              contact: resumeBaseTap.contact,
+              email: resumeBaseTap.email,
+              //myself: resumeBaseTap.myself,
+              //selfLen: resumeBaseTap.selfLen,
+          })
+      } 
       
-      var resumeBaseTap = app.globalData.isHaveResume.base_info;
-      this.setData({
-          userName: resumeBaseTap.userName,
-          genderindex: resumeBaseTap.genderindex,
-          edulevelindex: resumeBaseTap.edulevelindex,
-          worksYearindex: resumeBaseTap.worksYearindex,
-          birthday: resumeBaseTap.birthday,
-          cityindex: resumeBaseTap.cityindex,
-          contact: resumeBaseTap.contact,
-          email: resumeBaseTap.email,
-          myself: resumeBaseTap.myself,
-          selfLen: resumeBaseTap.selfLen,
-      })
   },
 
   //姓名
@@ -98,14 +100,14 @@ Page({
     })
   },
   //介绍自己字数
-  countSelfFun: function (e) {
-      var eValueLen = e.detail.value.length,
-          eValue = e.detail.value;
-      this.setData({
-          selfLen: eValueLen,
-          myself: eValue
-      })
-  },
+//   countSelfFun: function (e) {
+//       var eValueLen = e.detail.value.length,
+//           eValue = e.detail.value;
+//       this.setData({
+//           selfLen: eValueLen,
+//           myself: eValue
+//       })
+//   },
   //保存
   submitResumeBaseTap: function(){
     
@@ -142,8 +144,8 @@ Page({
           cityindex: this.data.cityindex,
           contact: this.data.contact,
           email: this.data.email,
-          myself: this.data.myself,
-          selfLen: this.data.selfLen,
+          //myself: this.data.myself,
+          //selfLen: this.data.selfLen,
       }
       app.apiPost(app.apiList.saveResume, {
           openid: app.globalData.openid,
@@ -151,7 +153,11 @@ Page({
           content: JSON.stringify(content)
       }, function (data) {
           if (data.code == 1) {
-              app.globalData.isHaveResume.base_info = content;
+              let isHaveResume ={
+                  base_info: content
+              }
+              
+              app.globalData.isHaveResume = isHaveResume;
               
           } else {
               app.alert(data.alertMsg);

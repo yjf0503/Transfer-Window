@@ -7,7 +7,7 @@
   </view>
 </view>
 
-<view class="content">
+<!--<view class="content">
   <view class="title">产品描述</view>
   <view class="main">
     
@@ -20,7 +20,7 @@
     </swiper>
 
   </view>
-</view>
+</view>-->
 
 <view class="content">
   <view class="title">公司描述</view>
