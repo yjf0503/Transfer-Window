@@ -27,12 +27,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      //检查页面层级
+      app.util.checkPage();
+
       if (options.type == 0){
         this.setData({
             isHaveResume:false
         })
       }
-      if (app.globalData.isHaveResume !== null){
+      if (app.globalData.isHaveResume !== null && app.globalData.isHaveResume.base_info !== null){
           var resumeBaseTap = app.globalData.isHaveResume.base_info;
           this.setData({
               userName: resumeBaseTap.userName,

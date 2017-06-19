@@ -23,11 +23,8 @@ Page({
             this.setData({
                 isHaveResume: false
             })
-        }
-
-        if (app.globalData.isHaveResume !== null){
-            //取出页面数据
-            var resumeDreamPosi = app.globalData.isHaveResume.expected_pos[0]
+        }else{
+            var resumeDreamPosi = app.globalData.isHaveResume.expected_pos
             this.setData({
                 workTypeindex: resumeDreamPosi.workTypeindex,
                 cityindex: resumeDreamPosi.cityindex,
@@ -35,6 +32,17 @@ Page({
                 dreamposi: resumeDreamPosi.dreamposi,
             })
         }
+
+        // if (app.globalData.isHaveResume !== null && app.globalData.isHaveResume.expected_pos !== null){
+        //     //取出页面数据
+        //     var resumeDreamPosi = app.globalData.isHaveResume.expected_pos
+        //     this.setData({
+        //         workTypeindex: resumeDreamPosi.workTypeindex,
+        //         cityindex: resumeDreamPosi.cityindex,
+        //         salaryindex: resumeDreamPosi.salaryindex,
+        //         dreamposi: resumeDreamPosi.dreamposi,
+        //     })
+        // }
         
        
     },
@@ -79,17 +87,12 @@ Page({
         app.apiPost(app.apiList.saveResume, {
             openid: app.globalData.openid,
             type: 4,
-            content: JSON.stringify(content),
-            content_id: 1
+            content: JSON.stringify(content)
         }, function (data) {
             if (data.code == 1) {
                 console.log(data.msg)
                 
-                var x, expected_pos = [];
-                for (x in data.ret.expected_pos) {
-                    expected_pos.push(JSON.parse(data.ret.expected_pos[x]));
-                }
-                app.globalData.isHaveResume.expected_pos = expected_pos;
+                app.globalData.isHaveResume.expected_pos = content;
             } else {
                 app.alert(data.alertMsg);
             }
@@ -128,19 +131,27 @@ Page({
     //完成
     subOver: function () {
         this.setResumeDreamPosFun();
-        wx.showToast({
-            title: '保存成功！',
-            icon: 'success',
-            duration: 500
+
+        wx.showModal({
+            title: '简历创建成功',
+            content: '已成功创建简历，快去投递心怡职位吧',
+            cancelText: '再改改',
+            cancelColor: '#999',
+            confirmText: '去首页',
+            confirmColor: '#4990E2',
+            success: function (res) {
+                if (res.confirm) {
+                    
+                    wx.reLaunch({
+                        url: '/pages/index/index',
+                    })
+                    
+                } else if (res.cancel) {
+                    console.log('用户点击取消')
+                }
+            }
         })
 
-        //回到简历页面
-        setTimeout(function () {
-            wx.reLaunch({
-                url: '/pages/my-resume/my-resume',
-            })
-        }, 800);
-        
     }
 
 

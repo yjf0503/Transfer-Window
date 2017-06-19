@@ -80,22 +80,21 @@ module.exports.isHaveResume = function isHaveResume(){
             openid: app.globalData.openid
         }, function (data) {
             if (data.code == 1) {
-                var x,y,z,
+                var x,z,
                     work_history =[],
                     edu_history=[],
                     expected_pos=[];
                 for (x in data.ret.work_history) {
                     work_history.push(JSON.parse(data.ret.work_history[x]));
                 }
-                for (y in data.ret.expected_pos) {
-                    expected_pos.push(JSON.parse(data.ret.expected_pos[y]));
-                }
+                
                 for (z in data.ret.edu_history) {
                     edu_history.push(JSON.parse(data.ret.edu_history[z]));
                 }
                 data.ret.base_info = JSON.parse(data.ret.base_info);
+                data.ret.expected_pos = JSON.parse(data.ret.expected_pos);
+
                 data.ret.work_history = work_history;
-                data.ret.expected_pos = expected_pos;
                 data.ret.edu_history = edu_history;
                 
                 app.globalData.isHaveResume = data.ret;

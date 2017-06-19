@@ -69,7 +69,7 @@ Page({
                   
               } else {
                   that.setData({
-                      loadingText: "没有更多了"
+                      loadingText: "更多职位正在收录"
                   })
               }
               

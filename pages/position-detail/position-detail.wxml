@@ -1,5 +1,6 @@
 <!--pages/position-detail/position-detail.wxml-->
 <import src="../tpl/position-item/position-item.wxml" />
+<import src="../../wxParse/wxParse.wxml"/>
 <view class="header">
   <view class="position">
     <view class="posi">
@@ -25,7 +26,8 @@
 <view class="content">
   <view class="title">职位描述</view>
   <view class="main">
-    {{position_content.p_text}}
+    <!--{{position_content.p_text}}-->
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
   </view>
 </view>
 

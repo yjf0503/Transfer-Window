@@ -19,7 +19,7 @@ Page({
   onLoad: function (options) {
     //获取参数，如果没有就是添加
     var eduId = options.eduid;
-    var typeN = options.type;
+    
     if (eduId != undefined){
         wx.setNavigationBarTitle({
             title: '修改教育'
@@ -126,15 +126,15 @@ Page({
       //更新上一级页面
       var pages = getCurrentPages();
       var curPage = pages[pages.length - 1];
-    //   var curPagePre = pages[pages.length - 2];
+      var curPagePre = pages[pages.length - 2];
 
       curPage.setData({
           resumeEduList: edu_history
       });
       //更新上上一级页面
-    //   curPagePre.setData({
-    //       resumeEduList: edu_history
-    //   });
+      curPagePre.setData({
+          resumeEduList: edu_history
+      });
   },
 
   //提交教育信息
@@ -178,6 +178,7 @@ Page({
 
   //删除
   removeSchoolTap: function () {
+    var that = this;
     wx.showModal({
       title: '删除确认',
       content: '删除后不可撤回，确认删除？',
@@ -191,7 +192,7 @@ Page({
           wx.showToast({
             title: '删除成功',
             icon: 'success',
-            duration: 800
+            duration: 500
           })
           //返回上一个页面
           setTimeout(function () {

@@ -23,6 +23,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      //检查页面层级
+      app.util.checkPage();
 
       this.setData({
           avatarUrl: app.globalData.userInfo.avatarUrl != null ? app.globalData.userInfo.avatarUrl : '/images/small_avatar.png',
@@ -35,12 +37,12 @@ Page({
     
   },
   onShow: function(){
-      this.setData({
-          resumeBaseInfo: app.globalData.isHaveResume.base_info,
-          resumeWorkList: app.globalData.isHaveResume.work_history,
-          resumeEduList: app.globalData.isHaveResume.edu_history,
-          resumeDreamPosi: app.globalData.isHaveResume.expected_pos
-      })
+    //   this.setData({
+    //       resumeBaseInfo: app.globalData.isHaveResume.base_info,
+    //       resumeWorkList: app.globalData.isHaveResume.work_history,
+    //       resumeEduList: app.globalData.isHaveResume.edu_history,
+    //       resumeDreamPosi: app.globalData.isHaveResume.expected_pos
+    //   })
   },
   
   //更换头像

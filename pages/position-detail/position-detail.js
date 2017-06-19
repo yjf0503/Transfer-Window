@@ -1,4 +1,5 @@
 // pages/position-detail/position-detail.js
+var WxParse = require('../../wxParse/wxParse.js');
 var app = getApp();
 Page({
 
@@ -24,6 +25,9 @@ Page({
         that.setData({
             position_content: app.globalData.positionDetail
         });
+
+        WxParse.wxParse('article', 'html', app.globalData.positionDetail.p_text, that, 5);
+
         //判断是否有简历
         if (app.globalData.isHaveResume === null) {
             that.setData({

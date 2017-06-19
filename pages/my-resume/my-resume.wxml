@@ -64,10 +64,10 @@
       <text>联系邮箱</text>
       <text class="data-text">{{resumeBaseInfo.email}}</text>
     </view>
-    <view class="base">
+    <!--<view class="base">
       <text>一句话介绍自己</text>
       <text class="data-text">{{resumeBaseInfo.myself}}</text>
-    </view>
+    </view>-->
   </view>
 </view>
 
@@ -132,7 +132,7 @@
     </view>
   </view>
   <view class="panel-bd">
-    <view class="position">{{resumeDreamPosi[0].dreamposi}}</view>
-    <view class="position-list">{{workTypelist[resumeDreamPosi[0].workTypeindex]}}／{{citylist[resumeDreamPosi[0].cityindex]}}／{{salarylist[resumeDreamPosi[0].salaryindex]}}</view>
+    <view class="position">{{resumeDreamPosi.dreamposi}}</view>
+    <view class="position-list">{{workTypelist[resumeDreamPosi.workTypeindex]}}／{{citylist[resumeDreamPosi.cityindex]}}／{{salarylist[resumeDreamPosi.salaryindex]}}</view>
   </view>
 </view>

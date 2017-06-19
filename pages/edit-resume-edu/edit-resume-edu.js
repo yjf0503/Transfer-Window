@@ -34,7 +34,7 @@ Page({
   //编辑单个教育经历
   editEduListTap: function(event){
     //添加和修改是同一个方法，所以判断eduId是否值，有值是修改，没值是添加
-    var eduid = event.currentTarget.dataset.id;
+      var eduid = event.currentTarget.dataset.eduid;
     
     if (eduid === undefined ){
       wx.navigateTo({

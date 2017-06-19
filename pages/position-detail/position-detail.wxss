@@ -1,5 +1,6 @@
 /* pages/position-detail/position-detail.wxss */
 @import "../tpl/position-item/position-item.wxss";
+@import "/wxParse/wxParse.wxss";
 page{
     background-color: #f5f6f9;
 }

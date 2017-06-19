@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 var WxSearch = require('../../wxSearch/wxSearch.js');
+
 var app = getApp();
 Page({
     data: {
@@ -81,7 +82,7 @@ Page({
                     
                 }else{
                     that.setData({
-                        loadingText: "没有更多了"
+                        loadingText: "更多职位正在收录"
                     })
                 }
                 

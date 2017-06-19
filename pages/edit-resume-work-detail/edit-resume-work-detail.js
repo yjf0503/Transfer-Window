@@ -18,7 +18,7 @@ Page({
    */
   onLoad: function (options) {
     var workId = options.workid;
-    var typeN = options.type;
+    
     if (workId !=undefined) {
         wx.setNavigationBarTitle({
             title: '修改工作'
@@ -132,15 +132,15 @@ Page({
       //更新上一级页面
       var pages = getCurrentPages();
       var curPage = pages[pages.length - 1];
-    //   var curPagePre = pages[pages.length - 2];
+      var curPagePre = pages[pages.length - 2];
 
       curPage.setData({
           resumeWorkList: work_history
       });
       //更新上上一级页面
-    //   curPagePre.setData({
-    //       resumeWorkList: work_history
-    //   });
+      curPagePre.setData({
+          resumeWorkList: work_history
+      });
   },
 
   //提交工作信息
