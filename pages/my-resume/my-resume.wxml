@@ -132,7 +132,7 @@
     </view>
   </view>
   <view class="panel-bd">
-    <view class="position">{{resumeDreamPosi.dreamposi}}</view>
-    <view class="position-list">{{resumeDreamPosi.workTypelist[resumeDreamPosi.workTypeindex]}}／{{resumeDreamPosi.citylist[resumeDreamPosi.cityindex]}}／{{resumeDreamPosi.salarylist[resumeDreamPosi.salaryindex]}}</view>
+    <view class="position">{{resumeDreamPosi[0].dreamposi}}</view>
+    <view class="position-list">{{workTypelist[resumeDreamPosi[0].workTypeindex]}}／{{citylist[resumeDreamPosi[0].cityindex]}}／{{salarylist[resumeDreamPosi[0].salaryindex]}}</view>
   </view>
 </view>

@@ -53,16 +53,17 @@ Page({
                       list: newOrders,
                       loadingHidden: true
                   })
-                  app.hideloading();
+                  
               } else {
                   that.setData({
                       loadingText: "没有更多了"
                   })
               }
-
+              
           } else {
               app.alert(data.alertMsg);
           }
+          app.hideloading();
       })
   },
   //选择城市 qihb

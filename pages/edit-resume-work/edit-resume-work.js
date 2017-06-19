@@ -1,4 +1,5 @@
 // pages/edit-resume-work/edit-resume-work.js
+var app = getApp();
 Page({
 
   /**
@@ -19,23 +20,12 @@ Page({
         })
       }
 
-      
+      this.setData({
+          
+          resumeWorkList: app.globalData.isHaveResume.work_history,
+         
+      })
 
-    // try {
-    //   //获取工作列表，如果没有就加一个空数组，有，就绑定数据
-    //   var resumeWorkList = wx.getStorageSync('resumeWorkList');
-    //   var resumeWorkListArray = [];
-    //   if (!resumeWorkList) {
-    //     wx.setStorageSync('resumeWorkList', resumeWorkListArray);
-    //     return false;
-    //   }
-    //   this.setData({
-    //     resumeWorkList: resumeWorkList
-    //   });
-
-    // } catch (e) {
-    //   // Do something when catch error
-    // }
   },
 
  
@@ -60,6 +50,13 @@ Page({
   subNext: function(){
       wx.navigateTo({
           url: '/pages/edit-resume-edu/edit-resume-edu?type=0',
+      })
+  },
+
+  //上一步
+  subPre: function(){
+      wx.navigateBack({
+          
       })
   }
 })

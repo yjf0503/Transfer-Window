@@ -26,20 +26,14 @@ Page({
         }
 
         //取出页面数据
-        try {
-            var resumeDreamPosi = wx.getStorageSync('resumeDreamPosi')
-            if (resumeDreamPosi) {
-                // Do something with return value
-                this.setData({
-                    workTypeindex: resumeDreamPosi.workTypeindex,
-                    cityindex: resumeDreamPosi.cityindex,
-                    salaryindex: resumeDreamPosi.salaryindex,
-                    dreamposi: resumeDreamPosi.dreamposi,
-                })
-            }
-        } catch (e) {
-            // Do something when catch error
-        }
+        var resumeDreamPosi = app.globalData.isHaveResume.expected_pos[0]
+        this.setData({
+            workTypeindex: resumeDreamPosi.workTypeindex,
+            cityindex: resumeDreamPosi.cityindex,
+            salaryindex: resumeDreamPosi.salaryindex,
+            dreamposi: resumeDreamPosi.dreamposi,
+        })
+       
     },
 
     
@@ -78,6 +72,7 @@ Page({
             salaryindex: this.data.salaryindex,
             
         }
+
         app.apiPost(app.apiList.saveResume, {
             openid: app.globalData.openid,
             type: 4,
@@ -86,6 +81,12 @@ Page({
         }, function (data) {
             if (data.code == 1) {
                 console.log(data.msg)
+                
+                var x, expected_pos = [];
+                for (x in data.ret.expected_pos) {
+                    expected_pos.push(JSON.parse(data.ret.expected_pos[x]));
+                }
+                app.globalData.isHaveResume.expected_pos = expected_pos;
             } else {
                 app.alert(data.alertMsg);
             }
@@ -94,11 +95,7 @@ Page({
     //保存
     saveDreamPosi: function () {
         this.setResumeDreamPosFun();
-        // try {
-        //     wx.setStorageSync('resumeDreamPosi', this.data);
-        // } catch (e) {
-
-        // }
+        
         wx.showToast({
             title: '保存成功！',
             icon: 'success',
@@ -108,9 +105,8 @@ Page({
         //更新上一级页面
         var pages = getCurrentPages();
         var curPage = pages[pages.length - 2];
-        var newResumeDreamPosi = wx.getStorageSync('resumeDreamPosi');
         curPage.setData({
-            resumeDreamPosi: newResumeDreamPosi
+            resumeDreamPosi: this.data
         });
 
         //返回上一个页面
@@ -120,28 +116,28 @@ Page({
             })
         }, 800);
     },
-    //返回上一步
+    //上一步
     subPre: function () {
         wx.navigateBack({
 
         })
     },
-    //下一步
+    //完成
     subOver: function () {
-        try {
-            wx.setStorageSync('resumeDreamPosi', this.data);
-        } catch (e) {
-
-        }
+        this.setResumeDreamPosFun();
         wx.showToast({
             title: '保存成功！',
             icon: 'success',
-            duration: 800
+            duration: 500
         })
 
-        wx.reLaunch({
-            url: '/pages/my-resume/my-resume',
-        })
+        //回到简历页面
+        setTimeout(function () {
+            wx.reLaunch({
+                url: '/pages/my-resume/my-resume',
+            })
+        }, 800);
+        
     }
 
 

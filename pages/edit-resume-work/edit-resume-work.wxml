@@ -3,10 +3,10 @@
   <view class="work-items">
 
 
-    <view class="work-item" wx:for="{{resumeWorkList}}" wx:for-item="resumeWorkList" wx:key="{{resumeWorkList.workId}}">
+    <view class="work-item" wx:for="{{resumeWorkList}}" wx:for-item="resumeWorkList" wx:key="{{resumeWorkList.id}}">
       <view class="work-date">
         <text>{{resumeWorkList.join}} - {{resumeWorkList.leave}}</text>
-        <view class="edit-btn blue" catchtap="editWorkListTap" data-workid="{{resumeWorkList.workId}}">
+        <view class="edit-btn blue" catchtap="editWorkListTap" data-workid="{{resumeWorkList.id}}">
           <image class="icon-edit" src="/images/edit_pen.png"></image>
           <text>编辑</text>
         </view>
@@ -20,6 +20,8 @@
 </view>
 
 <view class="btn-box">
-  <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="editWorkListTap"> 添加工作 </button>
-  <button hidden="{{isHaveResume}}" class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="subNext"> 下一步 </button>
+  <button class="btn-sure m-b" size="default" hover-class="btn-sure-hover" catchtap="editWorkListTap"> 添加工作 </button>
+  <button hidden="{{isHaveResume}}" class="btn-sure m-b" size="default" hover-class="btn-sure-hover" catchtap="subNext"> 下一步 </button>
+  <button hidden="{{isHaveResume}}" class="btn-remove" size="default" hover-class="btn-sure-hover" catchtap="subPre"> 上一步 </button>
+  
 </view>

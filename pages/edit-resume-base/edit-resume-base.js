@@ -152,7 +152,7 @@ Page({
       }, function (data) {
           if (data.code == 1) {
               app.globalData.isHaveResume.base_info = content;
-              wx.setStorageSync('isHaveResume', app.globalData.isHaveResume);
+              
           } else {
               app.alert(data.alertMsg);
           }

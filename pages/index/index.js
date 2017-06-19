@@ -21,20 +21,21 @@ Page({
     onLoad: function () {
         var that = this;
         app.loading();
+        //获取openid
+        app.util.getOpenid();
+
         //收集、判断系统信息
         app.util.checkSystemInfo();
         
         //检查页面层级
         app.util.checkPage();
 
-        //获取openid
-        app.util.getOpenid();
-
         //获取授权
         app.util.authorize();
         
-        //判断用户是否已有简历
-        app.util.isHaveResume();
+        
+        that.getResume(that);
+        
 
         //获取职位列表数据
         that.getPositionsFun(that.data.page, that.data.limit);
@@ -44,6 +45,22 @@ Page({
         WxSearch.init(that, 43, ['体育', '编辑', '万达', '乐视', '运营']);
         WxSearch.initMindKeys(['weappdev.com', '微信小程序开发', '微信开发', '微信小程序']);
     },
+
+    //判断用户是否已有简历
+    getResume: function (that){
+        
+        if (app.globalData.openid == null) {
+            setTimeout(function(){
+                that.getResume(that);
+                console.log(1);
+            },1000);
+           
+        }else{
+            app.util.isHaveResume();
+        }
+        
+    },
+    
     //获取首页职位信息
     getPositionsFun: function (page, limit){
         var that = this;
@@ -61,16 +78,18 @@ Page({
                         list: newOrders,
                         loadingHidden: true
                     })
-                    app.hideloading();
+                    
                 }else{
                     that.setData({
                         loadingText: "没有更多了"
                     })
                 }
                 
+                
             } else {
                 app.alert(data.alertMsg);
             }
+            app.hideloading();
         })
     },
     

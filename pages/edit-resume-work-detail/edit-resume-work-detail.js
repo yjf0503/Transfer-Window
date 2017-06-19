@@ -19,20 +19,29 @@ Page({
   onLoad: function (options) {
     var workId = options.workid;
     var typeN = options.type;
-    if (workId) {
-      var resumeWorkList = wx.getStorageSync('resumeWorkList');
-      var resumeWrok = resumeWorkList[workId];
-      var workContentLen = resumeWrok.workContent.length
-      this.setData({
-        workId: workId,
-        companyname: resumeWrok.companyname,
-        department: resumeWrok.department,
-        join: resumeWrok.join,
-        leave: resumeWrok.leave,
-        workContent: resumeWrok.workContent,
-        workContentLen: workContentLen
-      });
+    if (workId !=undefined) {
+        wx.setNavigationBarTitle({
+            title: '修改工作'
+        })
+        
+        var resumeWorkList = app.globalData.isHaveResume.work_history;
+        for (var i = 0; i <resumeWorkList.length;i++){
+            if (workId == resumeWorkList[i].id){
+                this.setData({
+                    content_id: resumeWorkList[i].id,
+                    companyname: resumeWorkList[i].companyname,
+                    department: resumeWorkList[i].department,
+                    join: resumeWorkList[i].join,
+                    leave: resumeWorkList[i].leave,
+                    workContent: resumeWorkList[i].workContent,
+                });
+            }
+        }
+      
     } else {
+        wx.setNavigationBarTitle({
+            title: '添加工作'
+        }) 
       this.setData({
         isadd: true,
       })
@@ -73,6 +82,7 @@ Page({
   },
   //保存工作详情
   setResumeWorkDetailFun: function () {
+      var that = this;
       let content = {
           companyname: this.data.companyname,
           department: this.data.department,
@@ -80,73 +90,71 @@ Page({
           leave: this.data.leave,
           workContent: this.data.workContent
       }
-      app.apiPost(app.apiList.saveResume, {
-          openid: app.globalData.openid,
-          type: 2,
-          content: JSON.stringify(content),
-          content_id: this.data.content_id,
-      }, function (data) {
-          if (data.code == 1) {
-              console.log(data.msg)
-          } else {
-              app.alert(data.alertMsg);
-          }
-      })
+      if(this.data.isadd){
+          app.apiPost(app.apiList.saveResume, {
+              openid: app.globalData.openid,
+              type: 2,
+              content: JSON.stringify(content)
+              
+          }, function (data) {
+              if (data.code == 1) {
+                  console.log(data.msg)
+                  that.updataWorkDataFun(data);
+              } else {
+                  app.alert(data.alertMsg);
+              }
+          })
+      }else{
+          app.apiPost(app.apiList.saveResume, {
+              openid: app.globalData.openid,
+              type: 2,
+              content: JSON.stringify(content),
+              content_id: this.data.content_id,
+          }, function (data) {
+              if (data.code == 1) {
+                  console.log(data.msg)
+                  that.updataWorkDataFun(data);
+              } else {
+                  app.alert(data.alertMsg);
+              }
+          })
+      }
+      
   },
+
+  //更新数据
+  updataWorkDataFun: function(data){
+      var x,work_history =[];
+      for (x in data.ret.work_history) {
+          work_history.push(JSON.parse(data.ret.work_history[x]));
+      }
+      app.globalData.isHaveResume.work_history = work_history;
+      //更新上一级页面
+      var pages = getCurrentPages();
+      var curPage = pages[pages.length - 1];
+    //   var curPagePre = pages[pages.length - 2];
+
+      curPage.setData({
+          resumeWorkList: work_history
+      });
+      //更新上上一级页面
+    //   curPagePre.setData({
+    //       resumeWorkList: work_history
+    //   });
+  },
+
   //提交工作信息
   submitCompanyTap: function (e) {
 
-      this.setResumeWorkDetailFun();
-    // var resumeWorkList = wx.getStorageSync('resumeWorkList');
-    // var workIdLen = resumeWorkList.length;
-    // var resumeWrok = {
-    //   workId: workIdLen,
-    //   companyname: this.data.companyname,
-    //   department: this.data.department,
-    //   join: this.data.join,
-    //   leave: this.data.leave,
-    //   workContent: this.data.workContent
-    // };
-    //判断是修改还是添加
-    // var workId = this.data.workId;
-    // if (workId && workId < workIdLen) {
-    //   for (var i = 0; i < workIdLen; i++) {
-    //     (function () {
-    //       if (resumeWorkList[i].workId == workId) {
-    //         resumeWrok.workId = workId;
-    //         resumeWorkList[i] = resumeWrok;
-    //       }
-    //     })(i)
-
-    //   }
-
-    // } else {
-    //   resumeWorkList.push(resumeWrok);
-    // }
-
-    // try {
-    //   wx.setStorageSync('resumeWorkList', resumeWorkList)
-    //   console.log(resumeWorkList);
-    // } catch (e) {
-    // }
+    this.setResumeWorkDetailFun();
+    
     wx.showToast({
       title: '保存成功！',
       icon: 'success',
       duration: 500
     })
 
-    // //更新上一级页面
-    // var pages = getCurrentPages();
-    // var curPage = pages[pages.length - 2];
-    // var curPagePre = pages[pages.length - 3];
-    // var newresumeWorkList = wx.getStorageSync('resumeWorkList');
-    // curPage.setData({
-    //   resumeWorkList: newresumeWorkList
-    // });
-    // //更新上上一级页面
-    // curPagePre.setData({
-    //   resumeWorkList: newresumeWorkList
-    // });
+    
 
     //返回上一个页面
     setTimeout(function () {
@@ -158,13 +166,15 @@ Page({
   },
   //删除工作详情
   deleteWorkDetailFun(){
+      var that = this;
       app.apiPost(app.apiList.deleteResumePart, {
           openid: app.globalData.openid,
           type: 2,
-          content_id: this.data.content_id,
+          content_id: that.data.content_id,
       }, function (data) {
           if (data.code == 1) {
               console.log(data.msg)
+              that.updataWorkDataFun(data);
           } else {
               app.alert(data.alertMsg);
           }

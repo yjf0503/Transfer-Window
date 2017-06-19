@@ -20,65 +20,7 @@ Page({
     var that = this;
     app.loading();
     that.getCompanyDetail(options.pid);
-    // that.setData({
-    //   pid: app.globalData.pid
-    // });
     
-
-    // wx.showToast({
-    //   title: '加载中',
-    //   icon: 'loading',
-    //   duration: 1000
-    // });
-    // wx.request({
-    //   url: 'https://www.ecosports.cn/Home/Enterprise/wxapp_company',
-    //   method: 'GET',
-    //   data: {
-    //       id: options.pid
-    //   },
-    //   header: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   success: function (res) {
-
-    //     // use res.data
-    //     that.setData({
-    //       company_info: res['data']
-    //     });
-    //   },
-    //   fail: function (res) {
-
-    //   },
-    //   complete: function (res) {
-
-    //   }
-    // })
-
-    // setTimeout(function () {
-    //   wx.request({
-    //     url: 'https://www.ecosports.cn/Home/Enterprise/wxapp_company',
-    //     method: 'GET',
-    //     data: {
-    //       id: app.globalData.pid
-    //     },
-    //     header: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     success: function (res) {
-          
-    //       // use res.data
-    //       that.setData({
-    //         company_info: res['data']
-    //       });
-    //     },
-    //     fail: function (res) {
-
-    //     },
-    //     complete: function (res) {
-
-    //     }
-    //   })
-    // }, 2000);
   },
   //获取公司详情
   getCompanyDetail: function(cId){

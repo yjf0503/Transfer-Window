@@ -12,13 +12,12 @@
       {{cityArray[cityIndex]}}
     </view>
   </picker>
-  <!--<icon type="String" class="down-icon" />-->
 </view>
     <!--<view class="wxSearch-pancel">-->
       <!--<input bindinput="wxSearchInput" bindfocus="wxSearchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索" />-->
   <view class="input-box">
     <icon class="search-icon" type="search" size="12" color="#999"/>
-    <input class="input-html" type="text" placeholder="搜索职位" bindinput="wxSearchInput" bindfocus="wxSearchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur"/>
+    <input class="input-html" type="text" placeholder="搜索职位/公司" bindinput="wxSearchInput" bindfocus="wxSearchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur"/>
   </view>
   <text class="btn-cancel" bindtap="wxSearchFn" plain="true" style="display:{{searchBtnShow ? 'inline-block':'none'}}">搜索</text>
   <text class="btn-cancel"  bindtap="wxSearchCancel" plain="true" style="display:{{cancelBtnShow ? 'inline-block':'none'}}">取消</text>

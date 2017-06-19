@@ -21,7 +21,7 @@
       </view>
     </picker>
   </view>
-  
+
   <view class="item-cell item-cell-access">
     <view class="item-cell-bd">
       <text>最高学历</text>
@@ -96,12 +96,12 @@
     <textarea bindinput="countSelfFun" class="item-textarea" value="{{myself}}" placeholder="用一句话介绍自己" maxlength="30" />
   </view>
 </view>
-<view wx:if="{{isHaveResume}}" class="btn-box">
+<view class="btn-box" wx:if="{{isHaveResume}}">
   <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="submitResumeBaseTap"> 保存 </button>
+
 </view>
 
-
 <view class="btn-box" wx:else>
-  <button class="btn-sure" size="default" hover-class="btn-sure-hover" catchtap="subNext"> 下一步 </button>
+  <button class="btn-sure m-b" size="default" hover-class="btn-sure-hover" catchtap="subNext"> 下一步 </button>
   <button class="btn-remove" size="default" hover-class="btn-sure-hover" catchtap="backIndewx"> 返回首页 </button>
 </view>

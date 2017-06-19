@@ -45,73 +45,9 @@
     <view class="posi-tip">这些职位也可考虑下</view>
     <scroll-view scroll-y="true">
     
-      <view class="item">
-        <view class="item-img">
-          <image class="img" src="/images/com_def.png"></image>
-        </view>
-        <view class="item-main">
-          <view class="job">
-            <text class="job-position" data-id="{{id}}">记者</text>
-            <text class="job-Salary">20-30k</text>
-          </view>
-          <view class="company">
-            <text>腾讯科技</text>
-          </view>
-          <view class="secondary">
-            <text class="secondary-list">深圳</text>
-            <text class="secondary-list">5-10年</text>
-            <text>本科</text>
-            <text class="date">5月20日</text>
-          </view>
-        </view>
-      </view>
-      <view class="item">
-        <view class="item-img">
-          <image class="img" src="/images/com_def.png"></image>
-        </view>
-        <view class="item-main">
-          <view class="job">
-            <text class="job-position" data-id="{{id}}">记者</text>
-            <text class="job-Salary">20-30k</text>
-          </view>
-          <view class="company">
-            <text>腾讯科技</text>
-          </view>
-          <view class="secondary">
-            <text class="secondary-list">深圳</text>
-            <text class="secondary-list">5-10年</text>
-            <text>本科</text>
-            <text class="date">5月20日</text>
-          </view>
-        </view>
-      </view>
-      <view class="item">
-        <view class="item-img">
-          <image class="img" src="/images/com_def.png"></image>
-        </view>
-        <view class="item-main">
-          <view class="job">
-            <text class="job-position" data-id="{{id}}">记者</text>
-            <text class="job-Salary">20-30k</text>
-          </view>
-          <view class="company">
-            <text>腾讯科技</text>
-          </view>
-          <view class="secondary">
-            <text class="secondary-list">深圳</text>
-            <text class="secondary-list">5-10年</text>
-            <text>本科</text>
-            <text class="date">5月20日</text>
-          </view>
-        </view>
-      </view>
-
-      <!--<template is="position-item" data="{{...item}}" />
+      <view wx:for="{{similarPosi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
       <template is="position-item" data="{{...item}}" />
-      <template is="position-item" data="{{...item}}" />
-      <template is="position-item" data="{{...item}}" />
-      <template is="position-item" data="{{...item}}" />
-      <template is="position-item" data="{{...item}}" />-->
+    </view>
 
     </scroll-view>
   </view>

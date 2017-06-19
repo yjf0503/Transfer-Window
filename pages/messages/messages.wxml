@@ -12,11 +12,11 @@
   <!-- 全部 -->
   <swiper-item>
     <scroll-view scroll-y="true">
-      <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
+    <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
         <template is="position-item" data="{{...item}}" />
       </view>
     </scroll-view>
-    <view class="mes-null">
+    <view class="mes-null" hidden="{{isHiddenMes}}">
       <image class="icon-null" src="/images/mes-null.png"></image>
       <view class="hint">暂无记录</view>
       <view class="btn-box">
@@ -28,137 +28,61 @@
   <!-- 被查看 -->
   <swiper-item>
     <scroll-view scroll-y="true">
-      <!--<view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="bindItemTap">
+      <view wx:for="{{chakan}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
         <template is="position-item" data="{{...item}}" />
-      </view>-->
-
-      <view class="item">
-        <view class="item-img">
-          <image class="img" src="/images/com_def.png"></image>
-        </view>
-        <view class="item-main">
-          <view class="job">
-            <text class="job-position" data-id="{{id}}">记者</text>
-            <text class="job-Salary">20-30k</text>
-          </view>
-          <view class="company">
-            <text>腾讯科技</text>
-          </view>
-          <view class="secondary">
-            <text class="secondary-list">深圳</text>
-            <text class="secondary-list">5-10年</text>
-            <text>本科</text>
-            <text class="date">5月20日</text>
-          </view>
-        </view>
       </view>
-
-
 
     </scroll-view>
   </swiper-item>
   <!-- 有意向 -->
   <swiper-item>
-    <!--<template is="position-item" data="{{...item}}" />-->
 
-    <view class="item">
-        <view class="item-img">
-          <image class="img" src="/images/com_def.png"></image>
-        </view>
-        <view class="item-main">
-          <view class="job">
-            <text class="job-position" data-id="{{id}}">记者</text>
-            <text class="job-Salary">20-30k</text>
-          </view>
-          <view class="company">
-            <text>腾讯科技</text>
-          </view>
-          <view class="secondary">
-            <text class="secondary-list">深圳</text>
-            <text class="secondary-list">5-10年</text>
-            <text>本科</text>
-            <text class="date">5月20日</text>
-          </view>
-        </view>
+    <view wx:for="{{yixiang}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+      <template is="position-item" data="{{...item}}" />
+      <view class="content-box">
+        <view class="content">你好，该公司已查看了您的简历，并有意向与您进一步沟通，请保持电话畅通，祝您体育职场一帆风顺。</view>
       </view>
-      
-    <view class="content-box">
-      <view class="content">你好，该公司已查看了您的简历，并有意向与您进一步沟通，请保持电话畅通，祝您体育职场一帆风顺。</view>
     </view>
+
+
+
   </swiper-item>
   <!-- 要面试 -->
   <swiper-item>
-    <!--<template is="position-item" data="{{...item}}" />-->
-
-    <view class="item">
-        <view class="item-img">
-          <image class="img" src="/images/com_def.png"></image>
-        </view>
-        <view class="item-main">
-          <view class="job">
-            <text class="job-position" data-id="{{id}}">记者</text>
-            <text class="job-Salary">20-30k</text>
+    <view wx:for="{{mianshi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+      <template is="position-item" data="{{...item}}" />
+      <view class="content-box">
+        <view class="content">
+          <view class="list">
+            <text class="list-left">时间</text>
+            <text>2017年05月02日</text>
           </view>
-          <view class="company">
-            <text>腾讯科技</text>
+          <view class="list">
+            <text class="list-left">地点</text>
+            <text catchtap="mapTap" class="blue">海淀区28号无敌大厦1001</text>
           </view>
-          <view class="secondary">
-            <text class="secondary-list">深圳</text>
-            <text class="secondary-list">5-10年</text>
-            <text>本科</text>
-            <text class="date">5月20日</text>
+          <view class="list">
+            <text class="list-left" style="margin-right:68rpx;">联系人</text>
+            <text>程序斯达康</text>
           </view>
-        </view>
-      </view>
-
-    <view class="content-box">
-      <view class="content">
-        <view class="list">
-          <text class="list-left">时间</text>
-          <text>2017年05月02日</text>
-        </view>
-        <view class="list">
-          <text class="list-left">地点</text>
-          <text catchtap="mapTap" class="blue">海淀区28号无敌大厦1001</text>
-        </view>
-        <view class="list">
-          <text class="list-left" style="margin-right:68rpx;">联系人</text>
-          <text>程序斯达康</text>
-        </view>
-        <view class="list">
-          <text class="list-left">备注</text>
-          <text>请带一份简历</text>
+          <view class="list">
+            <text class="list-left">备注</text>
+            <text>请带一份简历</text>
+          </view>
         </view>
       </view>
     </view>
+
+
   </swiper-item>
   <!-- 不合适 -->
   <swiper-item>
-    <!--<template is="position-item" data="{{...item}}" />-->
-
-    <view class="item">
-        <view class="item-img">
-          <image class="img" src="/images/com_def.png"></image>
-        </view>
-        <view class="item-main">
-          <view class="job">
-            <text class="job-position" data-id="{{id}}">记者</text>
-            <text class="job-Salary">20-30k</text>
-          </view>
-          <view class="company">
-            <text>腾讯科技</text>
-          </view>
-          <view class="secondary">
-            <text class="secondary-list">深圳</text>
-            <text class="secondary-list">5-10年</text>
-            <text>本科</text>
-            <text class="date">5月20日</text>
-          </view>
-        </view>
+    <view wx:for="{{buheshi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+      <template is="position-item" data="{{...item}}" />
+      <view class="content-box">
+        <view class="content">非常荣幸收到您的简历，经过我们评估，认为您与该职位不太合适，无法进入面试阶段。相信更好的机会一定还在翘首期盼着您，赶快调整心态，做好充足的准备重新出发吧！(๑•̀ㅂ•́)و✧</view>
       </view>
-
-    <view class="content-box">
-      <view class="content">非常荣幸收到您的简历，经过我们评估，认为您与该职位不太合适，无法进入面试阶段。相信更好的机会一定还在翘首期盼着您，赶快调整心态，做好充足的准备重新出发吧！(๑•̀ㅂ•́)و✧</view>
     </view>
+
   </swiper-item>
 </swiper>

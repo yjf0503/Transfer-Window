@@ -22,7 +22,6 @@
     "window": {
         "navigationBarBackgroundColor": "#f6f6f8",
         "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "首页",
         "backgroundColor": "#f6f6f8",
         "backgroundTextStyle": "light"
     },

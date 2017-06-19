@@ -1,4 +1,5 @@
 // pages/edit-resume-edu/edit-resume-edu.js
+var app = getApp();
 Page({
 
   /**
@@ -19,28 +20,18 @@ Page({
               isHaveResume: false
           })
       }
-    try {
-      //获取教育列表，如果没有就加一个空数组，有，就绑定数据
-      var resumeEduList = wx.getStorageSync('resumeEduList');
-      var resumeEduListArray = [];
-      if (!resumeEduList) {
-        wx.setStorageSync('resumeEduList', resumeEduListArray);
-        return false;
-      }
       this.setData({
-        resumeEduList: resumeEduList
-      });
 
-    } catch (e) {
-      // Do something when catch error
-    }
+          resumeEduList: app.globalData.isHaveResume.edu_history,
+
+      })
     
   },
 
   //编辑单个教育经历
   editEduListTap: function(event){
     //添加和修改是同一个方法，所以判断eduId是否值，有值是修改，没值是添加
-    var eduid = event.currentTarget.dataset.eduid;
+    var eduid = event.currentTarget.dataset.id;
     
     if (eduid === undefined ){
       wx.navigateTo({
@@ -58,6 +49,12 @@ Page({
   subNext: function () {
       wx.navigateTo({
           url: '/pages/edit-resume-dreamposi/edit-resume-dreamposi?type=0',
+      })
+  },
+  //上一步
+  subPre: function () {
+      wx.navigateBack({
+
       })
   }
 })

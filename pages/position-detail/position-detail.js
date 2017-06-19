@@ -62,7 +62,7 @@ Page({
                 confirmColor: '#4990E2',
                 success: function (res) {
                     if (res.confirm) {
-                        
+                        app.loading();
                         that.sendResumeFun();
 
 
@@ -88,17 +88,50 @@ Page({
             positionid: that.data.position_content.p_id
         },function(data){
 
-            var animation = wx.createAnimation({
-                duration: 1000,
-                timingFunction: 'ease',
-            })
+            if(data.code ==1){
+                var animation = wx.createAnimation({
+                    duration: 1000,
+                    timingFunction: 'ease',
+                })
 
-            that.setData({
-                mode: false,
-                animationData: animation.export()
-            })
+                that.setData({
+                    mode: false,
+                    animationData: animation.export(),
+                    similarPosi: data.ret
+                })
+            }else{
+                app.alert(data.alertMsg)
+            }
+
+            app.hideloading();
+           
         })
     },
+
+    //职位详情
+    positionDetailTap: function (event) {
+        var id = event.currentTarget.dataset.id; // 当前id
+        var position = null;
+        // 找出当时点击的那一项的详细信息
+        for (var d of this.data.similarPosi) {
+            if (d.id == id) {
+                d.p_type == 0 ? d.p_type_name = "全职" : d.p_type_name = "实习"
+                position = d;
+                break;
+            }
+        }
+        if (!position) {
+            console.log('系统出错');
+            return;
+        }
+        // 设置到全局变量中去，让下个页面可以访问
+        app.globalData.positionDetail = position;
+        // 切换页面
+        wx.navigateTo({
+            url: '../position-detail/position-detail'
+        });
+    },
+
 
     //关闭成功提示
     closeTap: function () {

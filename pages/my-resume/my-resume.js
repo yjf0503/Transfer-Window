@@ -15,23 +15,33 @@ Page({
     edulevellist: ['高中', '大专', '本科', '硕士', '博士'],//学历
     worksYearlist: ['应届毕业生', '1年以下', '1-3年', '3-5年', '5-10年', ' 10年以上'],//工作年限
     citylist: ['北京', '上海', '广州', '杭州', '深圳', '其它'],//所在城市
+    workTypelist: ['全职', '兼职', '实习生'],//工作类型
+    salarylist: ['3k-5k', '5k-10k', '10k-15k', '15k-20k', '20k以上'],//期望薪资
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      
-
 
       this.setData({
           avatarUrl: app.globalData.userInfo.avatarUrl != null ? app.globalData.userInfo.avatarUrl : '/images/small_avatar.png',
         resumeBaseInfo: app.globalData.isHaveResume.base_info,
+        resumeWorkList: app.globalData.isHaveResume.work_history,
+        resumeEduList: app.globalData.isHaveResume.edu_history,
+        resumeDreamPosi: app.globalData.isHaveResume.expected_pos
     })
 
     
   },
-
+  onShow: function(){
+      this.setData({
+          resumeBaseInfo: app.globalData.isHaveResume.base_info,
+          resumeWorkList: app.globalData.isHaveResume.work_history,
+          resumeEduList: app.globalData.isHaveResume.edu_history,
+          resumeDreamPosi: app.globalData.isHaveResume.expected_pos
+      })
+  },
   
   //更换头像
   changeBgImgTap: function(){

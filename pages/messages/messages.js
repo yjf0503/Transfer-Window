@@ -9,6 +9,7 @@ Page({
     winWidth: 0,
     winHeight: 0,
     currentTab: 0, // tab切换 
+    isHiddenMes: true
   },
 
   /**
@@ -17,6 +18,7 @@ Page({
   onLoad: function (options) {
     
     var that = this;
+    app.loading();
     //获取设备宽高
     that.setData({
         winWidth: app.globalData.systemInfo.windowWidth,
@@ -25,98 +27,93 @@ Page({
 
     that.getMesgFun();
 
-    // var resume_ids = '';
-    // var resume_id_list = wx.getStorageSync('resume_id_list');
-    // var resume_position_id_list = wx.getStorageSync('resume_position_id_list');
-
-    // for (var i = 0; i < resume_id_list.length; i++) {
-    //   resume_ids += resume_id_list[i].id + ",";
-    // }
-    // wx.showToast({
-    //   title: '加载中',
-    //   icon: 'loading',
-    //   duration: 1000
-    // });
-
-    // wx.request({
-    //   url: 'https://www.ecosports.cn/home/enterprise/wxapp_get_jobsubmitlist',
-    //   data: { ids: resume_ids },
-    //   method: 'POST',
-    //   header: {
-    //     "content-type": "application/x-www-form-urlencoded"
-    //   },
-    //   success: function (res) {
-    //     console.log(res);
-    //     that.setData({
-    //       jobsubmitlist: res.data
-    //     });
-    //     wx.setStorageSync('jobsubmitlist', res.data);
-
-    //   },
-    //   fail: function () {
-    //     console.log('服务器请求失败!')
-    //   },
-    // })
-
-    // var jobsubmitlist = wx.getStorageSync('jobsubmitlist');
-    // that.setData({
-    //   jobsubmitlist: jobsubmitlist
-    // });
-
-    // for (var i = 0; i < jobsubmitlist.length; i++) {
-    //   for (var j = 0; i < resume_id_list.length; i++) {
-    //     if (resume_id_list[j].id == jobsubmitlist[i].resumeid) {
-    //       if (resume_id_list[j].status != jobsubmitlist[i].status) {
-    //         console.log('新');
-    //         resume_id_list[j].status = jobsubmitlist[i].status;
-    //         wx.setStorageSync('resume_id_list', resume_id_list);
-    //       } else {
-    //         console.log('旧');
-    //       }
-    //     }
-    //   }
-    // } 
-
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // var that = this;
-    // var resume_id_list = wx.getStorageSync('resume_id_list');
-    // var jobsubmitlist = wx.getStorageSync('jobsubmitlist');
-    // var resume_position_id_list = wx.getStorageSync('resume_position_id_list');
-
-    // that.setData({
-    //   jobsubmitlist: jobsubmitlist
-    // });
-
-    // for (var i = 0; i < jobsubmitlist.length; i++) {
-    //   for (var j = 0; i < resume_id_list.length; i++) {
-    //     if (resume_id_list[j].id == jobsubmitlist[i].resumeid) {
-    //       if (resume_id_list[j].status != jobsubmitlist[i].status) {
-    //         console.log('新');
-    //         resume_id_list[j].status = jobsubmitlist[i].status;
-    //         wx.setStorageSync('resume_id_list', resume_id_list);
-    //       } else {
-    //         console.log('旧');
-    //       }
-    //     }
-    //   }
-    // } 
+    
   },
 
   //获取消息
   getMesgFun:function(){
+      var that =this;
       app.apiPost(app.apiList.deliveryStatus,{
           openid: app.globalData.openid
       },function(data){
+        if(data.code == 1){
+            var readList = data.ret.resume_list_isread,
+                unreadList = data.ret.resume_list_unread;
+            var list = readList.concat(unreadList)
+            var chakan = [],
+                yixiang =[],
+                mianshi =[],
+                buheshi =[];
+            for (var i = 0; i < readList.length;i++){
+                if (readList[i].resume_status == 0){
+                    chakan.push(readList[i]);
+                } else if (readList[i].resume_status == 1){
+                    yixiang.push(readList[i])
+                } else if (readList[i].resume_status == 2){
+                    mianshi.push(readList[i])
+                }else {
+                    buheshi.push(readList[i])
+                }
+                
+            }
+            for (var j = 0; j < unreadList.length; j++) {
+                if (unreadList[j].resume_status == 0) {
+                    chakan.push(unreadList[j]);
+                } else if (unreadList[j].resume_status == 1) {
+                    yixiang.push(unreadList[j])
+                } else if (unreadList[j].resume_status == 2) {
+                    mianshi.push(unreadList[j])
+                } else {
+                    buheshi.push(unreadList[j])
+                }
+            }
 
+            that.setData({
+                list: list,
+                chakan: chakan,
+                yixiang: yixiang,
+                mianshi: mianshi,
+                buheshi: buheshi
+            })
+        }else{
+            
+            that.setData({
+                isHiddenMes:false
+            })
+        }
+        app.hideloading();
       })
   },
 
+  //职位详情
+  positionDetailTap: function (event) {
+      var id = event.currentTarget.dataset.id; // 当前id
+      var position = null;
+      // 找出当时点击的那一项的详细信息
+      for (var d of this.data.list) {
+          if (d.id == id) {
+              d.p_type == 0 ? d.p_type_name = "全职" : d.p_type_name = "实习"
+              position = d;
+              break;
+          }
+      }
+      if (!position) {
+          console.log('系统出错');
+          return;
+      }
+      // 设置到全局变量中去，让下个页面可以访问
+      app.globalData.positionDetail = position;
+      // 切换页面
+      wx.navigateTo({
+          url: '../position-detail/position-detail'
+      });
+  },
   //滑动切换tab
   bindChangeTab: function (e) {
     
