@@ -1,12 +1,12 @@
 <!--pages/my/my.wxml-->
 <view class="my-header">
   <block wx:if="{{isShow}}">
-    <image class="user-avatar" src="{{userInfo.avatarUrl}}"></image>
+    <image class="user-avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
     <text class="user-name">{{userInfo.nickName}}</text>
     <!--<text class="user-text">{{myself}}</text>-->
   </block>
   <block wx:else>
-    <image class="user-avatar" src="/images/big_avatar.png"></image>
+    <image class="user-avatar" src="/images/big_avatar.png" mode="aspectFill"></image>
     <text class="user-name">亲爱的用户，您好</text>
   </block>
   <!--<text class="edit-info" catchtap="editInfoTap">编辑资料</text>-->

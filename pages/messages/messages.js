@@ -64,18 +64,7 @@ Page({
                 }
                 
             }
-            for (var j = 0; j < unreadList.length; j++) {
-                if (unreadList[j].resume_status == 0) {
-                    chakan.push(unreadList[j]);
-                } else if (unreadList[j].resume_status == 1) {
-                    yixiang.push(unreadList[j])
-                } else if (unreadList[j].resume_status == 2) {
-                    mianshi.push(unreadList[j])
-                } else {
-                    buheshi.push(unreadList[j])
-                }
-            }
-
+            
             that.setData({
                 list: list,
                 chakan: chakan,

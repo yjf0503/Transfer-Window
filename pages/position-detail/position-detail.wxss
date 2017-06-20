@@ -23,7 +23,7 @@ page{
 }
 .salary{
   color: #F75D38;
-  font-size: 28rpx;
+  font-size: 36rpx;
   font-weight: 600;
   line-height: 1.4;
 }
@@ -51,7 +51,7 @@ page{
 .com{
   color: #666;
   position: relative;
-  padding-right: 120rpx;
+  padding-right: 20rpx;
   flex: 1;
   margin-right: 40rpx;
 }

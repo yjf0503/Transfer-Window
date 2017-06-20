@@ -1,7 +1,5 @@
-@import "../search/index.wxss";
+@import "../tpl/search/search.wxss";
 @import "../tpl/position-item/position-item.wxss";
-
-/*@import "../tpl/search-header/search-header.wxss";*/
 /**index.wxss**/
 
 .container{

@@ -1,11 +1,9 @@
-<include src="../search/index.wxml" />
 <import src="../tpl/position-item/position-item.wxml"/>
-<!--<import src="../tpl/search-header/search-header.wxml"/>-->
-<!--<template is="search-header"></template>-->
+<include src="../tpl/search/search.wxml"/>
 
 <!--index.wxml-->
 <view class="container">
-  <scroll-view scroll-y style="height: {{viewHeigh}}px;" bindscrolltolower="lower">
+  <scroll-view scroll-y style="height: {{viewHeight}}px;" bindscrolltolower="lower">
     
     <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
       <template is="position-item" data="{{...item}}" />
@@ -13,4 +11,5 @@
     
     <view class="loading" hidden="{{loadingHidden}}">{{loadingText}}</view>
   </scroll-view>
+  
 </view>

@@ -27,7 +27,7 @@
   color: #222;
 }
 .job-Salary{
-  font-size: 28rpx;
+  font-size: 32rpx;
   font-weight: 600;
   color: #ff9483;
   position: absolute;

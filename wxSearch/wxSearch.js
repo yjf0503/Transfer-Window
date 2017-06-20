@@ -17,7 +17,6 @@
  * 
  * 
  */
-var app = getApp();
 var __keysColor = [];
 
 var __mindKeys = [];
@@ -55,9 +54,7 @@ function init(that, barHeight, keys, isShowKey, isShowHis, callBack) {
             view.seachHeight = wHeight-barHeight;
             temData.view = view;
             that.setData({
-                wxSearchData: temData,
-                searchBtnShow:true,
-                cancelBtnShow:false,
+                wxSearchData: temData
             });
         }
     })
@@ -94,9 +91,7 @@ function wxSearchFocus(e, that, callBack) {
     var temData = that.data.wxSearchData;
     temData.view.isShow = true;
     that.setData({
-        wxSearchData: temData,
-        searchBtnShow:true,
-        cancelBtnShow:false,
+        wxSearchData: temData
     });
     //回调
     if (typeof (callBack) == "function") {
@@ -155,20 +150,13 @@ function getHisKeys(that) {
         }
     } catch (e) {
         // Do something when catch error
-    }  
+    }
+    
 }
 function wxSearchAddHisKey(that) {
-    var temData = that.data.wxSearchData;
-    temData.view.isShow = false;
     wxSearchHiddenPancel(that);
     var text = that.data.wxSearchData.value;
-    if(!text){return;}
-    that.setData({
-        wxSearchData:temData,
-        searchBtnShow:false,
-        cancelBtnShow:true,
-    })
-    app.globalData.keyword = text;
+    if(typeof(text) == "undefined" || text.length == 0){return;}
     var value = wx.getStorageSync('wxSearchHisKeys');
     if(value){
         if(value.indexOf(text) < 0){
@@ -192,6 +180,8 @@ function wxSearchAddHisKey(that) {
             }
         })
     }
+    
+    
 }
 function wxSearchDeleteKey(e,that) {
     var text = e.target.dataset.key;
@@ -219,17 +209,6 @@ function wxSearchDeleteAll(that){
     })
 }
 
-function wxSearchCancel(that){
-    app.globalData.keyword = '';
-    var temData = that.data.wxSearchData;
-    temData.value = null;
-    that.setData({
-        wxSearchData:temData,
-        searchBtnShow:true,
-        cancelBtnShow:false,
-    });
-}
-
 
 
 module.exports = {
@@ -243,6 +222,5 @@ module.exports = {
     wxSearchAddHisKey:wxSearchAddHisKey,
     wxSearchDeleteKey:wxSearchDeleteKey,
     wxSearchDeleteAll:wxSearchDeleteAll,
-    wxSearchCancel:wxSearchCancel,
     wxSearchHiddenPancel:wxSearchHiddenPancel
 }

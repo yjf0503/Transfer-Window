@@ -1,5 +1,6 @@
 /* pages/company-detail/company-detail.wxss */
 @import "../tpl/position-item/position-item.wxss";
+@import "/wxParse/wxParse.wxss";
 page{
     background-color: #f5f6f9;
 }
@@ -17,9 +18,7 @@ page{
 .com{
   color: #666;
   position: relative;
-  padding-right: 120rpx;
   flex: 1;
-  margin-right: 40rpx;
 }
 .com-name{
   font-size: 32rpx;

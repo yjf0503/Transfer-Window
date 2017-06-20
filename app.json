@@ -12,10 +12,6 @@
         "pages/edit-resume-edu-detail/edit-resume-edu-detail",
         "pages/edit-resume-work-detail/edit-resume-work-detail",
         "pages/edit-resume-work/edit-resume-work",
-        
-        "pages/search/index",
-        
-        
         "pages/rookie/rookie",
         "pages/my/my"
     ],

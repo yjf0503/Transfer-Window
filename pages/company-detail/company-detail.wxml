@@ -1,4 +1,5 @@
 <!--pages/company-detail/company-detail.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
 <view class="company-m">
   <image class="com-logo" src="{{company_info.enterprise_logo}}" data-pid="{{company_info.p_id}}"></image>
   <view class="com">
@@ -7,26 +8,26 @@
   </view>
 </view>
 
-<!--<view class="content">
+<view class="content">
   <view class="title">产品描述</view>
   <view class="main">
     
     <swiper indicator-dots="true" autoplay="false" interval="5000" duration="500">
-      <block wx:for="{{imgUrls}}" wx:key="{{}}">
         <swiper-item>
-          <image src="{{item}}" class="media-img" />
+            <image src="{{company_info.enterprise_img}}" class="media-img" mode="aspectFill"/>
         </swiper-item>
-      </block>
     </swiper>
 
   </view>
-</view>-->
+</view>
+
 
 <view class="content">
   <view class="title">公司描述</view>
   <view class="main">
     <scroll-view class="com-content" scroll-y="true">
-      {{company_info.enterprise_desc}}
+      <!--{{company_info.enterprise_desc}}-->
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
     </scroll-view>
   </view>
 </view>

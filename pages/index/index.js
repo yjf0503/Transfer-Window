@@ -8,13 +8,16 @@ Page({
         positionType: 0,//首页职位类型
         page: 1,//页码
         limit: 10,//条数
+        searchPage: 1, //搜索页码
+        searchLimit: 10,//搜索条数
+        searchValue:'',//搜索条件
+        searchBtnText:'搜索',
 
-        modalFlag: true,
-
-        cityArray: ['全国', '北京', '上海', '深圳', '广州', '其它'],
+        cityArray: [],
         cityIndex: 0,
+        cityId:0,
 
-        viewHeigh: 600,
+        viewHeight: 600,
         loadingText: '加载中...',//
         loadingHidden: true,//默认隐藏更多
         list: []
@@ -34,17 +37,22 @@ Page({
         //获取授权
         app.util.authorize();
         
-        
+        //获取简历
         that.getResume(that);
         
+        //获取可搜索城市列表
+        that.getPositionCity();
 
         //获取职位列表数据
-        that.getPositionsFun(that.data.page, that.data.limit);
+        //that.getPositionsFun(that.data.page, that.data.limit);
+        
+        //根据条件获取职位列表数据
+        that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
         
         
         //初始化的时候渲染wxSearchdata 第二个为你的search高度
-        WxSearch.init(that, 43, ['体育', '编辑', '万达', '乐视', '运营']);
-        WxSearch.initMindKeys(['weappdev.com', '微信小程序开发', '微信开发', '微信小程序']);
+        WxSearch.init(that, 43, ['销售经理']);
+        WxSearch.initMindKeys(['腾讯体育','乐视体育','阿里体育']);
     },
 
     //判断用户是否已有简历
@@ -123,8 +131,10 @@ Page({
         var that = this;
         if (that.data.loadingHidden) {
             that.data.loadingHidden = false;
-            that.data.page++;
-            that.getPositionsFun(that.data.page, that.data.limit);
+            //that.data.page++;
+            //that.getPositionsFun(that.data.page, that.data.limit);
+            that.data.searchPage++;
+            that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
             that.setData({
                 loadingHidden: false,
             })
@@ -133,75 +143,148 @@ Page({
 
     },
 
+    //获取城市
+    getPositionCity: function(){
+        var that = this;
+        app.apiGet(app.apiList.wxappAreaList,{},function(data){
+           that.setData({
+               cityArray: data
+           })
+        })
+    },
+
     //选择城市 qihb
     bindPickerChangeCity: function (e) {
+        var that =this;
+        let cityId = this.data.cityArray[e.detail.value].id;
         this.setData({
-            cityIndex: e.detail.value
+            cityIndex: e.detail.value,
+            cityId: cityId,
+            loadingHidden: true,
+            loadingText: '加载中...',
+            list:[],
+            searchPage:1
+        })
+        app.loading();
+        
+        this.searchRetFun(cityId, this.data.searchValue, this.data.searchPage, this.data.searchLimit);
+    },
+
+    //搜索结果
+    //key=职位／公司&address=城市ID
+    searchRetFun: function (address, key, searchPage, searchLimit){
+        var that = this;
+        app.apiPost(app.apiList.wxappSearchList,{
+            full_time: 1,// 全职1，入行0
+            address: address,
+            key: key,
+            searchPage: searchPage, //搜索页码
+            searchLimit: searchLimit,//搜索条数
+
+        },function(data){
+            if (data.length > 0) {
+                var newData = that.data.list.concat(data);
+                that.setData({
+                    list: newData,
+                    loadingHidden: true
+                })
+            } else {
+                that.setData({
+                    loadingText: "更多职位正在收录",
+                    loadingHidden: false
+                })
+            }
+            
+            app.hideloading();
         })
     },
 
-    //跳转到搜索页 qihb
-    // bindSeacherTap: function (event) {
-    //   wx.navigateTo({
-    //     url: '../search/index',
-    //   })
-    // },
-
-    wxSearchInput: function (event) {
-        var that = this
-        WxSearch.wxSearchInput(event, that);
-    },
-    wxSearchTap: function (event) {
-        var that = this
-        WxSearch.wxSearchHiddenPancel(that);
-    },
-    wxSearchKeyTap: function (event) {
-        var that = this
-        WxSearch.wxSearchKeyTap(event, that);
-    },
-    wxSearchFocus: function (event) {
-        var that = this
-        WxSearch.wxSearchFocus(event, that);
-    },
-    wxSearchBlur: function (event) {
-        var that = this
-        WxSearch.wxSearchBlur(event, that);
-    },
-    wxSearchFn: function (event) {
+    //点击搜索按钮
+    wxSearchFn: function (e) {
         var that = this
         WxSearch.wxSearchAddHisKey(that);
-        this.setData({
-            modalFlag: !this.data.modalFlag
-        })
-        if (app.globalData.keyword) {
-            var position_list = wx.getStorageSync('job_list');
-            var position_search_list = Array();
-            for (var i = 0; i < position_list.length; i++) {
-                if (position_list[i].p_name.indexOf(app.globalData.keyword) >= 0) {
-                    position_search_list.push(position_list[i]);
-                }
-                if (position_list[i].enterprise_name.indexOf(app.globalData.keyword) >= 0) {
-                    position_search_list.push(position_list[i]);
-                }
+
+        if (that.data.searchBtnText =='搜索'){
+            app.loading();
+            //初始化
+            this.setData({
+                loadingHidden: true,
+                loadingText: '加载中...',
+                list: [],
+                searchPage: 1,
+                searchBtnText:'取消'
+            })
+            //判断是否有wxSearchData.value
+            if (that.data.wxSearchData.value) {
+                that.searchRetFun(that.data.cityId, that.data.wxSearchData.value, that.data.searchPage, that.data.searchLimit);
+                that.setData({
+                    searchValue: that.data.wxSearchData.value
+                })
+            } else {
+                that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
             }
+        }else{
+            
+            app.loading();
             that.setData({
-                list: position_search_list
+                loadingHidden: true,
+                loadingText: '加载中...',
+                list: [],
+                searchPage: 1,
+                searchBtnText: '搜索',
+                searchValue:''
+            })
+            that.data.wxSearchData.value='';
+            that.data.searchValue = '';
+            that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
+            
+        }
+        
+        
+
+    },
+    //搜索条件改变
+    wxSearchInput: function (e) {
+        var that = this
+        WxSearch.wxSearchInput(e, that);
+        if (e.detail.value == '' || e.detail.value == undefined) {
+            that.setData({
+                searchValue: ''
+            })
+        } else {
+            that.setData({
+                searchValue: e.detail.value
             })
         }
+        
     },
-
-    wxSearchCancel: function (event) {
+    //获取搜索输入框焦点
+    wxSearchFocus: function (e) {
         var that = this
-        WxSearch.wxSearchCancel(that);
-        wx.getStorage({
-            key: 'job_list',
-            success: function (res) {
-                that.setData({
-                    list: res.data
-                })
-            },
-        })
+        WxSearch.wxSearchFocus(e, that);
     },
+    //离开搜索输入框焦点
+    wxSearchBlur: function (e) {
+        var that = this
+        WxSearch.wxSearchBlur(e, that);
+    },
+    
+    wxSearchKeyTap: function (e) {
+        var that = this
+        WxSearch.wxSearchKeyTap(e, that);
+    },
+    wxSearchDeleteKey: function (e) {
+        var that = this
+        WxSearch.wxSearchDeleteKey(e, that);
+    },
+    wxSearchDeleteAll: function (e) {
+        var that = this;
+        WxSearch.wxSearchDeleteAll(that);
+    },
+    wxSearchTap: function (e) {
+        var that = this
+        WxSearch.wxSearchHiddenPancel(that);
+    }
 
    
 })

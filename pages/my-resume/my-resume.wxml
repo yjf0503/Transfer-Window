@@ -21,7 +21,7 @@
 
 <view class="user-images">
     <view class="images-box" catchtap="changeBgImgTap">
-        <image src="{{avatarUrl}}"></image>
+        <image src="{{avatarUrl}}" mode="aspectFill"></image>
         <view class="change-text">点击更换</view>
     </view>
 </view>

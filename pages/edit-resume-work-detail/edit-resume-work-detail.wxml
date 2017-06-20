@@ -41,11 +41,11 @@
   
   <view class="item-cell">
     <view class="item-cell-bd">
-      <text>职业</text>
+      <text>工作内容</text>
     </view>
   </view>
   <view class="item-cell-textarea">
-    <textarea bindinput="WorkContentTap" class="item-textarea big bg" value="{{workContent}}" placeholder="工作内容" maxlength="200" />
+    <textarea bindinput="WorkContentTap" class="item-textarea big bg" value="{{workContent}}" placeholder="如：拓展合作资源，策划线上及线下推广活动" maxlength="200" />
     <view class="textarea-count">
       <text>{{workContentLen}}/200</text>
     </view>

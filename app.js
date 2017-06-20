@@ -19,9 +19,9 @@ App({
         //接口host
         host: 'https://www.ecosports.cn',
         //版本
-        version: '0.2.0',
+        version: '0.2.7',
         //app名称
-        channel: '招聘小程序'
+        channel: '体育圈招聘小程序'
     },
     init: function () {
         
@@ -49,7 +49,9 @@ App({
         getResume: '/Home/Enterprise/actionGetResume',//获取简历
         deliveryStatus: '/Home/Enterprise/actionDeliveryStatus',//消息
         deliveryResume:'/Home/Enterprise/actionDeliveryResume',//投递简历
-        deleteResume: '/Home/Enterprise/actionDeleteResume'//删除简历
+        deleteResume: '/Home/Enterprise/actionDeleteResume',//删除简历
+        wxappAreaList: '/home/enterprise/wxapp_area_list',//城市选项
+        wxappSearchList: '/home/enterprise/wxapp_search_list',//搜索接口
 
     },
     apiGet: function (url, data, callback) {

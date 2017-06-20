@@ -47,7 +47,7 @@
 
 
   </swiper-item>
-  <!-- 要面试 -->
+  <!-- 邀面试 -->
   <swiper-item>
     <view wx:for="{{mianshi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
       <template is="position-item" data="{{...item}}" />
