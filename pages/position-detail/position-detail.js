@@ -40,6 +40,24 @@ Page({
                 isHaveResume: true
             });
         }
+       //判断是否已投递过
+        try {
+            var sendPosiArray = wx.getStorageSync('sendPosiArray')
+            if (sendPosiArray) {
+                // Do something with return value
+                for (var i = 0; i < sendPosiArray.length;i++){
+                    if (sendPosiArray[i] == app.globalData.positionDetail.id){
+                        that.setData({
+                            submitText: "已投递",
+                            submitdisabled: true
+                        });
+                    }
+                }
+                
+            }
+        } catch (e) {
+            // Do something when catch error
+        }
        
     },
 
@@ -101,8 +119,26 @@ Page({
                 that.setData({
                     mode: false,
                     animationData: animation.export(),
-                    similarPosi: data.ret
+                    similarPosi: data.ret,
+                    submitText: "已投递",
+                    submitdisabled: true,
                 })
+                //缓存投递过的职位id
+                try {
+                    var sendPosiArray = wx.getStorageSync('sendPosiArray')
+                    if (sendPosiArray) {
+                        // Do something with return value
+                        sendPosiArray.push(that.data.position_content.id);
+                        wx.setStorageSync('sendPosiArray', sendPosiArray);
+                    }else{
+                        var sendPosiArray=[];
+                        sendPosiArray.push(that.data.position_content.id);
+                        wx.setStorageSync('sendPosiArray', sendPosiArray);
+                    }
+                } catch (e) {
+                    // Do something when catch error
+                }
+
             }else{
                 app.alert(data.alertMsg)
             }
