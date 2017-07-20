@@ -57,7 +57,7 @@
       <text class="data-text">{{citylist[resumeBaseInfo.cityindex]}}</text>
     </view>
     <view class="base">
-      <text>联系电话</text>
+      <text>联系手机</text>
       <text class="data-text">{{resumeBaseInfo.contact}}</text>
     </view>
     <view class="base">
@@ -88,6 +88,7 @@
           <text>{{resumeWorkList.join}} - {{resumeWorkList.leave}}</text>
         </view>
         <view class="work-company">{{resumeWorkList.companyname}}</view>
+        <view class="work-department">{{resumeWorkList.department}}</view>
         <view class="work-content">
           {{resumeWorkList.workContent}}
         </view>

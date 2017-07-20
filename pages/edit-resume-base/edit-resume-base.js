@@ -113,6 +113,16 @@ Page({
 //   },
   //保存
   submitResumeBaseTap: function(){
+
+      if (this.data.contact == '' || this.data.contact == undefined){
+          app.alert('联系手机不能为空！')
+          return false;
+      }
+      if (!(/^1(3|4|5|7|8)\d{9}$/.test(this.data.contact))) {
+          app.alert('手机号码格式不对！')
+          return false;
+      } 
+
     
     this.setResumeBaseInfoFun();
 

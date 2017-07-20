@@ -4,3 +4,6 @@
 .btn-box{
   margin-top: 80rpx;
 }
+.company wx-input{
+    width: 400rpx;
+}

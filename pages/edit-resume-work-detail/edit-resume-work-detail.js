@@ -9,6 +9,7 @@ Page({
     content_id:  '',
     join: '2015-01',//入职时间
     leave: '2015-01',//离职时间
+    endDate:'2000-01',//离职时间
     workContentLen: 0,
     isadd: false
   },
@@ -62,7 +63,8 @@ Page({
   //入职时间
   bindDateChangeJoin: function (e) {
     this.setData({
-      join: e.detail.value
+      join: e.detail.value,
+      endDate: e.detail.value
     })
   },
   //离职时间
@@ -146,6 +148,15 @@ Page({
   //提交工作信息
   submitCompanyTap: function (e) {
 
+      if (this.data.companyname == '' || this.data.companyname == undefined) {
+          app.alert('请填写公司名称');
+          return false;
+      }
+
+      if (this.data.department == '' || this.data.department == undefined) {
+          app.alert('请填写部门与职位');
+          return false;
+      } 
     this.setResumeWorkDetailFun();
     
     wx.showToast({

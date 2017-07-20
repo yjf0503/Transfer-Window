@@ -12,6 +12,7 @@
         </view>
       </view>
       <view class="work-company">{{resumeWorkList.companyname}}</view>
+      <view class="work-department">{{resumeWorkList.department}}</view>
       <view class="work-content">{{resumeWorkList.workContent}}</view>
     </view>
 

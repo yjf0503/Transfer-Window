@@ -157,7 +157,11 @@ page{
 }
 .work-company{
   color: #666;
-  margin-bottom: 28rpx;
+  margin-bottom: 20rpx;
+}
+.work-department{
+    color: #666;
+    margin-bottom: 28rpx;
 }
 .work-content{
   color: #999;

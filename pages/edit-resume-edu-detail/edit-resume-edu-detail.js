@@ -138,7 +138,17 @@ Page({
   },
 
   //提交教育信息
-  submitSchoolTap: function(e){
+  submitSchoolTap: function(e){ 
+
+      if (this.data.schoolname == '' || this.data.schoolname == undefined) {
+          app.alert('请填写学校名称');
+          return false;
+      }
+
+      if (this.data.profession == '' || this.data.profession == undefined) {
+          app.alert('请填写专业名称');
+          return false;
+      }
 
       this.setResumeEduDetailFun();
     

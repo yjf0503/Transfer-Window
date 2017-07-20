@@ -4,7 +4,7 @@
     <view class="item-cell-bd">
       <text>公司名称</text>
     </view>
-    <view class="item-cell-ft blue">
+    <view class="item-cell-ft company blue">
       <input type="text" value="{{companyname}}" bindinput="companyNameTap" placeholder="输入公司名称" />
     </view>
   </view>
@@ -32,7 +32,7 @@
       <text>离职时间</text>
     </view>
     
-    <picker class="item-cell-ft blue" mode="date" value="{{leave}}" fields="month" start="2000-01" end="2025-01" bindchange="bindDateChangeLeave">
+    <picker class="item-cell-ft blue" mode="date" value="{{leave}}" fields="month" start="{{endDate}}" end="2025-01" bindchange="bindDateChangeLeave">
     <view class="picker">
       {{leave}}
     </view>
