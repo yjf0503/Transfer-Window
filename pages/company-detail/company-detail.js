@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+      enterprise_img:'../../images/com_img.png'
   },
 
   /**
@@ -28,6 +28,11 @@ Page({
             that.setData({
                 company_info: data
             })
+            if (data.enterprise_img!=null){
+                that.setData({
+                    enterprise_img: data.enterprise_img
+                })
+            }
             WxParse.wxParse('article', 'html', data.enterprise_desc, that, 5);
             app.hideloading();
       })
@@ -56,5 +61,22 @@ Page({
       url: '../position-detail/position-detail',
     })
   },
-  
+  //分享
+  onShareAppMessage: function (res) {
+      if (res.from === 'button') {
+          // 来自页面内转发按钮
+          console.log(res.target)
+      }
+      var title = this.data.company_info.enterprise_name;
+      return {
+          title: title,
+          path: '/page/user?id=123',
+          success: function (res) {
+              // 转发成功
+          },
+          fail: function (res) {
+              // 转发失败
+          }
+      }
+  }
 })

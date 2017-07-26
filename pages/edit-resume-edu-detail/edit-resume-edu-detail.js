@@ -77,6 +77,17 @@ Page({
   //保存教育详情
   setResumeEduDetailFun: function () {
       var that = this;
+      
+      if (this.data.schoolname == '' || this.data.schoolname == undefined) {
+          app.alert('请填写学校名称');
+          return false;
+      }
+
+      if (this.data.profession == '' || this.data.profession == undefined) {
+          app.alert('请填写专业名称');
+          return false;
+      }
+
       let content = {
           schoolname: this.data.schoolname,
           profession: this.data.profession,
@@ -140,16 +151,7 @@ Page({
   //提交教育信息
   submitSchoolTap: function(e){ 
 
-      if (this.data.schoolname == '' || this.data.schoolname == undefined) {
-          app.alert('请填写学校名称');
-          return false;
-      }
-
-      if (this.data.profession == '' || this.data.profession == undefined) {
-          app.alert('请填写专业名称');
-          return false;
-      }
-
+      
       this.setResumeEduDetailFun();
     
     wx.showToast({

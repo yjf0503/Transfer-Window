@@ -41,7 +41,7 @@ Page({
 
 
         //初始化的时候渲染wxSearchdata 第二个为你的search高度
-        WxSearch.init(that, 43, ['销售经理']);
+        WxSearch.init(that, 48, ['运营', '赛事', '商务', '实习生']);
         WxSearch.initMindKeys(['腾讯体育', '乐视体育', '阿里体育']);
 
         try {
@@ -217,7 +217,7 @@ Page({
                 loadingText: '加载中...',
                 list: [],
                 searchPage: 1,
-                searchBtnText: '取消'
+                searchBtnText: '返回'
             })
             //判断是否有wxSearchData.value
             if (that.data.wxSearchData.value) {
@@ -263,20 +263,46 @@ Page({
         }
 
     },
+    searchConfirm: function () {
+        this.wxSearchFn();
+        // var that = this
+        // WxSearch.wxSearchAddHisKey(that);
+
+        // app.loading();
+        // //初始化
+        // this.setData({
+        //     loadingHidden: true,
+        //     loadingText: '加载中...',
+        //     list: [],
+        //     searchPage: 1,
+        //     searchBtnText: '返回'
+        // })
+        // //判断是否有wxSearchData.value
+        // if (that.data.wxSearchData.value) {
+        //     that.searchRetFun(that.data.cityId, that.data.wxSearchData.value, that.data.searchPage, that.data.searchLimit);
+        //     that.setData({
+        //         searchValue: that.data.wxSearchData.value
+        //     })
+        // } else {
+        //     that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
+        // }
+    },
     //获取搜索输入框焦点
     wxSearchFocus: function (e) {
         var that = this
         WxSearch.wxSearchFocus(e, that);
     },
     //离开搜索输入框焦点
-    wxSearchBlur: function (e) {
-        var that = this
-        WxSearch.wxSearchBlur(e, that);
-    },
+    // wxSearchBlur: function (e) {
+    //     var that = this
+    //     WxSearch.wxSearchBlur(e, that);
+    // },
 
     wxSearchKeyTap: function (e) {
         var that = this
         WxSearch.wxSearchKeyTap(e, that);
+        this.wxSearchFn();
+
     },
     wxSearchDeleteKey: function (e) {
         var that = this

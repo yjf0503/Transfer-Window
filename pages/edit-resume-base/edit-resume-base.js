@@ -114,16 +114,6 @@ Page({
   //保存
   submitResumeBaseTap: function(){
 
-      if (this.data.contact == '' || this.data.contact == undefined){
-          app.alert('联系手机不能为空！')
-          return false;
-      }
-      if (!(/^1(3|4|5|7|8)\d{9}$/.test(this.data.contact))) {
-          app.alert('手机号码格式不对！')
-          return false;
-      } 
-
-    
     this.setResumeBaseInfoFun();
 
     wx.showToast({
@@ -148,6 +138,29 @@ Page({
   },
   //保存简历基本信息
   setResumeBaseInfoFun: function(){
+      if (this.data.userName == '' || this.data.userName == undefined) {
+          app.alert('姓名不能为空！')
+          return false;
+      }
+
+      if (this.data.contact == '' || this.data.contact == undefined) {
+          app.alert('联系手机不能为空！')
+          return false;
+      }
+      if (!(/^1(3|4|5|7|8)\d{9}$/.test(this.data.contact))) {
+          app.alert('手机号码格式不对！')
+          return false;
+      }
+      if (this.data.email == '' || this.data.email == undefined) {
+          app.alert('联系邮箱不能为空！');
+          return false;
+      }
+      var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+      if (!myreg.test(this.data.email)) {
+          app.alert('联系邮箱格式不对！');
+          return false;
+      }
+
       let content = {
           userName: this.data.userName,
           genderindex: this.data.genderindex,

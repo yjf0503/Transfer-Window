@@ -76,6 +76,12 @@ Page({
     //保存期望职位
     
     setResumeDreamPosFun: function () {
+
+
+        if (this.data.dreamposi == '' || this.data.dreamposi == undefined) {
+            app.alert('期望职位不能为空！')
+            return false;
+        }
         let content = {
             dreamposi: this.data.dreamposi,
             workTypeindex: this.data.workTypeindex,

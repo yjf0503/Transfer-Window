@@ -1,5 +1,12 @@
 <!--pages/company-detail/company-detail.wxml-->
 <import src="../../wxParse/wxParse.wxml"/>
+
+<swiper class="swiper" indicator-dots="true" autoplay="false" interval="5000" duration="500">
+    <swiper-item>
+        <image src="{{enterprise_img}}" class="media-img" mode="aspectFill"/>
+    </swiper-item>
+</swiper>
+
 <view class="company-m">
   <image class="com-logo" src="{{company_info.enterprise_logo}}" data-pid="{{company_info.p_id}}"></image>
   <view class="com">
@@ -7,21 +14,6 @@
     <view class="com-address">{{company_info.enterprise_address}}</view>
   </view>
 </view>
-
-<view class="content">
-  <view class="title">产品描述</view>
-  <view class="main">
-    
-    <swiper indicator-dots="true" autoplay="false" interval="5000" duration="500">
-        <swiper-item>
-            <image src="{{company_info.enterprise_img}}" class="media-img" mode="aspectFill"/>
-        </swiper-item>
-    </swiper>
-
-  </view>
-</view>
-
-
 <view class="content">
   <view class="title">公司描述</view>
   <view class="main">

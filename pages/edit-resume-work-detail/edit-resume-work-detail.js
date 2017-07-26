@@ -85,6 +85,21 @@ Page({
   //保存工作详情
   setResumeWorkDetailFun: function () {
       var that = this;
+
+      if (this.data.companyname == '' || this.data.companyname == undefined) {
+          app.alert('请填写公司名称');
+          return false;
+      }
+
+      if (this.data.department == '' || this.data.department == undefined) {
+          app.alert('请填写部门与职位');
+          return false;
+      } 
+      if (this.data.workContent == '' || this.data.workContent == undefined) {
+          app.alert('请填写工作内容');
+          return false;
+      }
+
       let content = {
           companyname: this.data.companyname,
           department: this.data.department,
@@ -148,15 +163,7 @@ Page({
   //提交工作信息
   submitCompanyTap: function (e) {
 
-      if (this.data.companyname == '' || this.data.companyname == undefined) {
-          app.alert('请填写公司名称');
-          return false;
-      }
-
-      if (this.data.department == '' || this.data.department == undefined) {
-          app.alert('请填写部门与职位');
-          return false;
-      } 
+      
     this.setResumeWorkDetailFun();
     
     wx.showToast({

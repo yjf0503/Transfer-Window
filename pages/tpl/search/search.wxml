@@ -13,7 +13,7 @@
 
   <view class="input-box">
     <icon class="search-icon" type="search" size="12" color="#999" />
-    <input class="input-html" type="text" placeholder="搜索职位/公司" bindinput="wxSearchInput" bindfocus="wxSearchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" />
+    <input class="input-html" type="text" placeholder="搜索职位/公司" bindinput="wxSearchInput" bindfocus="wxSearchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" confirm-type="search" bindconfirm="searchConfirm" />
   </view>
   <text class="btn-cancel" bindtap="wxSearchFn">{{searchBtnText}}</text>
   
