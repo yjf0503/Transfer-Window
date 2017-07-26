@@ -35,7 +35,7 @@
   <button class="btn-send-resume" size="default" hover-class="btn-send-resume-hover" catchtap="isSendTap" disabled="{{submitdisabled}}">{{submitText}}</button>
 </view>
 
-<view class="mode-bg" hidden="{{mode}}" animation="{{animationData}}"></view>
+<view class="mode-bg" hidden="{{mode}}" animation="{{animationData}}" catchtap="closeTap"></view>
 <view class="send-sucess" hidden="{{mode}}" animation="{{animationData}}">
   <view class="suc-tip">
     <view class="suc-tip-bottom">

@@ -78,9 +78,9 @@ Page({
             wx.showModal({
                 title: '发送确认',
                 content: '发送后不可撤回，确认发送？',
-                cancelText: '再考虑下',
+                cancelText: '取消',
                 cancelColor: '#999',
-                confirmText: '立即发送',
+                confirmText: '确认',
                 confirmColor: '#4990E2',
                 success: function (res) {
                     if (res.confirm) {
