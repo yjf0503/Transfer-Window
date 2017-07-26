@@ -46,7 +46,7 @@
   </view>
   <view class="item-cell item-cell-access">
     <view class="item-cell-bd">
-      <text>出生日期</text>
+      <text>出生年月</text>
     </view>
 
     <picker class="item-cell-ft blue" mode="date" value="{{birthday}}" fields="month" start="1960-01" end="2000-01" bindchange="bindDateChangeBirthday">

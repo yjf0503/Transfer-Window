@@ -61,7 +61,6 @@ Page({
         if (app.globalData.openid == null) {
             setTimeout(function(){
                 that.getResume(that);
-                console.log(1);
             },1000);
            
         }else{
@@ -109,7 +108,17 @@ Page({
         // 找出当时点击的那一项的详细信息
         for (var d of this.data.list) {
             if (d.id == id) {
-                d.p_type == 0 ? d.p_type_name = "全职" : d.p_type_name = "实习"
+                if(d.p_type == 0) {
+                  d.p_type_name = "全职" }
+                if (d.p_type == 1) {
+                  d.p_type_name = "兼职" }
+                if (d.p_type == 2) {
+                  d.p_type_name = "实习"
+                }
+                if (d.p_type == 3) {
+                  d.p_type_name = "志愿者"
+                }
+                
                 position = d;
                 break;
             }
