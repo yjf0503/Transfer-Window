@@ -198,8 +198,9 @@ Page({
   },
   //下一步
   subNext: function(){
-      
-      this.setResumeBaseInfoFun();
+      //TODO:判断返回的状态
+      var s= this.setResumeBaseInfoFun();
+
 
       wx.navigateTo({
           url: '/pages/edit-resume-work/edit-resume-work?type=0',
