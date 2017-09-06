@@ -44,6 +44,7 @@ App({
         //接口
         getOpenid: '/home/enterprise/wxapp_savesession',//获取微信openid
         positions:'/Home/Enterprise/actionPositions',//职位列表
+        positionsDetail:'/Home/Enterprise/position_info',//职位详情
         isHaveResume: '/Home/Enterprise/actionIsHaveResume',//简历
         company: '/Home/Enterprise/wxapp_company',//公司详情
         saveResume: '/Home/Enterprise/actionSaveResume',// 保存简历
