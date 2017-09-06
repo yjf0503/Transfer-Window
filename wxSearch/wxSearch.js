@@ -194,12 +194,34 @@ function wxSearchDeleteKey(e,that) {
     var text = e.target.dataset.key;
     var value = wx.getStorageSync('wxSearchHisKeys');
     value.splice(value.indexOf(text),1);
+    // wx.setStorage({
+    //     key:"wxSearchHisKeys",
+    //     data:value,
+    //     success: function(){
+    //         getHisKeys(that);
+    //     }
+    // })
     wx.setStorage({
         key:"wxSearchHisKeys",
         data:value,
         success: function(){
-            getHisKeys(that);
+          var value = [];
+          try {
+            value = wx.getStorageSync('wxSearchHisKeys')
+            if (value) {
+              // Do something with return value
+              var temData = that.data.wxSearchData;
+              temData.his = value;
+              temData.view.isShow= true;
+              that.setData({
+                wxSearchData: temData
+              });
+            }
+          } catch (e) {
+            // Do something when catch error
+          }
         }
+      
     })
 }
 function wxSearchDeleteAll(that){

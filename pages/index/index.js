@@ -53,7 +53,7 @@ Page({
         
         
         //初始化的时候渲染wxSearchdata 第二个为你的search高度
-        WxSearch.init(that, 48, ['运营','赛事','商务','实习生']);
+        WxSearch.init(that, 48, ['运营','赛事','商务']);
         WxSearch.initMindKeys(['腾讯体育','乐视体育','阿里体育']);
     },
 
@@ -167,12 +167,11 @@ Page({
 
     //选择城市 qihb
     bindPickerChangeCity: function (e) {
-      console.log("我触发了……")
       this.data.wxSearchData.view.isShow=false;
-      console.log(this.data);
       WxSearch.wxSearchFocus(e, this);
         var that =this;
         let cityId = this.data.cityArray[e.detail.value].id;
+        let cityVal = this.data.cityArray[e.detail.value].name;
       
       
         this.setData({
@@ -185,7 +184,7 @@ Page({
         })
         app.loading();
         
-        this.searchRetFun(cityId, this.data.searchValue, this.data.searchPage, this.data.searchLimit);
+        this.searchRetFun(cityVal, this.data.searchValue, this.data.searchPage, this.data.searchLimit);
     },
 
     //搜索结果
@@ -220,7 +219,6 @@ Page({
     //点击搜索按钮
     wxSearchFn: function (e) {
         var that = this;
-        WxSearch.wxSearchAddHisKey(that);
         if (!this.data.searchValue){
             wx.showToast({
               title:"请输入关键字"
@@ -228,6 +226,8 @@ Page({
         }else{
           if (that.data.searchBtnText == '搜索') {
             app.loading();
+            //添加搜索记录
+            WxSearch.wxSearchAddHisKey(that);
             //初始化
             this.setData({
               loadingHidden: true,
@@ -247,16 +247,19 @@ Page({
             }
           } else {
             app.loading();
+            let wxSearchData = that.data.wxSearchData;
+            wxSearchData.value = '';//搜索值为空
+            wxSearchData.view.isShow= false;
+            that.data.searchValue = '';
             that.setData({
               loadingHidden: true,
               loadingText: '加载中...',
               list: [],
               searchPage: 1,
               searchBtnText: '搜索',
-              searchValue: ''
+              searchValue: '' ,
+              wxSearchData: wxSearchData
             })
-            that.data.wxSearchData.value = '';
-            that.data.searchValue = '';
             that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
 
           }
@@ -276,34 +279,15 @@ Page({
             })
         } else {
             that.setData({
-                searchValue: e.detail.value
+                searchValue: e.detail.value,
+                searchBtnText:'搜索'
             })
         }
         
     },
+    //搜索确认
     searchConfirm: function(){
         this.wxSearchFn();
-        // var that = this;
-        // WxSearch.wxSearchAddHisKey(that);
-
-        // app.loading();
-        // //初始化
-        // this.setData({
-        //     loadingHidden: true,
-        //     loadingText: '加载中...',
-        //     list: [],
-        //     searchPage: 1,
-        //     searchBtnText: '返回'
-        // })
-        // //判断是否有wxSearchData.value
-        // if (that.data.wxSearchData.value) {
-        //     that.searchRetFun(that.data.cityId, that.data.wxSearchData.value, that.data.searchPage, that.data.searchLimit);
-        //     that.setData({
-        //         searchValue: that.data.wxSearchData.value
-        //     })
-        // } else {
-        //     that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
-        // }
     },
     //获取搜索输入框焦点
     wxSearchFocus: function (e) {
