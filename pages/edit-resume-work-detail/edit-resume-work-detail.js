@@ -221,15 +221,20 @@ Page({
 
   //提交工作信息(保存)
   submitCompanyTap: function (e) {
+    var _this = this;
     console.log(this.data.workContent);
 
-
-    if (this.data.companyname == '' || this.data.department == '' || this.data.workContent == ''){
+    if (this.data.companyname == '' || this.data.department == '' || this.data.workContent == '') {
       wx.showModal({
         title: "生态圈提示您",
         content: "请填写完整信息"
       });
-    }else{
+    } else if (Date.parse(new Date(_this.data.join)) > Date.parse(new Date(_this.data.leave))) {   // 判断入职时间和离职时间
+      wx.showModal({
+        title: "生态圈提示您",
+        content: "请填写真实的工作时间"
+      });
+    } else {
       this.setResumeWorkDetailFun();
       wx.showToast({
         title: '保存成功！',

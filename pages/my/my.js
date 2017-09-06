@@ -166,36 +166,36 @@ Page({
     },
     // 退出账户登录
     signOut:function(){
-      // var _this = this ;
+      var _this = this ;
 
-      //   //   恢复到没登录的样式
-      // try {
-      //   wx.setStorageSync('token', 'false');
-      // } catch (e) {
-      // }
-      // try {
-      //   wx.removeStorageSync('openid')
-      // } catch (e) {
-      //   // Do something when catch error
-      // }
-      // if (wx.getStorageSync('token') == "false" && wx.getStorageSync('openid') == ""){
-      //   wx.showModal({
-      //     title: '提示',
-      //     content: '退出登录成功',
-      //     success: function (res) {
-      //       if (res.confirm) {
-      //         _this.setData({
-      //           user: false,
-      //           usersetting: true
-      //         });
-      //         app.globalData.token = false;
+        //   恢复到没登录的样式
+      try {
+        wx.setStorageSync('token', 'false');
+      } catch (e) {
+      }
+      try {
+        wx.removeStorageSync('openid')
+      } catch (e) {
+        // Do something when catch error
+      }
+      if (wx.getStorageSync('token') == "false" && wx.getStorageSync('openid') == ""){
+        wx.showModal({
+          title: '提示',
+          content: '退出登录成功',
+          success: function (res) {
+            if (res.confirm) {
+              _this.setData({
+                user: false,
+                usersetting: true
+              });
+              app.globalData.token = false;
 
-      //       } else if (res.cancel) {
-      //         // console.log('用户点击取消')
-      //       }
-      //     }
-      //   })
-      // }
+            } else if (res.cancel) {
+              // console.log('用户点击取消')
+            }
+          }
+        })
+      }
       
     }
 })

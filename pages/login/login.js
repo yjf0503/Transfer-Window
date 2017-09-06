@@ -220,5 +220,15 @@ Page({
     this.setData({
       codeNamber: e.detail.value
     });
+  },
+  phoneInput: function (e) {
+    this.setData({
+      phone: e.detail.value
+    });
+  },
+  toAgreement:function(){
+    wx.navigateTo({
+      url: '../agreement/agreement',
+    });
   }
 })

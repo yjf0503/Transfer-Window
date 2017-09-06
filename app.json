@@ -1,7 +1,7 @@
 {
     "pages": [
-        
         "pages/first-entry/first-entry",
+        "pages/agreement/agreement",
         "pages/login/login",
         "pages/index/index",
         "pages/edit-resume-edu/edit-resume-edu",

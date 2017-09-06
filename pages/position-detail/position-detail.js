@@ -19,15 +19,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     var that = this;
-    if (options.type) {
-      //从分享进来
+    //  sj
+    //  console.log(options);
+     if (options.type) {
+    //   //从分享进来
+    //   app.loading();
+    //   that.setData({
+    //     position_content: app.globalData.curPosition
+    //   });
+    //   // console.log(app.globalData.positionDetail);
+    //   WxParse.wxParse('article', 'html', app.globalData.curPosition.p_desc, that, 5);
+    //   app.hideloading();
+
+
+     //   qhb
       app.loading();
       app.apiGet(app.apiList.positionsDetail, {
         id: options.id
       }, function (data) {
-        
+        console.log(data)
         var data = data[0];
         that.setData({
           position_content: data,
@@ -35,7 +46,8 @@ Page({
         })
         
         WxParse.wxParse('article', 'html', data.p_desc, that, 5);
-        app.hideloading();
+      app.hideloading();
+      
       })
     } else{
       //获取职位详情

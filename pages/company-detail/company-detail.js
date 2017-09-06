@@ -60,7 +60,7 @@ Page({
     app.globalData.curPosition = position;
     // 切换页面
     wx.redirectTo({
-      url: '../position-detail/position-detail',
+      url: '../position-detail/position-detail?id=' + position.id + '&type=1',
     })
   },
   //分享

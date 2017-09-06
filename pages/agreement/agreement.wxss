@@ -1,0 +1,15 @@
+/* pages/agreement/agreement.wxss */
+.agreement-box{
+    padding: 0 30rpx;
+}
+.agreement-box .agreement-title{
+  text-align: center;
+  margin: 30rpx 0;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+.agreement-box  .content view{
+  text-align:justify;
+  margin: 20rpx 0;
+  letter-spacing: 2rpx;
+}
