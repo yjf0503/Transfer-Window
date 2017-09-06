@@ -55,19 +55,23 @@
         <view class="content">
           <view class="list">
             <text class="list-left">时间</text>
-            <text>2017年05月02日</text>
+            <text>{{item.meettime}}</text>
           </view>
           <view class="list">
             <text class="list-left">地点</text>
-            <text catchtap="mapTap" class="blue">{{mapPlace}}</text>
+            <text catchtap="mapTap">{{item.address}}</text>
           </view>
           <view class="list">
             <text class="list-left" style="margin-right:68rpx;">联系人</text>
-            <text>程序斯达康</text>
+            <text>{{item.hrname}}</text>
+          </view>
+          <view class="list">
+            <text class="list-left">电话</text>
+            <text>{{item.hrphone}}</text>
           </view>
           <view class="list">
             <text class="list-left">备注</text>
-            <text>请带一份简历</text>
+            <text>{{item.content}}</text>
           </view>
         </view>
       </view>
