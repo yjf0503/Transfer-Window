@@ -13,7 +13,7 @@
           <text class="user-name">{{username}}</text>
       </block>
       <block wx:else>
-           <text class="register" bindtap='login'>注册/登录</text>
+           <text class="register" bindtap='login'>登录</text>
       </block>
     </view>
    

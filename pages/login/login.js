@@ -7,9 +7,9 @@ Page({
    */
   data: {
     code:"发送验证码",     // 验证码
-    register:"注册",
-    login:"登录",
-    tab:true,
+    register:"登录",
+    login:"注册",
+    // tab:true,
     red:"",
     phone:"",
     codeNamber:""
@@ -71,22 +71,22 @@ Page({
       return false;
   },
   //  登录/注册 切换
-  tab: function () {
-    if (this.data.tab){
-     this.setData({
-        register: "登录",
-        login: "注册",
-        tab:false
-      });
-    }else{
-      this.setData({
-        register: "注册",
-        login: "登录",
-        tab:true
-      });
-    }
+  // tab: function () {
+  //   if (this.data.tab){
+  //    this.setData({
+  //       register: "登录",
+  //       login: "注册",
+  //       tab:false
+  //     });
+  //   }else{
+  //     this.setData({
+  //       register: "注册",
+  //       login: "登录",
+  //       tab:true
+  //     });
+  //   }
      
-  },
+  // },
   CODE: true,
   // 发送验证码
   code:function(){
@@ -133,18 +133,18 @@ Page({
   submit:function(){
     var _this = this;
     if ((/^1(3|4|5|7|8)\d{9}$/.test(_this.data.phone))) {
-      if (this.data.tab) {     // 判断是登录还是注册     注册
-        app.apiPost(app.apiList.do_register, {    // 注册
-          phone: _this.data.phone
-        }, function (data) {
-          console.log(data);
-          if (data.status) {
-            app.alert(data.rows);
-          } else {
-            app.alert(data.rows);
-          }
-        })
-      } else {                 //   登录
+      // if (this.data.tab) {     // 判断是登录还是注册     注册
+      //   app.apiPost(app.apiList.do_register, {    // 注册
+      //     phone: _this.data.phone
+      //   }, function (data) {
+      //     console.log(data);
+      //     if (data.status) {
+      //       app.alert(data.rows);
+      //     } else {
+      //       app.alert(data.rows);
+      //     }
+      //   })
+      // } else {                 //   登录
         app.apiPost(app.apiList.do_login, {    // 登录
           phone: _this.data.phone,
           code:_this.data.codeNamber
@@ -197,7 +197,7 @@ Page({
             app.alert(data.rows);
           }
         })
-      }
+      // }
     }else{
       app.alert("请填写规范的手机号!")
     }

@@ -1,7 +1,7 @@
 <view class="box">
   <view class="top">
       <text class='login'>{{register}}</text>
-      <text class='register' bindtap='tab'>去{{login}}</text>
+      <!-- <text class='register' bindtap='tab'>去{{login}}</text> -->
   </view>
 
   <view class="item middle" style="border:{{red}};">

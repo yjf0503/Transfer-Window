@@ -17,12 +17,7 @@ Page({
     onLoad: function () {
         this.getUserInfo();
         //获取我的简介
-        if (app.globalData.isHaveResume !== null){
-            this.setData({
-              username: app.globalData.isHaveResume.base_info.userName    //设置显示用户名
-            })
-            // console.log(app.globalData.isHaveResume);
-        }
+       
      
         if (wx.getStorageSync("token") == "true" || app.globalData.token =="true"){   // 判断用户是否登录
        
@@ -38,6 +33,12 @@ Page({
             usersetting: true    // 
           });
         };
+        // console.log(app.globalData.isHaveResume);
+        if (app.globalData.isHaveResume !== null) {
+          this.setData({
+            username: app.globalData.isHaveResume.base_info.userName    //设置显示用户名
+          })
+        }
     },
     onShow: function(){
         //获取我的简介
@@ -81,8 +82,8 @@ Page({
         // wx.reLaunch({
         //     url: '/pages/edit-resume-base/edit-resume-base?type=0',
         // });
-
-        //判断是否有简历
+      if (wx.getStorageSync("token") == "true" || app.globalData.token == "true") { 
+         //判断是否有简历
         if (app.globalData.isHaveResume===null){
             wx.reLaunch({
                 url: '/pages/edit-resume-base/edit-resume-base?type=0',
@@ -92,14 +93,23 @@ Page({
                 url: '/pages/my-resume/my-resume'
             });
         }
+      }else{
+        app.alert("请先登录!");
+      }
+       
     },
 
 
     //我的投递
     myDeliveryTap: function () {
-        wx.switchTab({
+      if (wx.getStorageSync("token") == "true" || app.globalData.token == "true") { 
+          wx.switchTab({
             url: '/pages/messages/messages'
         });
+      }else{
+        app.alert("请先登录!");
+      }
+      
     },
     
     //删除简历
