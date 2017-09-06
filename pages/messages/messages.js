@@ -9,8 +9,7 @@ Page({
     winWidth: 0,
     winHeight: 0,
     currentTab: 0, // tab切换 
-    isHiddenMes: true,
-    mapPlace:"朝阳区soho现代城"
+    isHiddenMes: true
   },
 
   /**
