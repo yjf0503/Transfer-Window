@@ -1,0 +1,24 @@
+<!--pages/first-entry/first-entry.wxml-->
+<view class="container">
+ <!-- 首页图片 -->
+  <view class="home-page" hidden="{{home}}">
+      <image src="/images/home.jpg"></image>
+      <button class="btn-home" bindtap="home"></button>
+  </view>
+<!-- 入行图片 -->
+   <view class="enter-page" hidden="{{enter}}">
+      <image src="/images/enter.jpg"></image>
+      <button class="btn-enter" bindtap="enter"></button>
+  </view>
+<!-- 消息图片 -->
+   <view class="my_message-page" hidden="{{message}}">
+      <image src="/images/my_message.jpg"></image>
+      <button class="btn-message" bindtap="message"></button>
+  </view>
+<!-- 我的图片 -->
+   <view class="my_con-page" hidden="{{my}}">
+      <image src="/images/my_con.jpg"></image>
+      <button class="to-home" bindtap="toHome"></button>
+      <!-- <button class="to-resume" bindtap="toResume"></button> -->
+  </view>
+</view>

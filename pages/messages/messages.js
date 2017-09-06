@@ -9,7 +9,8 @@ Page({
     winWidth: 0,
     winHeight: 0,
     currentTab: 0, // tab切换 
-    isHiddenMes: true
+    isHiddenMes: true,
+    mapPlace:"朝阳区soho现代城"
   },
 
   /**
@@ -44,27 +45,41 @@ Page({
           openid: app.globalData.openid
       },function(data){
           //暂时不区分新消息
+        function toArr(json){    // 数组转为json
+          var arr = [];
+          for (var i in json) {
+            arr.unshift(json[i]);
+          };
+          return arr ; 
+        };
           if (data.code == 1 || data.code == 0){
             var readList = data.ret.resume_list_isread,
                 unreadList = data.ret.resume_list_unread;
-            var list = readList.concat(unreadList)
+          
+            var list = readList.concat(toArr(unreadList[0]));
             var chakan = [],
                 yixiang =[],
                 mianshi =[],
                 buheshi =[];
-            for (var i = 0; i < readList.length;i++){
-                if (readList[i].resume_status == 0){
-                    chakan.push(readList[i]);
-                } else if (readList[i].resume_status == 1){
-                    yixiang.push(readList[i])
-                } else if (readList[i].resume_status == 2){
-                    mianshi.push(readList[i])
-                }else {
-                    buheshi.push(readList[i])
+            console.log(data);
+            for (var i in unreadList){
+                if (i==2){    // 被查看
+                  chakan.push(toArr(unreadList[i])[0]);
+                  
+                } else if (i==1){    // 有意向
+                  yixiang.push(toArr(unreadList[i])[0]);
+                } else if (i==3){     // 面试
+                  mianshi.push(toArr(unreadList[i])[0]);
+                }else if(i==6){      // 不合适
+                  buheshi.push(toArr(unreadList[i])[0]);
                 }
                 
             }
-            
+            // for (var l in unreadList[2]){
+            //     console.log("---------------------" + l)
+            // }
+            // console.log("被查看" + chakan)
+
             that.setData({
                 list: list,
                 chakan: chakan,
@@ -114,6 +129,7 @@ Page({
   
   //点击tab切换
   swichNav: function (e) {
+    var that = this ;
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
@@ -121,6 +137,51 @@ Page({
         currentTab: e.target.dataset.current
       })
     }
+    // console.log(that.data.currentTab);
+    // app.apiPost(app.apiList.deliveryStatus, {
+    //   openid: app.globalData.openid,
+    //   status: that.data.currentTab
+    // }, function (data) {
+    //   //暂时不区分新消息
+    //   console.log(data);
+    //   if (data.code == 1 || data.code == 0) {
+    //     var readList = data.ret.resume_list_isread,
+    //       unreadList = data.ret.resume_list_unread;
+    //     var list = readList.concat(unreadList)
+    //     var chakan = [],
+    //       yixiang = [],
+    //       mianshi = [],
+    //       buheshi = [];
+    //     console.log(list);
+    //     for (var i = 0; i < list.length; i++) {
+    //       if (list[i].resume_status == 1) {
+    //         chakan.push(list[i]);
+    //       } else if (list[i].resume_status == 2) {
+    //         yixiang.push(list[i])
+    //       } else if (list[i].resume_status == 3) {
+    //         mianshi.push(list[i])
+    //       } else if (list[i].resume_status == 4){
+    //         buheshi.push(list[i])
+    //       }
+
+    //     }
+
+    //     that.setData({
+    //       list: list,
+    //       chakan: chakan,
+    //       yixiang: yixiang,
+    //       mianshi: mianshi,
+    //       buheshi: buheshi
+    //     })
+    //   console.log(that.data.yixiang);
+    //   } else {
+
+    //     that.setData({
+    //       isHiddenMes: false
+    //     })
+    //   }
+    //   app.hideloading();
+    // })
   },
 
   //地图
@@ -133,13 +194,17 @@ Page({
     //     wx.openLocation({
     //       latitude: latitude,
     //       longitude: longitude,
-    //       scale: 28
+    //       scale: 18
     //     })
     //   }
     // })
+   var  that = this;
     wx.chooseLocation({
       success:function(res){
-        consoloe.log(res);
+        console.log(res);
+            that.setData({
+              mapPlace:res.address
+            });
       }
     })
   }, 

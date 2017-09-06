@@ -21,6 +21,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     //从本地缓存中异步获取指定 key 对应的内容。
+   
     wx.getStorage({
       key: 'myBaseInfo',
       success: function (res) {

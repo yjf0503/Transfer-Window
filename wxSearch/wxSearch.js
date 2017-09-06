@@ -89,13 +89,14 @@ function wxSearchInput(e, that, callBack){
 
 function wxSearchFocus(e, that, callBack) {
     var temData = that.data.wxSearchData;
-    temData.view.isShow = true;
+    // temData.view.isShow = true;
     that.setData({
         wxSearchData: temData
     });
     //回调
     if (typeof (callBack) == "function") {
         callBack();
+        console.log(111111111111111111111111)
     }
     // if(typeof(temData) != "undefined"){
     //   temData.view.hidden= false;
@@ -127,14 +128,20 @@ function wxSearchHiddenPancel(that){
 
 function wxSearchKeyTap(e, that, callBack) {
     //回调
+    console.log(that);
+
     var temData = that.data.wxSearchData;
     temData.value = e.target.dataset.key;
+   
     that.setData({
         wxSearchData: temData
     });
     if (typeof (callBack) == "function") {
         callBack();
     }
+
+    wxSearchAddHisKey(that)
+
 }
 function getHisKeys(that) {
     var value = [];

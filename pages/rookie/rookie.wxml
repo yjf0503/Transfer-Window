@@ -11,13 +11,13 @@
     <view class="loading" hidden="{{loadingHidden}}">{{loadingText}}</view>
   </scroll-view>
 
-  <view class="alert-rookie" hidden="{{alertRookie}}">
-    <view class="mode-rookie"></view>
-    <view class="content-rookie">
+   <!-- <view class="alert-rookie" hidden="{{alertRookie}}"> 
+    <view class="mode-rookie"></view> -->
+    <!-- <view class="content-rookie">
         <image class="alert-img" src="/images/alert_rookie.png"></image>
         <view class="close-box" bindtap="closeAlertRookieTap">
             <image src="/images/close_rookie.png"></image>
         </view>
-    </view>
-  </view>
-</view>
+    </view> -->
+  <!-- </view> -->
+ </view> 

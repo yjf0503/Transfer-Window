@@ -1,9 +1,9 @@
 /**app.wxss**/
 page{
-    background-color: #fff;
+    background-color: #FFF;
     font-size: 28rpx;
-    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+    font-family: 苹方,-apple-system-font,Helvetica Neue,Helvetica,sans-serif;  
 }
 .blue{
-  color: #4990E2;
+     color: #4990E2;
 }

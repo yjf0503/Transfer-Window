@@ -21,7 +21,7 @@ Page({
         loadingHidden: true,//默认隐藏更多
         list: [],
 
-        alertRookie: true,// 入行提示
+        // alertRookie: true,// 入行提示
     },
     onLoad: function () {
         var that = this;
@@ -44,20 +44,18 @@ Page({
         WxSearch.init(that, 48, ['运营', '赛事', '商务', '实习生']);
         WxSearch.initMindKeys(['腾讯体育', '乐视体育', '阿里体育']);
 
-        try {
-            var value = wx.getStorageSync('alertRookie')
-            if (value) {
-                // Do something with return value
-            } else {
-                that.setData({
-                    alertRookie: false
-                })
-            }
-        } catch (e) {
-            // Do something when catch error
-        }
-
-        
+        // try {
+        //     var value = wx.getStorageSync('alertRookie')
+        //     if (value) {
+        //         // Do something with return value
+        //     } else {
+        //         that.setData({
+        //             alertRookie: false
+        //         })
+        //     }
+        // } catch (e) {
+        //     // Do something when catch error
+        // }
     },
 
     //获取首页职位信息
@@ -193,15 +191,15 @@ Page({
 
 
     //入行提示
-    closeAlertRookieTap: function () {
-        this.setData({
-            alertRookie: true
-        })
-        try {
-            wx.setStorageSync('alertRookie', 'true')
-        } catch (e) {
-        }
-    },
+    // closeAlertRookieTap: function () {
+    //     this.setData({
+    //         alertRookie: true
+    //     })
+    //     try {
+    //         wx.setStorageSync('alertRookie', 'true')
+    //     } catch (e) {
+    //     }
+    // },
 
 
     //点击搜索按钮

@@ -41,7 +41,7 @@ page{
   color: #fff;
   border-radius: 4rpx;
 }
-.item-cells{
+ .item-cells{
     background-color: #fff;
     font-size: 32rpx;
     color: #666;
@@ -70,6 +70,27 @@ page{
     position: absolute;
     top: 50%;
     right: 4rpx;
-    margin-top: -10rpx;
+    margin-top: -10rpx; 
+}  
+.register{
+  display:block;
+  color:#fff;
+  font-size:28rpx;
+  font-weight:bold;
+  margin-bottom:20rpx;
+  background:#7796E6;
+  width:170rpx;
+  border-radius:8%;
+  height:70rpx;
+  text-align:center;
+  line-height:70rpx;
+  margin:0 auto;
+}
+.ext-box{
+  margin-top: 35rpx;
+  font-size: 35rpx;
+}
+.ext-box .item-cell-bd{
+  text-align: center;
 }
 

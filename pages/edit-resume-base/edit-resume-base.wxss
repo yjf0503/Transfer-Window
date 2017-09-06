@@ -1,3 +1,14 @@
 /* pages/edit-resume-base/edit-resume-base.wxss */
 @import "/style/item-cells.wxss";
-@import "/style/blue-btn.wxss";
+@import "/style/blue-btn.wxss"; 
+text{
+  color:#666;
+}
+view{
+  color:#222;
+  font-weight: bold;
+}
+ input{ 
+  color:#222;
+  font-weight: bold;
+}

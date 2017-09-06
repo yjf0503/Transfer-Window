@@ -17,6 +17,5 @@
   </view>
   <text class="btn-cancel" bindtap="wxSearchFn">{{searchBtnText}}</text>
   
-<template is="wxSearch" data="{{wxSearchData}}" />
+ <template is="wxSearch" data="{{wxSearchData}}"/> 
 </view>
-

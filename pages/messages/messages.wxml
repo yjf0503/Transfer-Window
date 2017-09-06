@@ -11,8 +11,8 @@
 <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="min-height:{{winHeight - 47}}px" bindchange="bindChangeTab">
   <!-- 全部 -->
   <swiper-item>
-    <scroll-view scroll-y="true">
-    <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+    <scroll-view scroll-y="true" class="auto-scroll">
+      <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
         <template is="position-item" data="{{...item}}" />
       </view>
     </scroll-view>
@@ -27,12 +27,12 @@
   </swiper-item>
   <!-- 被查看 -->
   <swiper-item>
-    <scroll-view scroll-y="true">
+    <scroll-view scroll-y="true" class="auto-scroll">
       <view wx:for="{{chakan}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
         <template is="position-item" data="{{...item}}" />
       </view>
-
     </scroll-view>
+    <view>{{list}}</view>
   </swiper-item>
   <!-- 有意向 -->
   <swiper-item>
@@ -59,7 +59,7 @@
           </view>
           <view class="list">
             <text class="list-left">地点</text>
-            <text catchtap="mapTap" class="blue">海淀区28号无敌大厦1001</text>
+            <text catchtap="mapTap" class="blue">{{mapPlace}}</text>
           </view>
           <view class="list">
             <text class="list-left" style="margin-right:68rpx;">联系人</text>

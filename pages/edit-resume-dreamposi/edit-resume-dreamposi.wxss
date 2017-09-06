@@ -1,3 +1,10 @@
 /* pages/edit-resume-dreamposi/edit-resume-dreamposi.wxss */
 @import "/style/item-cells.wxss";
 @import "/style/blue-btn.wxss";
+view,input{
+  color: #222;
+  font-weight: bold;
+}
+text{
+  color: #666;
+}

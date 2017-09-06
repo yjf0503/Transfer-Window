@@ -1,5 +1,7 @@
 {
     "pages": [
+        "pages/first-entry/first-entry",
+        "pages/login/login",
         "pages/index/index",
         "pages/edit-resume-edu/edit-resume-edu",
         "pages/position-detail/position-detail",
@@ -13,7 +15,8 @@
         "pages/edit-resume-work-detail/edit-resume-work-detail",
         "pages/edit-resume-work/edit-resume-work",
         "pages/rookie/rookie",
-        "pages/my/my"
+        "pages/my/my",
+        "pages/opinion/opinion"   
     ],
     "window": {
         "navigationBarBackgroundColor": "#f6f6f8",

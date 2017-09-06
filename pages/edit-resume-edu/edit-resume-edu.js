@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      isHaveResume: true,
+    isHaveResume: true,
     resumeEduList:null,
     edulevellist: ['高中', '大专', '本科', '硕士', '博士'],//学历
   },
@@ -50,10 +50,30 @@ Page({
 
   //下一步
   subNext: function () {
-      wx.navigateTo({
-          url: '/pages/edit-resume-dreamposi/edit-resume-dreamposi?type=0',
-      })
+
+    // console.log(app.globalData.isHaveResume.edu_history);
+    if (app.globalData.isHaveResume.edu_history != "undefined") {
+      if (app.globalData.isHaveResume.edu_history instanceof Array) {
+        if (app.globalData.isHaveResume.edu_history.length != 0) {
+          wx.navigateTo({
+            url: '/pages/edit-resume-dreamposi/edit-resume-dreamposi?type=0',
+          })
+        } else {
+          wx.showModal({
+            title: "生态圈提示您",
+            content: "请填写教育信息"
+          });
+        }
+      } else {
+        wx.showModal({
+          title: "生态圈提示您",
+          content: "请填写教育信息"
+        });
+      }
+
+    }
   },
+  
   //上一步
   subPre: function () {
       wx.navigateBack({

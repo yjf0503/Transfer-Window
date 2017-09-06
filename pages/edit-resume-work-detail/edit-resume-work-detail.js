@@ -9,15 +9,32 @@ Page({
     content_id:  '',
     join: '2015-01',//入职时间
     leave: '2015-01',//离职时间
-    endDate:'2000-01',//离职时间
+    endDate:'2000-01',//离职时间,
+    leaveDate:"",       // 选择离职的时间
     workContentLen: 0,
-    isadd: false
+    isadd: false,      // 删除工作经历
+    companyname:"",    // 公司名称
+    department:"",     // 部门与职位
+    workContent:"",     // 工作内容
+    orporatename:"输入公司名称",
+    position:"如：市场专员",
+    jobcontent:"如：拓展合作资源，策划线上及线下推广活动"
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    var newDate = new Date();
+    var Month = newDate.getMonth() < 10 ? "0" + (newDate.getMonth() + 1) : "" + (newDate.getMonth() + 1);
+  
+    this.setData({
+      leaveDate: newDate.getFullYear() + "-" + Month
+    });
+
+    ///////////////////
     var workId = options.workid;
     
     if (workId !=undefined) {
@@ -26,6 +43,7 @@ Page({
         })
         
         var resumeWorkList = app.globalData.isHaveResume.work_history;
+        console.log(resumeWorkList);
         for (var i = 0; i <resumeWorkList.length;i++){
             if (workId == resumeWorkList[i].id){
                 this.setData({
@@ -49,16 +67,42 @@ Page({
     } 
   },
   //公司名称
-  companyNameTap: function(e){
+  // companyNameTap: function(e){
+  //   this.setData({
+  //     companyname: e.detail.value
+  //   })
+  // },
+  //公司名称聚焦
+  orporatenamefocus:function(e){
     this.setData({
+      orporatename:""
+    });
+  },
+    //公司名称失焦
+  orporatenameblur: function (e) {
+    this.setData({
+      orporatename: "输入公司名称",
       companyname: e.detail.value
+    });
+  },
+  //部门/职位
+  // departmentTap: function(e){
+  //   this.setData({
+  //     department: e.detail.value
+  //   })
+  // },
+  // 职位聚焦
+  positionfocus:function(e){
+    this.setData({
+      position: ""
     })
   },
-  //部门
-  departmentTap: function(e){
+  // 职位矢焦
+  positionblur: function (e) {
     this.setData({
+      position: "如：市场专员",
       department: e.detail.value
-    })
+    });
   },
   //入职时间
   bindDateChangeJoin: function (e) {
@@ -66,6 +110,7 @@ Page({
       join: e.detail.value,
       endDate: e.detail.value
     })
+    console.log(e.detail);
   },
   //离职时间
   bindDateChangeLeave: function (e) {
@@ -80,6 +125,18 @@ Page({
     this.setData({
       workContentLen: eValueLen,
       workContent: eValue
+    })
+  },
+  // 工作内容聚焦
+  jobcontentfocus: function () {
+    this.setData({
+      jobcontent: ""
+    })
+  },
+  // 工作内容矢焦
+  jobcontentblur: function () {
+    this.setData({
+      jobcontent: "如：拓展合作资源，策划线上及线下推广活动"
     })
   },
   //保存工作详情
@@ -114,6 +171,7 @@ Page({
               content: JSON.stringify(content)
               
           }, function (data) {
+            console.log(data);
               if (data.code == 1) {
                   console.log(data.msg)
                   that.updataWorkDataFun(data);
@@ -128,6 +186,7 @@ Page({
               content: JSON.stringify(content),
               content_id: this.data.content_id,
           }, function (data) {
+            console.log(data);
               if (data.code == 1) {
                   console.log(data.msg)
                   that.updataWorkDataFun(data);
@@ -160,27 +219,29 @@ Page({
       });
   },
 
-  //提交工作信息
+  //提交工作信息(保存)
   submitCompanyTap: function (e) {
+    console.log(this.data.workContent);
 
-      
-    this.setResumeWorkDetailFun();
-    
-    wx.showToast({
-      title: '保存成功！',
-      icon: 'success',
-      duration: 500
-    })
 
-    
+    if (this.data.companyname == '' || this.data.department == '' || this.data.workContent == ''){
+      wx.showModal({
+        title: "生态圈提示您",
+        content: "请填写完整信息"
+      });
+    }else{
+      this.setResumeWorkDetailFun();
+      wx.showToast({
+        title: '保存成功！',
+        icon: 'success',
+        duration: 500
+      });
 
-    //返回上一个页面
-    setTimeout(function () {
-      wx.navigateBack({
-
-      })
-    }, 800);
-
+      // //返回上一个页面
+      setTimeout(function () {
+        wx.navigateBack({})  // 返回上一页
+      }, 800);
+    }
   },
   //删除工作详情
   deleteWorkDetailFun(){

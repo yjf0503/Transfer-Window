@@ -19,13 +19,13 @@ App({
         //接口host
         host: 'https://www.ecosports.cn',
         //版本
-        version: '0.2.7',
+        version: "0.5.0",
         //app名称
         channel: '体育圈招聘小程序'
     },
     init: function () {
-        
-    },
+
+     },
     globalData: {
         //设备信息
         systemInfo: null,
@@ -37,6 +37,8 @@ App({
         isHaveResume: wx.getStorageSync('isHaveResume') || null,
         //用于职位详情绑定数据
         positionDetail: null,
+        //  用户登录状态
+        token:false
     },
     apiList: {
         //接口
@@ -48,11 +50,15 @@ App({
         deleteResumePart: '/Home/Enterprise/actionDeleteResumePart',//删除简历
         getResume: '/Home/Enterprise/actionGetResume',//获取简历
         deliveryStatus: '/Home/Enterprise/actionDeliveryStatus',//消息
+        deliveryStatusTab: '/Home/Enterprise/actionDeliveryStatusTab',//消息详情
         deliveryResume:'/Home/Enterprise/actionDeliveryResume',//投递简历
         deleteResume: '/Home/Enterprise/actionDeleteResume',//删除简历
         wxappAreaList: '/home/enterprise/wxapp_area_list',//城市选项
         wxappSearchList: '/home/enterprise/wxapp_search_list',//搜索接口
-
+        retroaction: '/home/enterprise/retroaction',                //意见反馈接口
+        do_login: '/home/enterprise/do_login',             // 登录
+        do_register: '/home/enterprise/do_register',     //   注册验证码接口
+        send: '/home/enterprise/send',     //发送验证码  
     },
     apiGet: function (url, data, callback) {
         

@@ -1,11 +1,12 @@
 <!--pages/position-detail/position-detail.wxml-->
 <import src="../tpl/position-item/position-item.wxml" />
 <import src="../../wxParse/wxParse.wxml"/>
-<view class="header">
+<!-- <scroll-view style="height:{{height}};" scroll-top="0"> -->
+ <view class="header" style="overflow:hidden">
   <view class="position">
     <view class="posi">
       <text class="name">{{position_content.p_name}}</text>
-      <text class="salary">【{{position_content.p_wages}}】</text>
+      <text class="salary">{{position_content.p_wages}}</text>
     </view>
     <view class="posi-list">
       <text class="field">{{position_content.p_address}}</text>
@@ -56,5 +57,7 @@
   <view class="btn-box">
     <button catchtap="closeTap" class="btn-send-resume" size="default" hover-class="btn-send-resume-hover">关闭</button>
   </view>
-</view>
   
+ </view> 
+<view style="height:0rpx;"></view>
+<!-- </scroll-view> -->

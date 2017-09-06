@@ -7,31 +7,36 @@ Page({
      */
     data: {
         isHaveResume: true,
-        workTypelist: ['全职', '兼职', '实习生'],//工作类型
+        workTypelist: ['全职', '兼职', '实习生','志愿者'],//工作类型
         workTypeindex: 1,//默认
         citylist: ['北京', '上海', '广州', '杭州', '深圳'],//所在城市
         cityindex: 0,//默认北京
         salarylist: ['3k-5k', '5k-10k', '10k-15k', '15k-20k', '20k以上'],//期望薪资
         salaryindex: 0,//默认
+        desiredposition:"输入期望职位"
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+      console.log(options)
+      if (options.type){
         if (options.type == 0) {
-            this.setData({
-                isHaveResume: false
-            })
-        }else{
-            var resumeDreamPosi = app.globalData.isHaveResume.expected_pos
-            this.setData({
-                workTypeindex: resumeDreamPosi.workTypeindex,
-                cityindex: resumeDreamPosi.cityindex,
-                salaryindex: resumeDreamPosi.salaryindex,
-                dreamposi: resumeDreamPosi.dreamposi,
-            })
+          this.setData({
+            isHaveResume: false
+          })
+        } else {
+          console.log(resumeDreamPosi);
+          var resumeDreamPosi = app.globalData.isHaveResume.expected_pos
+          this.setData({
+            workTypeindex: resumeDreamPosi.workTypeindex,
+            cityindex: resumeDreamPosi.cityindex,
+            salaryindex: resumeDreamPosi.salaryindex,
+            dreamposi: resumeDreamPosi.dreamposi,
+          })
         }
+      }
 
         // if (app.globalData.isHaveResume !== null && app.globalData.isHaveResume.expected_pos !== null){
         //     //取出页面数据
@@ -49,12 +54,24 @@ Page({
 
     
     //期望职位
-    dreamposiTap: function (event) {
-        this.setData({
-            dreamposi: event.detail.value
-        })
+    // dreamposiTap: function (event) {
+    //     this.setData({
+    //         dreamposi: event.detail.value
+    //     })
+    // },
+    //期望职位聚焦
+    desiredpositionfocus:function(){
+      this.setData({
+        desiredposition:""
+      });
     },
-
+    //期望职位矢焦
+    desiredpositionblur: function (e) {
+      this.setData({
+        desiredposition: "输入期望职位",
+        dreamposi: e.detail.value
+      });
+    },
     //职位类型
     bindPickerChangeWorkType: function (event) {
         this.setData({
@@ -106,27 +123,33 @@ Page({
     },
     //保存
     saveDreamPosi: function () {
+      if (this.data.dreamposi == '' || this.data.dreamposi == undefined) {
+        wx.showModal({
+          title: "生态圈提示您",
+          content: "期望职位不能为空！"
+        });
+      }else{
         this.setResumeDreamPosFun();
-        
         wx.showToast({
-            title: '保存成功！',
-            icon: 'success',
-            duration: 500
-        })
-
+          title: '保存成功！',
+          icon: 'success',
+          duration: 500
+        });
         //更新上一级页面
         var pages = getCurrentPages();
         var curPage = pages[pages.length - 2];
         curPage.setData({
-            resumeDreamPosi: this.data
+          resumeDreamPosi: this.data
         });
 
         //返回上一个页面
         setTimeout(function () {
-            wx.navigateBack({
+          wx.navigateBack({
 
-            })
+          })
         }, 800);
+      }
+     
     },
     //上一步
     subPre: function () {
@@ -137,8 +160,13 @@ Page({
     //完成
     subOver: function () {
         this.setResumeDreamPosFun();
-
-        wx.showModal({
+        if (this.data.dreamposi == '' || this.data.dreamposi == undefined) {
+          wx.showModal({
+            title: "生态圈提示您",
+            content: "期望职位不能为空！"
+          });
+        } else {
+          wx.showModal({
             title: '简历创建成功',
             content: '已成功创建简历，快去投递心怡职位吧',
             cancelText: '再改改',
@@ -146,17 +174,18 @@ Page({
             confirmText: '去首页',
             confirmColor: '#4990E2',
             success: function (res) {
-                if (res.confirm) {
-                    
-                    wx.reLaunch({
-                        url: '/pages/index/index',
-                    })
-                    
-                } else if (res.cancel) {
-                    console.log('用户点击取消')
-                }
+              if (res.confirm) {
+
+                wx.reLaunch({
+                  url: '/pages/index/index',
+                })
+
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
             }
-        })
+          })
+        } 
 
     }
 

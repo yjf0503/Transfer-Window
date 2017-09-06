@@ -51,7 +51,7 @@
   width: 320rpx;
   height: auto;
   font-size: 32rpx;
-  text-align: right;
+  text-align: right; 
 }
 .item-cell.item-cell-image{
   padding: 12rpx 28rpx 12rpx 28rpx;

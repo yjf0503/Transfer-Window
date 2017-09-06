@@ -111,7 +111,7 @@ page{
 .images-box image{
     width: 140rpx;
     height: 140rpx;
-    border-radius: 140rpx;
+    border-radius: 50%;
 }
 
 .panel{

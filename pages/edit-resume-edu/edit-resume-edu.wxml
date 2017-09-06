@@ -2,11 +2,12 @@
 
 <view class="work-box">
   <view class="work-items">
-
-    <view class="work-item" wx:for="{{resumeEduList}}" wx:for-item="resumeEduList" wx:key="{{resumeEduList.id}}" >
+  <!-- // -->
+<view class="work-item"  wx:for="{{resumeEduList}}" wx:for-item="resumeEduList" wx:key="{{resumeEduList.id}}" >
+  <view catchtap="editEduListTap" data-eduid="{{resumeEduList.id}}">
       <view class="work-date">
         <text>{{resumeEduList.graduation}}毕业</text>
-        <view class="edit-btn blue" catchtap="editEduListTap" data-eduid="{{resumeEduList.id}}">
+        <view class="edit-btn blue">
           <image class="icon-edit" src="/images/edit_pen.png"></image>
           <text>编辑</text>
         </view>
@@ -17,6 +18,8 @@
         <text>{{resumeEduList.profession}}</text>
       </view>
     </view>
+</view>
+  <!-- // -->
 
   </view>
 </view>

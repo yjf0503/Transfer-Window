@@ -5,7 +5,7 @@
       <text>学校名称</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="{{schoolname}}" bindinput="schoolNameTap" placeholder="输入学校名称" />
+      <input type="text" value="{{schoolname}}"  bindfocus="schoolfocus" bindblur="schoolblur" placeholder="{{school}}" />
     </view>
   </view>
   <view class="item-cell item-cell-input">
@@ -13,7 +13,7 @@
       <text>专业名称</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="{{profession}}" bindinput="professionTap" placeholder="输入专业名称"/>
+      <input type="text" bindfocus="majorfocus" bindblur="majorblur" value="{{profession}}" placeholder="{{major}}"/>
     </view>
   </view>
   
@@ -32,14 +32,12 @@
     <view class="item-cell-bd">
       <text>毕业时间</text>
     </view>
-    <picker class="item-cell-ft blue" mode="date" value="{{graduation}}" fields="month" start="2000-01" end="2020-01" bindchange="bindDateChangeGraduation">
+    <picker class="item-cell-ft blue" mode="date" value="{{graduation}}" fields="month" start="2000-07" end="{{raduationTime}}" bindchange="bindDateChangeGraduation">
     <view class="picker">
       {{graduation}}
     </view>
   </picker>
   </view>
-  
- 
 
 </view> 
 <view class="btn-box">

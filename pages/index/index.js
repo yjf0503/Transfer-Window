@@ -20,7 +20,9 @@ Page({
         viewHeight: 600,
         loadingText: '加载中...',//
         loadingHidden: true,//默认隐藏更多
-        list: []
+        list: [],
+        wxSearchData:""
+       
     },
     onLoad: function () {
         var that = this;
@@ -44,7 +46,7 @@ Page({
         that.getPositionCity();
 
         //获取职位列表数据
-        //that.getPositionsFun(that.data.page, that.data.limit);
+        that.getPositionsFun(that.data.page, that.data.limit);
         
         //根据条件获取职位列表数据
         that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
@@ -156,6 +158,7 @@ Page({
     getPositionCity: function(){
         var that = this;
         app.apiGet(app.apiList.wxappAreaList,{},function(data){
+          console.log(data);
            that.setData({
                cityArray: data
            })
@@ -164,8 +167,14 @@ Page({
 
     //选择城市 qihb
     bindPickerChangeCity: function (e) {
+      console.log("我触发了……")
+      this.data.wxSearchData.view.isShow=false;
+      console.log(this.data);
+      WxSearch.wxSearchFocus(e, this);
         var that =this;
         let cityId = this.data.cityArray[e.detail.value].id;
+      
+      
         this.setData({
             cityIndex: e.detail.value,
             cityId: cityId,
@@ -189,8 +198,8 @@ Page({
             key: key,
             searchPage: searchPage, //搜索页码
             searchLimit: searchLimit,//搜索条数
-
         },function(data){
+          console.log(data);
             if (data.length > 0) {
                 var newData = that.data.list.concat(data);
                 that.setData({
@@ -210,50 +219,55 @@ Page({
 
     //点击搜索按钮
     wxSearchFn: function (e) {
-        var that = this
+        var that = this;
         WxSearch.wxSearchAddHisKey(that);
-
-        if (that.data.searchBtnText =='搜索'){
+        if (!this.data.searchValue){
+            wx.showToast({
+              title:"请输入关键字"
+            });
+        }else{
+          if (that.data.searchBtnText == '搜索') {
             app.loading();
             //初始化
             this.setData({
-                loadingHidden: true,
-                loadingText: '加载中...',
-                list: [],
-                searchPage: 1,
-                searchBtnText:'返回'
+              loadingHidden: true,
+              loadingText: '加载中...',
+              list: [],
+              searchPage: 1,
+              searchBtnText: '返回'
             })
             //判断是否有wxSearchData.value
             if (that.data.wxSearchData.value) {
-                that.searchRetFun(that.data.cityId, that.data.wxSearchData.value, that.data.searchPage, that.data.searchLimit);
-                that.setData({
-                    searchValue: that.data.wxSearchData.value
-                })
+              that.searchRetFun(that.data.cityId, that.data.wxSearchData.value, that.data.searchPage, that.data.searchLimit);
+              that.setData({
+                searchValue: that.data.wxSearchData.value
+              })
             } else {
-                that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
+              that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
             }
-        }else{
-            
+          } else {
             app.loading();
             that.setData({
-                loadingHidden: true,
-                loadingText: '加载中...',
-                list: [],
-                searchPage: 1,
-                searchBtnText: '搜索',
-                searchValue:''
+              loadingHidden: true,
+              loadingText: '加载中...',
+              list: [],
+              searchPage: 1,
+              searchBtnText: '搜索',
+              searchValue: ''
             })
-            that.data.wxSearchData.value='';
+            that.data.wxSearchData.value = '';
             that.data.searchValue = '';
             that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
-            
+
+          }
         }
-        
-        
+       
+ 
 
     },
     //搜索条件改变
     wxSearchInput: function (e) {
+     
         var that = this
         WxSearch.wxSearchInput(e, that);
         if (e.detail.value == '' || e.detail.value == undefined) {
@@ -293,8 +307,14 @@ Page({
     },
     //获取搜索输入框焦点
     wxSearchFocus: function (e) {
-        var that = this
+        var that = this;
+        console.log(this.data.wxSearchData);
+        this.data.wxSearchData.view.isShow = true;
         WxSearch.wxSearchFocus(e, that);
+        that.setData({
+          wxSearchData: this.data.wxSearchData
+        });
+        console.log(this.data);
     },
     //离开搜索输入框焦点
     // wxSearchBlur: function (e) {
@@ -303,9 +323,29 @@ Page({
     // },
     
     wxSearchKeyTap: function (e) {
-        var that = this
+        var that = this;
         WxSearch.wxSearchKeyTap(e, that);
-        this.wxSearchFn();
+        //  点击热门搜索标签的函数
+        ///////////////////////////////////////////////////////////
+        app.loading();
+        //初始化
+        this.setData({
+          loadingHidden: true,
+          loadingText: '加载中...',
+          list: [],
+          searchPage: 1,
+          searchBtnText: '返回'
+        })
+        //判断是否有wxSearchData.value
+        if (that.data.wxSearchData.value) {
+          that.searchRetFun(that.data.cityId, that.data.wxSearchData.value, that.data.searchPage, that.data.searchLimit);
+          that.setData({
+            searchValue: that.data.wxSearchData.value
+          })
+        } else {
+          that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
+        }
+        // this.wxSearchFn();
     },
     wxSearchDeleteKey: function (e) {
         var that = this

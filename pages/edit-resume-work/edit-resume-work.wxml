@@ -1,12 +1,13 @@
 <!--pages/edit-resume-work/edit-resume-work.wxml-->
 <view class="work-box">
-  <view class="work-items">
+<view class="work-items">
 
+ <view class="work-item"  wx:for="{{resumeWorkList}}" wx:for-item="resumeWorkList" wx:key="{{resumeWorkList.id}}">
 
-    <view class="work-item" wx:for="{{resumeWorkList}}" wx:for-item="resumeWorkList" wx:key="{{resumeWorkList.id}}">
+    <view catchtap="editWorkListTap" data-workid="{{resumeWorkList.id}}">
       <view class="work-date">
         <text>{{resumeWorkList.join}} - {{resumeWorkList.leave}}</text>
-        <view class="edit-btn blue" catchtap="editWorkListTap" data-workid="{{resumeWorkList.id}}">
+        <view class="edit-btn blue">
           <image class="icon-edit" src="/images/edit_pen.png"></image>
           <text>编辑</text>
         </view>
@@ -16,8 +17,9 @@
       <view class="work-content">{{resumeWorkList.workContent}}</view>
     </view>
 
-
   </view>
+</view>
+ 
 </view>
 
 <view class="btn-box">

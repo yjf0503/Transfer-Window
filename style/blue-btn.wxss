@@ -7,7 +7,8 @@
 }
 .btn-sure {
   color: #fff;
-  background-color: #4990E2;
+   background-color: #4990E2; 
+
 }
 .m-b {
   margin-bottom: 40rpx;

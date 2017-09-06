@@ -6,17 +6,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-      content_id:'',
-    edulevellist: ['高中', '大专', '本科', '硕士', '博士'],//学历
-    edulevelindex: 2,//默认本科
+    content_id:'',
+    edulevellist: ['不限','高中', '大专', '本科', '硕士', '博士'],//学历 0 1 2 3 4 5
+    edulevelindex: 3,//默认本科
     graduation: '2015-01',//毕业时间
-    isadd: false
+    raduationTime:"",      // 毕业时间点击选择结束时间
+    isadd: false,
+    school:"输入学校名称",
+    major:"输入专业名称"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var newDate = new Date();
+    var Month = newDate.getMonth() < 10 ? "0" + (newDate.getMonth() + 1) : "" + (newDate.getMonth() + 1);
+
+    this.setData({
+      raduationTime: newDate.getFullYear() + "-" + Month
+    });
+
+
     //获取参数，如果没有就是添加
     var eduId = options.eduid;
     
@@ -49,22 +60,49 @@ Page({
   },
   
   //学校名称
-  schoolNameTap: function(e){
-    this.setData({
-      schoolname: e.detail.value
-    })
-  },
+  // schoolNameTap: function(e){
+  //   this.setData({
+  //     schoolname: e.detail.value
+  //   })
+  // },
+  // 学校名称聚焦
+    schoolfocus:function(){
+      this.setData({
+        school:""
+      });
+    },
+    // 学校名称失焦
+    schoolblur: function (e) {
+      this.setData({
+        school: "输入学校名称",
+        schoolname: e.detail.value
+      });
+    },      
   //专业名称
-  professionTap: function(e){
+  // professionTap: function(e){
+  //   this.setData({
+  //     profession: e.detail.value
+  //   })
+  // },
+  // 专业名称聚焦
+  majorfocus: function () {
     this.setData({
-      profession: e.detail.value
-    })
+      major: ""
+    });
   },
+  // 专业名称失焦
+  majorblur: function (e) {
+    this.setData({
+      major: "输入专业名称",
+      profession: e.detail.value
+    });
+  },   
   //学历
   bindPickerChangeEduLevel: function (e) {
     this.setData({
       edulevelindex: e.detail.value
     })
+    console.log(e.detail.value);
   },
  
   //毕业时间
@@ -150,23 +188,27 @@ Page({
 
   //提交教育信息
   submitSchoolTap: function(e){ 
-
-      
+    if (this.data.schoolname == '' || this.data.schoolname == undefined || this.data.profession == '' || this.data.profession == undefined) {
+      wx.showModal({
+        title: "生态圈提示您",
+        content: "请填写完整信息"
+      });
+    }else{
       this.setResumeEduDetailFun();
-    
-    wx.showToast({
-      title: '保存成功！',
-      icon: 'success',
-      duration: 500
-    })
 
-    //返回上一个页面
-    setTimeout(function () {
-      wx.navigateBack({
-
+      wx.showToast({
+        title: '保存成功！',
+        icon: 'success',
+        duration: 500
       })
-    }, 800);
 
+      //返回上一个页面
+      setTimeout(function () {
+        wx.navigateBack({
+
+        })
+      }, 800);
+    }
   },
 
   //删除教育详情

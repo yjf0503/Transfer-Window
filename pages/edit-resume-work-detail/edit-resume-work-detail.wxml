@@ -5,7 +5,7 @@
       <text>公司名称</text>
     </view>
     <view class="item-cell-ft company blue">
-      <input type="text" value="{{companyname}}" bindinput="companyNameTap" placeholder="输入公司名称" />
+      <input type="text" bindfocus="orporatenamefocus" bindblur="orporatenameblur" value="{{companyname}}" placeholder="{{orporatename}}" />
     </view>
   </view>
   <view class="item-cell item-cell-input">
@@ -13,7 +13,7 @@
       <text>部门与职位</text>
     </view>
     <view class="item-cell-ft blue">
-      <input type="text" value="{{department}}" bindinput="departmentTap" placeholder="如：市场专员" />
+      <input type="text"  bindfocus="positionfocus" bindblur="positionblur"  value="{{department}}" placeholder="{{position}}" />
     </view>
   </view>
   <view class="item-cell item-cell-access">
@@ -21,7 +21,7 @@
       <text>入职时间</text>
     </view>
     
-    <picker class="item-cell-ft blue" mode="date" value="{{join}}" fields="month" start="2000-01" end="2025-01" bindchange="bindDateChangeJoin">
+    <picker class="item-cell-ft blue" mode="date" value="{{join}}" fields="month" start="2000-01" end="{{leaveDate}}" bindchange="bindDateChangeJoin">
     <view class="picker">
       {{join}}
     </view>
@@ -32,11 +32,9 @@
       <text>离职时间</text>
     </view>
     
-    <picker class="item-cell-ft blue" mode="date" value="{{leave}}" fields="month" start="{{endDate}}" end="2025-01" bindchange="bindDateChangeLeave">
-    <view class="picker">
-      {{leave}}
-    </view>
-  </picker>
+    <picker class="item-cell-ft blue" mode="date" value="{{leave}}" fields="month" start="{{join}}" end="{{leaveDate}}" bindchange="bindDateChangeLeave">
+      <view class="picker"> {{leave}} </view>
+    </picker>
   </view>
   
   <view class="item-cell">
@@ -45,7 +43,7 @@
     </view>
   </view>
   <view class="item-cell-textarea">
-    <textarea bindinput="WorkContentTap" class="item-textarea big bg" value="{{workContent}}" placeholder="如：拓展合作资源，策划线上及线下推广活动" maxlength="200" />
+    <textarea bindinput="WorkContentTap"  bindfocus="jobcontentfocus" bindblur="jobcontentblur" class="item-textarea big bg" value="{{workContent}}" placeholder="{{jobcontent}}" maxlength="200" />
     <view class="textarea-count">
       <text>{{workContentLen}}/200</text>
     </view>

@@ -25,8 +25,10 @@ Page({
       app.apiGet(app.apiList.company,{
           id: cId
       },function(data){
+        console.log(data);
             that.setData({
-                company_info: data
+                company_info: data,
+                // enterprise_img: data.enterprise_logo
             })
             if (data.enterprise_img!=null){
                 that.setData({

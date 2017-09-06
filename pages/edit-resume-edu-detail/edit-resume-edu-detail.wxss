@@ -4,3 +4,10 @@
 .btn-box{
   margin-top: 300rpx;
 }
+view,input{
+  color: #222;
+  font-weight: bold;
+}
+text{
+  color: #666;
+}

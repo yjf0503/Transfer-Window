@@ -1,14 +1,23 @@
 <!--pages/my/my.wxml-->
 <view class="my-header">
-  <block wx:if="{{isShow}}">
-    <image class="user-avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill" bindtap="imgTap"></image>
-    <text class="user-name">{{userInfo.nickName}}</text>
+  <!-- <block wx:if="{{isShow}}">
+     <image class="user-avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill" bindtap="imgTap"></image> 
+    <text class="user-name">{{userInfo.nickName}}</text> -->
     <!--<text class="user-text">{{myself}}</text>-->
-  </block>
-  <block wx:else>
-    <image class="user-avatar" src="/images/big_avatar.png" mode="aspectFill"></image>
-    <text class="user-name">亲爱的用户，您好</text>
-  </block>
+  <!-- </block> -->
+
+  <!-- <block wx:else> -->
+   <image class="user-avatar" src="/images/face.png" mode="aspectFill"></image>
+    <view>
+      <block wx:if="{{user}}">
+          <text class="user-name">{{username}}</text>
+      </block>
+      <block wx:else>
+           <text class="register" bindtap='login'>注册/登录</text>
+      </block>
+    </view>
+   
+  <!-- </block> -->
   <!--<text class="edit-info" catchtap="editInfoTap">编辑资料</text>-->
 </view>
 <view class="item-cells">
@@ -29,11 +38,28 @@
   </view>
 </view>
 
-<view class="item-cells">
+<!-- <view class="item-cells">
   <view class="item-cell item-cell-access" catchtap="deleteResumeTap">
     <view class="item-cell-bd">
       <text>删除简历</text>
     </view>
     <view class="item-cell-ft"></view>
   </view>
-</view>
+</view> -->
+
+ <view class="item-cells">
+  <view class="item-cell item-cell-access" catchtap="deliveryComments">
+    <view class="item-cell-bd">
+      <text>意见反馈</text>
+    </view>
+    <view class="item-cell-ft"></view>
+  </view>
+</view> 
+
+ <view class="item-cells ext-box" hidden='{{usersetting}}'>
+  <view class="item-cell item-cell-access" bindtap='signOut'>
+    <view class="item-cell-bd">
+      <text>退出当前账号</text>
+    </view>
+  </view>
+</view> 

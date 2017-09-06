@@ -1,7 +1,8 @@
 @import "/wxSearch/wxSearch.wxss";
 
 .wxSearch-all {
-  background-color: #417ee0;
+   background-color: #417ee0; 
+   /* background-color: red; */
   padding: 16rpx 28rpx;
   box-sizing: border-box;
   border: 1px solid #dcdcdc;

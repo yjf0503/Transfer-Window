@@ -26,15 +26,23 @@ Page({
       //检查页面层级
       app.util.checkPage();
 
+      // console.log(app.globalData.isHaveResume.edu_history);
+      var workTime = app.globalData.isHaveResume.work_history ;    // 工作经历的数据
+      var eduTime = app.globalData.isHaveResume.edu_history;    // 教育经历的数据
+      workTime.sort(function (b, a) {
+        return Date.parse(a.join) - Date.parse(b.join);    //工作经历的数据时间倒序
+      });
+      eduTime.sort(function (b, a) {
+        return Date.parse(a.graduation) - Date.parse(b.graduation);    //教育经历的数据时间倒序
+      });
       this.setData({
-          avatarUrl: app.globalData.userInfo.avatarUrl != null ? app.globalData.userInfo.avatarUrl : '/images/small_avatar.png',
+        avatarUrl: app.globalData.userInfo.avatarUrl != null ? app.globalData.userInfo.avatarUrl : '/images/small_avatar.png',
         resumeBaseInfo: app.globalData.isHaveResume.base_info,
         resumeWorkList: app.globalData.isHaveResume.work_history,
         resumeEduList: app.globalData.isHaveResume.edu_history,
         resumeDreamPosi: app.globalData.isHaveResume.expected_pos
-    })
+      });
 
-    
   },
   onShow: function(){
     //   this.setData({

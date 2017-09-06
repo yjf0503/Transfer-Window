@@ -56,3 +56,6 @@ page{
   font-size: 24rpx;
   color:#999;
 }
+.auto-scroll{
+  height: 100%;
+}

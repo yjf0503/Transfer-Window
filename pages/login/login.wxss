@@ -1,0 +1,76 @@
+/* pages/login/login.wxss */
+.box{
+  padding: 0 50rpx;
+}
+.top{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 100rpx;
+}
+.login{
+  font-size: 70rpx;
+   color: #000;
+  font-weight: bold;
+}
+.register{
+  font-size: 40rpx;
+  color: #537ADF;
+  font-weight: bold;
+}
+.item{
+  height: 110rpx;
+  background-color: #F6F6F6;
+  border-radius: 6px;
+}
+.middle{
+  margin:90rpx 0 40rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+  border:1px solid #F6F6F6;
+}
+.middle-box{
+  background-color: #fff;
+}
+.code-box{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.code-lf{
+  width: 350rpx;
+  background-color: #F6F6F6;
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 20rpx;
+}
+.code-rt{
+  width: 230rpx;
+  height: 100%;
+  background-color: #537ADF;
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 110rpx;
+}
+.footer{
+  margin-top: 150rpx;
+}
+.footer button{
+  background: #537ADF;
+  color:#fff;
+}
+.footer view{
+  margin-top: 30rpx;
+  font-size: 12rpx;
+  color: #999;
+}
+.footer view text{
+  color: #666;
+  font-weight: bold;
+}
+

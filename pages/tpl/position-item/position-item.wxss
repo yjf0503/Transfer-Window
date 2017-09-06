@@ -1,7 +1,7 @@
 .item{
   display: flex;
   width: 100%;
-  background-color: #fff;
+   background-color: #fff; 
 }
 .item-img {
   padding: 32rpx 28rpx;

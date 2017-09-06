@@ -11,7 +11,8 @@ Page({
         submitText: '',
         submitdisabled: false,
         mode: true,
-        animationData: {}
+        animationData: {},
+        height:"100%"
     },
 
     /**
@@ -25,9 +26,8 @@ Page({
         that.setData({
             position_content: app.globalData.positionDetail
         });
-
-        WxParse.wxParse('article', 'html', app.globalData.positionDetail.p_text, that, 5);
-
+        console.log(app.globalData.positionDetail);
+        WxParse.wxParse('article', 'html', app.globalData.positionDetail.p_desc, that, 5);
         //判断是否有简历
         if (app.globalData.isHaveResume === null) {
             that.setData({
@@ -73,6 +73,7 @@ Page({
 
     //发送简历
     isSendTap: function () {
+      
         var that = this;
         if (that.data.isHaveResume){
             wx.showModal({
@@ -86,14 +87,13 @@ Page({
                     if (res.confirm) {
                         app.loading();
                         that.sendResumeFun();
-
-
                     } else if (res.cancel) {
                         console.log('用户点击取消')
                     }
                 }
             })
         }else{
+          
             wx.reLaunch({
                 url: '/pages/edit-resume-base/edit-resume-base?type=0',
             })
@@ -111,6 +111,9 @@ Page({
         },function(data){
 
             if(data.code ==1){
+              that.setData({
+                height: ""
+              });
                 var animation = wx.createAnimation({
                     duration: 1000,
                     timingFunction: 'ease',
@@ -140,7 +143,7 @@ Page({
                 }
 
             }else{
-                app.alert(data.alertMsg)
+                app.alert(data.alertMsg);
             }
 
             app.hideloading();
@@ -176,12 +179,15 @@ Page({
     //关闭成功提示
     closeTap: function () {
         this.setData({
-            mode: true
+            mode: true,
+            height:"100%"
         })
     },
     
     //分享
     onShareAppMessage: function (res) {
+      var _this = this;
+      console.log(_this.data.position_content);
         if (res.from === 'button') {
             // 来自页面内转发按钮
             console.log(res.target)
@@ -189,13 +195,17 @@ Page({
         var title = this.data.position_content.enterprise_name + ' 招聘 ' + this.data.position_content.p_name +'【'+this.data.position_content.p_wages + '】' ;
         return {
             title: title,
-            path: '/page/user?id=123',
+            path: 'pages/position-detail/position-detail',
+            data: _this.data.position_content,
             success: function (res) {
                 // 转发成功
+                console.log(res);
             },
             fail: function (res) {
+            console.log(res)
                 // 转发失败
             }
         }
+
     }
 })

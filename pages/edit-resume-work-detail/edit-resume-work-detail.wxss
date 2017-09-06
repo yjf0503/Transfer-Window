@@ -5,5 +5,12 @@
   margin-top: 80rpx;
 }
 .company wx-input{
-    width: 400rpx;
+  width: 400rpx;
+}
+text{
+  color: #666;
+}
+view,input{
+  color: #222;
+  font-weight: bold;
 }

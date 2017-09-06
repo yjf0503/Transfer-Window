@@ -6,7 +6,7 @@
       <text>期望职位</text>
     </view>
     <view class="item-cell-ft blue">
-      <input bindinput="dreamposiTap" type="text" value="{{dreamposi}}" placeholder="输入期望职位" />
+      <input bindfocus="desiredpositionfocus" bindblur="desiredpositionblur" type="text" value="{{dreamposi}}" placeholder="{{desiredposition}}" />
     </view>
   </view>
   <view class="item-cell item-cell-access">

@@ -1,0 +1,10 @@
+<!--pages/opinion/opinion.wxml-->
+
+<view class="container">
+    <view class="op-box">问题和意见</view>
+    <view class="op-text">
+        <textarea bindfocus="opTextFocus" bindblur="opTextBlur" bindinput="setCon" maxlength="-1"class="op-con" placeholder-style="color:bold;" placeholder="{{conTextPla}}"/>
+        <!-- <text>0/200</text> -->
+    </view>
+    <button class="btn" catchtap="submite">提交</button>
+</view>

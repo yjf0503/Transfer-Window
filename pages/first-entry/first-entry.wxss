@@ -1,0 +1,66 @@
+/* pages/first-entry/first-entry.wxss */
+page{
+  width: 100%;
+  height:100%;
+}
+.container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.container >view{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+}
+.container >view image{
+  width:100%;
+  height: 100%;
+}
+.btn-home{
+  position:absolute;
+  bottom:245rpx;
+  right:90rpx;
+  width:240rpx;
+  height:61rpx;
+  border-radius:139rpx; 
+  opacity:0; 
+}
+.btn-enter{
+  position:absolute;
+  bottom:245rpx;
+  right:90rpx;
+  width:240rpx;
+  height:61rpx;
+  border-radius:139rpx;
+  opacity:0; 
+}
+.btn-message{
+  position:absolute;
+  bottom:225rpx;
+  right:85rpx;
+  width:240rpx;
+  height:61rpx;
+  border-radius:139rpx;
+   opacity:0;  
+}
+.to-home{
+  position:absolute;
+  top:364rpx;
+  left:65rpx;
+  width:240rpx;
+  height:61rpx;
+  border-radius:139rpx;
+  opacity:0; 
+}
+/* .to-resume{
+  position:absolute;
+  top:364rpx;
+  right:30rpx;
+  width:240rpx;
+  height:61rpx;
+  border-radius:139rpx;
+  opacity:0; 
+} */
