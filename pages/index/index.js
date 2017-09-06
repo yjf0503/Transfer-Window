@@ -5,7 +5,7 @@ var WxSearch = require('../../wxSearch/wxSearch.js');
 var app = getApp();
 Page({
     data: {
-        positionType: 0,//首页职位类型
+        positionType: 1,//首页职位类型, 全职1，入行0
         page: 1,//页码
         limit: 10,//条数
         searchPage: 1, //搜索页码
@@ -16,6 +16,7 @@ Page({
         cityArray: [],
         cityIndex: 0,
         cityId:0,
+        cityValue:'全国',
 
         viewHeight: 600,
         loadingText: '加载中...',//
@@ -45,11 +46,8 @@ Page({
         //获取可搜索城市列表
         that.getPositionCity();
 
-        //获取职位列表数据
-        that.getPositionsFun(that.data.page, that.data.limit);
-        
         //根据条件获取职位列表数据
-        that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
+        that.searchRetFun(that.data.cityValue, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
         
         
         //初始化的时候渲染wxSearchdata 第二个为你的search高度
@@ -69,38 +67,6 @@ Page({
             app.util.isHaveResume();
         }
         
-    },
-    
-    //获取首页职位信息
-    getPositionsFun: function (page, limit){
-        var that = this;
-        
-        app.apiGet(app.apiList.positions, {
-            page: page,
-            limit: limit,
-            positionType: that.data.positionType
-        }, function (data) {
-            if (data.code == 1) {
-                if (data.ret.positions.length>0){
-
-                    var newOrders = that.data.list.concat(data.ret.positions);
-                    that.setData({
-                        list: newOrders,
-                        loadingHidden: true
-                    })
-                    
-                }else{
-                    that.setData({
-                        loadingText: "更多职位正在收录"
-                    })
-                }
-                
-                
-            } else {
-                app.alert(data.alertMsg);
-            }
-            app.hideloading();
-        })
     },
     
     //职位详情
@@ -142,10 +108,9 @@ Page({
         var that = this;
         if (that.data.loadingHidden) {
             that.data.loadingHidden = false;
-            //that.data.page++;
-            //that.getPositionsFun(that.data.page, that.data.limit);
+            
             that.data.searchPage++;
-            that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
+            that.searchRetFun(that.data.cityValue, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
             that.setData({
                 loadingHidden: false,
             })
@@ -171,12 +136,13 @@ Page({
       WxSearch.wxSearchFocus(e, this);
         var that =this;
         let cityId = this.data.cityArray[e.detail.value].id;
-        let cityVal = this.data.cityArray[e.detail.value].name;
+        let cityValue = this.data.cityArray[e.detail.value].name;
       
       
         this.setData({
             cityIndex: e.detail.value,
             cityId: cityId,
+            cityValue: cityValue,
             loadingHidden: true,
             loadingText: '加载中...',
             list:[],
@@ -184,7 +150,7 @@ Page({
         })
         app.loading();
         
-        this.searchRetFun(cityVal, this.data.searchValue, this.data.searchPage, this.data.searchLimit);
+        this.searchRetFun(cityValue, this.data.searchValue, this.data.searchPage, this.data.searchLimit);
     },
 
     //搜索结果
@@ -192,7 +158,7 @@ Page({
     searchRetFun: function (address, key, searchPage, searchLimit){
         var that = this;
         app.apiPost(app.apiList.wxappSearchList,{
-            full_time: 1,// 全职1，入行0
+            full_time: that.data.positionType,// 全职1，入行0
             address: address,
             key: key,
             searchPage: searchPage, //搜索页码
@@ -238,12 +204,12 @@ Page({
             })
             //判断是否有wxSearchData.value
             if (that.data.wxSearchData.value) {
-              that.searchRetFun(that.data.cityId, that.data.wxSearchData.value, that.data.searchPage, that.data.searchLimit);
+              that.searchRetFun(that.data.cityValue, that.data.wxSearchData.value, that.data.searchPage, that.data.searchLimit);
               that.setData({
                 searchValue: that.data.wxSearchData.value
               })
             } else {
-              that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
+              that.searchRetFun(that.data.cityValue, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
             }
           } else {
             app.loading();
@@ -260,7 +226,7 @@ Page({
               searchValue: '' ,
               wxSearchData: wxSearchData
             })
-            that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
+            that.searchRetFun(that.data.cityValue, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
 
           }
         }
@@ -322,12 +288,12 @@ Page({
         })
         //判断是否有wxSearchData.value
         if (that.data.wxSearchData.value) {
-          that.searchRetFun(that.data.cityId, that.data.wxSearchData.value, that.data.searchPage, that.data.searchLimit);
+          that.searchRetFun(that.data.cityValue, that.data.wxSearchData.value, that.data.searchPage, that.data.searchLimit);
           that.setData({
             searchValue: that.data.wxSearchData.value
           })
         } else {
-          that.searchRetFun(that.data.cityId, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
+          that.searchRetFun(that.data.cityValue, that.data.searchValue, that.data.searchPage, that.data.searchLimit);
         }
         // this.wxSearchFn();
     },

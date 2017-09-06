@@ -17,7 +17,7 @@ Page({
     var that = this;
     app.loading();
     that.getCompanyDetail(options.pid);
-    
+    that.data.pid = options.pid;
   },
   //获取公司详情
   getCompanyDetail: function(cId){
@@ -72,7 +72,7 @@ Page({
       var title = this.data.company_info.enterprise_name;
       return {
           title: title,
-          path: '/page/user?id=123',
+          path: 'pages/company-detail/company-detail?pid=' + pid,
           success: function (res) {
               // 转发成功
           },
