@@ -21,6 +21,7 @@ Page({
 
   /**
    * 生命周期函数--监听页面加载
+   * qhb
    */
   onLoad: function (options) {
       //检查页面层级
