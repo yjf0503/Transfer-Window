@@ -53,24 +53,23 @@ Page({
         };
           if (data.code == 1 || data.code == 0){
             var readList = data.ret.resume_list_isread,
-                unreadList = data.ret.resume_list_unread;
+                unreadList = data.ret.resume_list_unread[0];
           
-            var list = readList.concat(toArr(unreadList[0]));
+            //var list = readList.concat(toArr(unreadList[0]));
             var chakan = [],
                 yixiang =[],
                 mianshi =[],
                 buheshi =[];
             console.log(data);
-            for (var i in unreadList){
+            for (var i in readList){
                 if (i==2){    // 被查看
-                  chakan.push(toArr(unreadList[i])[0]);
-                  
+                  chakan.push(toArr(readList[i])[0]);
                 } else if (i==1){    // 有意向
-                  yixiang.push(toArr(unreadList[i])[0]);
+                  yixiang.push(toArr(readList[i])[0]);
                 } else if (i==3){     // 面试
-                  mianshi.push(toArr(unreadList[i])[0]);
+                  mianshi.push(toArr(readList[i])[0]);
                 }else if(i==6){      // 不合适
-                  buheshi.push(toArr(unreadList[i])[0]);
+                  buheshi.push(toArr(readList[i])[0]);
                 }
                 
             }
@@ -80,7 +79,7 @@ Page({
             // console.log("被查看" + chakan)
 
             that.setData({
-                list: list,
+                list: unreadList,
                 chakan: chakan,
                 yixiang: yixiang,
                 mianshi: mianshi,
