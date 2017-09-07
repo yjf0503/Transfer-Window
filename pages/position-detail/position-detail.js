@@ -20,20 +20,8 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    //  sj
-    //  console.log(options);
-     if (options.type) {
-    //   //从分享进来
-    //   app.loading();
-    //   that.setData({
-    //     position_content: app.globalData.curPosition
-    //   });
-    //   // console.log(app.globalData.positionDetail);
-    //   WxParse.wxParse('article', 'html', app.globalData.curPosition.p_desc, that, 5);
-    //   app.hideloading();
-
-
-     //   qhb
+    if (options.type) {
+      // 从分享进来
       app.loading();
       app.apiGet(app.apiList.positionsDetail, {
         id: options.id
@@ -46,7 +34,7 @@ Page({
         })
         
         WxParse.wxParse('article', 'html', data.p_desc, that, 5);
-      app.hideloading();
+        app.hideloading();
       
       })
     } else{

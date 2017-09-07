@@ -69,7 +69,7 @@ Page({
           // 来自页面内转发按钮
           console.log(res.target)
       }
-      var title = this.data.company_info.enterprise_name;
+      var title = this.data.company_info.enterprise_name +'在体育圈招聘，发布了X个职位需求';
       return {
           title: title,
           path: 'pages/company-detail/company-detail?pid=' + pid,

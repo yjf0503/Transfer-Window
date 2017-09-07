@@ -3,22 +3,22 @@
 module.exports.getOpenid = function getOpenid() {
     var app = getApp();
     //判断用户缓存数据
-    // if (app.globalData.openid == null) {
-    //     wx.login({
-    //         success: function (res) {
-    //             app.apiPost(app.apiList.getOpenid, {
-    //                 code: res.code
-    //             }, function (data) {
-    //                 app.globalData.openid = data.openid;
-    //                 wx.setStorageSync('openid', data.openid);
-    //             });
-    //         },
-    //         fail: function (res) {
-    //             console.log('微信登录请求失败')
-    //         },
-    //         // complete: function (res) {}
-    //     })
-    // }
+    if (app.globalData.openid == null) {
+        wx.login({
+            success: function (res) {
+                app.apiPost(app.apiList.getOpenid, {
+                    code: res.code
+                }, function (data) {
+                    app.globalData.openid = data.openid;
+                    wx.setStorageSync('openid', data.openid);
+                });
+            },
+            fail: function (res) {
+                console.log('微信登录请求失败')
+            },
+            // complete: function (res) {}
+        })
+    }
 }
 
 //获取用户信息授权

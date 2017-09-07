@@ -47,7 +47,7 @@
                 "selectedIconPath": "images/message_active.png",
                 "iconPath": "images/message.png",
                 "pagePath": "pages/messages/messages",
-                "text": "消息"
+                "text": "投递箱"
             },
             {
                 "selectedIconPath": "images/my_active.png",

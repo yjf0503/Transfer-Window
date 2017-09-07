@@ -1,13 +1,13 @@
 <!--pages/my/my.wxml-->
 <view class="my-header">
-  <!-- <block wx:if="{{isShow}}">
+   <block wx:if="{{isShow}}">
      <image class="user-avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill" bindtap="imgTap"></image> 
-    <text class="user-name">{{userInfo.nickName}}</text> -->
+    <text class="user-name">{{userInfo.nickName}}</text>
     <!--<text class="user-text">{{myself}}</text>-->
-  <!-- </block> -->
+  </block> 
 
   <!-- <block wx:else> -->
-   <image class="user-avatar" src="/images/face.png" mode="aspectFill"></image>
+   <!-- <image class="user-avatar" src="/images/face.png" mode="aspectFill"></image>
     <view>
       <block wx:if="{{user}}">
           <text class="user-name">{{username}}</text>
@@ -15,7 +15,7 @@
       <block wx:else>
            <text class="register" bindtap='login'>登录</text>
       </block>
-    </view>
+    </view> -->
    
   <!-- </block> -->
   <!--<text class="edit-info" catchtap="editInfoTap">编辑资料</text>-->
@@ -32,7 +32,7 @@
 <view class="item-cells">
   <view class="item-cell item-cell-access" catchtap="myDeliveryTap">
     <view class="item-cell-bd">
-      <text>我的投递</text>
+      <text>投递箱</text>
     </view>
     <view class="item-cell-ft"></view>
   </view>

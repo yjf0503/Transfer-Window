@@ -21,7 +21,7 @@ Page({
      */
     onLoad: function (options) {
       console.log(options)
-      if (options.type){
+      
         if (options.type == 0) {
           this.setData({
             isHaveResume: false
@@ -36,7 +36,7 @@ Page({
             dreamposi: resumeDreamPosi.dreamposi,
           })
         }
-      }
+      
 
         // if (app.globalData.isHaveResume !== null && app.globalData.isHaveResume.expected_pos !== null){
         //     //取出页面数据

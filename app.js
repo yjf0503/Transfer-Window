@@ -37,7 +37,7 @@ App({
         isHaveResume: wx.getStorageSync('isHaveResume') || null,
         //用于职位详情绑定数据
         positionDetail: null,
-        //  用户登录状态
+        //用户登录状态
         token:false
     },
     apiList: {
@@ -56,10 +56,10 @@ App({
         deleteResume: '/Home/Enterprise/actionDeleteResume',//删除简历
         wxappAreaList: '/home/enterprise/wxapp_area_list',//城市选项
         wxappSearchList: '/home/enterprise/wxapp_search_list',//搜索接口
-        retroaction: '/home/enterprise/retroaction',                //意见反馈接口
-        do_login: '/home/enterprise/do_login',             // 登录
-        do_register: '/home/enterprise/do_register',     //   注册验证码接口
-        send: '/home/enterprise/send',     //发送验证码  
+        retroaction: '/home/enterprise/retroaction',//意见反馈接口
+        do_login: '/home/enterprise/do_login',// 登录
+        do_register: '/home/enterprise/do_register',//   注册验证码接口
+        send: '/home/enterprise/send',//发送验证码  
     },
     apiGet: function (url, data, callback) {
         

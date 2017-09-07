@@ -19,20 +19,20 @@ Page({
         //获取我的简介
        
      
-        if (wx.getStorageSync("token") == "true" || app.globalData.token =="true"){   // 判断用户是否登录
+        // if (wx.getStorageSync("token") == "true" || app.globalData.token =="true"){   // 判断用户是否登录
        
-            this.setData({
-              user: true,  
-              usersetting: false
-            });
-            console.log("登录状态");
+        //     this.setData({
+        //       user: true,  
+        //       usersetting: false
+        //     });
+        //     console.log("登录状态");
 
-        }else{
-          this.setData({
-            user: false,  //  是否显示注册登录字眼
-            usersetting: true    // 
-          });
-        };
+        // }else{
+        //   this.setData({
+        //     user: false,  //  是否显示注册登录字眼
+        //     usersetting: true    // 
+        //   });
+        // };
         // console.log(app.globalData.isHaveResume);
         if (app.globalData.isHaveResume !== null) {
           this.setData({
@@ -44,9 +44,9 @@ Page({
         //获取我的简介
         if (app.globalData.isHaveResume !== null) {
           console.log(app.globalData.isHaveResume)
-            // this.setData({
-            //     myself: app.globalData.isHaveResume.base_info.myself
-            // })
+            this.setData({
+                myself: app.globalData.isHaveResume.base_info.myself
+            })
         }
     },
     getUserInfo: function () {
@@ -82,21 +82,30 @@ Page({
         // wx.reLaunch({
         //     url: '/pages/edit-resume-base/edit-resume-base?type=0',
         // });
-      if (wx.getStorageSync("token") == "true" || app.globalData.token == "true") { 
-         //判断是否有简历
-        if (app.globalData.isHaveResume===null){
-            wx.reLaunch({
-                url: '/pages/edit-resume-base/edit-resume-base?type=0',
-            });
-        }else{
-            wx.navigateTo({
-                url: '/pages/my-resume/my-resume'
-            });
-        }
-      }else{
-        app.alert("请先登录!");
+      // if (wx.getStorageSync("token") == "true" || app.globalData.token == "true") { 
+      //    //判断是否有简历
+      //   if (app.globalData.isHaveResume===null){
+      //       wx.reLaunch({
+      //           url: '/pages/edit-resume-base/edit-resume-base?type=0',
+      //       });
+      //   }else{
+      //       wx.navigateTo({
+      //           url: '/pages/my-resume/my-resume'
+      //       });
+      //   }
+      // }else{
+      //   app.alert("请先登录!");
+      // }
+      //判断是否有简历
+      if (app.globalData.isHaveResume === null) {
+        wx.reLaunch({
+          url: '/pages/edit-resume-base/edit-resume-base?type=0',
+        });
+      } else {
+        wx.navigateTo({
+          url: '/pages/my-resume/my-resume'
+        });
       }
-       
     },
 
 
