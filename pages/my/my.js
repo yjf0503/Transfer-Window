@@ -122,26 +122,26 @@ Page({
     },
     
     //删除简历
-    // deleteResumeTap: function(){
-    //   wx.showModal({
-    //     title: '提示',
-    //     content: '确定要删除吗？',
-    //     success: function (sm) {
-    //       if (sm.confirm) {
-    //         app.apiPost(app.apiList.deleteResume, {
-    //           openid: app.globalData.openid
-    //         }, function (data) {
-    //           if (data.code == 1) {
-    //             app.alert(data.alertMsg);
-    //             app.globalData.isHaveResume = null;
-    //           } else {
-    //             app.alert(data.alertMsg);
-    //           }
-    //         })
-    //       }
-    //     }
-    //   })
-    // },
+    deleteResumeTap: function(){
+      wx.showModal({
+        title: '提示',
+        content: '确定要删除吗？',
+        success: function (sm) {
+          if (sm.confirm) {
+            app.apiPost(app.apiList.deleteResume, {
+              openid: app.globalData.openid
+            }, function (data) {
+              if (data.code == 1) {
+                app.alert(data.alertMsg);
+                app.globalData.isHaveResume = null;
+              } else {
+                app.alert(data.alertMsg);
+              }
+            })
+          }
+        }
+      })
+    },
 
     //编辑头像
     imgTap: function(){
