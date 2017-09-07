@@ -12,7 +12,7 @@ Page({
     resumeDreamPosi: null,
     avatarUrl: '/images/small_avatar.png',
     genderlist: ['男', '女'],//性别
-    edulevellist: ['不限','高中', '大专', '本科', '硕士', '博士'],//学历
+    edulevellist: ['高中', '大专', '本科', '硕士', '博士', '其他'],//学历
     worksYearlist: ['应届毕业生', '1年以下', '1-3年', '3-5年', '5-10年', ' 10年以上'],//工作年限
     citylist: ['北京', '上海', '广州', '杭州', '深圳', '其它'],//所在城市
     workTypelist: ['全职', '兼职', '实习生'],//工作类型

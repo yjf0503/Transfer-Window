@@ -36,6 +36,7 @@
   <button class="btn-send-resume" size="default" hover-class="btn-send-resume-hover" catchtap="isSendTap" disabled="{{submitdisabled}}">{{submitText}}</button>
 </view>
 
+<!--取消其他职位推荐
 <view class="mode-bg" hidden="{{mode}}" animation="{{animationData}}" catchtap="closeTap"></view>
 <view class="send-sucess" hidden="{{mode}}" animation="{{animationData}}">
   <view class="suc-tip">
@@ -59,5 +60,5 @@
   </view>
   
  </view> 
-<view style="height:0rpx;"></view>
+<view style="height:0rpx;"></view> -->
 <!-- </scroll-view> -->

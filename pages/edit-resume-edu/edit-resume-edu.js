@@ -8,7 +8,7 @@ Page({
   data: {
     isHaveResume: true,
     resumeEduList:null,
-    edulevellist: ['不限','高中', '大专', '本科', '硕士', '博士'],//学历
+    edulevellist: ['高中', '大专', '本科', '硕士', '博士', '其他'],//学历
   },
 
   /**

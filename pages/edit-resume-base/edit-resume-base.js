@@ -10,7 +10,7 @@ Page({
     userName:'',//姓名
     genderlist: ['男', '女'],//性别
     genderindex: 0,//性别index
-    edulevellist: ['不限','高中', '大专', '本科', '硕士', '博士'],//学历
+    edulevellist: ['高中', '大专', '本科', '硕士', '博士', '其他'],//学历
     edulevelindex: 2,//默认本科
     worksYearlist: ['应届毕业生', '1年以下', '1-3年', '3-5年', '5-10年',' 10年以上'],//工作年限
     worksYearindex: 2,//默认1-3年
@@ -175,7 +175,7 @@ Page({
   //保存
   submitResumeBaseTap: function(){
 
-    this.setResumeBaseInfoFun();
+    //this.setResumeBaseInfoFun();
     if ((this.data.userName == "") || (this.data.contact == "") || (this.data.email == "")) {
       wx.showModal({
         title: "生态圈提示您",

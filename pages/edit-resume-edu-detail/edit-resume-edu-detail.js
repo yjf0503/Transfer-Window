@@ -7,7 +7,7 @@ Page({
    */
   data: {
     content_id:'',
-    edulevellist: ['不限','高中', '大专', '本科', '硕士', '博士'],//学历 0 1 2 3 4 5
+    edulevellist: ['高中', '大专', '本科', '硕士', '博士','其他'],//学历 0 1 2 3 4 5
     edulevelindex: 3,//默认本科
     graduation: '2015-01',//毕业时间
     raduationTime:"",      // 毕业时间点击选择结束时间

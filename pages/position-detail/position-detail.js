@@ -130,23 +130,36 @@ Page({
       openid: app.globalData.openid,
       positionid: that.data.position_content.id
     }, function (data) {
-
+      app.hideloading();
       if (data.code == 1) {
-        that.setData({
-          height: ""
-        });
-        var animation = wx.createAnimation({
-          duration: 1000,
-          timingFunction: 'ease',
-        })
 
+        wx.showToast({
+          title: '投递成功',
+          icon: 'success',
+          duration: 1000
+        })
         that.setData({
-          mode: false,
-          animationData: animation.export(),
-          similarPosi: data.ret,
           submitText: "已投递",
           submitdisabled: true,
         })
+
+        //取消其他职位推荐
+        // that.setData({
+        //   height: ""
+        // });
+        // var animation = wx.createAnimation({
+        //   duration: 1000,
+        //   timingFunction: 'ease',
+        // })
+
+        // that.setData({
+        //   mode: false,
+        //   animationData: animation.export(),
+        //   similarPosi: data.ret,
+        //   submitText: "已投递",
+        //   submitdisabled: true,
+        // })
+
         //缓存投递过的职位id
         try {
           var sendPosiArray = wx.getStorageSync('sendPosiArray')
@@ -167,7 +180,7 @@ Page({
         app.alert(data.alertMsg);
       }
 
-      app.hideloading();
+     
 
     })
   },
