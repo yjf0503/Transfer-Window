@@ -36,9 +36,9 @@ App({
         //判断用户是否已有简历
         isHaveResume: wx.getStorageSync('isHaveResume') || null,
         //用于职位详情绑定数据
-        positionDetail: null,
+        positionDetail: null
         //用户登录状态
-        token:false
+        //token:false
     },
     apiList: {
         //接口

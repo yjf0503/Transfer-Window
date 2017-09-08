@@ -6,96 +6,95 @@ Page({
      * 页面的初始数据
      */
     data: {
-        isShow: false,     //是否拿到用户信息，否则显示默认头像
+        isShow: false     //是否拿到用户信息，否则显示默认头像
         //myself: ''
-        faceImg:"",      // 头像
-        user: false,   // 是否显示注册/登录或者用户名
-        username:"",    // 判断是否是登录状态，
-        usersetting:true,     //    退出当前账户
     },
 
     onLoad: function () {
-        this.getUserInfo();
-        //获取我的简介
-       
-     
-        // if (wx.getStorageSync("token") == "true" || app.globalData.token =="true"){   // 判断用户是否登录
-       
-        //     this.setData({
-        //       user: true,  
-        //       usersetting: false
-        //     });
-        //     console.log("登录状态");
-
-        // }else{
-        //   this.setData({
-        //     user: false,  //  是否显示注册登录字眼
-        //     usersetting: true    // 
-        //   });
-        // };
-        // console.log(app.globalData.isHaveResume);
-        if (app.globalData.isHaveResume !== null) {
-          this.setData({
-            username: app.globalData.isHaveResume.base_info.userName    //设置显示用户名
-          })
-        }
+        
     },
     onShow: function(){
-        //获取我的简介
-        if (app.globalData.isHaveResume !== null) {
-          console.log(app.globalData.isHaveResume)
-            this.setData({
-                myself: app.globalData.isHaveResume.base_info.myself
-            })
-        }
+      this.getUserInfo();
     },
+    //获取授权用户信息
     getUserInfo: function () {
+      var that = this;
         //获取用户头像，名称，并缓存到userInfo
         if (app.globalData.userInfo == null) {
-            var that = this;
-            wx.getUserInfo({
-                success: function (res) {
+          //用户授权判断
+          wx.getSetting({
+            success(res) {
+              //判断是否授权过
+              if (!res.authSetting['scope.userInfo']) {
+                wx.showModal({
+                  title: '警告',
+                  content: '请授权用户信息，若不授权，将影响您在小程序中的使用体验',
+                  showCancel: false,
+                  success: function (res) {
+                    if (res.confirm) {
+                      //跳转设置界面
+                      wx.openSetting({
+                        success: (res) => {
+                          console.log(res);
+                          res.authSetting = {
+                            "scope.userInfo": true
+                          }
+                          //重新获取用户信息
+                          wx.getUserInfo({
+                            success: function (res) {
+                              app.globalData.userInfo = res.userInfo;
+                              wx.setStorageSync('userInfo', res.userInfo);
+                              that.setData({
+                                userInfo: res.userInfo,
+                                isShow: true
+                              });
+                            }
+                          })
+                        }
+                      })
+                     
+                    } else if (res.cancel) {
+                      console.log('用户点击取消')
+                    }
+                  }
+                })
+                
+              }else{
+                //授权过就直接获取用户信息
+                wx.getUserInfo({
+                  success: function (res) {
                     app.globalData.userInfo = res.userInfo;
                     wx.setStorageSync('userInfo', res.userInfo);
                     that.setData({
-                        userInfo: res.userInfo,
-                        isShow: true
+                      userInfo: res.userInfo,
+                      isShow: true
                     });
-                }
+                  }
 
-            })
+                })
+              }
+            }
+          })
+            
         } else {
             this.setData({ userInfo: app.globalData.userInfo, isShow: true });
         }
 
     },
-
-    //编辑资料
-    editInfoTap: function () {
-        wx.navigateTo({
-            url: '/pages/edit-my/edit-my',
-        })
+    //重新授权
+    authSettingTap: function(){
+      this.getUserInfo();
     },
+    //编辑资料
+    // editInfoTap: function () {
+    //     wx.navigateTo({
+    //         url: '/pages/edit-my/edit-my',
+    //     })
+    // },
 
     //简历
     resumeTap: function () {
-        // wx.reLaunch({
-        //     url: '/pages/edit-resume-base/edit-resume-base?type=0',
-        // });
-      // if (wx.getStorageSync("token") == "true" || app.globalData.token == "true") { 
-      //    //判断是否有简历
-      //   if (app.globalData.isHaveResume===null){
-      //       wx.reLaunch({
-      //           url: '/pages/edit-resume-base/edit-resume-base?type=0',
-      //       });
-      //   }else{
-      //       wx.navigateTo({
-      //           url: '/pages/my-resume/my-resume'
-      //       });
-      //   }
-      // }else{
-      //   app.alert("请先登录!");
-      // }
+      
       //判断是否有简历
       if (app.globalData.isHaveResume === null) {
         wx.reLaunch({
@@ -111,14 +110,9 @@ Page({
 
     //我的投递
     myDeliveryTap: function () {
-      if (wx.getStorageSync("token") == "true" || app.globalData.token == "true") { 
-          wx.switchTab({
-            url: '/pages/messages/messages'
-        });
-      }else{
-        app.alert("请先登录!");
-      }
-      
+      wx.switchTab({
+        url: '/pages/messages/messages'
+      });
     },
     
     //删除简历
@@ -163,48 +157,19 @@ Page({
             }
         })
     },
+
+    //意见反馈
     deliveryComments:function(){
       wx.navigateTo({
         url: '../opinion/opinion',
       })
-    },
-    login:function(){
-      wx.navigateTo({
-        url: '../login/login',
-      })
-    },
-    // 退出账户登录
-    signOut:function(){
-      var _this = this ;
-
-        //   恢复到没登录的样式
-      try {
-        wx.setStorageSync('token', 'false');
-      } catch (e) {
-      }
-      try {
-        wx.removeStorageSync('openid')
-      } catch (e) {
-        // Do something when catch error
-      }
-      if (wx.getStorageSync('token') == "false" && wx.getStorageSync('openid') == ""){
-        wx.showModal({
-          title: '提示',
-          content: '退出登录成功',
-          success: function (res) {
-            if (res.confirm) {
-              _this.setData({
-                user: false,
-                usersetting: true
-              });
-              app.globalData.token = false;
-
-            } else if (res.cancel) {
-              // console.log('用户点击取消')
-            }
-          }
-        })
-      }
-      
     }
+
+
+    // login:function(){
+    //   wx.navigateTo({
+    //     url: '../login/login',
+    //   })
+    // },
+    
 })

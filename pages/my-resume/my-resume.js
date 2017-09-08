@@ -37,7 +37,7 @@ Page({
         return Date.parse(a.graduation) - Date.parse(b.graduation);    //教育经历的数据时间倒序
       });
       this.setData({
-        avatarUrl: app.globalData.userInfo.avatarUrl != null ? app.globalData.userInfo.avatarUrl : '/images/small_avatar.png',
+        avatarUrl: app.globalData.userInfo != null ? app.globalData.userInfo.avatarUrl : '/images/small_avatar.png',
         resumeBaseInfo: app.globalData.isHaveResume.base_info,
         resumeWorkList: app.globalData.isHaveResume.work_history,
         resumeEduList: app.globalData.isHaveResume.edu_history,

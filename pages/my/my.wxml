@@ -6,18 +6,10 @@
     <!--<text class="user-text">{{myself}}</text>-->
   </block> 
 
-  <!-- <block wx:else> -->
-   <!-- <image class="user-avatar" src="/images/face.png" mode="aspectFill"></image>
-    <view>
-      <block wx:if="{{user}}">
-          <text class="user-name">{{username}}</text>
-      </block>
-      <block wx:else>
-           <text class="register" bindtap='login'>登录</text>
-      </block>
-    </view> -->
-   
-  <!-- </block> -->
+  <block wx:else>
+  <image class="user-avatar" src="/images/face.png" mode="aspectFill"></image>
+   <text class="user-name" bindtap='authSettingTap'>重新授权</text>
+  </block>
   <!--<text class="edit-info" catchtap="editInfoTap">编辑资料</text>-->
 </view>
 <view class="item-cells">
@@ -53,13 +45,5 @@
       <text>意见反馈</text>
     </view>
     <view class="item-cell-ft"></view>
-  </view>
-</view> 
-
- <view class="item-cells ext-box" hidden='{{usersetting}}'>
-  <view class="item-cell item-cell-access" bindtap='signOut'>
-    <view class="item-cell-bd">
-      <text>退出当前账号</text>
-    </view>
   </view>
 </view> 
