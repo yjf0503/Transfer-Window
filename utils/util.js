@@ -37,7 +37,7 @@ module.exports.authorize = function authorize() {
 //判断用户是否已有简历
 module.exports.isHaveResume = function isHaveResume(){
     var app = getApp();
-    if (app.globalData.isHaveResume == null){
+    if (app.globalData.isHaveResume === null){
         app.apiPost(app.apiList.isHaveResume, {
             openid: app.globalData.openid
         }, function (data) {
@@ -60,7 +60,7 @@ module.exports.isHaveResume = function isHaveResume(){
                 data.ret.edu_history = edu_history;
                 
                 app.globalData.isHaveResume = data.ret;
-
+                
             } else if (data.code == 0) {   // 没有简历
                 app.globalData.isHaveResume = null;
             } else {

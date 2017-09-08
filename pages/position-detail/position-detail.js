@@ -52,14 +52,28 @@ Page({
     //判断是否有简历
     if (app.globalData.isHaveResume === null) {
       that.setData({
-        submitText: "请先完善您的个人简历",
+        submitText: "请先创建您的个人简历",
         isHaveResume: false
       });
+          
     } else {
-      that.setData({
-        submitText: "发送简历",
-        isHaveResume: true
-      });
+      var work_history_len = app.globalData.isHaveResume.work_history.length,
+        edu_history_len = app.globalData.isHaveResume.edu_history.length,
+        expected_pos_obj = app.globalData.isHaveResume.expected_pos;
+
+      if (work_history_len > 0 && edu_history_len > 0 && expected_pos_obj !==null) {
+        that.setData({
+          submitText: "发送简历",
+          isHaveResume: true
+        });
+      } else {
+        that.setData({
+          submitText: "请先完善您的个人简历",
+          isHaveResume: false
+        });
+      }
+      
+      
     }
     //判断是否已投递过
     try {
@@ -96,25 +110,36 @@ Page({
   isSendTap: function () {
 
     var that = this;
-    if (that.data.isHaveResume) {
-      wx.showModal({
-        title: '发送确认',
-        content: '发送后不可撤回，确认发送？',
-        cancelText: '取消',
-        cancelColor: '#999',
-        confirmText: '确认',
-        confirmColor: '#4990E2',
-        success: function (res) {
-          if (res.confirm) {
-            app.loading();
-            that.sendResumeFun();
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
-        }
-      })
-    } else {
+    if (that.data.isHaveResume !== null) {
 
+      let work_history_len = app.globalData.isHaveResume.work_history.length,
+        edu_history_len = app.globalData.isHaveResume.edu_history.length,
+        expected_pos_obj = app.globalData.isHaveResume.expected_pos;
+      if (work_history_len > 0 && edu_history_len > 0 && expected_pos_obj !== null) {
+        //发送简历
+        wx.showModal({
+          title: '发送确认',
+          content: '发送后不可撤回，确认发送？',
+          cancelText: '取消',
+          cancelColor: '#999',
+          confirmText: '确认',
+          confirmColor: '#4990E2',
+          success: function (res) {
+            if (res.confirm) {
+              app.loading();
+              that.sendResumeFun();
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      } else {
+        wx.reLaunch({
+          url: '/pages/my-resume/my-resume',
+        })
+      }
+      
+    } else {
       wx.reLaunch({
         url: '/pages/edit-resume-base/edit-resume-base?type=0',
       })
