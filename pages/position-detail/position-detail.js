@@ -49,19 +49,27 @@ Page({
     }
 
 
+    this.btnStatusFun();
+
+  },
+  onShow(){
+    this.btnStatusFun();
+  },
+  //按钮交互判断
+  btnStatusFun(){
+    var that = this;
     //判断是否有简历
     if (app.globalData.isHaveResume === null) {
       that.setData({
         submitText: "请先创建您的个人简历",
         isHaveResume: false
       });
-      console.log('请先创建您的个人简历');   
     } else {
-      var work_history_len = app.globalData.isHaveResume.work_history.length,
-        edu_history_len = app.globalData.isHaveResume.edu_history.length,
+      var work_history_obj = app.globalData.isHaveResume.work_history,
+        edu_history_obj = app.globalData.isHaveResume.edu_history,
         expected_pos_obj = app.globalData.isHaveResume.expected_pos;
 
-      if (work_history_len > 0 && edu_history_len > 0 && expected_pos_obj !==null) {
+      if (work_history_obj !== null && edu_history_obj !== null && expected_pos_obj !== null) {
         that.setData({
           submitText: "发送简历",
           isHaveResume: true
@@ -69,11 +77,11 @@ Page({
       } else {
         that.setData({
           submitText: "请先完善您的个人简历",
-          isHaveResume: false
+          isHaveResume: true
         });
       }
-      
-      
+
+
     }
     //判断是否已投递过
     try {
@@ -93,9 +101,7 @@ Page({
     } catch (e) {
       // Do something when catch error
     }
-
   },
-
   //公司详情
   bindPositionDetailTap: function (event) {
     // 设置到全局变量中去，让下个页面可以访问
@@ -112,10 +118,10 @@ Page({
     var that = this;
     if (that.data.isHaveResume) {
 
-      let work_history_len = app.globalData.isHaveResume.work_history.length,
-        edu_history_len = app.globalData.isHaveResume.edu_history.length,
+      var work_history_obj = app.globalData.isHaveResume.work_history,
+        edu_history_obj = app.globalData.isHaveResume.edu_history,
         expected_pos_obj = app.globalData.isHaveResume.expected_pos;
-      if (work_history_len > 0 && edu_history_len > 0 && expected_pos_obj !== null) {
+      if (work_history_obj !== null&& edu_history_obj !== null&& expected_pos_obj !== null) {
         //发送简历
         wx.showModal({
           title: '发送确认',

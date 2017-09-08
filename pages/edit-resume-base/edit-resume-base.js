@@ -250,7 +250,7 @@ Page({
           app.alert('联系邮箱格式不对！');
           return false;
       }
-    console.log(app.globalData.userInfo.avatarUrl);
+    //console.log(app.globalData.userInfo.avatarUrl);
       let content = {
           userName: this.data.userName,
           genderindex: this.data.genderindex,
@@ -262,7 +262,7 @@ Page({
           email: this.data.email,
           //myself: this.data.myself,
           //selfLen: this.data.selfLen,
-          userImg:app.globalData.userInfo.avatarUrl
+          //userImg:app.globalData.userInfo.avatarUrl
       };
       console.log(app.globalData.openid);
       app.apiPost(app.apiList.saveResume, {

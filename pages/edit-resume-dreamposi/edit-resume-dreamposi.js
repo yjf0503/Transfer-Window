@@ -27,27 +27,29 @@ Page({
             isHaveResume: false
           })
         } else {
-          console.log(resumeDreamPosi);
-          var resumeDreamPosi = app.globalData.isHaveResume.expected_pos
-          this.setData({
-            workTypeindex: resumeDreamPosi.workTypeindex,
-            cityindex: resumeDreamPosi.cityindex,
-            salaryindex: resumeDreamPosi.salaryindex,
-            dreamposi: resumeDreamPosi.dreamposi,
-          })
+          
+          // var resumeDreamPosi = app.globalData.isHaveResume.expected_pos
+          // this.setData({
+          //   workTypeindex: resumeDreamPosi.workTypeindex,
+          //   cityindex: resumeDreamPosi.cityindex,
+          //   salaryindex: resumeDreamPosi.salaryindex,
+          //   dreamposi: resumeDreamPosi.dreamposi,
+          // })
+
+          if (app.globalData.isHaveResume !== null && app.globalData.isHaveResume.expected_pos !== null) {
+            //取出页面数据
+            var resumeDreamPosi = app.globalData.isHaveResume.expected_pos
+            this.setData({
+              workTypeindex: resumeDreamPosi.workTypeindex,
+              cityindex: resumeDreamPosi.cityindex,
+              salaryindex: resumeDreamPosi.salaryindex,
+              dreamposi: resumeDreamPosi.dreamposi,
+            })
+          }
         }
       
 
-        // if (app.globalData.isHaveResume !== null && app.globalData.isHaveResume.expected_pos !== null){
-        //     //取出页面数据
-        //     var resumeDreamPosi = app.globalData.isHaveResume.expected_pos
-        //     this.setData({
-        //         workTypeindex: resumeDreamPosi.workTypeindex,
-        //         cityindex: resumeDreamPosi.cityindex,
-        //         salaryindex: resumeDreamPosi.salaryindex,
-        //         dreamposi: resumeDreamPosi.dreamposi,
-        //     })
-        // }
+        
         
        
     },
