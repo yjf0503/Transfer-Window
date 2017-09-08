@@ -54,11 +54,11 @@ Page({
 
     
     //期望职位
-    // dreamposiTap: function (event) {
-    //     this.setData({
-    //         dreamposi: event.detail.value
-    //     })
-    // },
+    dreamposiTap: function (event) {
+        this.setData({
+            dreamposi: event.detail.value
+        })
+    },
     //期望职位聚焦
     desiredpositionfocus:function(){
       this.setData({
