@@ -6,5 +6,5 @@
         <textarea bindfocus="opTextFocus" bindblur="opTextBlur" bindinput="setCon" maxlength="-1"class="op-con" placeholder-style="color:bold;" placeholder="{{conTextPla}}"/>
         <!-- <text>0/200</text> -->
     </view>
-    <button class="btn" catchtap="submite">提交</button>
+    <button class="btn" catchtap="submit">提交</button>
 </view>

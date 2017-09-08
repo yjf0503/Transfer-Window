@@ -72,5 +72,6 @@
 .footer view text{
   color: #666;
   font-weight: bold;
+  background-color: #417ee0;
 }
 

@@ -81,29 +81,34 @@ Page({
     });
   },
   // 提交
-  submite: function (e) {
+  submit: function (e) {
     if (this.data.conval){
-      app.apiPost(app.apiList.retroaction, {
-          channel:1,
+      if (this.data.conval.length<10){
+        app.alert("请填写10字以上的描述!");
+      }else{
+        app.apiPost(app.apiList.retroaction, {
+          channel: 1,
           content: this.data.conval
         }, function (data) {
-          if(data.status){
-              wx.showToast({
-                title: '成功',
-                icon: 'success',
-                duration: 2000,
-                success:function(){
-                  setTimeout(function(){
-                     wx.switchTab({
-                      url: '../my/my',
-                    });
-                  },500);
-                }
+          if (data.status) {
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000,
+              success: function () {
+                setTimeout(function () {
+                  wx.switchTab({
+                    url: '../my/my',
+                  });
+                }, 500);
+              }
             })
-          }else{
+          } else {
             app.alert(data.rows);
           }
         })
+      }
+      
     }else{
       app.alert("请填写完整意见信息");
     }

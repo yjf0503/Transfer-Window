@@ -43,6 +43,7 @@ Page({
         //获取简历
         that.getResume(that);
         
+        
         //获取可搜索城市列表
         that.getPositionCity();
 
@@ -53,6 +54,8 @@ Page({
         //初始化的时候渲染wxSearchdata 第二个为你的search高度
         WxSearch.init(that, 48, ['运营','赛事','商务']);
         WxSearch.initMindKeys(['腾讯体育','乐视体育','阿里体育']);
+
+        // console.log(app.globalData.isHaveResume);
     },
 
     //判断用户是否已有简历
