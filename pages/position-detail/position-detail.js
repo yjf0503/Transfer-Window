@@ -55,7 +55,7 @@ Page({
         submitText: "请先创建您的个人简历",
         isHaveResume: false
       });
-          
+      console.log('请先创建您的个人简历');   
     } else {
       var work_history_len = app.globalData.isHaveResume.work_history.length,
         edu_history_len = app.globalData.isHaveResume.edu_history.length,
@@ -110,7 +110,7 @@ Page({
   isSendTap: function () {
 
     var that = this;
-    if (that.data.isHaveResume !== null) {
+    if (that.data.isHaveResume) {
 
       let work_history_len = app.globalData.isHaveResume.work_history.length,
         edu_history_len = app.globalData.isHaveResume.edu_history.length,
@@ -134,7 +134,7 @@ Page({
           }
         })
       } else {
-        wx.reLaunch({
+        wx.navigateTo({
           url: '/pages/my-resume/my-resume',
         })
       }
