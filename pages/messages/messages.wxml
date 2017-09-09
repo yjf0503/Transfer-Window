@@ -25,6 +25,7 @@
       </view>
     </view>
   </swiper-item>
+
   <!-- 被查看 -->
   <swiper-item>
     <scroll-view scroll-y="true" class="auto-scroll">
@@ -32,61 +33,61 @@
         <template is="position-item" data="{{...item}}" />
       </view>
     </scroll-view>
-    <view>{{list}}</view>
   </swiper-item>
+
   <!-- 有意向 -->
   <swiper-item>
-
-    <view wx:for="{{yixiang}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
-      <template is="position-item" data="{{...item}}" />
-      <view class="content-box">
-        <view class="content">你好，该公司已查看了您的简历，并有意向与您进一步沟通，请保持电话畅通，祝您体育职场一帆风顺。</view>
+    <scroll-view scroll-y="true" class="auto-scroll">
+      <view wx:for="{{yixiang}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+        <template is="position-item" data="{{...item}}" />
+        <view class="content-box">
+          <view class="content">你好，该公司已查看了您的简历，并有意向与您进一步沟通，请保持电话畅通，祝您体育职场一帆风顺。</view>
+        </view>
       </view>
-    </view>
-
-
-
+    </scroll-view>
   </swiper-item>
+
   <!-- 邀面试 -->
   <swiper-item>
-    <view wx:for="{{mianshi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
-      <template is="position-item" data="{{...item}}" />
-      <view class="content-box">
-        <view class="content">
-          <view class="list">
-            <text class="list-left">时间</text>
-            <text>{{item.meettime}}</text>
-          </view>
-          <view class="list">
-            <text class="list-left">地点</text>
-            <text>{{item.address}}</text>
-          </view>
-          <view class="list">
-            <text class="list-left" style="margin-right:68rpx;">联系人</text>
-            <text>{{item.hrname}}</text>
-          </view>
-          <view class="list">
-            <text class="list-left">电话</text>
-            <text>{{item.hrphone}}</text>
-          </view>
-          <view class="list">
-            <text class="list-left">备注</text>
-            <text>{{item.content}}</text>
+    <scroll-view scroll-y="true" class="auto-scroll">
+      <view wx:for="{{mianshi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+        <template is="position-item" data="{{...item}}" />
+        <view class="content-box">
+          <view class="content">
+            <view class="list">
+              <text class="list-left">时间</text>
+              <text>{{item.meettime}}</text>
+            </view>
+            <view class="list">
+              <text class="list-left">地点</text>
+              <text>{{item.address}}</text>
+            </view>
+            <view class="list">
+              <text class="list-left" style="margin-right:68rpx;">联系人</text>
+              <text>{{item.hrname}}</text>
+            </view>
+            <view class="list">
+              <text class="list-left">电话</text>
+              <text>{{item.hrphone}}</text>
+            </view>
+            <view class="list">
+              <text class="list-left">备注</text>
+              <text>{{item.content}}</text>
+            </view>
           </view>
         </view>
       </view>
-    </view>
-
-
+    </scroll-view>
   </swiper-item>
   <!-- 不合适 -->
   <swiper-item>
-    <view wx:for="{{buheshi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
-      <template is="position-item" data="{{...item}}" />
-      <view class="content-box">
-        <view class="content">{{item.content}}</view>
+    <scroll-view scroll-y="true" class="auto-scroll">
+      <view wx:for="{{buheshi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
+        <template is="position-item" data="{{...item}}" />
+        <view class="content-box">
+          <view class="content">{{item.content}}</view>
+        </view>
       </view>
-    </view>
-
+    </scroll-view>
   </swiper-item>
 </swiper>

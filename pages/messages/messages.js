@@ -67,23 +67,23 @@ Page({
             
             for (var i in readList){
                 if (i==2){    // 被查看
-                  chakan.push(toArr(readList[i])[0]);
+                  chakan.push(toArr(readList[i]));
                 } else if (i==1){    // 有意向
-                  yixiang.push(toArr(readList[i])[0]);
+                  yixiang.push(toArr(readList[i]));
                 } else if (i==3){     // 面试
-                  mianshi.push(toArr(readList[i])[0]);
+                  mianshi.push(toArr(readList[i]));
                 }else if(i==6){      // 不合适
-                  buheshi.push(toArr(readList[i])[0]);
+                  buheshi.push(toArr(readList[i]));
                 }
                 
             }
 
             that.setData({
                 list: unreadList,
-                chakan: chakan,
-                yixiang: yixiang,
-                mianshi: mianshi,
-                buheshi: buheshi
+                chakan: chakan[0],
+                yixiang: yixiang[0],
+                mianshi: mianshi[0],
+                buheshi: buheshi[0]
             })
         }else{
             
