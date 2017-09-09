@@ -32,8 +32,8 @@ Page({
           position_content: data,
           id: data.id
         })
-        
-        WxParse.wxParse('article', 'html', data.p_desc, that, 5);
+        let p_desc = data.p_desc.replace(/&amp;nbsp;/g, "");
+       WxParse.wxParse('article', 'html', p_desc, that, 5);
         app.hideloading();
       
       })
@@ -49,8 +49,10 @@ Page({
         id: app.globalData.positionDetail.id,
         isGoinType: that.data.isGoinType
       });
-     
-      WxParse.wxParse('article', 'html', app.globalData.positionDetail.p_desc, that, 5);
+      //let p_desc = app.globalData.positionDetail.p_desc.replace(/\s/g, '');
+      let p_desc = app.globalData.positionDetail.p_desc.replace(/&amp;nbsp;/g, "");
+      WxParse.wxParse('article', 'html', p_desc, that, 5);
+      
     }
 
 
