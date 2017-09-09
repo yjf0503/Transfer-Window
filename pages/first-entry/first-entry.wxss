@@ -21,39 +21,41 @@ page{
 }
 .btn-home{
   position:absolute;
-  bottom:245rpx;
+  bottom:160rpx;
   right:90rpx;
   width:240rpx;
-  height:61rpx;
+  height:90rpx;
   border-radius:139rpx; 
-  opacity:0; 
+   opacity:0;  
 }
 .btn-enter{
   position:absolute;
-  bottom:245rpx;
+  bottom:160rpx;
   right:90rpx;
   width:240rpx;
-  height:61rpx;
+  height:90rpx;
   border-radius:139rpx;
-  opacity:0; 
+  opacity:0;  
 }
 .btn-message{
   position:absolute;
-  bottom:225rpx;
+  bottom:160rpx;
   right:85rpx;
   width:240rpx;
-  height:61rpx;
+  height:90rpx;
   border-radius:139rpx;
-   opacity:0;  
+  opacity:0;   
+   
 }
 .to-home{
   position:absolute;
-  top:364rpx;
-  left:65rpx;
+  bottom:180rpx;
+  left:265rpx;
   width:240rpx;
-  height:61rpx;
+  height:90rpx;
   border-radius:139rpx;
-  opacity:0; 
+   opacity:0;  
+  /* background-color:red;  */
 }
 /* .to-resume{
   position:absolute;
