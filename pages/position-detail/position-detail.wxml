@@ -15,7 +15,7 @@
       <text>{{position_content.p_type_name}}</text>
     </view>
   </view>
-  <view class="company-m" data-pid="{{position_content.p_id}}" catchtap="bindPositionDetailTap">
+  <view hidden="{{isGoinType}}" class="company-m" data-pid="{{position_content.p_id}}" catchtap="bindPositionDetailTap">
     <image class="com-logo" src="{{position_content.enterprise_logo}}"></image>
     <view class="com">
       <view class="com-name">{{position_content.enterprise_name}}</view>

@@ -59,8 +59,8 @@ Page({
     // 设置到全局变量中去，让下个页面可以访问
     app.globalData.curPosition = position;
     // 切换页面
-    wx.redirectTo({
-      url: '../position-detail/position-detail?id=' + position.id + '&type=1',
+    wx.navigateTo({
+      url: '../position-detail/position-detail?id=' + position.id + '&type=2',
     })
   },
   //分享

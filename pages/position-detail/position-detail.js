@@ -12,7 +12,8 @@ Page({
     submitdisabled: false,
     mode: true,
     animationData: {},
-    height: "100%"
+    height: "100%",
+    isGoinType: false,//判断是否从公司进来
   },
 
   /**
@@ -20,13 +21,12 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if (options.type) {
+    if (options.type==1) {
       // 从分享进来
       app.loading();
       app.apiGet(app.apiList.positionsDetail, {
         id: options.id
       }, function (data) {
-        console.log(data)
         var data = data[0];
         that.setData({
           position_content: data,
@@ -37,14 +37,19 @@ Page({
         app.hideloading();
       
       })
-    } else{
+    } else {
+      //是从公司进来的就不再显示公司了
+      
+      if (options.type == 2){
+        that.data.isGoinType=true;
+      }
       //获取职位详情
       that.setData({
         position_content: app.globalData.positionDetail,
-        id: app.globalData.positionDetail.id
+        id: app.globalData.positionDetail.id,
+        isGoinType: that.data.isGoinType
       });
      
-      console.log(app.globalData.positionDetail);
       WxParse.wxParse('article', 'html', app.globalData.positionDetail.p_desc, that, 5);
     }
 
@@ -252,7 +257,7 @@ Page({
   //分享
   onShareAppMessage: function (res) {
     var _this = this;
-    console.log(_this.data.position_content);
+    
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
@@ -261,7 +266,7 @@ Page({
     let id = _this.data.id;
     return {
       title: title,
-      path: '/pages/position-detail/position-detail?type=true&id=' + id,
+      path: '/pages/position-detail/position-detail?type=1&id=' + id,
       data: _this.data.position_content,
       success: function (res) {
         // 转发成功
