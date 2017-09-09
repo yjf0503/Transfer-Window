@@ -84,7 +84,7 @@
     <view wx:for="{{buheshi}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
       <template is="position-item" data="{{...item}}" />
       <view class="content-box">
-        <view class="content">非常荣幸收到您的简历，经过我们评估，认为您与该职位不太合适，无法进入面试阶段。相信更好的机会一定还在翘首期盼着您，赶快调整心态，做好充足的准备重新出发吧！(๑•̀ㅂ•́)و✧</view>
+        <view class="content">{{item.content}}</view>
       </view>
     </view>
 
