@@ -1,4 +1,14 @@
 // pages/messages/messages.js
+
+// 数组转为json
+function toArr(json) {    
+  var arr = [];
+  for (var i in json) {
+    arr.unshift(json[i]);
+  };
+  return arr;
+};
+
 var app = getApp();
 Page({
 
@@ -18,14 +28,14 @@ Page({
   onLoad: function (options) {
     
     var that = this;
-    app.loading();
+    //app.loading();
     //获取设备宽高
     that.setData({
         winWidth: app.globalData.systemInfo.windowWidth,
         winHeight: app.globalData.systemInfo.windowHeight
     });
 
-    that.getMesgFun();
+    //that.getMesgFun();
 
   },
 
@@ -44,13 +54,7 @@ Page({
           openid: app.globalData.openid
       },function(data){
           //暂时不区分新消息
-        function toArr(json){    // 数组转为json
-          var arr = [];
-          for (var i in json) {
-            arr.unshift(json[i]);
-          };
-          return arr ; 
-        };
+        
           if (data.code == 1 || data.code == 0){
             var readList = data.ret.resume_list_isread,
                 unreadList = data.ret.resume_list_unread[0];
@@ -60,7 +64,7 @@ Page({
                 yixiang =[],
                 mianshi =[],
                 buheshi =[];
-            console.log(data);
+            
             for (var i in readList){
                 if (i==2){    // 被查看
                   chakan.push(toArr(readList[i])[0]);
@@ -73,10 +77,6 @@ Page({
                 }
                 
             }
-            // for (var l in unreadList[2]){
-            //     console.log("---------------------" + l)
-            // }
-            // console.log("被查看" + chakan)
 
             that.setData({
                 list: unreadList,
@@ -135,51 +135,7 @@ Page({
         currentTab: e.target.dataset.current
       })
     }
-    // console.log(that.data.currentTab);
-    // app.apiPost(app.apiList.deliveryStatus, {
-    //   openid: app.globalData.openid,
-    //   status: that.data.currentTab
-    // }, function (data) {
-    //   //暂时不区分新消息
-    //   console.log(data);
-    //   if (data.code == 1 || data.code == 0) {
-    //     var readList = data.ret.resume_list_isread,
-    //       unreadList = data.ret.resume_list_unread;
-    //     var list = readList.concat(unreadList)
-    //     var chakan = [],
-    //       yixiang = [],
-    //       mianshi = [],
-    //       buheshi = [];
-    //     console.log(list);
-    //     for (var i = 0; i < list.length; i++) {
-    //       if (list[i].resume_status == 1) {
-    //         chakan.push(list[i]);
-    //       } else if (list[i].resume_status == 2) {
-    //         yixiang.push(list[i])
-    //       } else if (list[i].resume_status == 3) {
-    //         mianshi.push(list[i])
-    //       } else if (list[i].resume_status == 4){
-    //         buheshi.push(list[i])
-    //       }
-
-    //     }
-
-    //     that.setData({
-    //       list: list,
-    //       chakan: chakan,
-    //       yixiang: yixiang,
-    //       mianshi: mianshi,
-    //       buheshi: buheshi
-    //     })
-    //   console.log(that.data.yixiang);
-    //   } else {
-
-    //     that.setData({
-    //       isHiddenMes: false
-    //     })
-    //   }
-    //   app.hideloading();
-    // })
+   
   },
 
   //地图

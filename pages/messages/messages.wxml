@@ -59,7 +59,7 @@
           </view>
           <view class="list">
             <text class="list-left">地点</text>
-            <text catchtap="mapTap">{{item.address}}</text>
+            <text>{{item.address}}</text>
           </view>
           <view class="list">
             <text class="list-left" style="margin-right:68rpx;">联系人</text>
