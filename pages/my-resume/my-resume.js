@@ -46,6 +46,8 @@ Page({
 
   },
   onShow: function(){
+
+    
       this.setData({
           resumeBaseInfo: app.globalData.isHaveResume.base_info,
           resumeWorkList: app.globalData.isHaveResume.work_history,

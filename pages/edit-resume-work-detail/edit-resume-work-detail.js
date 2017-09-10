@@ -26,7 +26,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    
     var newDate = new Date();
     var Month = newDate.getMonth() < 10 ? "0" + (newDate.getMonth() + 1) : "" + (newDate.getMonth() + 1);
   
@@ -43,7 +43,7 @@ Page({
         })
         
         var resumeWorkList = app.globalData.isHaveResume.work_history;
-        console.log(resumeWorkList);
+        
         for (var i = 0; i <resumeWorkList.length;i++){
             if (workId == resumeWorkList[i].id){
                 this.setData({
@@ -53,6 +53,7 @@ Page({
                     join: resumeWorkList[i].join,
                     leave: resumeWorkList[i].leave,
                     workContent: resumeWorkList[i].workContent,
+                    workContentLen: resumeWorkList[i].workContent.length
                 });
             }
         }
@@ -110,7 +111,7 @@ Page({
       join: e.detail.value,
       endDate: e.detail.value
     })
-    console.log(e.detail);
+    
   },
   //离职时间
   bindDateChangeLeave: function (e) {
@@ -171,9 +172,9 @@ Page({
               content: JSON.stringify(content)
               
           }, function (data) {
-            console.log(data);
+            
               if (data.code == 1) {
-                  console.log(data.msg)
+                  
                   that.updataWorkDataFun(data);
               } else {
                   app.alert(data.alertMsg);
@@ -186,9 +187,9 @@ Page({
               content: JSON.stringify(content),
               content_id: this.data.content_id,
           }, function (data) {
-            console.log(data);
+            
               if (data.code == 1) {
-                  console.log(data.msg)
+                  
                   that.updataWorkDataFun(data);
               } else {
                   app.alert(data.alertMsg);
@@ -222,7 +223,7 @@ Page({
   //提交工作信息(保存)
   submitCompanyTap: function (e) {
     var _this = this;
-    console.log(this.data.workContent);
+    
 
     if (this.data.companyname == '' || this.data.department == '' || this.data.workContent == '') {
       wx.showModal({
@@ -257,7 +258,7 @@ Page({
           content_id: that.data.content_id,
       }, function (data) {
           if (data.code == 1) {
-              console.log(data.msg)
+              
               that.updataWorkDataFun(data);
           } else {
               app.alert(data.alertMsg);
