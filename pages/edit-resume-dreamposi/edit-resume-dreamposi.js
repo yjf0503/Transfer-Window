@@ -93,7 +93,7 @@ Page({
     },
     //保存期望职位
     
-    setResumeDreamPosFun: function () {
+    setResumeDreamPosFun: function (addType) {
       var that = this;
 
         if (this.data.dreamposi == '' || this.data.dreamposi == undefined) {
@@ -116,25 +116,27 @@ Page({
             if (data.code == 1) {
                 
                 app.globalData.isHaveResume.expected_pos = content;
-                
-                //更新上一级页面
-                var pages = getCurrentPages();
-                var curPage = pages[pages.length - 2];
-                curPage.setData({
-                  resumeDreamPosi: content
-                });
-                app.hideloading();
-                wx.showToast({
-                  title: '保存成功！',
-                  icon: 'success',
-                  duration: 500
-                });
-                //返回上一个页面
-                setTimeout(function () {
-                  wx.navigateBack({
+                if (addType !=0){
+                  //更新上一级页面
+                  var pages = getCurrentPages();
+                  var curPage = pages[pages.length - 2];
+                  curPage.setData({
+                    resumeDreamPosi: content
+                  });
+                  app.hideloading();
+                  wx.showToast({
+                    title: '保存成功！',
+                    icon: 'success',
+                    duration: 500
+                  });
+                  //返回上一个页面
+                  setTimeout(function () {
+                    wx.navigateBack({
 
-                  })
-                }, 800);
+                    })
+                  }, 800);
+                }
+                
                 
             } else {
                 app.alert(data.alertMsg);
@@ -149,9 +151,9 @@ Page({
           content: "期望职位不能为空！"
         });
       }else{
-
+        let addType = 1;
         app.loading();
-        this.setResumeDreamPosFun();
+        this.setResumeDreamPosFun(addType);
         
       }
      
@@ -164,7 +166,8 @@ Page({
     },
     //完成
     subOver: function () {
-        this.setResumeDreamPosFun();
+      let addType = 0;
+        this.setResumeDreamPosFun(addType);
         if (this.data.dreamposi == '' || this.data.dreamposi == undefined) {
           wx.showModal({
             title: "生态圈提示您",

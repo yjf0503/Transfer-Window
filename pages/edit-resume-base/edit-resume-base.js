@@ -204,15 +204,16 @@ Page({
           content: "邮箱格式不对！"
         });
       }else{
+        let addType = 1;
         app.loading();
-        this.setResumeBaseInfoFun();
+        this.setResumeBaseInfoFun(addType);
         
        
       }
     }
   },
   //保存简历基本信息
-  setResumeBaseInfoFun: function(){
+  setResumeBaseInfoFun: function(addType){
     var that = this;
       if (this.data.userName == '' || this.data.userName == undefined) {
           app.alert('姓名不能为空！')
@@ -268,24 +269,27 @@ Page({
             }else{
               app.globalData.isHaveResume.base_info = content;
             }
-            //更新上一级页面
-            var pages = getCurrentPages();
-            var curPage = pages[pages.length - 2];
-            curPage.setData({
-              resumeBaseInfo: content
-            });
-            app.hideloading();
-            wx.showToast({
-              title: '保存成功！',
-              icon: 'success',
-              duration: 500
-            })
-            //返回上一个页面
-            setTimeout(function () {
-              wx.navigateBack({
-
+            if(addType != 0){
+              //更新上一级页面
+              var pages = getCurrentPages();
+              var curPage = pages[pages.length - 2];
+              curPage.setData({
+                resumeBaseInfo: content
+              });
+              app.hideloading();
+              wx.showToast({
+                title: '保存成功！',
+                icon: 'success',
+                duration: 500
               })
-            }, 800);
+              //返回上一个页面
+              setTimeout(function () {
+                wx.navigateBack({
+
+                })
+              }, 800);
+            }
+            
             
           } else {
               app.alert(data.alertMsg);
@@ -319,7 +323,8 @@ Page({
             content: "邮箱格式不对！"
           });
         }else{
-           var s = this.setResumeBaseInfoFun();
+            let addTyppe = 0;
+            var s = this.setResumeBaseInfoFun(addTyppe);
            wx.navigateTo({
              url: '/pages/edit-resume-work/edit-resume-work?type=0',
            })
