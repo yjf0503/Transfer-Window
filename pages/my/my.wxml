@@ -30,14 +30,14 @@
   </view>
 </view>
 
- <view class="item-cells">
+ <!-- <view class="item-cells">
   <view class="item-cell item-cell-access" catchtap="deleteResumeTap">
     <view class="item-cell-bd">
       <text>删除简历</text>
     </view>
     <view class="item-cell-ft"></view>
   </view>
-</view> 
+</view>  -->
 
  <view class="item-cells">
   <view class="item-cell item-cell-access" catchtap="deliveryComments">
