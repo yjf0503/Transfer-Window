@@ -9,6 +9,7 @@ Page({
   data: {
     isHaveResume: true,//是否有简历
     Completion: true,//简历是否完整
+    isShowBtn: false,//是否隐藏btn，从投递箱进来的不展示
     submitText: '',
     submitdisabled: false,
     mode: true,
@@ -21,7 +22,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //options.type ＝ 1 || 2 || 3
+    //type 没有参数就是默认首页和实习进来的
+    // 1 是从分享进来,需要请求接口，获取职位的详情
+    // 2 是从公司下的职位进来的，需要隐藏公司栏目的展示
+    // 3 是投递箱进去，不显示投递按钮
+    this.data.options = options;
     var that = this;
+    
     if (options.type==1) {
       // 从分享进来
       app.loading();
@@ -65,7 +73,7 @@ Page({
 
   },
   onShow(){
-    this.btnStatusFun();
+    this.btnStatusFun(this.data.options);
   },
   //按钮交互判断
   btnStatusFun(options){
@@ -124,6 +132,13 @@ Page({
       }
     } catch (e) {
       // Do something when catch error
+    }
+
+    //判断是否从投递箱进来
+    if (options.type == 3){
+      that.setData({
+        isShowBtn: true
+      })
     }
   },
   //公司详情

@@ -115,7 +115,7 @@ Page({
       app.globalData.positionDetail = position;
       // 切换页面
       wx.navigateTo({
-          url: '../position-detail/position-detail'
+          url: '../position-detail/position-detail?type=3'
       });
   },
   //滑动切换tab

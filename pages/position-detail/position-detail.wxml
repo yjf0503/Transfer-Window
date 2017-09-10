@@ -32,7 +32,7 @@
   </view>
 </view>
 
-<view class="btn-box">
+<view class="btn-box" hidden="{{isShowBtn}}">
   <button class="btn-send-resume" size="default" hover-class="btn-send-resume-hover" catchtap="isSendTap" disabled="{{submitdisabled}}">{{submitText}}</button>
 </view>
 
