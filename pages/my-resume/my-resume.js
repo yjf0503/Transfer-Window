@@ -10,7 +10,7 @@ Page({
     resumeWorkList: null,
     resumeEduList: null,
     resumeDreamPosi: null,
-    avatarUrl: '/images/small_avatar.png',
+    avatarUrl: null,
     genderlist: ['男', '女'],//性别
     edulevellist: ['高中', '大专', '本科', '硕士', '博士', '其他'],//学历
     worksYearlist: ['应届毕业生', '1年以下', '1-3年', '3-5年', '5-10年', ' 10年以上'],//工作年限
@@ -37,7 +37,7 @@ Page({
       //   return Date.parse(a.graduation) - Date.parse(b.graduation);    //教育经历的数据时间倒序
       // });
       this.setData({
-        avatarUrl: app.globalData.userInfo != null ? app.globalData.userInfo.avatarUrl : '/images/small_avatar.png',
+        avatarUrl: app.globalData.userInfo != null ? app.globalData.userInfo.avatarUrl : '/images/small_avatar.png'
         // resumeBaseInfo: app.globalData.isHaveResume.base_info,
         // resumeWorkList: app.globalData.isHaveResume.work_history,
         // resumeEduList: app.globalData.isHaveResume.edu_history,
