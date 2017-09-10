@@ -3,7 +3,7 @@
 
 <!--index.wxml-->
 <view class="container">
-  <scroll-view scroll-y style="height: {{viewHeight}}px;" bindscrolltolower="lower" scroll-top="100">
+  <scroll-view scroll-y style="height: {{viewHeight}}px;" bindscrolltolower="lower" scroll-top="100" enable-back-to-top="ture">
     
     <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
       <template is="position-item" data="{{...item}}" />
