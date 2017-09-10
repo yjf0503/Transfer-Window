@@ -19,10 +19,10 @@
     <view class="mes-null" hidden="{{isHiddenMes}}">
       <image class="icon-null" src="/images/mes-null.png"></image>
       <view class="hint">暂无记录</view>
-      <view class="btn-box">
-
+      <view class="hintmes">赶快寻找心仪的职位吧</view>
+      <!-- <view class="btn-box">
         <button catchtap="bulidResumeTap" class="btn-sure" size="default" hover-class="btn-sure-hover">完善简历 寻找更多机会 </button>
-      </view>
+      </view> -->
     </view>
   </swiper-item>
 

@@ -4,7 +4,7 @@
 function toArr(json) {    
   var arr = [];
   for (var i in json) {
-    arr.unshift(json[i]);
+    arr.unshift(json[i][0]);
   };
   return arr;
 };
@@ -59,6 +59,10 @@ Page({
             var readList = data.ret.resume_list_isread,
                 unreadList = data.ret.resume_list_unread[0];
           
+            //判断没有信息纪录
+            if (readList === null && data.ret.resume_list_unread.length==0){
+              that.data.isHiddenMes = false;
+            }
             //var list = readList.concat(toArr(unreadList[0]));
             var chakan = [],
                 yixiang =[],
@@ -83,12 +87,8 @@ Page({
                 chakan: chakan[0],
                 yixiang: yixiang[0],
                 mianshi: mianshi[0],
-                buheshi: buheshi[0]
-            })
-        }else{
-            
-            that.setData({
-                isHiddenMes:false
+                buheshi: buheshi[0],
+                isHiddenMes: that.data.isHiddenMes
             })
         }
         app.hideloading();

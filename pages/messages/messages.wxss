@@ -44,7 +44,10 @@ page{
 
 
 .mes-null{
-  margin-top: 200rpx;
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  margin-left: -100rpx;
   text-align: center;
 }
 .icon-null{
@@ -55,6 +58,12 @@ page{
 .hint{
   font-size: 24rpx;
   color:#999;
+}
+.hintmes{
+  font-size: 24rpx;
+  color:#999;
+  margin-top: 20rpx;
+
 }
 .auto-scroll{
   height: 100%;
