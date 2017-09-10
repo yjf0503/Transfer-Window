@@ -20,7 +20,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      console.log(options)
       
         if (options.type == 0) {
           this.setData({
@@ -95,7 +94,7 @@ Page({
     //保存期望职位
     
     setResumeDreamPosFun: function () {
-
+      var that = this;
 
         if (this.data.dreamposi == '' || this.data.dreamposi == undefined) {
             app.alert('期望职位不能为空！')
@@ -115,9 +114,28 @@ Page({
             content: JSON.stringify(content)
         }, function (data) {
             if (data.code == 1) {
-                console.log(data.msg)
                 
                 app.globalData.isHaveResume.expected_pos = content;
+                
+                //更新上一级页面
+                var pages = getCurrentPages();
+                var curPage = pages[pages.length - 2];
+                curPage.setData({
+                  resumeDreamPosi: content
+                });
+                app.hideloading();
+                wx.showToast({
+                  title: '保存成功！',
+                  icon: 'success',
+                  duration: 500
+                });
+                //返回上一个页面
+                setTimeout(function () {
+                  wx.navigateBack({
+
+                  })
+                }, 800);
+                
             } else {
                 app.alert(data.alertMsg);
             }
@@ -131,25 +149,10 @@ Page({
           content: "期望职位不能为空！"
         });
       }else{
+
+        app.loading();
         this.setResumeDreamPosFun();
-        wx.showToast({
-          title: '保存成功！',
-          icon: 'success',
-          duration: 500
-        });
-        //更新上一级页面
-        var pages = getCurrentPages();
-        var curPage = pages[pages.length - 2];
-        curPage.setData({
-          resumeDreamPosi: this.data
-        });
-
-        //返回上一个页面
-        setTimeout(function () {
-          wx.navigateBack({
-
-          })
-        }, 800);
+        
       }
      
     },
@@ -170,7 +173,7 @@ Page({
         } else {
           wx.showModal({
             title: '简历创建成功',
-            content: '已成功创建简历，快去投递心怡职位吧',
+            content: '已成功创建简历，快去投递心仪职位吧',
             cancelText: '再改改',
             cancelColor: '#999',
             confirmText: '去首页',

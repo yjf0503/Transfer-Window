@@ -174,7 +174,7 @@ Page({
 //   },
   //保存
   submitResumeBaseTap: function(){
-
+    
     //this.setResumeBaseInfoFun();
     if ((this.data.userName == "") || (this.data.contact == "") || (this.data.email == "")) {
       wx.showModal({
@@ -204,30 +204,16 @@ Page({
           content: "邮箱格式不对！"
         });
       }else{
-        wx.showToast({
-          title: '保存成功！',
-          icon: 'success',
-          duration: 500
-        })
+        app.loading();
         this.setResumeBaseInfoFun();
-        //更新上一级页面
-        var pages = getCurrentPages();
-        var curPage = pages[pages.length - 2];
-        curPage.setData({
-          resumeBaseInfo: this.data
-        });
-
-        //返回上一个页面
-        setTimeout(function () {
-          wx.navigateBack({
-
-          })
-        }, 800);
+        
+       
       }
     }
   },
   //保存简历基本信息
   setResumeBaseInfoFun: function(){
+    var that = this;
       if (this.data.userName == '' || this.data.userName == undefined) {
           app.alert('姓名不能为空！')
           return false;
@@ -264,20 +250,43 @@ Page({
           //selfLen: this.data.selfLen,
           //userImg:app.globalData.userInfo.avatarUrl
       };
-      console.log(app.globalData.openid);
+      
       app.apiPost(app.apiList.saveResume, {
           openid: app.globalData.openid,
           type: 1,
           content: JSON.stringify(content)
       }, function (data) {
-        console.log(data);
+        
           if (data.code == 1) {
-              let isHaveResume ={
-                  base_info: content
+            //判断修改基础信息导致isHaveResume对象被修改
+            if (app.globalData.isHaveResume === null){
+              let isHaveResume = {
+                base_info: content
               }
-              console.log(isHaveResume)
               app.globalData.isHaveResume = isHaveResume;     // 传递了对象
               
+            }else{
+              app.globalData.isHaveResume.base_info = content;
+            }
+            //更新上一级页面
+            var pages = getCurrentPages();
+            var curPage = pages[pages.length - 2];
+            curPage.setData({
+              resumeBaseInfo: content
+            });
+            app.hideloading();
+            wx.showToast({
+              title: '保存成功！',
+              icon: 'success',
+              duration: 500
+            })
+            //返回上一个页面
+            setTimeout(function () {
+              wx.navigateBack({
+
+              })
+            }, 800);
+            
           } else {
               app.alert(data.alertMsg);
           }

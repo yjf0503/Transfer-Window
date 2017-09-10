@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isHaveResume: true,
+    isHaveResume: true,//是否有简历
+    Completion: true,//简历是否完整
     submitText: '',
     submitdisabled: false,
     mode: true,
@@ -38,24 +39,28 @@ Page({
       
       })
     } else {
-      //是从公司进来的就不再显示公司了
-      
+      //是从公司进来的就不再显示公司了,globalData区分是公司进的还是首页进的
+      let positionDetail, positionId, p_desc;
       if (options.type == 2){
         that.data.isGoinType=true;
+        positionDetail = app.globalData.positionDetailCom;
+        positionId = app.globalData.positionDetailCom.id;
+        p_desc = app.globalData.positionDetailCom.p_desc;
+      }else{
+        positionDetail = app.globalData.positionDetail;
+        positionId = app.globalData.positionDetail.id;
+        p_desc = app.globalData.positionDetail.p_desc
       }
       //获取职位详情
       that.setData({
-        position_content: app.globalData.positionDetail,
-        id: app.globalData.positionDetail.id,
+        position_content: positionDetail,
+        id: positionId,
         isGoinType: that.data.isGoinType
       });
       //let p_desc = app.globalData.positionDetail.p_desc.replace(/\s/g, '');
-      let p_desc = app.globalData.positionDetail.p_desc.replace(/&amp;nbsp;/g, "");
+      p_desc = p_desc.replace(/&amp;nbsp;/g, "");
       WxParse.wxParse('article', 'html', p_desc, that, 5);
-      
     }
-
-
     this.btnStatusFun();
 
   },
@@ -75,16 +80,21 @@ Page({
       var work_history_obj = app.globalData.isHaveResume.work_history,
         edu_history_obj = app.globalData.isHaveResume.edu_history,
         expected_pos_obj = app.globalData.isHaveResume.expected_pos;
-
-      if (work_history_obj !== null && edu_history_obj !== null && expected_pos_obj !== null) {
+      let isWork = work_history_obj !== undefined && work_history_obj !== null && work_history_obj.length>0,
+        isEdu = edu_history_obj !== undefined && edu_history_obj !== null && edu_history_obj.length > 0,
+        expected = expected_pos_obj !== undefined && expected_pos_obj !== null;
+      //判断简历完整度
+      if (isWork && isEdu && expected) {
         that.setData({
           submitText: "发送简历",
-          isHaveResume: true
+          isHaveResume: true,
+          Completion:true
         });
       } else {
         that.setData({
           submitText: "请先完善您的个人简历",
-          isHaveResume: true
+          isHaveResume: true,
+          Completion: false
         });
       }
 
@@ -123,12 +133,10 @@ Page({
   isSendTap: function () {
 
     var that = this;
+    //判断是否有简历
     if (that.data.isHaveResume) {
-
-      var work_history_obj = app.globalData.isHaveResume.work_history,
-        edu_history_obj = app.globalData.isHaveResume.edu_history,
-        expected_pos_obj = app.globalData.isHaveResume.expected_pos;
-      if (work_history_obj !== null&& edu_history_obj !== null&& expected_pos_obj !== null) {
+      //判断简历完整度
+      if (that.data.Completion) {
         //发送简历
         wx.showModal({
           title: '发送确认',
@@ -147,9 +155,25 @@ Page({
           }
         })
       } else {
-        wx.navigateTo({
-          url: '/pages/my-resume/my-resume',
+        //编辑简历
+        wx.showModal({
+          title: '提醒',
+          content: '是否要去编辑简历',
+          cancelText: '取消',
+          cancelColor: '#999',
+          confirmText: '确认',
+          confirmColor: '#4990E2',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '/pages/my-resume/my-resume',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
         })
+        
       }
       
     } else {

@@ -35,8 +35,10 @@ App({
         userInfo: wx.getStorageSync('userInfo') || null,
         //判断用户是否已有简历
         isHaveResume: wx.getStorageSync('isHaveResume') || null,
-        //用于职位详情绑定数据
-        positionDetail: null
+        //用于职位详情绑定数据,从首页进
+        positionDetail: null,
+        //用于职位详情绑定数据，从公司页进
+        positionDetailCom: null
         //用户登录状态
         //token:false
     },

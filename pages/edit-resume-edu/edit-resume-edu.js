@@ -15,22 +15,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      if(options.type == 0){
-          this.setData({
-              isHaveResume: false
-          })
-      }
-      if (app.globalData.isHaveResume !== null) {
-          this.setData({
+    if (options.type == 0) {
+      this.setData({
+        isHaveResume: false
+      })
+    }
+   
+      // if (app.globalData.isHaveResume !== null) {
+      //     this.setData({
 
-              resumeEduList: app.globalData.isHaveResume.edu_history,
+      //         resumeEduList: app.globalData.isHaveResume.edu_history,
 
-          })
-      }
-      
-    
+      //     })
+      // }
   },
+  onShow: function(){
+    if (app.globalData.isHaveResume !== null) {
+      this.setData({
 
+        resumeEduList: app.globalData.isHaveResume.edu_history,
+
+      })
+    }
+  },
   //编辑单个教育经历
   editEduListTap: function(event){
     //添加和修改是同一个方法，所以判断eduId是否值，有值是修改，没值是添加

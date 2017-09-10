@@ -14,23 +14,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
+
       if (options.type == 0){
         this.setData({
             isHaveResume:false
         })
       }
-      if (app.globalData.isHaveResume !== null){
-          this.setData({
+      // if (app.globalData.isHaveResume !== null){
+      //     this.setData({
 
-              resumeWorkList: app.globalData.isHaveResume.work_history,
+      //         resumeWorkList: app.globalData.isHaveResume.work_history,
 
-          })
-      }
+      //     })
+      // }
       
   },
 
- 
+ onShow: function(options){
+  
+   if (app.globalData.isHaveResume !== null) {
+     this.setData({
+
+       resumeWorkList: app.globalData.isHaveResume.work_history,
+
+     })
+   }
+ },
   //编辑单个工作经历
   editWorkListTap: function (event) {
    

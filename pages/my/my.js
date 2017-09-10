@@ -163,8 +163,14 @@ Page({
       wx.navigateTo({
         url: '../opinion/opinion',
       })
-    }
+    },
 
+   //用户协议
+   toAgreement: function(){
+     wx.navigateTo({
+       url: '../agreement/agreement',
+     });
+   }
 
     // login:function(){
     //   wx.navigateTo({

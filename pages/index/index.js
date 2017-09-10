@@ -55,7 +55,7 @@ Page({
         WxSearch.init(that, 48, ['运营','赛事','商务']);
         WxSearch.initMindKeys(['腾讯体育','乐视体育','阿里体育']);
 
-        // console.log(app.globalData.isHaveResume);
+        
     },
 
     //判断用户是否已有简历
@@ -126,7 +126,7 @@ Page({
     getPositionCity: function(){
         var that = this;
         app.apiGet(app.apiList.wxappAreaList,{},function(data){
-          //console.log(data);
+          
            that.setData({
                cityArray: data
            })
@@ -167,7 +167,7 @@ Page({
             searchPage: searchPage, //搜索页码
             searchLimit: searchLimit,//搜索条数
         },function(data){
-          //console.log(data);
+          
             if (data.length > 0) {
                 var newData = that.data.list.concat(data);
                 that.setData({
@@ -261,13 +261,13 @@ Page({
     //获取搜索输入框焦点
     wxSearchFocus: function (e) {
         var that = this;
-        //console.log(this.data.wxSearchData);
+        
         this.data.wxSearchData.view.isShow = true;
         WxSearch.wxSearchFocus(e, that);
         that.setData({
           wxSearchData: this.data.wxSearchData
         });
-        //console.log(this.data);
+        
     },
     //离开搜索输入框焦点
     // wxSearchBlur: function (e) {

@@ -57,7 +57,7 @@ Page({
     }
     console.log(position);
     // 设置到全局变量中去，让下个页面可以访问
-    app.globalData.curPosition = position;
+    app.globalData.positionDetailCom = position;
     // 切换页面
     wx.navigateTo({
       url: '../position-detail/position-detail?id=' + position.id + '&type=2',
@@ -69,7 +69,7 @@ Page({
           // 来自页面内转发按钮
           console.log(res.target)
       }
-      var title = this.data.company_info.enterprise_name + '在体育圈招聘，发布了' + this.data.company_info.position_num+'个职位需求';
+      var title = this.data.company_info.enterprise_name + '在体育圈招聘，发布了  ' + this.data.company_info.position_num+'  个职位需求';
 
       var pid = this.data.pid;
       return {

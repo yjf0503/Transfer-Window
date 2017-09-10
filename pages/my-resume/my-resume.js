@@ -38,20 +38,20 @@ Page({
       // });
       this.setData({
         avatarUrl: app.globalData.userInfo != null ? app.globalData.userInfo.avatarUrl : '/images/small_avatar.png',
-        resumeBaseInfo: app.globalData.isHaveResume.base_info,
-        resumeWorkList: app.globalData.isHaveResume.work_history,
-        resumeEduList: app.globalData.isHaveResume.edu_history,
-        resumeDreamPosi: app.globalData.isHaveResume.expected_pos
+        // resumeBaseInfo: app.globalData.isHaveResume.base_info,
+        // resumeWorkList: app.globalData.isHaveResume.work_history,
+        // resumeEduList: app.globalData.isHaveResume.edu_history,
+        // resumeDreamPosi: app.globalData.isHaveResume.expected_pos
       });
 
   },
   onShow: function(){
-    //   this.setData({
-    //       resumeBaseInfo: app.globalData.isHaveResume.base_info,
-    //       resumeWorkList: app.globalData.isHaveResume.work_history,
-    //       resumeEduList: app.globalData.isHaveResume.edu_history,
-    //       resumeDreamPosi: app.globalData.isHaveResume.expected_pos
-    //   })
+      this.setData({
+          resumeBaseInfo: app.globalData.isHaveResume.base_info,
+          resumeWorkList: app.globalData.isHaveResume.work_history,
+          resumeEduList: app.globalData.isHaveResume.edu_history,
+          resumeDreamPosi: app.globalData.isHaveResume.expected_pos
+      })
   },
   
   //更换头像

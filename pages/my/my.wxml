@@ -47,3 +47,12 @@
     <view class="item-cell-ft"></view>
   </view>
 </view> 
+
+<view class="item-cells">
+  <view class="item-cell item-cell-access" catchtap="toAgreement">
+    <view class="item-cell-bd">
+      <text>用户协议</text>
+    </view>
+    <view class="item-cell-ft"></view>
+  </view>
+</view>
