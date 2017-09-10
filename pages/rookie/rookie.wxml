@@ -2,7 +2,7 @@
 <include src="../tpl/search/search.wxml"/>
 
 <view class="container">
-  <scroll-view scroll-y style="height: {{viewHeight}}px;" bindscrolltolower="lower">
+  <scroll-view scroll-y style="height: {{viewHeight}}px;" bindscrolltolower="lower" scroll-top="100">
     
     <view wx:for="{{list}}" wx:key="{{item.id}}" data-id="{{item.id}}" catchtap="positionDetailTap">
       <template is="position-item" data="{{...item}}" />

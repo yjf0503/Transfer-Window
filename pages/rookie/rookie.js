@@ -17,7 +17,7 @@ Page({
         cityId: 0,
         cityValue:'全国',
 
-        viewHeight: 600,
+        viewHeight: 500,
         loadingText: '加载中...',//
         loadingHidden: true,//默认隐藏更多
         list: [],
