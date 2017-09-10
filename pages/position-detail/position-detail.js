@@ -177,24 +177,46 @@ Page({
           }
         })
       } else {
-        //编辑简历
-        wx.showModal({
-          title: '提醒',
-          content: '现在去完善您的简历吗？',
-          cancelText: '取消',
-          cancelColor: '#999',
-          confirmText: '确认',
-          confirmColor: '#4990E2',
-          success: function (res) {
-            if (res.confirm) {
-              wx.navigateTo({
-                url: '/pages/my-resume/my-resume',
-              })
-            } else if (res.cancel) {
-              console.log('用户点击取消')
+        if (that.data.options.type == 2){
+          //去我的中心 编辑简历
+          wx.showModal({
+            title: '提醒',
+            content: '去个人中心完善您的简历吧！',
+            cancelText: '取消',
+            cancelColor: '#999',
+            confirmText: '确认',
+            confirmColor: '#4990E2',
+            success: function (res) {
+              if (res.confirm) {
+                wx.switchTab({
+                  url: '/pages/my/my',
+                })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
             }
-          }
-        })
+          })
+        }else{
+          //编辑简历
+          wx.showModal({
+            title: '提醒',
+            content: '现在去完善您的简历吗？',
+            cancelText: '取消',
+            cancelColor: '#999',
+            confirmText: '确认',
+            confirmColor: '#4990E2',
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '/pages/my-resume/my-resume',
+                })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        }
+        
         
       }
       
