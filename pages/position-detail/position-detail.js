@@ -190,7 +190,8 @@ Page({
     var that = this;
     app.apiPost(app.apiList.deliveryResume, {
       openid: app.globalData.openid,
-      positionid: that.data.position_content.id
+      positionid: that.data.position_content.id,
+      userImg: app.globalData.userInfo.avatarUrl
     }, function (data) {
       app.hideloading();
       if (data.code == 1) {
