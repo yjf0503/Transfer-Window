@@ -188,10 +188,11 @@ Page({
   //投递接口
   sendResumeFun: function () {
     var that = this;
+    let avatarUrl = app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl:''
     app.apiPost(app.apiList.deliveryResume, {
       openid: app.globalData.openid,
       positionid: that.data.position_content.id,
-      userImg: app.globalData.userInfo.avatarUrl
+      userImg: avatarUrl
     }, function (data) {
       app.hideloading();
       if (data.code == 1) {
