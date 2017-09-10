@@ -158,7 +158,7 @@ Page({
         //编辑简历
         wx.showModal({
           title: '提醒',
-          content: '是否要去编辑简历',
+          content: '现在去完善您的简历吗？',
           cancelText: '取消',
           cancelColor: '#999',
           confirmText: '确认',
@@ -188,7 +188,7 @@ Page({
   //投递接口
   sendResumeFun: function () {
     var that = this;
-    let avatarUrl = app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl:''
+    let avatarUrl = app.globalData.userInfo!==null ? app.globalData.userInfo.avatarUrl:''
     app.apiPost(app.apiList.deliveryResume, {
       openid: app.globalData.openid,
       positionid: that.data.position_content.id,

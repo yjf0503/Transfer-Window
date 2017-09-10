@@ -39,7 +39,7 @@ Page({
     
     if (workId !=undefined) {
         wx.setNavigationBarTitle({
-            title: '修改工作'
+          title: '修改工作经历'
         })
         
         var resumeWorkList = app.globalData.isHaveResume.work_history;
@@ -60,7 +60,7 @@ Page({
       
     } else {
         wx.setNavigationBarTitle({
-            title: '添加工作'
+          title: '添加工作经历'
         }) 
       this.setData({
         isadd: true,
