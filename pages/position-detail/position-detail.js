@@ -61,14 +61,14 @@ Page({
       p_desc = p_desc.replace(/&amp;nbsp;/g, "");
       WxParse.wxParse('article', 'html', p_desc, that, 5);
     }
-    this.btnStatusFun();
+    this.btnStatusFun(options);
 
   },
   onShow(){
     this.btnStatusFun();
   },
   //按钮交互判断
-  btnStatusFun(){
+  btnStatusFun(options){
     var that = this;
     //判断是否有简历
     if (app.globalData.isHaveResume === null) {
@@ -106,7 +106,14 @@ Page({
       if (sendPosiArray) {
         // Do something with return value
         for (var i = 0; i < sendPosiArray.length; i++) {
-          if (sendPosiArray[i] == app.globalData.positionDetail.id) {
+          //是从公司进来的就不再显示公司了,globalData区分是公司进的还是首页进的
+          let positionId;
+          if (options.type == 2) {
+            positionId = app.globalData.positionDetailCom.id;
+          } else {
+            positionId = app.globalData.positionDetail.id;
+          }
+          if (sendPosiArray[i] == positionId) {
             that.setData({
               submitText: "已投递",
               submitdisabled: true
