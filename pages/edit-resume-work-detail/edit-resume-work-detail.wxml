@@ -43,9 +43,9 @@
     </view>
   </view>
   <view class="item-cell-textarea">
-    <textarea bindinput="WorkContentTap"  bindfocus="jobcontentfocus" bindblur="jobcontentblur" class="item-textarea big bg" value="{{workContent}}" placeholder="{{jobcontent}}" maxlength="200" />
+    <textarea bindinput="WorkContentTap"  bindfocus="jobcontentfocus" bindblur="jobcontentblur" class="item-textarea big bg" value="{{workContent}}" placeholder="{{jobcontent}}" maxlength="500" />
     <view class="textarea-count">
-      <text>{{workContentLen}}/200</text>
+      <text>{{workContentLen}}/500</text>
     </view>
   </view>
 

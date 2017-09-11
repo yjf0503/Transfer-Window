@@ -21,10 +21,11 @@ Page({
    */
   onLoad: function (options) {
     var newDate = new Date();
+    var Year = Number(newDate.getFullYear()) + 8;
     var Month = newDate.getMonth() < 10 ? "0" + (newDate.getMonth() + 1) : "" + (newDate.getMonth() + 1);
 
     this.setData({
-      raduationTime: newDate.getFullYear() + "-" + Month
+      raduationTime: Year + "-" + Month
     });
 
 
